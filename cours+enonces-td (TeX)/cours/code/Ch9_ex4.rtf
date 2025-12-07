@@ -1,0 +1,60 @@
+{\rtf1\ansi\uc0\deff0{\fonttbl{\f0\fmodern\fprq1\fcharset0;}}{\colortbl;\red186\green33\blue33;\red64\green128\blue128;\red0\green160\blue0;\red153\green153\blue153;\red170\green34\blue255;\red255\green0\blue0;\red188\green122\blue0;\red25\green23\blue124;\red210\green65\blue58;\red0\green128\blue0;\red0\green0\blue128;\red102\green102\blue102;\red0\green0\blue255;\red125\green144\blue41;\red160\green160\blue0;\red136\green136\blue136;\red187\green102\blue136;\red160\green0\blue0;\red187\green102\blue34;\red187\green187\blue187;\red128\green0\blue128;\red176\green0\blue64;\red136\green0\blue0;\red0\green68\blue221;}\f0 {\cf2\i #!/opt/local/bin/python2.7}\par
+{\cf2\i # -*- coding: utf-8 -*}\par
+\par
+{\cf2\i # The first line is my shebang...}\par
+{\cf2\i # With this shebang, I use my version of python2.7}\par
+{\cf2\i #{\u160}It will not be the same for you, so remove or change it, accordingly.}\par
+\par
+{\cf2\i # The second line is the utf-8 encoding line}\par
+\par
+\par
+{\cf2\i # On rappelle la fonction isFile.}\par
+{\cf10\b def} {\cf13 isFile}(fname):\par
+	{\cf10\b try}:\par
+		f_log {\cf12 =} {\cf10 open}(fname,{\cf1 '}{\cf1 r}{\cf1 '})\par
+		f_log{\cf12 .}close()\par
+		{\cf10\b return} (fname,{\cf10 True})\par
+	{\cf10\b except} {\cf9\b IOError}:\par
+		{\cf10\b return} (fname,{\cf10 False})\par
+\par
+{\cf2\i # R{\u233}cup{\u233}ration ou cr{\u233}ation du dictionnaire carnet}\par
+{\cf2\i # On se place dans le r{\u233}pertoire voulu}\par
+{\cf10\b import} {\cf13\b os}\par
+os{\cf12 .}chdir({\cf1 "}{\cf1 /Users/jcabessa/Desktop/MAIN/Courses/PYTHON/2016_Paris_Lausanne/cours/code}{\cf1 "})\par
+\par
+{\cf10\b from} {\cf13\b pickle} {\cf10\b import} {\cf12 *}\par
+{\cf10\b if} isFile({\cf1 "}{\cf1 carnet.txt}{\cf1 "})[{\cf12 1}] {\cf12 ==} {\cf10 True}:\par
+	{\cf10\b with} {\cf10 open}({\cf1 "}{\cf1 carnet.txt}{\cf1 "},{\cf1 "}{\cf1 r}{\cf1 "}) {\cf10\b as} f_log:\par
+		carnet {\cf12 =} load(f_log) {\cf2\i # On load le dico}\par
+		\par
+{\cf10\b else}:\par
+	carnet {\cf12 =} \{\}\par
+\par
+{\cf10\b print} {\cf1 "}{\cf1 n : Introduire une nouvelle adresse}{\cf1 "}\par
+{\cf10\b print} {\cf1 "}{\cf1 r : Rechercher une adresse}{\cf1 "}\par
+{\cf10\b print} {\cf1 "}{\cf1 f : Fin}{\cf1 "}\par
+\par
+{\cf10\b while} ({\cf10 True}):\par
+	action {\cf12 =} {\cf10 raw_input}({\cf1 "}{\cf1 Que voulez-vous faire? }{\cf1 "})\par
+	{\cf10\b if} (action {\cf5\b in} [{\cf1 "}{\cf1 n}{\cf1 "}, {\cf1 "}{\cf1 N}{\cf1 "}]):\par
+		{\cf2\i # introduire une nouvelle adresse}\par
+		nom {\cf12 =} {\cf10 raw_input}({\cf1 "}{\cf1 Entrer un nom: }{\cf1 "})\par
+		{\cf10\b if} nom {\cf5\b in} carnet{\cf12 .}keys():\par
+			{\cf10\b print} {\cf1 "}{\cf1 Ce nom existe deja...}{\cf1 "}\par
+		{\cf10\b else}:\par
+			anniv {\cf12 =} {\cf10 raw_input}({\cf1 "}{\cf1 anniversaire <jour.mois.annee>: }{\cf1 "})\par
+			tel {\cf12 =} {\cf10 raw_input}({\cf1 "}{\cf1 telephone: }{\cf1 "})\par
+			carnet[nom] {\cf12 =} (anniv, tel)\par
+	{\cf10\b elif} (action {\cf5\b in} [{\cf1 "}{\cf1 r}{\cf1 "}, {\cf1 "}{\cf1 R}{\cf1 "}]):\par
+		nom {\cf12 =} {\cf10 raw_input}({\cf1 "}{\cf1 Entrer un nom: }{\cf1 "})\par
+		{\cf10\b if} nom {\cf5\b in} carnet{\cf12 .}keys():\par
+			{\cf10\b print} {\cf1 "}{\cf1 anniversaire:}{\cf1 "}, carnet[nom][{\cf12 0}]\par
+			{\cf10\b print} {\cf1 "}{\cf1 telephone:}{\cf1 "}, carnet[nom][{\cf12 1}]\par
+		{\cf10\b else}:\par
+			{\cf10\b print} {\cf1 "}{\cf1 Ce nom n}{\cf1 '}{\cf1 existe pas...}{\cf1 "}\par
+	{\cf10\b elif} action {\cf5\b in} [{\cf1 "}{\cf1 f}{\cf1 "}, {\cf1 "}{\cf1 F}{\cf1 "}]:\par
+		{\cf10\b with} {\cf10 open}({\cf1 "}{\cf1 carnet.txt}{\cf1 "},{\cf1 "}{\cf1 w}{\cf1 "}) {\cf10\b as} f_log: {\cf2\i # mode "w": on recr{\u233}e le fichier}\par
+			dump(carnet,f_log) {\cf2\i # On dump le dico dans carnet.txt}\par
+			{\cf10\b print} carnet\par
+			{\cf10\b break}\par
+}

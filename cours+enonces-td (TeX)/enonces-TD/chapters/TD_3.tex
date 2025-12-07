@@ -1,0 +1,134 @@
+\section{Chapitre 3: Expressions arithmétiques, entrées/sorties}
+
+\setcounter{exercice}{0}
+
+\bigskip
+
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+
+
+
+\medskip
+\begin{myboxi}[Le concile de Nicée]
+La définition de la date de Pâques a été
+ fixée en 325 lors du concile de Nicée :
+P\^aques est le dimanche qui suit le quatorzième jour de la lune qui atteint cet âge au 21 mars ou immédiatement après.
+
+Autrement dit, c'est le premier dimanche qui suit ou qui coïncide avec la première pleine lune apres le 21 mars (marquant le début du printemps).
+\end{myboxi}
+
+
+\medskip
+\begin{myboxi}[Algorithme de Oudin pour calculer la date de Pâques]
+Calculer la date de Pâques est loin d'être une chose facile. Il existe plusieurs méthodes, 
+dont la suivante connue
+sous le nom d'algorithme de Oudin qui a l'avantage de
+demander peu d'opérations. Il en existe une version généraliste (sans
+limite de siècle), mais nous présentons ici sa forme simplifiée valable pour le
+calendrier grégorien, donc pour {\textbf{toute année postérieure à 1583}}. 
+
+
+\medskip
+\medskip
+
+Dans la présentation de l'algorithme ci-dessous, chaque ligne introduit une nouvelle variable qui dépend 
+des précédentes. Les divisions doivent toujours être entières. L'exemple en bleu indiquent les calculs pour l'année 2007.
+\medskip
+
+\begin{enumerate}[label=\arabic*.]
+\item G qui représente l'écart d'or diminué de 1 : diviser l'année par 19, en prendre le reste ;  
+\color{blue} (2007/19 = 105, or 105 × 19 = 1995 et il nous faut 2007, donc l'écart vaut G = 12) \color{black}
+\item C et C4 permettent le suivi des années bissextiles : diviser l'année par 100 puis encore par 4 ;  
+\color{blue} (2007/100 = C = 20 et 20/4 = C4 = 5) \color{black}
+\item E : diviser 8×C +13 par 25 sans les décimales;  
+\color{blue} (8 × 20 + 13 = 173/25 = E = 6) \color{black}
+\item H qui dépend de l'épacte : diviser 19 × G + C - C4 - E + 15 par 30, en prendre le reste ; 
+\color{blue} (on prend le reste d'une division selon le même principe que pour G : 252/30 = 8, or 8 × 30 = 240 et il nous faut 252, donc l'écart vaut H = 12) \color{black}
+\item K : diviser H par 28 ; 
+\color{blue} (12/28 = K = 0) \color{black}
+\item P : diviser 29 par H + 1 ; 
+\color{blue} (29/13=P =2) \color{black}
+\item Q : diviser 21-G par 11; 
+\color{blue} ( 21 - 12 = 9/11 = Q = 0) \color{black}
+\item I représente le nombre de jours entre la pleine lune pascale et le 21 mars : (K × P × Q-1)×K +H ; 
+\color{blue} ( 0 × 2  × 0 - 1 = -1  × -0 = 0 + 12 = I = 12) \color{black}
+\item B : diviser l'année par 4 et enlever les décimales, y ajouter l'année; 
+\color{blue} (2007/4 = 501 + 2007 = 2508) \color{black}
+\item J1 : Additionner B + I + 2 + C4 et retrancher C; 
+  \color{blue} (J1 =2507) \color{black}
+\item J2 calcule le jour de la lune pascale (0=dimanche 1=lundi...6=samedi) : diviser J1 par 7 et en prendre le reste ; 
+\color{blue} (on calcule toujours le reste d'une division selon le même principe qu'avec G et H, le résultat est J2 = 1) \color{black}
+\item R le résultat final, enfin 28 + I - J2. 
+\color{blue} (R = 39)  \color{black}
+\item R représente la date de Pâques dans le mois de mars, s'il dépasse 31 cela signifie que l'on déborde sur avril (... 30 correspond au 30 mars, 31 au 31 mars, 32 au 1er avril, 33 au 2 avril, ...). Retrancher 31 le cas échéant pour obtenir la date d'avril. 
+\color{blue} (Pâques 2007 tombe donc le 8 avril) \color{black}
+\end{enumerate}
+
+\end{myboxi}
+
+\newpage
+
+\medskip
+\begin{exercice}[Date de Pâques]\label{TD3_ex1}
+\
+
+\begin{enumerate}
+\item Calculez la date de Paques pour l'année 2007 en suivant la méthode de Oudin.
+\item Debugguez au fûr et à mesure les valeurs des variables avec la fonction 
+print pour vérifier votre implémentation de l'algorithme à l'aide de l'exemple bleu.
+\
+\begin{lstlisting}
+ G = ...
+ C = ...
+ C4 = ...
+ print( f"G = {G}" )
+ print( f"C = {C}" )
+ print( f"C4 = {C4}" )
+\end{lstlisting}
+\end{enumerate}
+
+\end{exercice}
+
+\medskip
+\begin{exercice}[Utilisation de fonctions et de fichiers]\label{TD3_ex2}
+\
+
+\begin{enumerate}
+\item Modifier le script pour mettre le calcul de Pâques
+dans une fonction \inlinecode{date_de_paques(N)}. Votre fonction doit renvoyer une
+chaine de caractères, par exemple "\inlinecode{Dimanche 23 mars 2008}"
+\item Réaliser un programme qui demande une année à l'utilisateur dans le programme
+principal, puis affiche la date de Paques pour cette année.
+\item Quelle sera la prochaine année (à partir de 2025) où Pâques sera fêté un 1er avril ?
+\item Réalisez un programme qui affiche toutes les années du XXIe siècle durant lesquelles
+Pâques est fêté une 1er avril.
+\item Déterminez les années du XXIe siècle pour lesquelles Pâques est fêté le plus tard.
+\item \'Ecrire toutes les dates de Paques du XXIe siècle dans un fichier texte.
+\
+\begin{lstlisting}
+ with open("toto.txt", "w") as f:
+     f.write("I have written something in the file !!!")
+\end{lstlisting}
+
+\item Déterminez le jour de votre anniversaire (lundi, mardi, mercredi, etc) pour une année N
+donnée (indication : Pâques est un dimanche).
+\end{enumerate}
+
+\end{exercice}
+
+
+
+
+%\begin{filecontents*}{temp.tex}
+%
+%\begin{solution}[ex:]
+%
+%\end{solution}
+%
+%
+%\end{filecontents*}
+%\appendsolution
+
+

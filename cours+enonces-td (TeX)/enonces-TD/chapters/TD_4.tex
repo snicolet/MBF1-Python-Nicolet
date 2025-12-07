@@ -1,0 +1,222 @@
+\section{Chapitre 4: Boucles et tests conditionnels}
+
+\setcounter{exercice}{0}
+
+\bigskip
+
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+
+\medskip
+\begin{myboxi}[Rappel sur les boucles \inlinecode{for}]
+La fonction \inlinecode{range(start,stop,[step])} produit un objet qui retourne une liste de nombres entiers telle que: la premi\`ere valeur est \inlinecode{start} (\inlinecode{start} vaut $0$ par d\'efaut); les valeurs suivantes sont incr\'ement\'ees par pas de \inlinecode{step} (\inlinecode{step} vaut $1$ par d\'efaut); et ce jusqu'\`a atteindre la valeur \inlinecode{stop} non incluse.
+
+\smallskip
+
+Une boucle \inlinecode{for} signifie ``pour \inlinecode{var} allant de \inlinecode{start} \`a \inlinecode{stop} par pas de \inlinecode{step}, effectuer les instructions...''. La syntaxe d'une boucle \inlinecode{for} utilise la fonction \inlinecode{range()} et se pr\'esente comme suit:
+\begin{lstlisting}
+for var in range(start,stop[,step]):
+	instructions...
+\end{lstlisting}
+On peut forcer l'interruption d'une boucle \inlinecode{for} avec l'instruction \inlinecode{break}.
+
+\smallskip
+
+On rappelle \'egalement la syntaxe pour parcourir les cha\^ines de caract\`eres, les listes, les tuples et les dictionnaires \`a l'aide de boucles \inlinecode{for}.
+\begin{lstlisting}
+# parcours de chaines, listes ou tuples
+for variable in chaine_liste_ou_tuple:
+	instructions...
+# parcours des cles d'un dico
+for variable in dico.keys(): # (ou for variable in dico:)
+	instructions...
+# parcours des valeurs d'un dico
+for variable in dico.values():
+	instructions...
+# parcours des couples "cle-valeur" d'un dico
+for variable_cle, variable_valeur in dico.items():
+	instructions...
+\end{lstlisting}
+\end{myboxi}
+
+
+\medskip
+\begin{myboxi}[Rappel sur les boucles \inlinecode{while}]
+Une boucle \inlinecode{while} signifie ``tant que la condition est vraie, effectuer les instructions...''. La syntaxe d'une boucle \inlinecode{while} se pr\'esente comme suit:
+\begin{lstlisting}
+while condition:
+	instructions...
+\end{lstlisting}
+On peut forcer l'interruption d'une boucle \inlinecode{while} avec l'instruction \inlinecode{break}.
+\end{myboxi}
+
+
+\medskip
+\begin{myboxi}[Rappel sur les tests conditionnels \inlinecode{if... else...}]
+On rappelle la syntaxe d'un test conditionnel \inlinecode{if... else...} (les blocs \inlinecode{elif} et \inlinecode{else} sont facultatifs):
+\begin{lstlisting}
+if condition:
+	instructions...
+elif:
+	instructions...
+...
+else:
+	instructions...
+\end{lstlisting}
+\end{myboxi}
+
+
+
+\medskip
+\begin{exercice}[Boucles ``for'']\label{TD3_ex1}
+\
+
+\begin{enumerate}
+\item \'Ecrivez un script qui demande \`a l'utilisateur d'entrer un entier $N$ et affiche ensuite la table de multiplication de $N$.
+\item Modifiez votre script de sorte que la table de multiplication soit affich\'ee sur une seule ligne. Il suffit d'ajouter une virgule apr\`es votre instruction \inlinecode{print}.
+\item Modifiez votre script de telle mani\`ere qu'il affiche, line par ligne, les tables de multiplications de tous les entiers plus petit ou \'egaux \`a $N$. Utilisez une double boucle \inlinecode{for}.
+\item \'Ecrivez un script qui demande \`a l'utilisateur d'entrer un entier $N$ et affiche ensuite un petit dessin comme ci-dessous de hauteur $N$.
+\begin{lstlisting}[style = verbatim]
+# exemple pour N = 4
+*
+**
+***
+****
+\end{lstlisting}
+\item Essayez de modifier votre script de telle sorte que le dessin affich\'e soit comme ci-dessous. D\'eterminez r\`egle qui donne le nombre d'espaces et d'\'etoiles de chaque ligne.
+\begin{lstlisting}[style = verbatim]
+# exemple pour N = 5
+    *
+   * *
+  * * *
+ * * * *
+* * * * *
+\end{lstlisting}
+\end{enumerate}
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\newpage
+\begin{solution}[TD3_ex1]
+\begin{lstlisting}
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+\medskip
+\begin{exercice}[Boucles ``for'']\label{TD3_ex2}
+\
+
+\noindent On consid\`ere les deux listes suivantes:
+\begin{flushleft}
+\inlinecode{jours = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]} \\
+\inlinecode{mois = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]} 
+\end{flushleft}
+\begin{enumerate}
+\item \'Ecrivez un script qui cr\'ee la liste de $12$ tuples suivante:
+\begin{flushleft}
+\inlinecode{mj = [("January", 31), ("February", 28), ("March", 31), ("April", 30), ("May", 31), ("June", 30), ("July", 31), ("August", 31), ("September", 30), ("October", 31), ("November", 30), ("December", 31)]} 
+\end{flushleft}
+\item \'Ecrivez un script qui cr\'ee une liste de $365$ cha\^ines de caract\`eres correspondant aux $365$ jours de l'ann\'ee, comme ci-dessous. Utilisez une double boucle \inlinecode{for} sur votre liste \inlinecode{mj}.
+\begin{flushleft}
+\inlinecode{annee = ["1 January", "2 January",..., "1 February", "2 February",...]} 
+\end{flushleft}
+\item Initialisez la liste suivante:
+\begin{flushleft}
+\inlinecode{jours_semaine = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]} \\
+\end{flushleft}
+Supposons que le premier janvier soit un lundi. \'Ecrivez un script qui cr\'ee une deuxi\`eme liste des $365$ jours de l'ann\'es comprenant les jours de la semaine en plus, comme ci-dessous. Effectuez une double boucle de taille $365$, utilisez les listes \inlinecode{annee} et \inlinecode{jours_semaine} et pensez \`a utiliser l'op\'erateur modulo sur les indices de la liste \inlinecode{jours_semaine}. 
+\begin{flushleft}
+\inlinecode{annee2 = ["Monday 1 January", "Tuesday 2 January",...]} 
+\end{flushleft}
+\item \`A partir de vos listes \inlinecode{annee} et \inlinecode{jours_semaine} , cr\'eez un dictionnaire dont les cl\'es sont les \'el\'ements de \inlinecode{annee} et les valeurs sont les jours de la semaine correspondants, comme ci dessous.
+\begin{flushleft}
+\inlinecode{dico_annee = ["1 January" : "Monday", "2 January" : "Tuesday",...]} 
+\end{flushleft}
+\item \`A quel jour de la semaine correspond au $28$ octobre?
+\end{enumerate}
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\newpage
+\begin{solution}[TD3_ex2]
+\begin{lstlisting}
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+\medskip
+\begin{exercice}[Boucles ``while''] \label{TD3ex3}
+\
+
+\noindent 
+\begin{enumerate}
+\item \'Ecrivez un programme qui demande \`a l'utilisateur d'entrer $3$ notes entre $0$ et $20$. Le programme affichera ensuite le minimum, le maximum et la moyenne des notes entr\'ees. Utilisez une boucle \inlinecode{while}. Les notes entr\'ees seront stock\'ees progressivement dans une liste. Utilisez un parcours de votre liste de notes pour calculer la moyenne de celles-ci.
+\item Modifiez le programme de sorte que celui-ci commence par demander \`a l'utilisateur le nombre de notes $N$ qu'il d\'esire entrer, puis proc\`ede comme pr\'ec\'edemment.
+\item Modifiez le programme de sorte que l'utilisateur puisse entrer autant de notes qu'il le d\'esire et termine sa saisie par une certaine instruction, comme ``fin'' par exemple.
+\end{enumerate}
+
+
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[TD3ex3]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+\medskip
+\begin{exercice}[Boucles ``while''] \label{TD3ex4}
+\
+
+\noindent \'Ecrivez un programme qui choisit un nombre entier au hasard entre $1$ et $100$, puis demande \`a l'utilisateur de le deviner. Si l'utilisateur entre un nombre trop petit ou trop grand, le programme devra afficher ``plus haut'' ou ``plus bas'', respectivement. Le programme s'arr\^ete lorsque le nombre a \'et\'e trouv\'e. Pour g\'en\'erer un nombre entier au hasard, importez la librairie \inlinecode{random} et utilisez la fonction \inlinecode{randint()}.
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[TD3ex4]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+%\begin{filecontents*}{temp.tex}
+%
+%\begin{solution}[ex:]
+%
+%\end{solution}
+%
+%
+%\end{filecontents*}
+%\appendsolution
+
+

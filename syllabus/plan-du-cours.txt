@@ -1,0 +1,43 @@
+Bonjour M. Maarek,
+
+Concernant le cours de Python de MBF2, l'expérience montre que les étudiants
+que nous recevons sont de grands débutants en programmation (certains n'ont
+jamais vu un langage de leur vie). C'est la raison pour laquelle je suis pour
+l'instant parti sur un cours qui reprend les bases, et dans lequel les dernières
+séances sont consacrées à un projet par binôme (écrire un projet, fût-il
+élémentaire, étant souvent le meilleur moyen de progresser en programmation).
+
+---------
+
+J'ai mis dans l'archive ci-dessous l'état actuel des diapos de cours et des
+fiches de TD que je suis en train de réaliser (en me basant sur un ancien
+cours de Jérémie Cabessa) : http://cassio.free.fr/assas/python/cours-Nicolet.zip
+
+Le plan des fiches de cours déjà écrites :
+
+1. Premiers pas en Python
+2. Variables, entrées-sorties
+3. Types de base en Python (1) : nombres et matrices
+4. Types de base en Python (2) : listes et dictionnaires
+5. Tests et boucles
+6. Procedures et fonctions
+7. Récursivité
+8. Exceptions et gestion des erreurs
+9. Fichiers
+10. Un example de programme complet : puissance 4
+11. Programmation orientée objet
+
+---------
+
+Il me parait possible de moduler ce plan pour en faire sauter certains aspects
+(les exceptions, les objets..) et mettre une initiation pour les trois premiers
+outils évoqués par Paul Mochkovitch (Pandas, Numpy et une bibliothèque graphique)
+-- même s'il faut bien être conscient que je ne peux pas assurer que les étudiants
+seront experts, donc il faudra sans doute que Paul prévoit quelques rappels :-)
+
+Nous pourrions discuter via Zoom ou par téléphone de tout cela sans problème,
+voici mon numéro de portable : 06.60.11.32.28
+
+Amitiés,
+Stéphane Nicolet
+

@@ -1,0 +1,46 @@
+
+=================================================
+Diplome : Magistère Banque Finance 
+Notes de programmation Python (MBF2, semestre 2)
+Enseignant : Stéphane Nicolet
+==================================================
+
+
+AKAKPO			13
+AVICEAU			16
+BABO			13
+BARBEROT		5
+BERDAI			13
+BLONDIAUX		13
+BOUCHERON		11
+BOUFFAY			15
+CARRETTE		20
+DIAS			20
+DOSSO			13
+DUARTE			13
+GENELOT			13
+GRIMARD			15
+GUIHARD			16
+HASSANI			15
+KETTANI			13
+LAVOUTE			11
+LE HALPERT		15
+LEFEVRE			11
+LELEU			5
+LEPINAY			8
+LETELLIER		19
+MAIRE			19
+NEGRONI			13
+ONDO TALEB		15
+OUTTIER			15
+ROBERT-DAUTUN	15
+ROGER			11
+RUSTAMOV		16
+SELLIER			17
+STOECKLE		13
+THEBE			8
+WANG			16
+YEUNG			15
+
+
+

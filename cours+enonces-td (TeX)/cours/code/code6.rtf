@@ -1,0 +1,98 @@
+{\rtf1\ansi\uc0\deff0{\fonttbl{\f0\fmodern\fprq1\fcharset0;}}{\colortbl;\red170\green34\blue255;\red176\green0\blue64;\red64\green128\blue128;\red187\green102\blue136;\red188\green122\blue0;\red186\green33\blue33;\red0\green128\blue0;\red0\green68\blue221;\red25\green23\blue124;\red187\green102\blue34;\red0\green160\blue0;\red153\green153\blue153;\red187\green187\blue187;\red102\green102\blue102;\red136\green0\blue0;\red0\green0\blue255;\red136\green136\blue136;\red210\green65\blue58;\red0\green0\blue128;\red125\green144\blue41;\red160\green160\blue0;\red128\green0\blue128;\red255\green0\blue0;\red160\green0\blue0;}\f0 {\cf3\i # -*- coding: utf-8 -*-}\par
+\par
+{\cf7\b def} {\cf16 message}():\par
+	{\cf6\i """Documentation de la fonction"""}\par
+	{\cf7 print}({\cf6 "}{\cf6 Petit message}{\cf6 "})\par
+\par
+message()\par
+message()\par
+{\cf7 print}(message{\cf14 .}__doc__)\par
+\par
+{\cf7\b def} {\cf16 pi}():\par
+	{\cf6\i """Cette fonction retourne pi"""}\par
+	{\cf7\b return} {\cf14 3.14159}\par
+\par
+{\cf7 print}(pi())\par
+{\cf7 print}(pi() {\cf14 +} {\cf14 2})\par
+{\cf7 print}(pi{\cf14 .}__doc__)\par
+\par
+\par
+{\cf3\i ### *** subtilit{\u233}s *** ###}\par
+{\cf7 print}({\cf6 "}{\cf6 "})\par
+\par
+{\cf3\i # argument de type non modifiable}\par
+{\cf7\b def} {\cf16 ma_fonction}(n {\cf14 =} {\cf14 1}): {\cf3\i # ici, n prend la valeur locale par d{\u233}faut 1}\par
+	n {\cf14 =} n {\cf14 +} {\cf14 1} {\cf3\i # n est apparemment localement modifi{\u233}}\par
+	{\cf7\b return} n\par
+\par
+{\cf7 print}(ma_fonction(n {\cf14 =} {\cf14 5})) {\cf3\i # n prend la valeur locale 5}\par
+{\cf7 print}(ma_fonction()) {\cf3\i # n poss{\u232}de toujours la valeur locale par d{\u233}faut 1}\par
+{\cf7 print}(ma_fonction(n {\cf14 =} {\cf14 3})) {\cf3\i # n prend la valeur locale 3}\par
+{\cf7 print}(ma_fonction()) {\cf3\i # n poss{\u232}de toujours la valeur locale par d{\u233}faut 1}\par
+n {\cf14 =} {\cf14 5} {\cf3\i # n est modifi{\u233} globalement, ext{\u233}rieurement {\u224} la fct}\par
+{\cf7 print}(ma_fonction()) {\cf3\i # n poss{\u232}de toujours la valeur locale par d{\u233}faut 1}\par
+{\cf7 print}(n) {\cf3\i # valeur globale de n}\par
+{\cf7 print}({\cf6 "}{\cf6 "})\par
+\par
+{\cf3\i # argument de type modifiable}\par
+{\cf7\b def} {\cf16 ma_fonction}(l {\cf14 =} [{\cf14 1},{\cf14 2},{\cf14 3}]): {\cf3\i # l prend la valeur locale par d{\u233}faut [1,2,3]}\par
+	l{\cf14 .}append({\cf6 "}{\cf6 a}{\cf6 "}) {\cf3\i # l est modifi{\u233}e localement en [1,2,3,"a"]}\par
+	{\cf7\b return} l\par
+\par
+{\cf7 print}(ma_fonction()) {\cf3\i # l poss{\u232}de la valeur locale par d{\u233}faut [1,2,3]}\par
+{\cf7 print}(ma_fonction()) {\cf3\i # l poss{\u232}de la valeur locale par d{\u233}faut [1,2,3,"a"]}\par
+{\cf7 print}(ma_fonction(l {\cf14 =} [{\cf14 1},{\cf14 2},{\cf14 3},{\cf14 4}])) {\cf3\i # l prend la valeur locale [1,2,3,4]}\par
+l {\cf14 =} [{\cf14 1},{\cf14 1},{\cf14 1}] {\cf3\i #{\u160}l est modifi{\u233}e globalement, ext{\u233}rieurement {\u224} la fct}\par
+{\cf7 print}(ma_fonction()) {\cf3\i # l poss{\u232}de la valeur locale par d{\u233}faut [1,2,3,"a","a"]}\par
+{\cf7 print}(l) {\cf3\i # valeur globale de l}\par
+{\cf7 print}({\cf6 "}{\cf6 "})\par
+\par
+{\cf3\i # variables locales et globales}\par
+n {\cf14 =} {\cf14 2} {\cf3\i # n de type non modifiable (int)}\par
+l1 {\cf14 =} [{\cf14 1},{\cf14 2},{\cf14 3}] {\cf3\i #{\u160}l1 de type modifiable (list)}\par
+l2 {\cf14 =} [{\cf6 "}{\cf6 a}{\cf6 "},{\cf6 "}{\cf6 b}{\cf6 "},{\cf6 "}{\cf6 c}{\cf6 "}] {\cf3\i #{\u160}l2 de type modifiable (list)}\par
+\par
+{\cf7\b def} {\cf16 ma_fonction}():\par
+	n {\cf14 =} {\cf14 5} {\cf3\i # r{\u233}affectation locale de n}\par
+	l1{\cf14 .}append({\cf14 4}) {\cf3\i # modification locale de l1}\par
+	l2 {\cf14 =} [{\cf14 0},{\cf14 0},{\cf14 0}] {\cf3\i # r{\u233}affectation locale de l2}\par
+	{\cf7 print}(n)\par
+	{\cf7 print}(l1)\par
+	{\cf7 print}(l2)\par
+	\par
+ma_fonction()\par
+{\cf7 print}(n) {\cf3\i #{\u160}n n'est pas modifi{\u233} globalement}\par
+{\cf7 print}(l1) {\cf3\i #{\u160}l1 est modifi{\u233} globalement}\par
+{\cf7 print}(l2) {\cf3\i #{\u160}l2 n'est pas modifi{\u233} globalement (car une r{\u233}affectation locale n'est pas une modification (subtil))}\par
+{\cf7 print}({\cf6 "}{\cf6 "})\par
+\par
+n1 {\cf14 =} {\cf14 1} {\cf3\i #{\u160}n1 de type non modifiable}\par
+n2 {\cf14 =} {\cf14 2} {\cf3\i #{\u160}n2 de type non modifiable}\par
+{\cf7\b def} {\cf16 ma_fonction}():\par
+	n1 {\cf14 =} {\cf14 5}	{\cf3\i # r{\u233}affectation locale de n1}\par
+	{\cf7\b global} n2\par
+	n2 {\cf14 =} {\cf14 5}  {\cf3\i # r{\u233}affectation globale de n2}\par
+	{\cf7\b return}(n1,n2)\par
+\par
+{\cf7 print}(ma_fonction())\par
+{\cf7 print}(n1) {\cf3\i # valeur globale de n1 non modifi{\u233}e}\par
+{\cf7 print}(n2) {\cf3\i # par contre, valeur globale de n2 modifi{\u233}e!}\par
+{\cf7 print}({\cf6 "}{\cf6 "})\par
+{\cf3\i ### *** subtilit{\u233}s *** ###}\par
+\par
+{\cf7\b def} {\cf16 fact}(n):\par
+	{\cf7\b if} n {\cf14 ==} {\cf14 0}:\par
+		{\cf7\b return} {\cf14 1}\par
+	{\cf7\b else}:\par
+		{\cf7\b return} n{\cf14 *}fact(n{\cf14 -}{\cf14 1})\par
+		\par
+{\cf7 print}(fact({\cf14 7}))\par
+\par
+{\cf7 print}({\cf6 "}{\cf6 "})\par
+\par
+{\cf7\b from} {\cf16\b Ch6_ex4} {\cf7\b import} solution_eq\par
+{\cf7 print}(solution_eq({\cf14 1},{\cf14 3},{\cf14 2}))\par
+{\cf7\b from} {\cf16\b Ch6_ex4} {\cf7\b import} {\cf14 *}\par
+resolution_eq({\cf14 1},{\cf14 3},{\cf14 2})\par
+procedure_action()\par
+}

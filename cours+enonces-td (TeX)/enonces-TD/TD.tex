@@ -1,0 +1,405 @@
+% Book of exercises for Python programming
+%
+%	Formatting:
+%	
+%	%\begin{myboxi}[Remarque]
+%	Rappel: x = x+1
+%	est équivalent à:
+%	x += 1
+%	\end{myboxi}
+%	
+%	Labelling of the exercises: keyword_n (with n positive integer)
+%	
+%	\begin{exercice} \label{ex:keyword_n} 
+%	Title
+%	
+%	Text of the exercise with some inline code \inlinecode{x = 3} and with some maths $3 + 4 = 7$
+%	
+%	Listing with python formatting
+%	\begin{lstlisting}
+%	multi
+%	line 
+%	code
+%	\end{lstlisting}
+%
+%	Verbatim listing (e.g. console)
+%	\begin{lstlisting}[style=verbatim]
+%	> > > 3+2
+%	5
+%	\end{lstlisting}
+%	\end{exercice}
+%
+%
+%	Fill out on this line: \dotfill
+%
+%
+%	Links: \url{http://a.b/}
+%
+%	Wrapped picture:
+%	\begin{wrapfigure}{r}{0.2\textwidth}
+%	  \begin{center}
+%	    \includegraphics[width=0.18\linewidth]{graphics/tp1_idle_icon.png}
+%	  \end{center}
+%	\end{wrapfigure}
+%
+%
+%
+%	Full width picture
+%	\includegraphics[width=\linewidth]{graphics/tp1_1.png} 
+
+
+\documentclass[notitlepage,a4paper,10pt,twoside]{article}
+
+% Packages:
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amsthm,tabularx}
+\usepackage[english,french]{babel}
+\usepackage{courier,enumitem}
+\usepackage{textcomp,fancyhdr}
+\usepackage{wrapfig}
+\usepackage{multicol}
+\usepackage[inner=3cm,outer=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{changepage,graphicx,epstopdf,emptypage}
+\epstopdfsetup{outdir=./graphics/}
+\usepackage{refcount}
+\usepackage[yyyymmdd,hhmmss]{datetime}
+\usepackage{environ,filecontents}
+\usepackage{catchfile}
+\usepackage{xcolor}
+
+\usepackage[yyyymmdd,hhmmss]{datetime}
+\renewcommand{\dateseparator}{}
+
+
+% Hyperrefs
+\usepackage[hypcap=false]{caption}
+\usepackage{amssymb}            % Fancy math symbols.
+\usepackage{euscript}           % Nice script font.
+\usepackage[hidelinks]{hyperref}
+%%%%%%%%
+
+%
+%% source code specific stuff
+%\usepackage{fancyvrb}
+%\usepackage{listings}
+%\fvset{frame=leftline,framerule=1mm,framesep=2mm,numbers=left,numbersep=2mm}
+%\lstset{
+%  language=Python,
+%  basicstyle=\linespread{1.2}\ttfamily
+%}
+
+
+
+
+% Set margins for lists:
+\setlist[itemize]{leftmargin=*}
+\setlist[enumerate]{labelindent=0px}
+\setlist[description]{leftmargin=*}
+%%%%%%%%
+
+% Exercise and solution environments:
+\newenvironment{solution}[1][\unskip]{%
+\setcounterref{exercice}{#1}
+\par
+\noindent
+\textbf{Exercice \ref{#1}.} \newline
+\noindent
+}{
+\newpage
+}
+
+
+\setcounter{secnumdepth}{0}
+
+
+\def\appendsolution{\immediate\write18{cat temp.tex >> sol.tex}}
+
+
+%\NewEnviron{solution}[1][\unskip]{
+%\setcounterref{exercice}{#1}
+%\par
+%\noindent
+%\textbf{Exercice \ref{#1}.} \newline
+%\noindent
+%\BODY
+%}{}
+
+
+%\NewEnviron{solution}[1][\unskip]{%
+%\global\let\putsectionA\BODY}
+
+
+
+%\usepackage{fancyvrb}
+%\newenvironment{tobiwrite}[1]
+%  {\typeout{Writing file #1}\VerbatimOut{#1}}
+%  {\endVerbatimOut}
+
+
+
+%\newwrite\appendwrite
+%\newcommand*\appendBtoA[2]{%
+%    \begingroup
+%    \IfFileExists{#1}%
+%      {\CatchFileDef{\filecontentA}{#1}{\endlinechar=`^^J\catcode\endlinechar=12\relax}}% keep existing end-of-lines
+%      {\let\filecontentA\empty}%
+%    \IfFileExists{#2}%
+%      {\CatchFileDef{\filecontentB}{#2}{\endlinechar=`^^J\catcode\endlinechar=12\relax}}% keep existing end-of-lines
+%      {\let\filecontentB\empty}%
+%
+%    \immediate\openout\appendwrite=#1\relax
+%    %\immediate\write\appendwrite{\filecontentA \filecontentB}%
+%    \immediate\write\appendwrite{\unexpanded\expandafter{\filecontentA}\unexpanded\expandafter{\filecontentB}}%
+%    \immediate\closeout\appendwrite
+%    \endgroup
+%}
+
+
+
+%\newread\in
+%\newwrite\out
+%
+%\newcommand*\appendBtoA[2]{%
+%\immediate\openin\in=#1
+%\immediate\openout\out=#2
+%\endlinechar-1
+%\loop \unless\ifeof\in
+%        \readline\in to\l
+%        \immediate\write\out{\l}
+%\repeat
+%\immediate\closeout\out
+%\closein\in
+%\end
+
+
+
+
+
+
+\newtheoremstyle{break}% name
+  {}%         Space above, empty = `usual value'
+  {}%         Space below
+  {}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+
+\theoremstyle{break}
+\newtheorem{exercice}{Exercice}
+%%%%%%%%
+
+% set counters for lists inside exercise environments
+\setlist[enumerate,1]{label=\textbf{\arabic{exercice}.\arabic{enumi}}.}
+%%%%%%%%
+
+% Remark boxes:
+\usepackage{xcolor}
+\definecolor{bgblue}{RGB}{245,243,253}
+\definecolor{ttblue}{RGB}{91,194,224}
+\usepackage[many]{tcolorbox}
+\newtcolorbox{myboxi}[1][]{
+  breakable,
+  title=#1,
+  colback=white,
+  colbacktitle=white,
+  coltitle=black,
+  fonttitle=\bfseries,
+  bottomrule=0pt,
+  toprule=0pt,
+  leftrule=3pt,
+  rightrule=3pt,
+  titlerule=0pt,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=black,
+}
+%%%%%%%
+
+% padding in tables
+\renewcommand{\arraystretch}{1.3}
+%%%%%%%%
+
+
+
+% Listings in the code
+\usepackage{listings}
+\usepackage{color}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{listingbg}{gray}{0.95}
+\definecolor{verbatimbg}{rgb}{0.95,0.95,0.85}
+
+
+\lstset{ %
+  backgroundcolor=\color{listingbg},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\small\ttfamily,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=tb,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Python,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname,                 % show the filename of files included with \lstinputlisting; also try caption instead of title
+  belowskip=-1.5em,
+  aboveskip=1em,
+  resetmargins=false
+}
+
+\lstdefinestyle{verbatim}
+{language=,numbers=none,backgroundcolor=\color{verbatimbg}}  
+
+%\lstset{inputencoding=utf8/latin1}
+
+\lstset{
+     literate=%
+         {á}{{\'a}}1
+         {í}{{\'i}}1
+         {é}{{\'e}}1
+		 {è}{{\`e}}1  
+		 {ê}{{\^e}}1       
+         {ç}{{\c{c}}}1
+         {ú}{{\'u}}1
+         {ô}{{\^o}}1
+         {ê}{{\^{e}}}1
+         {à}{{\`a}}1
+         {î}{{\^{i}}}1
+         {â}{{\^{a}}}1
+         {ž}{{\v{z}}}1
+         {ď}{{\v{d}}}1
+         {ť}{{\v{t}}}1
+         {ň}{{\v{n}}}1                
+         {ů}{{\r{u}}}1
+         {Á}{{\'A}}1
+         {Í}{{\'I}}1
+         {É}{{\'E}}1
+         {Ý}{{\'Y}}1
+         {Ú}{{\'U}}1
+         {Ó}{{\'O}}1
+         {Ě}{{\v{E}}}1
+         {Š}{{\v{S}}}1
+         {Č}{{\v{C}}}1
+         {Ř}{{\v{R}}}1
+         {Ž}{{\v{Z}}}1
+         {Ď}{{\v{D}}}1
+         {Ť}{{\v{T}}}1
+         {Ň}{{\v{N}}}1                
+         {Ů}{{\r{U}}}1    
+}
+
+% redefining lstinline with a different name because Texmaker behaves strangely...
+\newcommand{\inlinecode}{\lstinline}
+%\end{lstlisting} 
+%%%%%%%%
+
+
+
+% Maths stuff:
+\newcommand{\numberset}{\mathbb}
+\newcommand{\N}{\numberset{N}}
+\newcommand{\Z}{\numberset{Z}}
+\newcommand{\Q}{\numberset{Q}}
+\newcommand{\R}{\numberset{R}}
+\newcommand{\C}{\numberset{C}}
+\newcommand{\boldP}{\numberset{P}}
+\newcommand{\boldF}{\numberset{F}}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\theta}{\vartheta}
+% \renewcommand{\rho}{\rho}
+\renewcommand{\phi}{\varphi}
+\newcommand{\blank}{{-}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+%%%%%%%%%%%%
+
+
+
+%\usepackage{answers}
+%\Newassociation{solution}{sol}{ans}
+%\Newassociation{solution}{solformatted}{ans}
+%\newcommand{\solformattedparams}{}
+
+\title{\bf Exercices de Python} %  \\ \large Cahier d'exercices pour les cours Informatique I et Informatique II}
+
+\author{{\Large St\'ephane {\sc Nicolet}}\\
+Universit\'e Paris 2 -- Panth\'eon-Assas\\
+stephane.nicolet@assas-universite.fr
+}
+%\date{\today-v0.9}
+\date{}
+
+\pagestyle{plain}
+\setlength{\headheight}{14.6pt}
+
+
+\begin{document}
+% \selectlanguage{french}
+
+
+\maketitle  
+\tableofcontents
+
+\newpage
+
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+
+\fancyhead[LE]{\bfseries \thepage}
+\fancyhead[RE]{TD de Python}
+\fancyhead[LO]{\nouppercase\rightmark}
+\fancyhead[RO]{\bfseries \thepage}
+
+
+
+%\part{Travaux dirig\'es}\
+\input{chapters/TD_1.tex}     % variables
+\clearpage
+\input{chapters/TD_2.tex}     % types de données
+\clearpage
+\input{chapters/TD_3.tex}     % boucles, tests
+\clearpage
+\input{chapters/TD_4.tex}     % fonctions
+\clearpage
+\input{chapters/TD_5.tex}     % fichiers
+\clearpage
+\input{chapters/TD_6.tex}     % Pandas
+\clearpage
+\input{chapters/TD_7.tex}     % Pandas
+
+	
+%\setcounter{part}{1}
+%\part{Programmation orientee objet}
+%\setcounter{exercice}{80} % to continue the numbering from Info-I
+%\input{info2/info2.tex}
+
+
+% uncomment the following lines if solutions are wanted
+%\clearpage
+%\part{Corriges}
+%\input{sol.tex}
+
+
+\end{document}

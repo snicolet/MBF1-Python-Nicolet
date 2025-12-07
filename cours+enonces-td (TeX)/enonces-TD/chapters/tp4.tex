@@ -1,0 +1,219 @@
+\clearpage
+\section*{TP4}
+
+
+\begin{exercice}[Pairs et impairs]\label{ex:pairs_1}
+Écrivez un programme qui analyse un par un tous les éléments d'une liste de nombres (par exemple celle de l'exercice précédent) pour générer deux nouvelles listes. L'une contiendra seulement les nombres pairs de la liste initiale, et l'autre les nombres impairs.
+Par exemple, si la liste initiale est 
+
+\begin{lstlisting}
+nombres = [32, 12, 5, 8, 3, 75, 15, 2],
+\end{lstlisting}
+le programme devra construire les listes:
+
+\begin{lstlisting}
+pairs = [32, 12, 8, 2]
+impairs = [5, 3, 75, 15]
+\end{lstlisting}
+
+Astuce: pensez à utiliser l'opérateur modulo ( \verb$%$ ) déjà cité précédemment.
+\end{exercice}
+
+
+\begin{exercice}[Mots]\label{ex:mots_1}
+Écrivez un programme qui analyse un par un tous les éléments d'une liste de mots, par exemple:
+
+\begin{lstlisting}[style=verbatim]
+noms = ['Jean', 'Maximilien', 'Brigitte', \
+       'Sonia', 'Jean-Pierre', 'Sandra']
+\end{lstlisting}           
+pour générer deux nouvelles listes. L'une contiendra les mots comportant moins de 6 caractères, l'autre les mots comportant 6 caractères ou davantage.
+\end{exercice}
+
+\begin{exercice}[La Disparition]\label{ex:disparition_1}
+Écrivez un script qui compte le nombre d'occurrences du caractère "e" dans une chaîne.
+\end{exercice}
+
+\begin{exercice}[Inversant]\label{ex:reverse_1}
+Écrivez un script qui recopie une chaîne (dans une nouvelle variable) en l'inversant.
+Ainsi par exemple, "\verb$python$" deviendra "\verb$nohtyp$".
+
+\end{exercice}
+
+
+\begin{exercice}[Noms]\label{ex:noms_1}
+Dans un conte américain, huit petits canetons s'appellent respectivement: Jack, Kack, Lack, Mack, Nack, Oack, Pack et Qack. 
+Écrivez un petit script qui génère tous ces noms à partir des deux chaînes suivantes:
+
+\begin{lstlisting}[style=verbatim]
+prefixes = "JKLMNOPQ"
+suffixe = "ack"
+\end{lstlisting}
+
+Utilisez une seule instruction \verb$for ... in ...$ . Votre script ne devrait comporter que deux lignes.
+\end{exercice}
+
+\begin{exercice}[Palindrome]\label{ex:palindrome_1}
+En partant de l'exercice précédent, écrivez un script qui détermine si une chaîne de caractères donnée est un palindrome (c'est-à-dire une chaîne qui peut se lire indifféremment dans les deux sens), comme par exemple "radar" ou "SOS".
+\end{exercice}
+
+%\begin{exercice}[]\label{ex:}
+%
+%
+%\end{exercice}
+
+% something on dictionaries!
+
+\begin{exercice}[Dictionnaires] \label{ex:dictionnaires_1}
+\
+\begin{enumerate}
+\item Écrivez un script qui compte combien de fois chaque mot apparaît dans une
+chaîne de caractères et affiche le résultat sur le terminal. La chaîne de caractères
+devra être demandée à l'utilisateur.
+Par exemple :
+
+\begin{lstlisting}
+Entrez votre phrase: Un et deux et trois et un
+Mot 'un' a été trouvé 2 fois
+Mot 'et' a été trouvé 3 fois
+Mot 'deux' a été trouvé 1 fois
+Mot 'trois' a été trouvé 1 fois
+\end{lstlisting}
+\item Modifiez votre script pour qu'il compte les voyelles d'une chaîne de caractères et
+pour qu'il affiche le résultat de la même manière que pour l'exercice \ref{ex:dictionnaires_1}.1.
+\item Modifiez votre script pour qu'il affiche le nombre total de voyelles trouvées.
+\end{enumerate}
+\end{exercice}
+
+\clearpage
+\section*{TP4: Corrigé}
+
+
+\begin{solution}[ex:pairs_1]
+\begin{lstlisting}
+tt = [32, 5, 12, 8, 3, 75, 2, 15]
+pairs = []
+impairs = []
+i = 0
+while i<len(tt):
+    if tt[i]%2==0:
+        pairs.append(tt[i])
+    else:
+        impairs.append(tt[i])
+    i=i+1
+	
+print("La liste des nombres pairs:", pairs)
+print("La liste des nombres impairs:", impairs)
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:mots_1]
+\begin{lstlisting}
+t = ['Janvier','Février','Mars','Avril','Mai','Juin', 'Juillet','Août','Septembre','Octobre','Novembre','Décembre']
+t1,t2=[],[]
+i,l,li=0,len(t),0
+
+while i<l:
+    li=len(t[i])
+    if li<6:
+        t1.append(t[i])
+    else:
+        t2.append(t[i])
+    i+=1
+    
+txt=""
+for i in t1:
+	txt=txt+str(i)+", "
+print(txt[:-2], end=".\n")
+
+txt=""
+for i in t2:
+	txt=txt+str(i)+", "
+print(txt[:-2], end=".\n")
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:noms_1]
+\begin{lstlisting}
+for initiale in prefixes:
+    print initiale+suffixe
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:disparition_1]
+\begin{lstlisting}
+s=input("Chaine? ")
+i,l,found=0,len(s),0
+
+while(i<l):
+	if(s[i]=="e"):
+		found=found+1
+	i=i+1
+print('character "e" present ' + str(found) + ' fois')
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:reverse_1]
+\begin{lstlisting}
+s1=input("Chaine? ")
+s2=""
+i,l=0,len(s1)
+while(i<l):
+	s2=s2+s1[l-1-i]
+	i=i+1
+print(s2)
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:palindrome_1]
+\begin{lstlisting}
+s1=input("Chaine? ")
+s2=""
+i=len(s1)-1
+while(i>=0):
+	s2=s2+s1[i]
+	i=i-1
+if(s2==s1):
+	print('"' + s2 + '" est un palindrome')
+else:
+	print('"' + s1 + '" n\'est pas un palindrome')
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:dictionnaires_1]
+\begin{lstlisting}
+# -*- coding: UTF-8 -*-
+
+phrase = input("Entrez votre phrase : ")
+
+phrase = phrase.lower()
+phrase_liste = phrase.split(" ")
+
+mots_dico = {}
+
+#1
+for mot in phrase_liste :
+    if mot in mots_dico.keys() :
+        mots_dico[mot] += 1
+    else :
+        mots_dico[mot] = 1
+
+for mot in mots_dico.keys():
+    print("Mot '" + mot + "' a été trouvé ", mots_dico[mot], "fois")
+
+#2
+
+voyelles_dico = {"a":0, "e": 0, "i":0, "o":0, "u":0}
+
+for lettre in phrase :
+    if lettre in "aeiou":
+        voyelles_dico[lettre] += 1
+
+for lettre in "aeiou":
+    print("Voyel '" + lettre + "' : ", voyelles_dico[lettre], "fois")
+
+#3
+print(sum(voyelles_dico.values()), "voyelles dans la phrase")
+
+\end{lstlisting}
+\end{solution}

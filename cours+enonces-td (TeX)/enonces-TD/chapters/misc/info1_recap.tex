@@ -1,0 +1,493 @@
+\begin{exercice}[Chaînes de caractères] \label{ex:chaines_2}
+
+Les chaînes de caractères sont indexées, et le premier caractère de la chaîne a l'indice 0. Dans l'exemple ci-dessous, des ``sous-chaînes'' peuvent être spécifiées en donnant un intervalle de deux indices séparés par "\inlinecode{:}". Les indices négatifs commencent par la fin de la chaîne.
+\begin{lstlisting}[style=verbatim]
+>>> word = "Bonjour"
+>>> word[0]				# l'indexation commence par zéro
+'B'
+>>> word[4]				# cinquième caractère		
+'o'
+>>> word[0:3]			# une sous-chaine 
+'Bon'
+>>> word[3:4]
+'j'
+>>> word[-1]				# le dernier caractère
+'r'
+>>> word[-2]				# l'avant dernier caractère
+'u'
+\end{lstlisting}
+
+Indices par défaut: si omis, le premier indice est mis à zéro par défaut, le second indice omis par défaut est la taille de la chaîne. La taille de chaine peut être recuerer avec la fonction \inlinecode{len()}
+
+\begin{lstlisting}[style=verbatim]
+>>> word[:3] 	# Les trois premiers caractères
+"Bon"
+>>> word[3:] 	# Tout sauf les trois premiers caractères
+"jour"
+>>> len(word) 	# Taille de la chaine de caractères
+7
+\end{lstlisting}
+
+Exemple: indexation d'une chaine de caractères 
+
+\noindent\begin{tabularx}{\linewidth}{|X|c|c|c|c|c|c|c|}
+\hline
+caractères de la chaine \verb$word$	& B &o &n &j &o &u &r \\
+\hline
+index depuis le début			& 0 &1 &2 &3 &4 &5 &6 \\
+\hline
+index depuis la fin				&-7&-6&-5&-4&-3&-2&-1 \\
+\hline \hline
+\verb$word[0:3]$ indexes				&0 &1 & 2 &  &  &  &  \\
+\hline
+\verb$word[0:3]$ caractères			&B &o &n &  &  &  &  \\
+\hline \hline
+\verb$word[3:4]$ indexes				&  &  &  &3 &  &  &  \\
+\hline
+\verb$word[3:4]$ caractères			&  &  &  &j &  &  &  \\
+\hline
+\end{tabularx}
+\end{exercice}
+
+
+
+
+
+\begin{exercice}[Conversion des types de données en Python] \label{ex:conversion_1}
+
+En Python, bien que les variables ne soient pas fortement typées, il est parfois nécessaire de convertir des entiers/nombres décimaux en chaînes de caractères et vice-versa. Nous avons déjà vu la fonction \inlinecode{str()} qui convertit ce qui est donné en paramètre (quel que soit son type) en une chaîne de caractères. 
+
+Dans le sens inverse, lorsqu'on veut passer d'une chaîne de caractères à une valeur numérique, il est important de savoir si l'on parle d'entiers ou de nombres décimaux: ``\verb#123.45#'' ne peut pas être converti en un entier! Il existe donc 2 fonctions:
+\begin{itemize}
+\item \inlinecode{int()} pour passer d'une chaîne à un entier;
+\item \inlinecode{float()} pour passer d'une chaîne à un nombre décimal;
+\end{itemize}
+
+
+Ainsi, on peut faire:
+\begin{lstlisting}[style=verbatim]
+>>> s1 = "10"
+>>> print s1 + 2	 # erreur! on ne peut pas ajouter une chaine et un nombre 
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: cannot concatenate 'str' and 'int' objects
+>>> x = int(s1)
+>>> print 2 + x				# affiche 12
+12
+>>> s2 = "13.21"
+>>> print int(s1)+float(s2)	# affiche 23.21
+23.21
+\end{lstlisting}
+
+\begin{enumerate}
+\item Maintenant, écrivez un nouveau script nommé \inlinecode{conversions.py} qui demande à l'utilisateur l'heure actuelle sous la forme \verb#HH:MM:SS#. Aidez-vous de la fonction \inlinecode{raw_input()} et des sous-chaînes. Le script doit initialiser $3$ variables \inlinecode{hs}, \inlinecode{mins} et \inlinecode{secs} avec les paires de caractères correspondant aux heures, minutes et secondes et puis les convertir en entiers hint, minint et secint qui seront utilisés pour calculer le nombre des secondes après minuit.
+
+Par exemple: 
+\begin{lstlisting}[style=verbatim]
+Entrez l'heure a convertir: 10:16:35
+Il est 10:16:35.
+Il s'est écoulé 36995 secondes depuis minuit.
+\end{lstlisting}
+
+\item Modifiez le code afin que la conversion de secondes se fasse en nombres décimaux, i.e. pour qu'il comprenne le format: \verb#HH:MM:SS.SSS#
+
+\end{enumerate}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:conversion_1]
+\begin{enumerate}
+\item
+\begin{lstlisting}
+# on demande une chaine sous format HH:MM:SS
+heure = raw_input("Entrez l'heure a convertir: ")
+hs = heure[0:2] # heures -- deux premiers caractères
+mins = heure[3:5] # minutes
+secs = heure[6:8] # seconds
+# toutes les trois variables sont des chaines
+# on ne peut pas les utiliser dans les calculs
+# il faut d'abord les convertir en nombres
+hint = int(hs)
+minint = int(mins)
+secint = int(secs)
+# on calcule maintenant le nombre de secondes
+seconds = hint*3600 + minint*60 + secint
+# et on l'affiche à l'écran
+print "Il est " + heure + ". \n Il s'est écoulé " + str( seconds ) + \
+" secondes depuis minuit."
+\end{lstlisting}
+
+\item
+
+\begin{lstlisting}
+# on demande une chaine sous format HH:MM:SS.SSS
+heure = raw_input("Entrez l'heure a convertir: ")
+hs = heure[0:2] # heures -- deux premiers caractères
+mins = heure[3:5] # minutes
+secs = heure[6:] # secondes du 6ème indice jusqu'à la fin
+# toutes les trois variables sont des chaines
+# on ne peut pas les utiliser dans les calculs
+# il faut d'abord les convertir en nombres
+hint = int(hs)
+minint = int(mins)
+secint = float(secs) # cette fois-ci - un nombre réel
+# on calcule maintenant le nombre de seconds
+seconds = hint*3600 + minint*60 + secint
+# et on l'affiche à l'écran
+print "Il est " + heure + ". \n Il s'est écoulé " + str( seconds ) + \
+      " secondes depuis minuit."
+\end{lstlisting}
+
+\end{enumerate}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+
+\begin{exercice}[FizzBuzz] \label{ex:fizzbuzz}
+Écrivez un programme qui affiche les nombres de 1 à 100. Mais pour les multiples de trois affichez ``Fizz'' au lieu du nombre et pour les multiples de cinq affichez ``Buzz''. Pour les nombres qui sont des multiples de trois \emph{et} cinq affichez ``FizzBuzz''. Exemple:
+\begin{lstlisting}[style=verbatim]
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+...
+\end{lstlisting}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:fizzbuzz]
+\begin{lstlisting}
+for i in range(1,101):
+    if (i % 3 == 0):
+        if (i % 5 == 0):
+            print "FizzBuzz"
+        else:
+            print "Fizz"
+    else:
+        if (i % 5 == 0):
+            print "Buzz"
+        else:
+            print i
+\end{lstlisting}
+
+Solution alternative:
+\begin{lstlisting}
+for i in range(1,101):
+    s = ""
+    if i % 3 == 0: s += "Fizz"
+    if i % 5 == 0: s += "Buzz"
+    if s == "": s = str(i)
+    print s
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+
+\begin{exercice}[Boucles, Expressions Booléennes et Fonctions] \label{ex:boucles_6}
+ 
+Pour chacun des blocs d'instructions suivants, indiquez exactement ce qui sera affiché à
+l'écran ou sinon, justifiez pourquoi ceci n'est pas possible. Chaque bloc est indépendant.
+\begin{enumerate}
+\item 
+\begin{lstlisting}
+b1, b2 = False, True
+if (not b1 and (b2 or b1)):
+  print "condition vraie"
+else:
+  print "condition fausse"
+\end{lstlisting}
+
+\item 
+\begin{lstlisting}
+d = {}
+for i in range(10):
+  d[i*i] = range(i)
+print d[4]
+\end{lstlisting}
+
+\item 
+\begin{lstlisting}
+s = 'hello!'
+for i in range(1,len(s)):
+  print s[-i-1],
+\end{lstlisting}
+
+\item 
+\begin{lstlisting}
+liste = ["Lorem", "ip-sum", "dolor"]
+s = " - ".join(liste)
+liste = s.split(" ")
+print liste
+\end{lstlisting}
+
+\item 
+\begin{lstlisting}
+a,b,c = 1,2,3
+def maFonction(a):
+	print str(a) + str(b) + 'c'
+a = 10
+maFonction(5)
+\end{lstlisting}
+\end{enumerate}
+\end{exercice}
+
+
+
+
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:boucles_6]
+
+\begin{lstlisting}[style=verbatim]
+condition vraie
+-----------------------
+[0, 1]
+-----------------------
+o l l e h
+-----------------------
+['Lorem', '-', 'ip-sum', '-', 'dolor']
+-----------------------
+52c
+\end{lstlisting}
+
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{exercice}[Résultats d'un test] \label{ex:resultats_1}
+
+Imaginez que vous avez un fichier sous format CSV (comma separated values - valeurs
+séparé par virgule) qui contient des informations concernant les résultats d'un test
+intermédiaire, c'est-à-dire qu'il y a plusieurs lignes du type :
+\begin{verbatim}
+	prenom,nom,faculte,note,bonus
+\end{verbatim}
+p.ex.
+\begin{verbatim}
+Homer,Simpson,hec,5.5,1.0
+Bart,Simpson,esc,3.0,0.0
+\end{verbatim}
+Vous pouvez créez un fichier de données par vous-même dans un éditeur de texte.
+% ou vous le télécharger le fichier exam.cvs" sur le site du cours.
+
+\begin{enumerate}
+\item Écrivez une fonction qui prend en paramètres le nom du fichier et qui ouvre le fichier, le
+lit et renvoie un dictionnaire contenant les données du fichier. Les clés du dictionnaire
+devront correspondre au nom complet de la personne et la valeur de la clé devra
+correspondre aux données, p.ex les données de l'exemple précédent seront converties
+comme suit:
+
+\begin{lstlisting}
+donnees = {'Bart Simpson': ['Bart','Simpson','esc','3.0','0.0'],
+'Homer Simpson': ['Homer','Simpson','hec','5.5','1.0'] }
+\end{lstlisting}
+
+\begin{myboxi}[Rappel]
+Les accolades définissent les dictionnaires en Python. Vous pouvez assigner une
+valeur à la clé d’un dictionnaire grâce à la syntaxe :
+\begin{lstlisting}
+donnees[cle] = valeur
+\end{lstlisting}
+Vous pouvez également récupérer une valeur associée avec une clé par :
+\begin{lstlisting}
+valeur = donnees[cle] ou valeur = donnees.get(cle)
+\end{lstlisting}
+\end{myboxi}
+\item Écrivez une fonction qui prend en paramètres les données d'une personne et les affiche
+de manière lisible.
+\item Écrivez une troisième fonction qui va afficher les résultats du test pour les étudiants
+ayant obtenu une note au dessus de 3.5. Elle doit prendre deux paramètres: les données
+d'un fichier sous la forme d'un dictionnaire et la note au dessus de la quelle il faut afficher
+l'information, 3.5 par défaut.
+Tester vos fonctions en affichant des données d'un des fichiers exemples.
+\end{enumerate}
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:resultats_1]
+\begin{lstlisting}
+# -*- coding: utf-8 -*-
+
+
+def resultatsTest(nom_fichier):
+    donnees = {}
+    with open(nom_fichier, 'r') as f:
+        for ligne in f:
+            ligne = ligne.rstrip("\n")
+
+            donnees_etudiant = ligne.split(",")
+            prenom = donnees_etudiant[0]
+            nom = donnees_etudiant[1]
+            
+            donnees[prenom + " " + nom] = donnees_etudiant
+            
+    return donnees
+
+
+def affichageEtudiant(l):
+    prenom = l[0]
+    nom = l[1]
+    faculte = l[2]
+    note = l[3]
+    bonus = l[4]
+
+    print "L'étudiant", prenom, nom, "de la faculté", faculte, \
+          "a obtenu la note :", note, "avec un bonus de :", bonus, "."
+
+
+def affichageTest(donnees, note_min = 3.5):
+    for e in donnees.keys():
+        note = float(donnees[e][3])
+        if note > note_min:
+            affichageEtudiant(donnees[e])
+
+
+
+print "------- .1 -------"
+
+donnees_test = resultatsTest("etudiants.csv")
+
+print donnees_test
+
+print "------- .2 -------"
+
+print "Affichage des données du premier étudiant dans le fichier :"
+
+affichageEtudiant(donnees_test["Bart Simpson"])
+
+
+print "------- .3 -------"
+
+print "Avec note minimale = 2.5"
+affichageTest(donnees_test, 2.5)
+
+print "--------------------"
+
+print "Avec note minimale par défault (3.5)"
+affichageTest(donnees_test)
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+\begin{exercice}[Résultat d'un étudiant] \label{ex:resultats_2}
+Écrivez un script qui demandera à l'utilisateur le nom et le prénom d'une personne et,
+en suite, affichera le résultat du test à l'écran si la personne existe dans les données. Le
+script devra redemander le nom et le prénom jusqu'à ce qu'une chaine vide soit entrée par
+l'utilisateur. Pensez à réutiliser les fonctions déjà écrites.
+\end{exercice}
+
+
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:resultats_2]
+
+Code à ajouter après la solution de l'exercice \ref{ex:resultats_1}.
+
+\begin{lstlisting}
+donnees_test = resultatsTest("etudiants.csv")
+
+while True:
+    nom = raw_input("Entrez le nom et le prénom d'un étudiant séparés par espace : ")
+    if nom == "":
+        print "Fin."
+        break
+    if nom not in donnees_test.keys():
+        print "Etudiant non trouvé."
+        continue
+    affichageEtudiant(donnees_test[nom])
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+\begin{exercice}[Résultats du test et de l'examen] \label{ex:resultats_3}
+\
+\begin{enumerate}
+\item Écrivez une fonction qui prend les données sous forme d'un dictionnaire et les
+enregistre dans un fichier. Les données et le nom du fichier devront passer en paramètres
+de la fonction.
+Vous pouvez utiliser la fonction \inlinecode{join()} pour convertir une liste de chaines de caractères
+en une chaine.
+P.ex. le code suivant :
+\begin{lstlisting}
+info = ['Bart','Simpson','esc','3.0','0.0']
+chaine = ",".join( info )
+\end{lstlisting}
+vous donne la chaine \inlinecode{"Bart,Simpson,esc,3.0,0.0"}
+\item Écrivez un script qui enregistre les résultats des étudiants dans des fichiers, un fichier
+différent par faculté (par exemple \verb#test-esc.csv# pour ESC et \verb#test-hec.csv# pour HEC, etc.)
+Le format des fichiers enregistrés doit être le même que celui de \verb#test.csv#.
+\end{enumerate}
+
+\end{exercice}
+
+
+
+
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:resultats_3]
+\begin{lstlisting}
+
+def enregistreDonnees(donnees, fichier, faculte = ""):
+    with open(fichier, 'w') as fh:
+        compteur = 0
+        for e in donnees.keys():
+            if faculte != "": # si la faculté a été spécifiée
+                if donnees[e][2] != faculte:
+                    # si la faculté n'est pas celle spécifiée,
+                    # on passe à l'étudiant suivant.
+                    continue 
+            fh.write(",".join(donnees[e])+"\n")
+            compteur += 1
+    print compteur, "lignes ont été écrites dans le fichier", fichier
+                     
+
+enregistreDonnees(donnees_test, "test-all.csv")
+enregistreDonnees(donnees_test, "test-esc.csv", "ESC")
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+

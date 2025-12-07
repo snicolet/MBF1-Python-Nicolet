@@ -1,0 +1,3158 @@
+
+\begin{solution}[ex:affectation_1]
+Le premier affiche \verb$100$ et le deuxième \verb$25$.
+\begin{lstlisting}[style=verbatim]
+>>> largeur = 5
+>>> hauteur = 10
+>>> largeur = hauteur
+>>> print largeur, hauteur
+10 10
+>>>
+>>> largeur = 5
+>>> hauteur = 10
+>>> hauteur = largeur
+>>> print largeur, hauteur
+5 5
+\end{lstlisting}
+
+L'affectation est toujours de droite à gauche.
+\end{solution}
+
+
+\begin{solution}[ex:affectation_2]
+\begin{lstlisting}[style=verbatim]
+>>> a, b, c = 3, 5, 7
+>>> print a - b / c
+3
+>>> print a - float(b) // c
+3.0
+>>> print a - float(b) / c
+2.28571428571
+
+\end{lstlisting}
+L'opérateur \verb$/$ fait la division entière, si les deux nombres sont de type \texttt{int}.
+\end{solution}
+
+
+
+\begin{solution}[ex:types_1]
+\begin{lstlisting}[style=verbatim]
+>>> r, pi = 12, 3.14159
+>>> s = pi * r ** 2
+>>> print s
+452.38896
+>>> print type(r), type(pi), type(s)
+<type 'int'> <type 'float'> <type 'float'>
+>>>
+>>>
+>>> print type("Salut")
+<type 'str'>
+>>>
+>>> print type([1,2,3])
+<type 'list'>
+\end{lstlisting}
+
+On verra les types \texttt{str} et \texttt{list} dans les prochains chapitres.
+
+\end{solution}
+
+
+
+\begin{solution}[ex:premier_programme_1]
+
+\begin{lstlisting}[style=verbatim]
+>>> # Tout d'abord, on assigne des valeurs aux
+>>> # variables a, b et c
+>>> a = 2
+>>> b = 4
+>>> c = 1
+>>> # Comme on utilise deux fois le discriminant (delta),
+>>> # on va stocker sa valeur dans une variable :
+>>>
+>>> delta = b**2 - 4*a*c
+>>> delta # Ceci nous affiche ce qui est stocké
+8
+>>> # Si delta < 0, alors le polynôme n'a pas de solutions réelles.
+>>> # on calcule les solutions qu'on stocke dans deux variables x1 et x2
+>>> x1 = (-b + delta**0.5)/(2*a)
+>>> x2 = (-b - delta**0.5)/(2*a)
+>>> # pour composer une phrase, il faut concaténer les variables.
+>>> # pour pouvoir faire la concaténation, il faut que les variables
+>>> # soit de type chaîne de caractères (string)
+>>> print('les solutions sont : ' + str( x1 ) + ', ' + str (x2) )
+les solutions sont -0.29289321881345243, -1.7071067811865475
+\end{lstlisting}
+
+\end{solution}
+
+
+\begin{solution}[ex:second_programme_1]
+\begin{enumerate}
+\item
+\begin{lstlisting}[style=verbatim]
+>>> nom = "Steve Jobs"
+>>> # On stocke la chaîne de caractère dans la variable nom
+>>> # On concatène ("colle") l'étoile à "Steve Jobs", puis on
+>>> # concatène 100 fois cette nouvelle chaîne.
+>>>
+>>> (nom + " * ") * 100
+Steve Jobs * Steve Jobs * Steve Jobs * Steve Jobs * Steve Jobs * Steve
+Jobs * Steve Jobs * . . . Steve Jobs * Steve Jobs *
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[style=verbatim]
+>>> initiales = nom[0] + nom[6] # On concatène la "S" avec "J"
+>>> (initiales + " * ") * 100
+SJ * SJ * SJ * SJ * SJ * SJ * SJ * SJ * SJ * SJ * SJ * SJ . . . .
+* SJ * SJ * SJ * SJ * SJ * SJ *
+\end{lstlisting}
+\end{enumerate}
+\end{solution}
+
+
+\begin{solution}[ex:interagir_1]
+\begin{enumerate}
+\item
+\begin{lstlisting}
+# on stocke le texte entré par l'utilisateur dans trois variables
+# pour une chaîne de caractères on utilise raw_input()
+nom = raw_input("Quel est votre nom? ")
+# pour un nombre on utilise input()
+age = input("Quel est votre age? ")
+taille = input("Quel est votre taille en mètres? ")
+# On calcule la taille en centimètres et on la convertit en
+# entier pour enlever la partie décimale
+taille_cm = int(taille*100)
+# De nouveau, on est obligé de convertir toutes
+# les variables en type chaîne de caractères pour composer une phrase
+print( "Bonjour " + nom + ", vous êtes né en " + str( 2015 - age ) + " et
+faites " + str(taille) + " m ou " + str(taille_cm) + " cm" )
+\end{lstlisting}
+
+\item
+\begin{lstlisting}
+a = input("Quel est votre coefficient a? ")
+b = input("Quel est votre coefficient b? ")
+c = input("Quel est votre coefficient c? ")
+delta = b**2 - 4*a*c
+print( "delta vaut " + str(delta) )
+x1 = (-b + delta**0.5) / (2*a)
+x2 = (-b - delta**0.5) / (2*a)
+print( "x1 vaut " + str(x1) )
+print( "x2 vaut " + str(x2) )
+\end{lstlisting}
+\end{enumerate}
+\end{solution}
+
+\begin{solution}[ex:conversion_1]
+\begin{enumerate}
+\item
+\begin{lstlisting}
+# on demande une chaine sous format HH:MM:SS
+heure = raw_input("Entrez l'heure a convertir: ")
+hs = heure[0:2] # heures -- deux premiers caractères
+mins = heure[3:5] # minutes
+secs = heure[6:8] # seconds
+# toutes les trois variables sont des chaines
+# on ne peut pas les utiliser dans les calculs
+# il faut d'abord les convertir en nombres
+hint = int(hs)
+minint = int(mins)
+secint = int(secs)
+# on calcule maintenant le nombre de secondes
+seconds = hint*3600 + minint*60 + secint
+# et on l'affiche à l'écran
+print "Il est " + heure + ". \n Il s'est écoulé " + str( seconds ) + \
+" secondes depuis minuit."
+\end{lstlisting}
+
+\item
+
+\begin{lstlisting}
+# on demande une chaine sous format HH:MM:SS.SSS
+heure = raw_input("Entrez l'heure a convertir: ")
+hs = heure[0:2] # heures -- deux premiers caractères
+mins = heure[3:5] # minutes
+secs = heure[6:] # secondes du 6ème indice jusqu'à la fin
+# toutes les trois variables sont des chaines
+# on ne peut pas les utiliser dans les calculs
+# il faut d'abord les convertir en nombres
+hint = int(hs)
+minint = int(mins)
+secint = float(secs) # cette fois-ci - un nombre réel
+# on calcule maintenant le nombre de seconds
+seconds = hint*3600 + minint*60 + secint
+# et on l'affiche à l'écran
+print "Il est " + heure + ". \n Il s'est écoulé " + str( seconds ) + \
+      " secondes depuis minuit."
+\end{lstlisting}
+
+\end{enumerate}
+\end{solution}
+\begin{solution}[ex:diagrammes_1]
+\begin{enumerate}
+\item Seul (a) n'est pas valide.
+\item Les dwits valides sont: (c), (e), (g), (h).
+\item Les chaînes de caractères valides sont: (a), (e), (f).
+\end{enumerate}
+\end{solution}
+\begin{solution}[ex:operateurs_1]
+\
+
+\noindent\begin{tabularx}{\linewidth}{|c|X|c|}
+\hline
+\# & Expression          & La valeur de \texttt{x}  \\
+\hline
+1 & \texttt{y = 5; x = y+1;}     &  6 \\
+\hline
+2 & \texttt{x = 0; x += 1 ; x += 1; x += x;} &  4 \\
+\hline
+3 & \texttt{x = "Hello"; y = 'Toto'; x = x+y;}&  "HelloToto" \\
+\hline
+4 & \texttt{x = 3.0; x = x/3;}    & 1.0 \\
+\hline
+5 & \texttt{x = 10; x = x/3;}     & 3 \\
+\hline
+6 & \texttt{x = 10; x = x\%3;}    & 1 \\
+\hline
+7 & \texttt{x = 7; x /= 2;}     & 3 \\
+\hline
+8 & \texttt{x = 5**2;}      & 25 \\
+\hline
+9 & \texttt{x = 3; x **=3;}     & 27 \\
+\hline
+10 & \texttt{x = 2**1/2;}      & 1 \\
+\hline
+\end{tabularx}
+\end{solution}
+\begin{solution}[ex:operateurs_2]
+\noindent\begin{tabularx}{\linewidth}{|c|X|X|}
+\hline
+\# & Expression    & Expression Unaire  \\
+\hline
+1 & \texttt{x = 1+x}    & \verb$x += 1$ \\
+\hline
+2 &\texttt{x = x*10}    & \verb$x *= 10$ \\
+\hline
+3 &\texttt{x = x-1}    & \verb$x -= 1$ \\
+\hline
+4 & \texttt{x = -2}    & Pas possible \\
+\hline
+5 & \texttt{x = 10 / x}    & Pas possible \\
+\hline
+6 & \texttt{x = x / 10}    & \verb$x /= 10$ \\
+\hline
+7 & \texttt{x = x + "titi"}    & \verb$x += "titi"$ \\
+\hline
+8 & \texttt{x = "titi" + x}    & Pas possible \\
+\hline
+9 & \texttt{x = x + 15}    & \verb$x += 15$ \\
+\hline
+10 & \texttt{x = 15 + x}    & \verb$x += 15$ \\
+\hline
+\end{tabularx}
+\end{solution}
+\begin{solution}[ex:operateurs_3]
+\noindent\begin{tabularx}{\linewidth}{|c|l|X|}
+\hline
+\# & Formule & Expression Python \\
+\hline
+1 & $x = 5x^3+4x^2+2x-9$   & \verb$x = 5*pow(x,3) + 4*pow(x,2) + 2*x -9$   \\
+\hline
+2 & $\Delta=b^2-4ac$   & \verb$delta = pow(b,2) – 4*a*c$   \\
+\hline
+3 & $x = \sqrt{2+x}$    & \verb$x = sqrt(2+x)$   \\
+\hline
+4 & $x = \sqrt{|x| + 5x^3}$   & \verb$x = sqrt( abs(x)+ 5*pow(x,3) )$   \\
+\hline
+5 & $x=-\sqrt{-7}$    & \verb$x = -sqrt(-7)$ (renvoie un message
+d'erreur selon les modules importés)   \\
+\hline
+6 & $x=\sqrt[3]{x^2}$    &  \verb$x = pow(x,(2/3.0))$  \\
+\hline
+7 & $\frac{\pi(a+b)}{4K\left(\frac{a-b}{a+b}\right)}$    & \verb$pi*(a+b) / (4*K*( (a-b) / (a+b) ) )$   \\
+\hline
+\end{tabularx}
+\end{solution}
+\begin{solution}[ex:conversion_2]
+\begin{enumerate}
+\item Chaque doigt de la main peut représenter 2 états : levé (=1) ou baissé (=0). Il y a donc
+deux possibilités pour chaque doigt. Avec une main normale, il y aura donc 5 doigts, ce
+qui représente $2^5$ possibilités, ou un nombre binaire à 5 chiffres. Le plus grand nombre que
+l'on puisse obtenir avec une main sera donc : $[11111]_\text{base2}$ . En chiffres décimaux, cela
+correspondra à $[31]_\text{base10}$ ($1*2^4+1*2^3+1*2^2+1*2^1+1*2^0$). Notons que le plus grand chiffre
+obtenu ne sera pas $2^5$ mais $2^5-1$ puisque le chiffre 0 doit également être défini.
+\item En généralisant, on voit qu'un nombre binaire composé de $n$ chiffres aura pour valeur
+maximale une suite de $n$ fois le nombre $[11 \dots 11]_\text{base2}$. Cela correspondra à la valeur $2^n-1$
+en base décimale.
+En utilisant les $2$ mains, on aura donc : $n=10$, $2^{10} -1 = 1023$
+En utilisant les $2$ mains et les $2$ pieds : $n=20$, $2^{20} -1 = 1048575$.
+\end{enumerate}
+\end{solution}
+\begin{solution}[ex:conversion_3]
+\begin{lstlisting}
+t = input('Quelle est la température ? ')
+F = t*9./5. + 32
+C = (t-32)/(9./5.)
+# Attention à ne pas utiliser la variable F mais bien la
+# variable t dans la deuxième conversion : on travaille avec
+# la valeur entrée par l'utilisateur qu'on veut transformer et
+# non pas celle calculée précédemment.
+print str(t) + ' C = ' + str(F) + ' F'
+print str(t) + ' F = ' + str(C) + ' C'
+\end{lstlisting}
+\end{solution}
+\begin{solution}[ex:conditionnels_1]
+
+\begin{lstlisting}
+mot = raw_input('Entrez le 1er mot: ')
+phrase = mot
+print phrase
+mot = raw_input('Entrez le 2eme mot: ')
+# Utilisation de l'operateur conditionnel pour tester
+# si la première lettre du mot est une voyelle
+if (mot[0]=='a' or mot[0]=='e' or mot[0]=='i'
+ or mot[0]=='o' or mot[0]=='u' or mot[0]=='y'):
+ phrase = mot+' '+phrase
+else :
+ phrase = phrase+' '+mot
+print phrase
+mot = raw_input("Entrez le 3eme mot: ")
+if (mot[0]=='a' or mot[0]=='e' or mot[0]=='i'
+ or mot[0]=='o' or mot[0]=='u' or mot[0]=='y'):
+ phrase = mot+' '+phrase
+else :
+ phrase = phrase+' '+mot
+print phrase
+\end{lstlisting}
+
+\end{solution}
+
+\begin{solution}[ex:conversion_1b]
+\begin{lstlisting}
+nsec = int(raw_input("Nombre de secondes? "))
+
+secPerAnn=60*60*24*365
+nann, rem = nsec/secPerAnn, nsec%secPerAnn
+
+secPerMoi=60*60*24*30
+nmoi, rem = rem/secPerMoi, rem%secPerMoi
+
+secPerJou=60*60*24
+njou, rem = rem/secPerJou, rem%secPerJou
+
+secPerHeu=60*60
+nheu, rem = rem/secPerHeu, rem%secPerHeu
+
+secPerMin=60
+nmin, rem = rem/secPerMin, rem%secPerMin
+
+print str(nann) + " annees, " + str(nmoi) + " mois, " + str(njou) + " jours, "
+    + str(nheu) + " heures, " + str(nmin) + " minutes, " + str(rem) + " secondes."
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:verite_1]
+\begin{lstlisting}[style=verbatim]
+A = (not P) or (Q and K)
+
+B = (not P) or ((not Q) and (P or K))
+
+C = ((P or Q) and (not K)) or (P and Q)
+
+D = ((P and Q) or (P and (not Q))) or ((P and Q) and K) or (((not P) and (not Q)) and K)
+\end{lstlisting}
+
+Tableau de vérité:
+
+
+\noindent\begin{tabularx}{\linewidth}{|c||c|c|c||X|X|X|X|}
+\hline
+\# & P &  Q  &K   & A & B & C & D \\
+\hline
+1& False& False& False& True & True & False & False \\
+\hline
+2& False& False& True& True & True & False &True  \\
+\hline
+3& False& True& False&True  &True  &True  & False \\
+\hline
+4& False& True& True&True  &True  &  False&  False\\
+\hline
+5& True &False& False& False &True  & True & True \\
+\hline
+6& True& False& True& False &True  &  False&True  \\
+\hline
+7& True& True& False& False &  False&True  & True \\
+\hline
+8& True& True& True& True &  False& True & True \\
+\hline
+\end{tabularx}
+\end{solution}
+\begin{solution}[ex:priorite_1]
+\centerline{
+\noindent\begin{tabularx}{1.05\linewidth}{|c|X|c|}
+\hline
+\# & Expression             & Résultat \\
+\hline
+1 & \verb$2 + 2 * 2 == 8 and True and i ** j / k * 2 ** 2$ & \verb$False$ \\
+\hline
+2 & \verb$5 ** 2 / 3 == 5 ** 2 / 3.0$ & \verb$False$ \\
+\hline
+3 & \verb$- 5 ** 2.0 / 3 == 5 ** 2 / 3.0$ & \verb$False$ \\
+\hline
+4 & \verb$False or False and True or True$ & \verb$True$ \\
+\hline
+5 & \verb$False != 1 or 10 / 2 < 10$ & \verb$True$ \\
+\hline
+6 & \verb$k < j or i + 2 == k - 2$ & \verb$False$ \\
+\hline
+7 & \verb$i != 2 and j / i ** 0 < k$ & \verb$False$ \\
+\hline
+8 & \verb$j / (i - 2) < k and i != 0$ & Erreur \\
+\hline
+9 & \verb$k <= j or i+2 == k-1$ & \verb$False$ \\
+\hline
+10 & \verb$2 + i == j + 2 or i < j != True and False == not True$ & Erreur \\
+\hline
+11 & \verb$2 + i == j + 2 or i < j != True and not False == True$ & \verb$True$ \\
+\hline
+12 & \verb$k > j > i$ & \verb$True$ \\
+\hline
+13 & \verb$j in word$ & Erreur \\
+\hline
+14 & \verb$"j" in word and "" in word$ & \verb$True$ \\
+\hline
+15 & \verb$word [5:4] * 3 == "" and word [0] + word [1] in word$ & \verb$True$ \\
+\hline
+16 & \verb$str(j) in word * k + str(j) and word [2] > word [1]$ & \verb$False$ \\
+\hline
+\end{tabularx}
+}
+\end{solution}
+\begin{solution}[ex:booleens_1]
+\noindent\begin{tabularx}{\linewidth}{|c|X|c|}
+\hline
+\# & Expression             & La valeur de b \\
+\hline
+1 & \verb!b = False or True!          & \verb$True$   \\
+\hline
+2 & \verb!b = not False and True!         & \verb$True$   \\
+\hline
+3 & \verb!b = True or (10/1)<10!         & \verb$True$   \\
+\hline
+4 & \verb!a = False; b = not a!          & \verb$True$   \\
+\hline
+5 & \verb!i=1; j=2; k=3; b = (k<=j) or (i+1==k-1)!     & \verb$True$   \\
+\hline
+6 & \verb!i=1; j=2; k=3; b = (k<=j) and (i+1==k-1)!     & \verb$False$   \\
+\hline
+7 & \verb$i=0; j=4; k=9; b = (i!=0) and ((j/i)<k)$     & \verb$False$   \\
+\hline
+8 & \verb!i=1; j=2; b=i<j!           & \verb$True$   \\
+\hline
+9 & \verb!i=2; i+=1; b = (i>2.5)!         & \verb$True$   \\
+\hline
+10 & \verb!i=1; j=2; a=False; c=True!  \newline
+   \verb$b = (1+i==j+1) and ((a!=(i<j)) and (c==(not a)))$   & \verb$False$    \\
+\hline
+11 & \verb!b = True and not not True!        & \verb$True$   \\
+\hline
+12 & \verb!b = (not True == False);! \newline
+   \verb$b = b and (not True != (not False))$      & \verb$True$   \\
+\hline
+13 & \verb!i=1; j=2; k=3; b = (k<=j) and (i+1==k-1)!     & \verb$False$   \\
+\hline
+14 & \verb!a = True; c = False; d = (a == (not c));! \newline
+   \verb!b = not(d and ((a and c) or ((not a)|(not c))))!   & \verb$False$   \\
+\hline
+\end{tabularx}
+\end{solution}
+\begin{solution}[ex:plusgrand_2]
+\begin{lstlisting}
+n1 = int(raw_input("Entrez un nombre : "))
+n2 = int(raw_input("Entrez un autre nombre : "))
+
+if n1 >= n2:
+ print "Le premier nombre (" + str(n1) + ")",
+else:
+ print "Le deuxième nombre (" + str(n2) + ")",
+
+print "est le plus grand parmi les deux."
+
+\end{lstlisting}
+\end{solution}
+\begin{solution}[ex:pairs_1]
+\begin{lstlisting}
+import random
+
+n = random.randint(-100, 100)
+
+print "Nombre =", n
+
+if n % 2 == 0:
+ print "Le nombre est pair."
+else:
+ print "Le nombre est impair."
+
+\end{lstlisting}
+\end{solution}
+\begin{solution}[ex:pairs_1]
+\begin{lstlisting}
+# -*- coding: UTF-8 -*-
+
+# ex. 26
+# Solution d'une equation du second degré - version améliorée de l'exercice 4
+
+
+a = input("Coefficient a : ")
+b = input("Coefficient b : ")
+c = input("Coefficient c : ")
+
+print "Equation :", a, "x**2 +", b, "x +", c, " = 0"
+
+
+delta = b**2 - 4*a*c
+
+print "Le delta est", delta
+
+if delta > 0:
+    x1 = (-b - delta**0.5)/(2*a)
+    x2 = (-b + delta**0.5)/(2*a)
+    print "Les solutions sont :"
+    print "x1 =", x1
+    print "x2 =", x2
+elif delta == 0:
+    x = -b / (2.0*a)
+    print "Une seule solution :"
+    print "x =", x
+else:
+    print "Pas de solutions."
+\end{lstlisting}
+\end{solution}
+\begin{solution}[ex:horaires_1]
+insert
+\end{solution}
+\begin{solution}[ex:motdepasse_1]
+
+\begin{lstlisting}
+    # -*- coding: utf-8 -*-
+
+motdepass = "python"
+
+compteur = 0
+
+while compteur < 3:
+    test = raw_input("Entrer le mot de pass : ")
+    if test == motdepass:
+        print "Mot de pass correct !"
+        break
+    else:
+        print "Le mot de pass n'est pas correct."
+    if compteur == 2:
+        print "Accès interdit !"
+    compteur += 1
+
+    \end{lstlisting}
+
+\end{solution}
+\begin{solution}[ex:chaines_4]
+\begin{lstlisting}
+maChaine, out = "zorglub", ""
+for i in range(len(maChaine)):
+    out = maChaine[i] + out
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:somme_1]
+\begin{lstlisting}
+a = int(raw_input("Saisir la borne a (entier): "))
+
+b = int(raw_input("Saisir la borne b (entier): "))
+
+s = 0
+
+
+for i in range(a,b+1):
+    if i%3 == 0 or i%5 == 0:
+        print "Somme le nombre", i, "..."
+        s+=i
+
+
+print "La somme est :", s
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:etoiles_1]
+\begin{lstlisting}
+nbr_lignes = int(raw_input("Nombre de lignes ? "))
+compteur = 0
+while compteur <= nbr_lignes:
+    compteur += 1
+    print compteur * "*"
+    # n*string = string + string + ... + string
+\end{lstlisting}
+\end{solution}
+
+
+\begin{solution}[ex:chainesboucles_1]
+\begin{lstlisting}
+maChaine, out = "gaston", ""
+for i in range(len(maChaine)):  # pour chaque caractère
+    out = out + maChaine[i] + "*" # on l'ajoute avec l'étoile
+out = out[:-1]      # on supprime dernière étoile
+print out
+\end{lstlisting}
+
+\end{solution}
+\begin{solution}[ex:boucles_3]
+\begin{lstlisting}
+nombre = 1
+for i in range(12):     # 12 fois
+    print nombre      # on l'imprime
+    nombre *= 3      # et on le multiplie
+\end{lstlisting}
+\end{solution}
+\begin{solution}[ex:fizzbuzz]
+\begin{lstlisting}
+for i in range(1,101):
+    if (i % 3 == 0):
+        if (i % 5 == 0):
+            print "FizzBuzz"
+        else:
+            print "Fizz"
+    else:
+        if (i % 5 == 0):
+            print "Buzz"
+        else:
+            print i
+\end{lstlisting}
+
+Solution alternative:
+\begin{lstlisting}
+for i in range(1,101):
+    s = ""
+    if i % 3 == 0: s += "Fizz"
+    if i % 5 == 0: s += "Buzz"
+    if s == "": s = str(i)
+    print s
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:boucles_1]
+
+\begin{lstlisting}
+nombre, compteur = 7, 0
+while compteur < 20:
+    print nombre
+    compteur += 1
+    nombre += 7
+\end{lstlisting}
+
+\end{solution}
+
+
+
+
+
+\begin{solution}[ex:boucles_2]
+
+\begin{lstlisting}
+count = 1
+rate = 1.65
+while count <= 16384:
+    print str(count) + " euro(s) = " + str(count*rate) + " dollar(s)"
+    count=count*2
+\end{lstlisting}
+\end{solution}
+
+
+
+\begin{solution}[ex:boucles_3b]
+\begin{lstlisting}
+n,count=1,1
+while count<=12 :
+    print n
+    n,count = n*3,count+1
+\end{lstlisting}
+\end{solution}
+
+
+
+\begin{solution}[ex:boucles_4b]
+\begin{lstlisting}
+compteur = 0
+while compteur < 20:
+    compteur += 1
+    if compteur % 3 == 0:
+        print 7*compteur, "*"
+    else:
+        print 7*compteur
+\end{lstlisting}
+\end{solution}
+
+
+\begin{solution}[ex:boucles_5b]
+\begin{lstlisting}
+count=1
+while count<=50:
+    if count%7==0:
+        print count*13
+    count=count+1
+\end{lstlisting}
+\end{solution}
+
+
+
+\begin{solution}[ex:riz_1]
+\begin{lstlisting}
+count,n = 0,1
+while count <= 64:
+    print str(count) + ":\t" + str(n) + "\t" + str(float(n))
+    n,count = n*2,count+1
+\end{lstlisting}
+\end{solution}
+
+
+
+\begin{solution}[ex:notes_1]
+\begin{lstlisting}
+listeNotes = []
+
+while True:
+    a = float(raw_input("Saisir une note d'élève: "))
+    if a<0:
+        break
+    listeNotes.append(a)
+
+print "Nombre de notes entrées:", len(listeNotes)
+print "Note max:", max(listeNotes)
+print "Note min:", min(listeNotes)
+print "Moyenne:", sum(listeNotes)/len(listeNotes)
+\end{lstlisting}
+\end{solution}
+
+
+
+\begin{solution}[ex:listes_1]
+\begin{lstlisting}
+n = int(raw_input("n = ? "))
+
+liste = [0] * n
+print("Liste de zéros", liste)
+
+indice = 0
+while indice < n:
+    liste[indice] = 10 + indice
+    indice += 1
+print("Liste de nombres", liste)
+
+if n <= 2:
+    print("n doit être au moins 3")
+else:
+    indice = 2
+    liste[0] = 0
+    liste[1] = 1
+    while indice < n:
+        liste[indice] = liste[indice-2] + liste[indice-1]
+        indice += 1
+    print("Suite de Fibonacci", liste)
+\end{lstlisting}
+\end{solution}
+
+
+
+
+
+\begin{solution}[ex:listes_2b]
+\begin{lstlisting}
+serie=[]
+while True:
+    a = input("Veuillez entrer une valeur: ")
+    if a == "":
+        break
+    serie.append(float(a))
+print(serie)
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:boucles_6]
+
+\begin{lstlisting}[style=verbatim]
+condition vraie
+-----------------------
+[0, 1]
+-----------------------
+o l l e h
+-----------------------
+['Lorem', '-', 'ip-sum', '-', 'dolor']
+-----------------------
+52c
+\end{lstlisting}
+
+\end{solution}
+
+\newpage
+\begin{solution}[ex:fichiers_1]
+
+
+
+Soit un fichier physique qui s'appelle ``\verb#test.txt#''. Écrivez une
+instruction qui permettra:
+\begin{itemize}
+\item d'ouvrir le fichier en lecture:
+\begin{lstlisting}
+f = open( "test.txt", "r" )
+\end{lstlisting}
+
+\item d'ouvrir le fichier en écriture (si le fichier existe déjà, on doit l'écraser):
+\begin{lstlisting}
+f = open( "test.txt", "w" )
+\end{lstlisting}
+
+\item d'ouvrir le fichier en écriture, pour ajouter des données à la fin:
+\begin{lstlisting}
+f = open( "test.txt", "a" )
+\end{lstlisting}
+
+\end{itemize}
+Soit un ficher logique f qui contient plusieurs lignes de texte et qui est déjà ouvert
+en lecture avec la commande \inlinecode{f = open("test.txt","r")}. Écrivez des
+instructions qui permettront:
+\begin{itemize}
+\item de récupérer toutes les lignes du ficher f sous la forme d'une chaîne:
+\begin{lstlisting}
+f.read()
+\end{lstlisting}
+
+\item de récupérer toutes les lignes du fichier f sous la forme d'une liste:
+\begin{lstlisting}
+f.readlines()
+\end{lstlisting}
+
+\item d'imprimer la deuxième ligne du fichier f:
+\begin{lstlisting}
+print f.readlines()[1]
+\end{lstlisting}
+
+\end{itemize}
+
+Soit un ficher logique f qui contient plusieurs lignes de texte et qui est ouvert en
+lecture et écriture avec la commande \inlinecode{f = open("test.txt", "a+")}. Écrivez des
+instructions qui permettront:
+\begin{itemize}
+\item d'écrire dans le fichier f deux lignes (p.ex. "ligne 1" et "ligne 2"):
+\begin{lstlisting}
+f.write("ligne 1\nligne2\n")
+\end{lstlisting}
+
+\item d'écrire dans le fichier f deux nombres séparés par une virgule:
+\begin{lstlisting}
+a, b = 5, 10
+f.write(str(a) + "," + str(b) + "\n")
+\end{lstlisting}
+
+
+\item d'imprimer la deuxième ligne du fichier f:
+\begin{lstlisting}
+f.seek(0)
+lignes = f.read().split("\n")
+print lignes[1]
+\end{lstlisting}
+\end{itemize}
+\end{solution}
+\newpage
+
+
+\newpage
+\begin{solution}[ex:modes_1]
+
+Les modes : \texttt{ouvrir svp}, \texttt{t}, \texttt{R+}, \texttt{rw+} ne sont pas valides.
+
+Le modes valides dans la liste de l'exercice sont les suivants :
+
+\begin{description}
+\item[\texttt{r}] lecture, accès séquentiel (pas écriture!).
+\item[\texttt{w+b}] écriture (et lecture) à accès direct binaire: le fichier sera créé. Un fichier existant avec le même nom est écrasé.
+\item[\texttt{w}] uniquement écriture, accès séquentiel. Le fichier sera créé. Un fichier existant avec le même nom est écrasé.
+\item[\texttt{a+}] lecture et écriture à accès direct. Le fichier sera créé si pas existante. La tête de lecture/écriture est positionnée à la fin du fichier (``append'').
+\item[\texttt{r+}] lecture et écriture à accès direct. Le fichier doit exister déjà. La tête de lecture/écriture est positionnée au début du fichier.
+\end{description}
+
+\end{solution}
+\newpage
+
+
+\newpage
+\begin{solution}[ex:lecture_1]
+
+
+Écrivez les instructions qui permettront :
+\begin{enumerate}
+\item De récupérer toutes les lignes sous forme de liste de chaines de caractères :
+\begin{lstlisting}
+lignes = fp.readlines()
+\end{lstlisting}
+
+\item D'imprimer à l'écran la deuxième ligne du fichier :
+\begin{lstlisting}
+print fp.readlines()[1]
+\end{lstlisting}
+
+\item D'imprimer à l'écran l'avant dernière ligne du fichier :
+\begin{lstlisting}
+print fp.readlines()[-2]
+\end{lstlisting}
+\end{enumerate}
+
+
+
+\end{solution}
+\newpage
+
+\begin{solution}[ex:resultats_1]
+\begin{lstlisting}
+# -*- coding: utf-8 -*-
+
+
+def resultatsTest(nom_fichier):
+    donnees = {}
+    with open(nom_fichier, 'r') as f:
+        for ligne in f:
+            ligne = ligne.rstrip("\n")
+
+            donnees_etudiant = ligne.split(",")
+            prenom = donnees_etudiant[0]
+            nom = donnees_etudiant[1]
+
+            donnees[prenom + " " + nom] = donnees_etudiant
+
+    return donnees
+
+
+def affichageEtudiant(l):
+    prenom = l[0]
+    nom = l[1]
+    faculte = l[2]
+    note = l[3]
+    bonus = l[4]
+
+    print "L'étudiant", prenom, nom, "de la faculté", faculte, \
+          "a obtenu la note :", note, "avec un bonus de :", bonus, "."
+
+
+def affichageTest(donnees, note_min = 3.5):
+    for e in donnees.keys():
+        note = float(donnees[e][3])
+        if note > note_min:
+            affichageEtudiant(donnees[e])
+
+
+
+print "------- .1 -------"
+
+donnees_test = resultatsTest("etudiants.csv")
+
+print donnees_test
+
+print "------- .2 -------"
+
+print "Affichage des données du premier étudiant dans le fichier :"
+
+affichageEtudiant(donnees_test["Bart Simpson"])
+
+
+print "------- .3 -------"
+
+print "Avec note minimale = 2.5"
+affichageTest(donnees_test, 2.5)
+
+print "--------------------"
+
+print "Avec note minimale par défault (3.5)"
+affichageTest(donnees_test)
+\end{lstlisting}
+\end{solution}
+\begin{solution}[ex:resultats_2]
+
+Code à ajouter après la solution de l'exercice \ref{ex:resultats_1}.
+
+\begin{lstlisting}
+donnees_test = resultatsTest("etudiants.csv")
+
+while True:
+    nom = raw_input("Entrez le nom et le prénom d'un étudiant séparés par espace : ")
+    if nom == "":
+        print "Fin."
+        break
+    if nom not in donnees_test.keys():
+        print "Etudiant non trouvé."
+        continue
+    affichageEtudiant(donnees_test[nom])
+\end{lstlisting}
+\end{solution}
+\begin{solution}[ex:resultats_3]
+\begin{lstlisting}
+
+def enregistreDonnees(donnees, fichier, faculte = ""):
+    with open(fichier, 'w') as fh:
+        compteur = 0
+        for e in donnees.keys():
+            if faculte != "": # si la faculté a été spécifiée
+                if donnees[e][2] != faculte:
+                    # si la faculté n'est pas celle spécifiée,
+                    # on passe à l'étudiant suivant.
+                    continue
+            fh.write(",".join(donnees[e])+"\n")
+            compteur += 1
+    print compteur, "lignes ont été écrites dans le fichier", fichier
+
+
+enregistreDonnees(donnees_test, "test-all.csv")
+enregistreDonnees(donnees_test, "test-esc.csv", "ESC")
+\end{lstlisting}
+\end{solution}
+\begin{solution}[ex:triangle_1]
+
+\begin{lstlisting}
+def triangle(longueur):
+    for i in range(3):
+        #On avance
+        forward(longueur)
+        #On tourne
+        left(120)
+\end{lstlisting}
+\end{solution}
+\begin{solution}[ex:triangle_2]
+
+\begin{lstlisting}
+def triangle2(longueur, rempli):
+    #Si rempli vaut True, on commence a remplir le triangle
+    fill(rempli)
+    for i in range(3):
+        forward(longueur)
+        left(120)
+    #Et finalement on arrete de remplir le triangle puisqu'il est fini
+    fill(False)
+\end{lstlisting}
+
+\end{solution}
+\begin{solution}[ex:triangle_3]
+
+\begin{lstlisting}
+def troisTriangles(longueur):
+    #On dessine un premier triangle
+    triangle(longueur)
+    #On se place pour dessiner le suivant
+    forward(longueur)
+    #On dessine le 2e triangle
+    triangle(longueur)
+    #On revient au debut
+    backward(longueur)
+    #On se met en place pour le 3e
+    left(60)
+    forward(longueur)
+    right(60)
+    #Et on dessine le dernier triangle
+    triangle(longueur)
+    #Et on remet la tortue au debut (inutile pour cet ex mais servira apres)
+    left(60)
+    backward(longueur)
+    right(60)
+\end{lstlisting}
+
+\end{solution}
+\begin{solution}[ex:triangle_4]
+
+\begin{lstlisting}
+def trianglesAlea():
+    for i in range(12):
+        #tirage aleatoire de la longueur
+        longueur = randint(50,200)
+        #tirage aleatoire de la position
+        x, y = randint(-300,300), randint(-300,300)
+        #tirage aleatoire de la couleur
+        couleur = choice(["black", "red", "blue", "green", "yellow", "purple"])
+        #tirage aleatoire de l'orientation
+        orientation = randint(0,360)
+        #On se rend a la position tiree
+        #Mais on oublie pas de lever le stylo pour faire ceci
+        up()
+        goto(x,y)
+        down()
+        #On prend une orientation de depart
+        right(orientation)
+        #Et on dessine le triangle
+        color(couleur)
+        fill(True)
+        for i in range(3):
+            forward(longueur)
+            left(120)
+        fill(False)
+\end{lstlisting}
+
+\end{solution}
+\begin{solution}[ex:triangle_5]
+
+\begin{lstlisting}
+speed(11)
+
+def triangle(cote):   # triangle
+ down()
+ for i in range(3):
+  forward(cote)
+  left(120)
+ up()
+
+def sierpinski(cote):
+ if (cote > 16):
+  for i in range(3):
+   sierpinski(cote/2) # le petit
+   forward(cote)  # on avance par cote
+   left(120)   # on tourne
+ else:
+  triangle(cote)
+
+
+up()
+back(256) # pour le centre
+sierpinski(512)
+
+done()
+\end{lstlisting}
+
+\end{solution}
+\begin{solution}[ex:triangle_6]
+\begin{lstlisting}
+from turtle import*
+import math
+import random
+
+speed(11)
+
+def sierpinski(a): # dessin le triangle par un seul trait
+ left(120);
+ for i in range(3):
+  forward(a/2) # on avance par a/2
+  if(a>30): # on lance la recursion
+   sierpinski(a/2)
+  forward(a/2) # on avance par a/2
+  right(120) # on tourne
+ right(120);
+
+
+begin_fill() # grand triangle noir
+fillcolor("black");
+backward(256)
+for i in range(3):
+ forward(512)
+ left(120)
+forward(256)
+end_fill()
+
+begin_fill()
+fillcolor("white"); # puis le triangle de serpinski blanc
+sierpinski(256)
+end_fill()
+
+done()
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:random_race_1]
+\
+\begin{itemize}
+\item
+
+\begin{lstlisting}
+def randomRace(turtles,steps,step_length=20):
+    for count in range(steps):
+        for turtle in turtles:
+            turtle.forward(step_length)
+            #random turn
+            turtle.left(choice([-90,90]))
+\end{lstlisting}
+\item
+
+\begin{lstlisting}
+from turtle import *
+from random import *
+
+clearscreen() # we clear the screen from any turtle
+
+red_turtle = Turtle()
+red_turtle.color("red")
+blue_turtle = Turtle()
+blue_turtle.color("blue")
+
+randomRace([red_turtle,blue_turtle],50)
+
+def distanceOrigin(turtle):
+    return (turtle.xcor()**2 + turtle.ycor()**2)**0.5
+
+if distanceOrigin(red_turtle) >= distanceOrigin(blue_turtle):
+    print "The red turtle won the race!"
+else:
+    print "The blue turtle won the race!"
+\end{lstlisting}
+
+\end{itemize}
+\end{solution}
+\begin{solution}[ex:classes_1]
+\begin{lstlisting}
+from turtle import *
+from random import *
+
+t1 = Turtle()
+t2 = Turtle()
+t3 = Turtle()
+t2.color("red")
+t3.color("blue")
+
+def triangle(t, cote):
+    t.up()
+    t.goto(randint(-200,200),randint(-200,200))
+    t.down()
+    for i in range(3):
+        t.forward(cote)
+        t.left(120)
+    t.up()
+\end{lstlisting}
+
+\begin{lstlisting}
+def infoTortue(t):
+    print "Position de la tortue :", t.position()
+    print "Couleur :", t.color()
+    print "Angle :", t.heading()
+
+t1 = Turtle()
+t1.color("red")
+
+t1.forward(100)
+t1.left(50)
+
+
+infoTortue(t1)
+\end{lstlisting}
+\end{solution}
+\begin{solution}[ex:polygones_1]
+\begin{lstlisting}
+from turtle import *
+from random import randint
+
+def polygone(longueur,nombre) :
+        angle = 360.0 / nombre;
+        for i in range(0,nombre) :
+            forward(longueur)
+            right(angle)
+
+def exercice_1() :
+    # Appel de la fonction avec les parametres voulus
+    # i.e. longueur d'un cote et nombre de cotes
+    polygone(70,9)
+
+def exercice_2() :
+    for i in range(0,12) :
+        # orientation et positionnement choisis au hasard
+        orientation = randint(0,360)
+        x = randint(-200,200)
+        y = randint(-200,200)
+        # deplacement de la tortue avec ces valeurs
+        up()
+        goto(x,y)
+        right(orientation)
+        down()
+
+        # nombre de cot?s et taille d'un cote choisis au hasard
+        longueur = randint(0,200)
+        # un polygone a au moins 3 cotes (triangle)
+        nombre = randint(3,10)
+        # Dessinons maintenant notre polygone !
+        polygone(longueur,nombre)
+\end{lstlisting}
+\end{solution}
+\begin{solution}[ex:classes_4]
+Exemples de attributs: \verb$couleur$ (string), \verb$matériau$ (string), \verb$poids$ (float), \verb$pour_exterieur$ (bool), \verb$avec_roulette$ (bool)
+\end{solution}
+\begin{solution}[ex:classes_2]
+\includegraphics[width=\textwidth]{graphics/classes_d2.pdf}
+\end{solution}
+\begin{solution}[ex:classes_3]
+\includegraphics[width=\textwidth]{graphics/classes_d3.pdf}
+
+\end{solution}
+
+\begin{solution}[ex:create_class_1]
+\begin{lstlisting}
+class Domino():
+    def __init__(self, Avalue = 0, Bvalue = 0):
+        self.Avalue = Avalue
+        self.Bvalue = Bvalue
+
+    def fixed_points(self):
+        print "A value: {} B value: {}".format (self.Avalue,self.Bvalue)
+
+    def sum_points(self):
+        plus = self.Avalue + self.Bvalue
+        return plus
+
+d1 = Domino(5,6)
+d2 = Domino(2,9)
+
+d1.fixed_points()
+print d2.sum_points()
+\end{lstlisting}
+
+\end{solution}
+
+\begin{solution}[ex:create_class_2]
+\begin{lstlisting}
+# -*- coding: utf-8 -*-
+
+from random import *
+
+class JeuDeCartes():
+
+    def __init__(self): #constructeur
+        self.cartes = []
+
+        for color in range(4):
+            for number in range(2,15):
+                self.cartes.append( (number, color) )
+
+    def nom_carte(self, a, b):
+        self.number = ['','','Deux','Trois','Quatre','Cinq','Six','Sept','Huit','Neuf','Dix','Valet','Dame','Roi','As']
+        self.color = ['Coeur','Carreau','Trefle','Pique']
+        return self.number[a] + " de " + self.color[b]
+
+    def battre(self):
+        cartes_copy = self.cartes[:]
+        self.cartes = []
+        while len(cartes_copy) > 0:
+            self.cartes.append(cartes_copy.pop(randint(0,len(cartes_copy)-1)))
+
+    def tirer(self):
+        if len(self.cartes) == 0:
+            return None
+        else:
+            return self.cartes.pop(0)
+
+    def affiche_cartes(self):
+        for c in self.cartes:
+            print self.nom_carte(c[0],c[1])
+
+
+#starts the game
+A = JeuDeCartes()
+B = JeuDeCartes()
+A.battre()
+B.battre()
+
+a = 0
+b = 0
+for n in range(10):
+
+    (a1, a2) = A.tirer()
+    (b1, b2) = B.tirer()
+    print "La carte tirée par A est", A.nom_carte(a1,a2)
+    print "La carte tirée par B est", B.nom_carte(b1,b2)
+    if a1 > b1:
+        a = a + 1
+        print("Un point pour A")
+    elif a1 < b1:
+        b = b + 1
+        print("Un point pour B")
+
+if a < b:
+    print 'Le joueur B gagne'
+else:
+    print 'Le joueur A gagne'
+
+\end{lstlisting}
+
+\end{solution}
+\begin{solution}[ex:create_class_3]
+\begin{lstlisting}
+
+
+from random import *
+
+# the class Person
+class Person:
+    def __init__(self, name, age = 0):
+        self.name = name
+        self.age = age
+
+    def get_name(self):
+        print "The name is " + str(self.name) #gives the name
+
+    def get_age(self):
+        print "the age is " + str(self.age) #gives age
+
+
+# a class with similar characteristic to class Person
+class Student(Person):
+    def __init__(self, name, age, mark = 0):
+        # appel à la méthode d'initialisation de la classe mère pour créer les attributs name et age
+        Person.__init__(self, name, age)
+        # la note
+        self.mark = mark
+
+    #method
+    def get_mark(self):
+        print "The student's mark is " + str(self.mark)
+
+
+
+names = ["Juan","Luis","Pepe","Moncho"]
+age = randint(25,50)
+
+student1 = Student(choice(names),age,3)
+student1.get_name()
+student1.get_age()
+student1.get_mark()
+print isinstance(student1, Student)
+
+person1 = Person(choice(names),53)
+person1.get_name()
+person1.get_age()
+print isinstance(person1, Student)
+
+# the next instruction will not work, because person1 is not a Student,
+# so it doesn't have the method "get_mark()"
+# person1.get_mark()
+\end{lstlisting}
+
+\end{solution}
+
+\begin{solution}[ex:create_class_4]
+\begin{lstlisting}
+from math import sqrt
+from random import randint
+
+class Rocket():
+    # Rocket simulates a rocket ship for a game,
+    #  or a physics simulation.
+
+    def __init__(self, x=0, y=0):
+        # Each rocket has an (x,y) position.
+        self.x = x
+        self.y = y
+
+    def move_rocket(self, x_increment=0, y_increment=1):
+        # Move the rocket according to the paremeters given.
+        #  Default behavior is to move the rocket up one unit.
+        self.x += x_increment
+        self.y += y_increment
+
+    def get_distance(self, other_rocket):
+        # Calculates the distance from this rocket to another rocket,
+        #  and returns that value.
+        distance = sqrt((self.x-other_rocket.x)**2+(self.y-other_rocket.y)**2)
+        return distance
+
+class Shuttle(Rocket):
+    # Shuttle simulates a space shuttle, which is really
+    #  just a reusable rocket.
+
+    def __init__(self, x=0, y=0, flights_completed=0):
+        Rocket.__init__(self, x, y)
+        self.flights_completed = flights_completed
+
+
+# Create several shuttles and rockets, with random positions.
+#  Shuttles have a random number of flights completed.
+shuttles = []
+for x in range(0,3):
+    x = randint(0,100)
+    y = randint(1,100)
+    flights_completed = randint(0,10)
+    shuttles.append(Shuttle(x, y, flights_completed))
+
+rockets = []
+for x in range(0,3):
+    x = randint(0,100)
+    y = randint(1,100)
+    rockets.append(Rocket(x, y))
+
+# Show the number of flights completed for each shuttle.
+for index, shuttle in enumerate(shuttles):
+    print("Shuttle %d has completed %d flights." % (index, shuttle.flights_completed))
+
+print("\n")
+# Show the distance from the first shuttle to all other shuttles.
+first_shuttle = shuttles[0]
+for index, shuttle in enumerate(shuttles):
+    distance = first_shuttle.get_distance(shuttle)
+    print("The first shuttle is %f units away from shuttle %d." % (distance, index))
+
+print("\n")
+# Show the distance from the first shuttle to all other rockets.
+for index, rocket in enumerate(rockets):
+    distance = first_shuttle.get_distance(rocket)
+    print("The first shuttle is %f units away from rocket %d." % (distance, index))
+
+
+\end{lstlisting}
+
+\end{solution}
+
+
+
+\begin{solution}[ex:fractions_1]
+\begin{lstlisting}
+# -*- coding: utf-8 -*-
+
+
+class Fraction():
+    # initialisation et attributs
+    def __init__(self, num = 0, den = 1):
+        self.num = num
+        if den == 0:
+            print "Dénominateur nul"
+            return None
+        self.den = den
+
+        # simplification
+        self.simplifier()
+
+    def plus(self, f):
+        resultat = Fraction(self.num * f.den + self.den * f.num, self.den * f.den)
+        return resultat
+
+    def moins(self, f):
+        resultat = Fraction(self.num * f.den - self.den * f.num, self.den * f.den)
+        return resultat
+
+    def fois(self, f):
+        resultat = Fraction(self.num * f.num, self.den * f.den)
+        return resultat
+
+    def div(self, f):
+        resultat = Fraction(self.num * f.den, self.den * f.num)
+        return resultat
+
+    def simplifier(self):
+        '''calcul du plus grand commun diviseur - PREMIERE VERSION'''
+
+        pgcd = 1
+        # calculer le pgcd
+        i = min(abs(self.num), abs(self.den))
+        while i >= 2:
+            if self.num % i == 0 and self.den % i == 0:
+                 pgcd = i
+                 break
+            i=i-1
+        self.num /= pgcd
+        self.den /= pgcd
+
+        if self.den < 0:
+            self.num *= -1
+            self.den *= -1
+
+    def display(self):
+        '''affichage d'une fraction'''
+        print self.num, "/" , self.den
+
+    def __str__(self):
+        '''répresentation comme texte'''
+        return str(self.num) + " / " + str(self.den)
+
+    def __eq__(self, other):
+        '''opérateur de comparaison'''
+        if not isinstance(other, Fraction):
+            return False
+        self.simplifier()
+        other.simplifier()
+        return self.num == other.num and self.den == other.den
+
+
+a = Fraction(1,4)
+a.display()
+
+b = Fraction(2,3)
+b.display()
+
+
+p = a.plus(b)
+p.display()
+
+
+m = a.moins(b)
+# avec le 'print', on appelle la méthode __str__ de la fraction
+print m
+
+f = a.fois(b)
+print f
+
+d = a.div(b)
+print f
+
+\end{lstlisting}
+\end{solution}
+
+
+
+
+
+\begin{solution}[ex:diag_seq_1]
+\
+\begin{itemize}
+
+\item
+\begin{center}
+\includegraphics[width=0.5\textwidth]{graphics/diag_seq3.pdf}
+\end{center}
+
+\item
+\begin{center}
+\includegraphics[width=0.5\textwidth]{graphics/diag_seq4.pdf}
+\end{center}
+
+\item
+\begin{center}
+\includegraphics[width=0.5\textwidth]{graphics/diag_seq5.pdf}
+\end{center}
+
+\end{itemize}
+
+\end{solution}
+
+
+
+
+\begin{solution}[ex:classe_2]
+
+\textbf{Solution des exercices \ref{ex:classe_2}, \ref{ex:heritage_1}, \ref{ex:classe_3}.}
+
+\verb$academics.py$ :
+
+\begin{lstlisting}
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+class Personne:
+    # EXERCICE 86
+    def __init__(self,name):
+        self.name = name
+
+    def toString(self):
+        print "Personne : " + str(self.name)
+
+    def __str__(self):
+        return "Personne : " + str(self.name)
+
+# EXERCICE 87
+class Etudiant(Personne):
+    def __init__(self,name,noEtudiant):
+        Personne.__init__(self,name)
+        self.noEtudiant = noEtudiant
+    def __str__(self):
+        return  Personne.__str__(self) +" , no etudiant : " + str(self.noEtudiant)
+
+class Professeur(Personne):
+    def __init__(self,name,faculte):
+        Personne.__init__(self,name)
+        self.faculte = faculte
+
+    def changerFaculte(self,faculte):
+        self.faculte = faculte
+
+    def __str__(self):
+         return "Prof : " + str(self.name) + " , faculte : " + str(self.faculte)
+# EXERCICE 88
+count = 1
+class Cours:
+    def __init__(self,title):
+        self.title = title
+        self.listeEtudiant = dict()
+        global count
+        self.noSalle = count
+        count += 1
+        self.horaire = ""
+        self.prof = ""
+    def __str__(self):
+        return "Cours : " + str(self.title) + " , no Salle : " + str(self.noSalle) + " , horaire : " + str(self.horaire) + " , prof : " + str(self.prof)
+
+    def assignerHoraire(self,horaire):
+        self.horaire = horaire
+
+    def inscrireEtudiant(self,etudiant):
+        self.listeEtudiant[etudiant.noEtudiant] = etudiant
+
+    def assignerProf(self,prof):
+        self.prof = prof
+\end{lstlisting}
+\end{solution}
+
+
+
+\begin{solution}[ex:modules_1]
+\verb$test.py$ :
+\begin{lstlisting}
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+#import academics as ac
+from academics import *
+
+def main():
+
+    # exercice 86
+    pers = Personne("Pepe")
+    print pers
+    pers.toString()
+    #exercice 86
+    a = Etudiant("Renaud",1)
+    b = Etudiant("Henry Hankford",2)
+    c = Professeur("Hugo Bosse","Lettres Modernes - ")
+    d = Professeur("Paul Johnson","Criminologie")
+    listePersonne = (a,b,c,d)
+    for person in listePersonne:
+        print person
+
+    # exercice 87
+    c1 = Cours("Economie 402")
+    c1.inscrireEtudiant(a)
+    c1.inscrireEtudiant(b)
+    c1.assignerProf(c)
+    c1.assignerHoraire("Merc. 16h 18h")
+    print c1
+    for v in c1.listeEtudiant.values() :
+        print v
+
+if __name__ == '__main__':
+    main()
+\end{lstlisting}
+\end{solution}
+
+
+
+\begin{solution}[ex:dessin_modele_1]
+
+\includegraphics[width=\textwidth]{graphics/tp5_3.pdf}
+
+\end{solution}
+
+
+
+\begin{solution}[ex:diagrammes_etats_1]
+
+\begin{enumerate}
+\item Le réveil a deux états distincts Désarmé (alarme = off) ou Armé (alarme=on). Une action de l'utilisateur permet de passer d'un état à un autre. On suppose que le réveil est bien désarmé au départ.
+Si l'on considère les phrases 2 et 3, le fait de sonner constitue un nouvel état pour le réveil. Il s'agit bien d'une période de temps durant laquelle le réveil effectue une certaine activité (sonner) qui dure jusqu'à ce qu'un événement vienne l'interrompre.
+Le passage de l’état Armé à l'état Sonnerie est déclenché par une transition due à un changement interne représenté par le mot clé `When'. En revanche, d'après l'énoncé, le retour de l'état Sonnerie à l'état armé ne s'effectue que sur un évènement utilisateur.
+
+\includegraphics[width=0.5\textwidth]{graphics/et_1.png}
+
+
+\item
+Dans ce cas il suffit d'ajouter une activité Sonner à l'état Sonnerie et une transition automatique en sortie de cet état.
+
+\includegraphics[width=0.5\textwidth]{graphics/et_2.png}
+
+
+\end{enumerate}
+\end{solution}
+
+
+
+
+\begin{solution}[ex:academics_implement_1]
+\textbf{Solution des exercices \ref{ex:academics_implement_1}, \ref{ex:classes_examen_1}.}
+
+\verb$academics_new.py$ :
+
+\begin{lstlisting}
+#-*- encoding : utf-8 -*-
+
+
+from academics import *
+#veuillez mettre le fichier academics.py
+#dans le meme dossier que ce script
+
+
+from random import *
+
+class Examinateur(Professeur):
+    def __init__(self,nom,faculte):
+        Professeur.__init__(self,nom,faculte)
+
+    def evaluerEtudiant(self,etudiant):
+        st = etudiant.noEtudiant
+        last = st % 10
+        return (last / 2) + 1
+
+
+class ExaminateurMechant(Examinateur):
+    def __init__(self,nom,faculte):
+        Examinateur.__init__(self,nom,faculte)
+
+    def evaluerEtudiant(self,etudiant):
+        note = Examinateur.evaluerEtudiant(self,etudiant)
+        if (note > 2 ):
+            note -= 1
+        return note
+    def __str__(self):
+        return "Prof. \" Mechant \" " + self.name
+
+
+class CoursAvecExamen(Cours):
+    def __init__(self,title):
+        Cours.__init__(self,title)
+        self.notes = dict()
+
+    def menerExamen(self):
+        for e,v in self.listeEtudiant.items():
+            self.notes[e] = self.prof.evaluerEtudiant(self.listeEtudiant[e])
+
+    def procesVerbal(self):
+        #print "*********** Proces Verbal ***********"
+        print "Cours : " + self.title + " \n " + str(self.prof) + " .\n"
+        print "Liste des etudiants : \n "
+        for no,etu in self.listeEtudiant.items():
+            print "etudiant no : " + str(etu.noEtudiant)
+            if(self.notes[etu.noEtudiant] != None):
+                print  "    grade : " + str(self.notes[etu.noEtudiant])
+
+
+    def meanGrade(self):
+        grade = 0
+        for e in self.listeEtudiant:
+            grade += self.notes[e]
+        if(len(self.notes)>0):
+            return grade/len(self.notes)
+        else:
+            print "aucuns etudiants inscrit"
+
+    def resultatsAgreges(self):
+        #print " ********  Resultats agreges **********"
+        print " Cours : " + self.title
+        print "Moyenne du cours : " + str(self.meanGrade())
+        nb=0
+        for no in self.listeEtudiant:
+            if(self.notes[no] > 3.5):
+                nb+=1
+        print "Nombre d'etudiant avec une note > 3.5 : " + str(nb)
+
+
+def main():
+    e1 = Etudiant("Barrington Levy",7)
+    p1 = ExaminateurMechant("Dr pepper","Green Scientific House")
+    #print "note de e1 = " + str(p1.evaluerEtudiant(e1))
+    print p1
+    c1 = CoursAvecExamen("Histoire")
+    c1.assignerProf(p1)
+    c1.inscrireEtudiant(e1)
+    c1.menerExamen()
+    print "etudiant got : " + str(c1.notes[e1.noEtudiant])
+
+    # EXERCICE 3
+    # 3.a
+    c1 = CoursAvecExamen("Geographie")
+    c2 = CoursAvecExamen("Etude de l'Etre et le Neant - Sartre")
+    c3 = CoursAvecExamen("Study of SMP algorithm for extended multiprocessor")
+    cours = (c1,c2,c3)
+    # 3.b
+    e1 = Examinateur("Mr. Patate", "Patatologie")
+    e2 = ExaminateurMechant("Mr. Robert", "Roblogie")
+    c1.assignerProf(e1)
+    c2.assignerProf(e2)
+    c3.assignerProf(e2)
+    # 3.c
+    allowedName = ("Donald","Cendrillon","Homer","Lisa","Bender", "Kenny")
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    etId = 2012001
+    listEtudiant = {}
+    for i in range(0,30):
+        name = choice(allowedName)
+        lettres = sample(alphabet, 5) # cinq lettres aleatoires
+        etName = name + "".join(lettres).capitalize()
+        listEtudiant[i] = Etudiant(etName,etId)
+        etId += 1
+
+    # 3.d
+    #listing des etudiants
+    for i in range(1,30,3):
+        #listing des cours
+        for noCours in range(len(cours)):
+            # tirage au sort ( 30 % de chance de tomber sur 1 => inscription)
+            no = random()
+            if(no <0.3):
+                cours[noCours].inscrireEtudiant(listEtudiant[i])
+
+    # 3.e
+    for c in cours:
+        c.menerExamen()
+        c.procesVerbal()
+        c.resultatsAgreges()
+
+
+if __name__ == '__main__':
+    main()
+\end{lstlisting}
+\end{solution}
+
+
+
+\begin{solution}[ex:revision_classes_1]
+
+\begin{lstlisting}
+# EX2
+#2.1)
+class Livre:    # une classe - Livre
+ def __init__(self, t, p=20):
+  self.titre = t  # avec un titre
+  self.prix  = p  # et un prix
+
+ def __str__(self):  # l'affichage
+  return 'Livre: '+self.titre + ' - ' + ("%.2f" % self.prix) + ' chf'
+
+ def reduirePrix(self, pourcentage):
+  self.prix *=((100-pourcentage)/100.0)
+
+#end class
+
+#2.2)
+l1 = Livre("Python", 20)
+print l1
+l1.reduirePrix(10)
+print l1
+
+#2.3)
+import random as rnd;
+
+class Bibliotheque:
+ def __init__(self):
+  self.livres = []
+ def reduirePrix(self, pourcentage):
+  for i in self.livres :
+   i.reduirePrix(pourcentage)
+ def __str__(self):
+  biblio = "Liste des livres : \n"
+  for i in self.livres:
+   biblio += (str(i)+"\n")
+  return biblio
+ def ajouterLivres(self,n):
+  for p in range(10,10*(n+1),10):
+   titre = "".join(rnd.sample("abcdefghi", 3)) # un titre alleatoire
+   livre = Livre( titre, p );   # creation d'un objet
+   self.livres.append(livre);
+
+#2.4)
+
+b1 = Bibliotheque()
+b1.ajouterLivres(15)
+print b1
+#2.5)
+b1.reduirePrix(20)
+b1.reduirePrix(25)
+print "Bibliotheque apres les reductions: \n";
+print b1
+
+\end{lstlisting}
+
+\end{solution}
+
+
+
+
+\begin{solution}[ex:interface_simple_tkinter_1]
+\begin{lstlisting}
+from Tkinter import *
+from math import *
+
+
+def calculSphere(rayon) :
+    """ Renvoie la surface """
+    surface = 4 * pi * pow(rayon,2)
+    return surface
+
+def updateEntry() :
+    r = rayon.get()
+    if len(r) != 0 :
+        rayonLu = float(r)
+        resultat = calculSphere(rayonLu)
+        surface.set(resultat)
+
+fenetre = Tk()
+
+# les variables dont on a besoin
+
+rayon = StringVar()
+surface = StringVar()
+labelRayon = Label(fenetre,text = "Rayon de la sphere : ")
+inputRayon = Entry(fenetre, textvariable = rayon)
+labelSurface = Label(fenetre,text = "Surface : ")
+labelCalculSurface = Label(fenetre, textvariable = surface)
+
+validButton = Button(fenetre,text = "Valider", command = updateEntry)
+
+quitButton = Button(fenetre,text = "Quitter", command = fenetre.destroy)
+
+labelRayon.pack()
+inputRayon.pack()
+labelSurface.pack()
+labelCalculSurface.pack()
+validButton.pack()
+quitButton.pack()
+fenetre.mainloop()
+\end{lstlisting}
+\end{solution}
+
+
+
+
+\begin{solution}[ex:fractions_2]
+\begin{lstlisting}
+#Algorithme d'Euclide.
+
+def gcd(numerateur, denominateur):
+    while denominateur != 0:
+        reste = numerateur % denominateur
+        numerateur = denominateur
+        denominateur = reste
+    #A la fin de l'algorithme, le numerateur est le gcd
+    #Car numerateur vaut ici le denominateur du tour de boucle precedent
+    return numerateur
+
+#Notez qu'il y a plein d'autres moyens d'implementer l'algorithme d'Euclide
+#Par exemple, par recursion :)
+
+numerateur = input("Entrez le numerateur: ")
+denominateur = input("Entrez le denominateur: ")
+
+#Pour simplifier la fraction, on utilise simplement le gcd
+
+gcd = gcd(numerateur, denominateur)
+print numerateur/gcd, " / ", denominateur/gcd
+\end{lstlisting}
+\end{solution}
+
+
+
+\begin{solution}[ex:fractions_tkinter_1]
+\begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+from Tkinter import *
+
+def gcd(numerateur, denominateur):
+    #Algorithme d'Euclide pour calculer le plus grand diviseur commun (gcd)
+    while denominateur != 0:
+        reste = numerateur % denominateur
+        numerateur = denominateur
+        denominateur = reste
+
+    return numerateur
+
+def simplifier():
+    n = int(numerateur.get())
+    d = int(denominateur.get())
+    g = gcd(n, d)
+    #Et on entre les valeurs de la fraction simplifiee dans le champ
+    numerateur.set(n/g)
+    denominateur.set(d/g)
+
+fenetre = Tk()
+
+etiquette = Label(fenetre, text="Fraction")
+etiquette.pack()
+
+#Premier champ, numerateur
+numerateur = StringVar()
+champ1 = Entry(fenetre, textvariable = numerateur, justify=CENTER)
+champ1.pack()
+
+#Barre de separation
+separateur = Label(fenetre, text="------------")
+separateur.pack()
+
+#Deuxieme champ, denominateur
+denominateur = StringVar()
+champ2 = Entry(fenetre, textvariable = denominateur, justify=CENTER)
+champ2.pack()
+
+#Bouton simplifier
+valider = Button(fenetre, text="Simplifier", command=simplifier)
+valider.pack()
+
+#Bouton quitter
+quitter = Button(fenetre, text="Quitter", command=fenetre.destroy)
+quitter.pack()
+
+fenetre.mainloop()
+\end{lstlisting}
+\end{solution}
+
+
+
+\begin{solution}[ex:addition_fractions_1]
+\begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+from Tkinter import *
+
+def gcd(numerateur, denominateur):
+    #Algorithme d'Euclide pour calculer le plus grand diviseur commun (gcd)
+    while denominateur != 0:
+        reste = numerateur % denominateur
+        numerateur = denominateur
+        denominateur = reste
+
+    return numerateur
+
+def addition():
+    n1 = int(numerateur1.get())
+    d1 = int(denominateur1.get())
+    n2 = int(numerateur2.get())
+    d2 = int(denominateur2.get())
+    #Ici, on peut soit chercher le lcm (least common denominator)
+    #Mais on peut aussi prendre n'importe quel denominateur commun
+    #p.ex denominateur1 * denominateur2 et ensuite simplifier le resultat.
+    #Prenons la deuxieme solution
+    communDenom = d1 * d2
+    addition = n1*(communDenom/d1) + n2*(communDenom/d2)
+    g = gcd(addition, communDenom)
+    #Et on entre les valeurs de la fraction simplifiee dans le champ resultat
+    #via les textvariables.
+    numerateur3.set(str(addition/g))
+    denominateur3.set(str(communDenom/g))
+    #On aurait aussi pu utiliser champ5.insert() p.ex
+    #C'est moins propre car si on veut relancer les calculs il faut aussi
+    #rajouter des champ5.delete() et compagnie (et retirer le DISABLED)
+
+
+fenetre = Tk()
+
+#PREMIERE COLONNE
+
+etiquette = Label(fenetre, text="Fraction 1")
+etiquette.grid(row=0, column=0, sticky=N)
+
+#Premier champ, numerateur
+numerateur1 = Entry(fenetre, justify=CENTER)
+numerateur1.grid(row=1, column=0, sticky=N)
+
+#Barre de separation
+separateur = Label(fenetre, text="------------")
+separateur.grid(row=2, column=0, sticky=N)
+
+#Deuxieme champ, denominateur
+denominateur1 = Entry(fenetre, justify=CENTER)
+denominateur1.grid(row=3, column=0, sticky=N)
+
+#DEUXIEME COLONNE (+)
+
+etiquette = Label(fenetre, text="+")
+etiquette.grid(row=2, column=1, sticky=N)
+
+#TROISIEME COLONNE
+
+etiquette = Label(fenetre, text="Fraction 2")
+etiquette.grid(row=0, column=2, sticky=N)
+
+#Premier champ, numerateur
+numerateur2 = Entry(fenetre, justify=CENTER)
+numerateur2.grid(row=1, column=2, sticky=N)
+
+#Barre de separation
+separateur = Label(fenetre, text="------------")
+separateur.grid(row=2, column=2, sticky=N)
+
+#Deuxieme champ, denominateur
+denominateur2 = Entry(fenetre, justify=CENTER)
+denominateur2.grid(row=3, column=2, sticky=N)
+
+#Bouton quitter
+quitter = Button(fenetre, text="Quitter", command=fenetre.destroy)
+quitter.grid(row=4, column=2, sticky=N)
+
+#QUATRIEME COLONNE (=)
+
+etiquette = Label(fenetre, text="=")
+etiquette.grid(row=2, column=3, sticky=N)
+
+#CINQUIEME COLONNE
+
+etiquette = Label(fenetre, text="Resultat")
+etiquette.grid(row=0, column=4, sticky=N)
+
+#Premier champ, numerateur
+numerateur3 = StringVar()
+champ5 = Entry(fenetre, textvariable = numerateur3, justify=CENTER, state=DISABLED)
+champ5.grid(row=1, column=4, sticky=N)
+
+#Barre de separation
+separateur = Label(fenetre, text="------------")
+separateur.grid(row=2, column=4, sticky=N)
+
+#Deuxieme champ, denominateur
+denominateur3 = StringVar()
+champ6 = Entry(fenetre, textvariable = denominateur3, justify=CENTER, state=DISABLED)
+champ6.grid(row=3, column=4, sticky=N)
+
+#Bouton calcul
+valider = Button(fenetre, text="Calculer", command=addition)
+valider.grid(row=4, column=4, sticky=N)
+
+fenetre.mainloop()
+\end{lstlisting}
+\end{solution}
+
+
+
+\begin{solution}[ex:tkinter_widgets_1]
+\begin{lstlisting}
+from Tkinter import *
+
+# the function that is called when an item in the listbox is selected
+# the event is passed as an argument by Tkinter
+def listbox_clicked(evt):
+    w = evt.widget
+    index = int(w.curselection()[0])
+    value = w.get(index)
+    text.set(text.get() + "\n" + "You selected item " + str(index) + ": " + value)
+
+fenetre = Tk()
+
+# create the Listbox
+lb = Listbox(fenetre, height=4)
+lb.pack(side=LEFT)
+lb.insert(END,"first entry")
+lb.insert(END,"second entry")
+lb.insert(END,"third entry")
+lb.insert(END,"fourth entry")
+
+# associate the select event to the function
+lb.bind('<<ListboxSelect>>', listbox_clicked)
+
+# create the Message widget and the relative StringVar
+text = StringVar()
+message = Message(fenetre, width=500, textvariable=text)
+message.pack(side=RIGHT)
+
+fenetre.mainloop()
+\end{lstlisting}
+\end{solution}
+
+
+
+
+\begin{solution}[ex:fractions_tkinter_2]
+
+Voir Exercice \ref{ex:fractions_tkinter_3}.
+
+%\begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+%from Tkinter import *
+%
+%def gcd(numerateur, denominateur):
+%    #Algorithme d'Euclide pour calculer le plus grand diviseur commun (gcd)
+%    while denominateur != 0:
+%        reste = numerateur % denominateur
+%        numerateur = denominateur
+%        denominateur = reste
+%
+%    return numerateur
+%
+%def calcul(e=None):
+%    # le parametre e=None est necessaire pour l'ex 4.3
+%
+%    #Ceci est juste pour l'ex 4.3, pour eviter d'avoir des messages d'erreur
+%    #car il tentera de faire les calculs avant que tous les champs soient remplis
+%    if numerateur1.get() == "" or numerateur2.get() == "" or denominateur1.get()=="" or denominateur2.get() == "":
+%        return
+%
+%    n1 = int(numerateur1.get())
+%    d1 = int(denominateur1.get())
+%    n2 = int(numerateur2.get())
+%    d2 = int(denominateur2.get())
+%
+%    #Addition
+%    if choix.get() == 1:
+%        #Ici on prend simplement d1 * d2 comme denonminateur commun
+%        denominateur = d1 * d2
+%        numerateur = n1*d2 + n2*d1
+%
+%    #Soustraction
+%    if choix.get() == 2:
+%        denominateur = d1 * d2
+%        numerateur = n1*d2 - n2*d1
+%
+%    #Multiplication
+%    if choix.get() == 3:
+%        numerateur = n1*n2
+%        denominateur = d1*d2
+%
+%    #Division
+%    if choix.get() == 4:
+%        numerateur = n1*d2
+%        denominateur = n2*d1
+%
+%    #Pour la simplification, on doit calculer le plus grand diviseur commun
+%    g = gcd(numerateur, denominateur)
+%
+%    #Et on entre les valeurs de la fraction simplifiee dans le champ resultat
+%    #via les textvariables.
+%    numerateur3.set( str(numerateur/g) )
+%    denominateur3.set( str(denominateur/g) )
+%    #On aurait aussi pu utiliser champ5.insert() p.ex
+%    #C'est moins propre car si on veut relancer les calculs il faut aussi
+%    #rajouter des champ5.delete() et compagnie (et retirer le DISABLED).
+%
+%fenetre = Tk()
+%
+%#PREMIERE COLONNE
+%
+%etiquette = Label(fenetre, text="Fraction 1")
+%etiquette.grid(row=0, column=0, sticky=N)
+%
+%#Premier champ, numerateur
+%numerateur1 = Entry(fenetre, justify=CENTER)
+%numerateur1.grid(row=1, column=0, sticky=N)
+%
+%#Barre de separation
+%separateur = Label(fenetre, text="------------")
+%separateur.grid(row=2, column=0, sticky=N)
+%
+%#Deuxieme champ, denominateur
+%denominateur1 = Entry(fenetre, justify=CENTER)
+%denominateur1.grid(row=3, column=0, sticky=N)
+%
+%#DEUXIEME COLONNE (radiobutton)
+%
+%etiquette = Label(fenetre, text="Operation")
+%etiquette.grid(row=0, column=1, sticky=N)
+%
+%choix = IntVar()
+%choix.set(1)
+%
+%#Ex 4.2: grace a command=calclul dans les radiobutton, le calcul est lance quand on clique sur le bouton
+%r1 = Radiobutton(fenetre, text="Addition", variable=choix, value=1, command=calcul)
+%r1.grid(row=1, column=1, sticky=W)
+%r2 = Radiobutton(fenetre, text="Soustraction", variable=choix, value=2, command=calcul)
+%r2.grid(row=2, column=1, sticky=W)
+%r3 = Radiobutton(fenetre, text="Multiplication", variable=choix, value=3, command=calcul)
+%r3.grid(row=3, column=1, sticky=W)
+%r4 = Radiobutton(fenetre, text="Division", variable=choix, value=4, command=calcul)
+%r4.grid(row=4, column=1, sticky=W)
+%
+%#TROISIEME COLONNE
+%
+%etiquette = Label(fenetre, text="Fraction 2")
+%etiquette.grid(row=0, column=2, sticky=N)
+%
+%#Premier champ, numerateur
+%numerateur2 = Entry(fenetre, justify=CENTER)
+%numerateur2.grid(row=1, column=2, sticky=N)
+%
+%#Barre de separation
+%separateur = Label(fenetre, text="------------")
+%separateur.grid(row=2, column=2, sticky=N)
+%
+%#Deuxieme champ, denominateur
+%denominateur2 = Entry(fenetre, justify=CENTER)
+%denominateur2.grid(row=3, column=2, sticky=N)
+%
+%#Bouton quitter
+%quitter = Button(fenetre, text="Quitter", command=fenetre.destroy)
+%quitter.grid(row=4, column=2, sticky=N)
+%
+%#QUATRIEME COLONNE (=)
+%
+%etiquette = Label(fenetre, text="=")
+%etiquette.grid(row=2, column=3, sticky=N)
+%
+%#CINQUIEME COLONNE
+%
+%etiquette = Label(fenetre, text="Resultat")
+%etiquette.grid(row=0, column=4, sticky=N)
+%
+%#Premier champ, numerateur
+%numerateur3 = StringVar()
+%champ3n = Entry(fenetre, textvariable=numerateur3, justify=CENTER, state=DISABLED)
+%champ3n.grid(row=1, column=4, sticky=N)
+%
+%#Barre de separation
+%separateur = Label(fenetre, text="------------")
+%separateur.grid(row=2, column=4, sticky=N)
+%
+%#Deuxieme champ, denominateur
+%denominateur3 = StringVar()
+%champ3d = Entry(fenetre, textvariable=denominateur3, justify=CENTER, state=DISABLED)
+%champ3d.grid(row=3, column=4, sticky=N)
+%
+%#Bouton calcul
+%valider = Button(fenetre, text="Calculer", command=calcul)
+%valider.grid(row=4, column=4, sticky=N)
+%
+%#Ex 4.3 - Notez qu'il faut aussi mettre un parametre par defaut dans calcul()
+%fenetre.bind("<Key>", calcul)
+%
+%fenetre.mainloop()
+%
+%\end{lstlisting}
+
+\end{solution}
+
+
+
+\begin{solution}[ex:fractions_tkinter_3]
+
+\begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+from Tkinter import *
+
+def gcd(numerateur, denominateur):
+    #Algorithme d'Euclide pour calculer le plus grand diviseur commun (gcd)
+    while denominateur != 0:
+        reste = numerateur % denominateur
+        numerateur = denominateur
+        denominateur = reste
+
+    return numerateur
+
+def calcul(e=None):
+    # le parametre e=None est necessaire
+
+    #Ceci est pour eviter d'avoir des messages d'erreur
+    #car il tentera de faire les calculs avant que tous les champs soient remplis
+    if numerateur1.get() == "" or numerateur2.get() == "" or denominateur1.get()=="" or denominateur2.get() == "":
+        return
+
+    n1 = int(numerateur1.get())
+    d1 = int(denominateur1.get())
+    n2 = int(numerateur2.get())
+    d2 = int(denominateur2.get())
+
+    #Addition
+    if choix.get() == 1:
+        operation = "+"
+        #Ici on prend simplement d1 * d2 comme denonminateur commun
+        denominateur = d1 * d2
+        numerateur = n1*d2 + n2*d1
+
+    #Soustraction
+    if choix.get() == 2:
+        operation = "-"
+        denominateur = d1 * d2
+        numerateur = n1*d2 - n2*d1
+
+    #Multiplication
+    if choix.get() == 3:
+        operation = "*"
+        numerateur = n1*n2
+        denominateur = d1*d2
+
+    #Division
+    if choix.get() == 4:
+        operation = "/"
+        numerateur = n1*d2
+        denominateur = n2*d1
+
+    #Pour la simplification, on doit calculer le plus grand diviseur commun
+    g = gcd(numerateur, denominateur)
+
+    #Et on entre les valeurs de la fraction simplifiee dans le champ resultat
+    #via les textvariables.
+    numerateur3.set( str(numerateur/g) )
+    denominateur3.set( str(denominateur/g) )
+
+    ###Historique ###
+
+    ligne = str(n1)+"/"+str(d1)+" "+operation+" "+str(n2)+"/"+str(d2)+" = "+numerateur3.get()+"/"+denominateur3.get()+"\n"
+
+        #Eviter les doublons
+    if len(listeHisto) == 0 or ligne!=listeHisto[-1]:
+        listeHisto.append(ligne)
+        #Le widget Message affiche des strings, on ne peut pas afficher la liste directement
+        #Certains ont voulu faire une boucle pour le faire, mais il y a la fonction join
+        historique["text"] = "Historique:\n" + "".join(listeHisto[-5:])
+        #La fonction join permet de prendre les elements d'une liste et les concatener sous forme de chaine
+        #De plus, on peut ajouter un caractere entre chaque element
+        #La syntaxe de join est assez speciale, c'est  "".join(liste)
+        #et dans les "" vous pouvez mettre un element a inserer entre chaque ligne
+        #Mais ici on veut juste concatener donc on laisse vide
+
+
+fenetre = Tk()
+
+#PREMIERE COLONNE
+
+etiquette = Label(fenetre, text="Fraction 1")
+etiquette.grid(row=0, column=0, sticky=N)
+
+#Premier champ, numerateur
+numerateur1 = Entry(fenetre, justify=CENTER)
+numerateur1.grid(row=1, column=0, sticky=N)
+
+#Barre de separation
+separateur = Label(fenetre, text="------------")
+separateur.grid(row=2, column=0, sticky=N)
+
+#Deuxieme champ, denominateur
+denominateur1 = Entry(fenetre, justify=CENTER)
+denominateur1.grid(row=3, column=0, sticky=N)
+
+#DEUXIEME COLONNE (radiobutton)
+
+etiquette = Label(fenetre, text="Operation")
+etiquette.grid(row=0, column=1, sticky=N)
+
+choix = IntVar()
+choix.set(1)
+
+#Ex 4.2: grace a command=calclul dans les radiobutton, le calcul est lance quand on clique sur le bouton
+r1 = Radiobutton(fenetre, text="Addition", variable=choix, value=1, command=calcul)
+r1.grid(row=1, column=1, sticky=W)
+r2 = Radiobutton(fenetre, text="Soustraction", variable=choix, value=2, command=calcul)
+r2.grid(row=2, column=1, sticky=W)
+r3 = Radiobutton(fenetre, text="Multiplication", variable=choix, value=3, command=calcul)
+r3.grid(row=3, column=1, sticky=W)
+r4 = Radiobutton(fenetre, text="Division", variable=choix, value=4, command=calcul)
+r4.grid(row=4, column=1, sticky=W)
+
+#TROISIEME COLONNE
+
+etiquette = Label(fenetre, text="Fraction 2")
+etiquette.grid(row=0, column=2, sticky=N)
+
+#Premier champ, numerateur
+numerateur2 = Entry(fenetre, justify=CENTER)
+numerateur2.grid(row=1, column=2, sticky=N)
+
+#Barre de separation
+separateur = Label(fenetre, text="------------")
+separateur.grid(row=2, column=2, sticky=N)
+
+#Deuxieme champ, denominateur
+denominateur2 = Entry(fenetre, justify=CENTER)
+denominateur2.grid(row=3, column=2, sticky=N)
+
+#Bouton quitter
+quitter = Button(fenetre, text="Quitter", command=fenetre.destroy)
+quitter.grid(row=4, column=2, sticky=N)
+
+#QUATRIEME COLONNE (=)
+
+etiquette = Label(fenetre, text="=")
+etiquette.grid(row=2, column=3, sticky=N)
+
+#CINQUIEME COLONNE
+
+etiquette = Label(fenetre, text="Resultat")
+etiquette.grid(row=0, column=4, sticky=N)
+
+#Premier champ, numerateur
+numerateur3 = StringVar()
+champ3n = Entry(fenetre, textvariable=numerateur3, justify=CENTER, state=DISABLED)
+champ3n.grid(row=1, column=4, sticky=N)
+
+#Barre de separation
+separateur = Label(fenetre, text="------------")
+separateur.grid(row=2, column=4, sticky=N)
+
+#Deuxieme champ, denominateur
+denominateur3 = StringVar()
+champ3d = Entry(fenetre, textvariable=denominateur3, justify=CENTER, state=DISABLED)
+champ3d.grid(row=3, column=4, sticky=N)
+
+#Bouton calcul
+valider = Button(fenetre, text="Calculer", command=calcul)
+valider.grid(row=4, column=4, sticky=N)
+
+#Ex 4.3 - Notez qu'il faut aussi mettre un parametre par defaut dans calcul()
+fenetre.bind("<Key>", calcul)
+
+
+
+#On initialise la liste de l'historique
+listeHisto = []
+
+#Widget Message pour afficher l'historique
+#On modifie la fonction calcul du TP04 pour qu'elle fasse l'historique
+historique = Message(fenetre, text="Historique:", width=500) #width donne la longueur max du message en pixels (pour 1 ligne)
+historique.grid(row=5, column=0, columnspan=3, sticky=W) #columnspan permet au message de s'etendre sur 3 colonnes
+
+fenetre.mainloop()
+\end{lstlisting}
+
+\end{solution}
+
+
+
+\begin{solution}[ex:fractions_tkinter_4]
+
+\begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+from Tkinter import *
+
+def gcd(numerateur, denominateur):
+    #Algorithme d'Euclide pour calculer le plus grand diviseur commun (gcd)
+    while denominateur != 0:
+        reste = numerateur % denominateur
+        numerateur = denominateur
+        denominateur = reste
+
+    return numerateur
+
+def calcul(e=None):
+    # le parametre e=None est necessaire pour l'ex 4.3
+
+    #Ceci est juste pour l'ex 4.3, pour eviter d'avoir des messages d'erreur
+    #car il tentera de faire les calculs avant que tous les champs soient remplis
+    if numerateur1.get() == "" or numerateur2.get() == "" or denominateur1.get()=="" or denominateur2.get() == "":
+        return
+
+    n1 = int(numerateur1.get())
+    d1 = int(denominateur1.get())
+    n2 = int(numerateur2.get())
+    d2 = int(denominateur2.get())
+
+    #On cherche quelle valeur est selectionnee dans la listbox
+    choix = str(listb.curselection()[0])
+
+    #Addition
+    if choix == "0":
+        choix = "+"
+        #Ici on prend simplement d1 * d2 comme denonminateur commun
+        denominateur = d1 * d2
+        numerateur = n1*d2 + n2*d1
+
+    #Soustraction
+    if choix == "1":
+        choix = "-"
+        denominateur = d1 * d2
+        numerateur = n1*d2 - n2*d1
+
+    #Multiplication
+    if choix == "2":
+        choix = "*"
+        numerateur = n1*n2
+        denominateur = d1*d2
+
+    #Division
+    if choix == "3":
+        choix = "/"
+        numerateur = n1*d2
+        denominateur = n2*d1
+
+    #Pour la simplification, on doit calculer le plus grand diviseur commun
+    g = gcd(numerateur, denominateur)
+
+    #Et on entre les valeurs de la fraction simplifiee dans le champ resultat
+    #via les textvariables.
+    numerateur3.set( str(numerateur/g) )
+    denominateur3.set( str(denominateur/g) )
+
+    ### Historique ###
+
+    if histActive: #Ex 1.3
+        #Ex 1.1
+        #On commence par preparer la ligne a mettre dans l'historique
+        ligne = str(n1)+"/"+str(d1)+" "+choix+" "+str(n2)+"/"+str(d2)+" = "+numerateur3.get()+"/"+denominateur3.get()+"\n"
+
+        #Eviter les doublons
+        if len(listeHisto) == 0 or ligne!=listeHisto[-1]:
+            listeHisto.append(ligne)
+
+            #Le widget Message affiche des strings, on ne peut pas afficher la liste directement
+            #Certains ont voulu faire une boucle pour le faire, mais il y a la fonction join
+            historique["text"] = "Historique:\n" + "".join(listeHisto[-5:]) #Ex 1.2
+
+            #La fonction join permet de prendre les elements d'une liste et les concatener sous forme de chaine
+            #De plus, on peut ajouter un caractere entre chaque element
+            #La syntaxe de join est assez speciale, c'est  "".join(liste)
+            #et dans les "" vous pouvez mettre un element a inserer entre chaque ligne
+            #Mais ici on veut juste concatener donc on laisse vide.
+
+            #Ex 1.4
+            fichier.write(ligne)
+
+def activerHist():  # fonction pour activer/desactiver l'historique
+ global histActive
+ #global permet a une variable locale de fonction de devenir globale
+ #ici on doit faire ca car histActive est utilisee dans la fonction calcul
+ histActive = not histActive;
+ if (histActive):
+  txt = "Desactiver historique" # il faut changer le texte du menu
+  historique.config(fg="Black") # ainsi que la couleur du texte d'historique
+ else:
+  txt = "Activer historique"  # il faut changer le texte du menu
+  historique.config(fg="gray")# ainsi que la couleur du texte d'historique
+
+ actmenu.entryconfig(0, label=txt)
+
+def ecraserHist():  # pour ecraser l'historique (seulement sur l'ecran)
+ global listeHisto
+ #ici aussi il faut global pour que l'affecation de la ligne suivante
+ #concerne bien la variable listeHisto en dehors de la fonction
+ listeHisto = [] # on ecrase la liste de l' historique
+ historique["text"] = "Historique:\n" # et aussi le texte
+
+
+fenetre = Tk()
+
+#PREMIERE COLONNE
+
+etiquette = Label(fenetre, text="Fraction 1")
+etiquette.grid(row=0, column=0, sticky=N)
+
+#Premier champ, numerateur
+numerateur1 = Entry(fenetre, justify=CENTER)
+numerateur1.grid(row=1, column=0, sticky=N)
+
+#Barre de separation
+separateur = Label(fenetre, text="------------")
+separateur.grid(row=2, column=0, sticky=N)
+
+#Deuxieme champ, denominateur
+denominateur1 = Entry(fenetre, justify=CENTER)
+denominateur1.grid(row=3, column=0, sticky=N)
+
+#DEUXIEME COLONNE (listbox)
+
+etiquette = Label(fenetre, text="Operation")
+etiquette.grid(row=0, column=1, sticky=N)
+
+
+#Listbox au lieu de RadioButton
+#On veut changer le script un minimum, alors on garde la variable de choix.
+#Mais on doit changer tous les choix.get() en choix tout court
+listb = Listbox(fenetre, height=4, width=5, exportselection=0)
+listb.grid(row=1, column=1, rowspan=4, sticky=N)
+
+#On remplit la liste
+for operation in ["+", "-", "*", "/"]:
+    listb.insert(END, operation)
+
+#Selection par defaut du + (evite message d'erreur moche au debut si on ne selectionne rien)
+listb.select_set(0)
+
+#Un clic sur l'element de la liste lance le calcul
+listb.bind("<Double-1>", calcul)
+
+#TROISIEME COLONNE
+
+etiquette = Label(fenetre, text="Fraction 2")
+etiquette.grid(row=0, column=2, sticky=N)
+
+#Premier champ, numerateur
+numerateur2 = Entry(fenetre, justify=CENTER)
+numerateur2.grid(row=1, column=2, sticky=N)
+
+#Barre de separation
+separateur = Label(fenetre, text="------------")
+separateur.grid(row=2, column=2, sticky=N)
+
+#Deuxieme champ, denominateur
+denominateur2 = Entry(fenetre, justify=CENTER)
+denominateur2.grid(row=3, column=2, sticky=N)
+
+#Bouton quitter
+quitter = Button(fenetre, text="Quitter", command=fenetre.destroy)
+quitter.grid(row=4, column=2, sticky=N)
+
+#QUATRIEME COLONNE (=)
+
+etiquette = Label(fenetre, text="=")
+etiquette.grid(row=2, column=3, sticky=N)
+
+#CINQUIEME COLONNE
+
+etiquette = Label(fenetre, text="Resultat")
+etiquette.grid(row=0, column=4, sticky=N)
+
+#Premier champ, numerateur
+numerateur3 = StringVar()
+champ3n = Entry(fenetre, textvariable=numerateur3, justify=CENTER, state=DISABLED)
+champ3n.grid(row=1, column=4, sticky=N)
+
+#Barre de separation
+separateur = Label(fenetre, text="------------")
+separateur.grid(row=2, column=4, sticky=N)
+
+#Deuxieme champ, denominateur
+denominateur3 = StringVar()
+champ3d = Entry(fenetre, textvariable=denominateur3, justify=CENTER, state=DISABLED)
+champ3d.grid(row=3, column=4, sticky=N)
+
+#Bouton calcul
+valider = Button(fenetre, text="Calculer", command=calcul)
+valider.grid(row=4, column=4, sticky=N)
+
+#Ex 4.3 - Notez qu'il faut aussi mettre un parametre par defaut dans calcul()
+fenetre.bind("<Key>", calcul)
+
+
+#Notez que les values pour les radiobutton ont ete changee en +-*/
+#Car dans la correction du ex. 98 il y avait un IntVar qui prenait 1234 en valeur
+#Ce qui est moins opti pour le cas ou on doit faire un historique
+#En effet, on pourra reprendre choix pour mettre le symbole de l'operation.
+
+#On initialise la liste de l'historique
+listeHisto = []
+
+#Widget Message pour afficher l'historique
+#On modifie la fonction calcul du TP04 pour qu'elle fasse l'historique
+historique = Message(fenetre, text="Historique:", width=500) #width donne la longueur max du message en pixels (pour 1 ligne)
+historique.grid(row=5, column=0, columnspan=3, sticky=W) #columnspan permet au message de s'etendre sur 3 colonnes
+
+
+#NB: les fonctions de cet exercice sont definiies en debut de script
+
+histActive = True
+
+#Menu Principal
+menubar = Menu(fenetre)
+
+#Sous-Menu actions
+actmenu = Menu(menubar, tearoff=0)
+actmenu.add_command(label="Desactiver historique", command=activerHist)
+actmenu.add_command(label="Ecraser historique", command=ecraserHist)
+actmenu.add_command(label="Quitter", command=fenetre.destroy)
+
+#On met le sous-menu dans le menu principal
+menubar.add_cascade(label="Actions", menu=actmenu)
+
+#Finalement, on attache le menu a la fenetre
+fenetre.config(menu=menubar)
+
+
+
+#On doit verifier si le fichier existe.
+#On peut le faire avec os.path.exists()
+import os
+if os.path.exists("histoire.txt"):  # si le fichier existe deja  il faut l'ouvrir en lecture/ecriture
+ modeDOuverture = "r+" #r+ permet a la fois de lire le fichier et d'ecrire
+else:
+ modeDOuverture = "w+" # il faut le creer d'abord
+
+fichier = open("histoire.txt", modeDOuverture)
+listeHisto = fichier.readlines()
+historique["text"] = "Historique:\n" + "".join(listeHisto[-5:])
+
+fenetre.mainloop()
+
+#On ferme le fichier quand l'utilisateur quitte la fenetre
+#NB: Avant que la fenetre ne soit fermee, le fichier ne sera pas fini.
+fichier.close()
+
+\end{lstlisting}
+
+
+\end{solution}
+
+
+
+\begin{solution}[ex:html_1]
+
+\begin{lstlisting}[style=verbatim]
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Ma page web</title>
+ </head>
+ <body>
+  <h1>Mon exercice sur le HTML</h1>
+   <hr />
+   <h2>Exercice 1</h2>
+    <p>A) Un paragraphe simple aligné à gauche</p>
+    <p align="center">B) Un autre paragraphe de deux lignes centré:<br />
+       avec un mot en <i>italique</i>, un autre mot en <b>gras</b> et le mot <font color="red">Attention</font> en rouge!
+    </p>
+    <p align="right">C) C'est le dernier paragraphe de la première section. <br />
+       Il est aligné à droite et contient un lien vers le site de l'<a href="http://www.unil.ch">UNIL</a>.
+    </p>
+   <hr />
+   <h2>Exercice 2</h2>
+    <p align="justify">A) Vous
+    pouvez intégrer les images dans votre page web grâce a la balise <b>&lt;img&gt;</b>.
+       L'attribut <b>src</b> de la balise devra contenir l'URL d'une image (locale ou d'internet).
+       Par exemple le logo de l'UNIL se trouve à l'adresse suivante: <br />
+       http://www.unil.ch/modules/unil-core/html/banners/unil/v14logo_unil_75.png <br />
+       <img src="http://www.unil.ch/modules/unil-core/html/banners/unil/v14logo_unil_75.png" /><br />
+       Veuillez noter que le paragraphe est justifié.
+    </p>
+    <p>B) Un tableau simple de trois lignes et deux colonnes:
+       <table border="2px solid" width="50%">
+        <tr><td>cas 1.1</td><td>cas 1.2</td></tr>
+        <tr bgcolor="gray"><td>cas 2.1</td><td>cas 2.2</td></tr>
+        <tr><td>cas 3.1</td><td>cas 3.2</td></tr>
+       </table>
+    </p>
+ </body>
+</html>
+\end{lstlisting}
+
+\begin{center}
+\includegraphics[width=0.8\textwidth]{graphics/tp12_tree_complete.pdf}
+\end{center}
+
+\end{solution}
+
+
+
+\begin{solution}[ex:html_2]
+
+\begin{lstlisting}
+def enregistreEchequier(fNom, taille):
+    code  = "<html><body>";         # nouvelle tableau dans un fichier html
+    code += "<table width="+str(taille*50)+" height="+str(taille*50)+">";
+    case  = " ";
+
+    estNoir = False;            # couleur de la case au debut
+
+    for y in range(taille):         # pour chaque ligne
+        code += "<tr>\n";         # nouvelle ligne du tableau
+        for x in range(taille):     # pour chaque case
+            if (estNoir):       # on ajoute le code d'une case
+                code += "<td width=50 align='center' bgcolor='black'>"+case+"</td>\n"
+            else:
+                code += "<td width=50 align='center' bgcolor='white'>"+case+"</td>\n"
+
+            estNoir = not estNoir;
+
+        estNoir = not estNoir;
+        code += "</tr>\n"         # le code de la fin de ligne
+
+    code += "</table>";         # le tableau se termine
+    code += "</body>";          #
+    code += "</html>";
+
+    with open(fNom, "w+") as f:     # on ouvre le fichier pour ecriture
+        f.write(code);          # on ecrit le code du tableau dans le fichier
+    #on ferme le fichier
+
+
+
+enregistreEchequier("test.html", 100);
+\end{lstlisting}
+
+
+\end{solution}
+
+
+
+\newpage
+
+\begin{solution}[ex:xml_livre]
+
+\begin{lstlisting}[style=verbatim]
+<?xml version="1.0" encoding="iso-8859-1"?>
+<livre>
+ <titre>Mon livre</titre>
+ <auteurs>
+  <auteur>
+   <nom>Brillant</nom>
+   <prenom>Alexandre</prenom>
+  </auteur>
+  <auteur>
+   <nom>Briand</nom>
+   <prenom>Aristide</prenom>
+  </auteur>
+ </auteurs>
+ <chapitres>
+  <chapitre>
+   <titre>Chapitre 1</titre>
+   <sections>
+    <section>
+     <titre>Section 1</titre>
+     <paragraphes>
+      <paragraphe>Premier paragraphe</paragraphe>
+      <paragraphe>Deuxième paragraphe</paragraphe>
+     </paragraphes>
+    </section>
+    <section>
+     <titre>Section 2</titre>
+     <paragraphes>
+      <paragraphe>Premier paragraphe</paragraphe>
+      <paragraphe>Deuxième paragraphe</paragraphe>
+     </paragraphes>
+    </section>
+   </sections>
+  </chapitre>
+  <chapitre>
+   <titre>Chapitre 2</titre>
+   <sections>
+    <section>
+     <titre>Section 1</titre>
+     <paragraphes>
+      <paragraphe>Premier paragraphe</paragraphe>
+      <paragraphe>Deuxième paragraphe</paragraphe>
+     </paragraphes>
+    </section>
+    <section>
+     <titre>Section 2</titre>
+     <paragraphes>
+      <paragraphe>Premier paragraphe</paragraphe>
+      <paragraphe>Deuxième paragraphe</paragraphe>
+     </paragraphes>
+    </section>
+   </sections>
+  </chapitre>
+ </chapitres>
+</livre>
+\end{lstlisting}
+
+Nous avons fait le choix de créer des balises supplémentaires telles que auteurs, chapitres, sections, paragraphes pour éviter de mélanger des ensembles distincts, comme le titre. Cela présente l'avantage de créer des blocs homogènes (tels que les auteurs, les chapitres, les sections...).
+
+\end{solution}
+
+
+
+\begin{solution}[ex:xml_livre_2]
+
+\begin{lstlisting}[style=verbatim]
+<?xml version="1.0" encoding="iso-8859-1"?>
+<livre titre="Mon livre">
+ <auteurs>
+  <auteur nom="Brillant" prenom="Alexandre"/>
+  <auteur nom="Briand" prenom="Aristide"/>
+ </auteurs>
+ <chapitres>
+  <chapitre titre="Chapitre 1">
+   <section titre="Section 1">
+    <paragraphe>Premier paragraphe</paragraphe>
+    <paragraphe>Deuxième paragraphe</paragraphe>
+   </section>
+   <section titre="Section 2">
+    <paragraphe>Premier paragraphe</paragraphe>
+    <paragraphe>Deuxième paragraphe</paragraphe>
+   </section>
+  </chapitre>
+  <chapitre titre="Chapitre 2">
+   <section titre="Section 1">
+    <paragraphe>Premier paragraphe</paragraphe>
+    <paragraphe>Deuxième paragraphe</paragraphe>
+   </section>
+   <section titre="Section 2">
+    <paragraphe>Premier paragraphe</paragraphe>
+    <paragraphe>Deuxième paragraphe</paragraphe>
+   </section>
+  </chapitre>
+ </chapitres>
+</livre>
+\end{lstlisting}
+Comme l'élément titre disparaît au profit de l'attribut, nous pouvons alléger notre structure en éliminant les blocs superflus, comme sections ou paragraphes.
+
+Parsing:
+\begin{lstlisting}
+# coding:utf-8
+
+import xml.etree.ElementTree as ET
+
+tree = ET.parse('livre_2.xml')
+root = tree.getroot()
+
+print "Auteurs"
+auteurs = root.find("auteurs")
+for auteur in auteurs:
+    print auteur.attrib["nom"], auteur.attrib["prenom"]
+
+print "Chapitres"
+chapitres = root.find("chapitres")
+for chapitre in chapitres:
+    titre = chapitre.attrib["titre"]
+    n_sections = len(chapitre.findall("section"))
+    print "Le chapitre", titre, "possède", n_sections, "sections."
+\end{lstlisting}
+
+
+\end{solution}
+
+\newpage
+
+
+\begin{solution}[ex:regexp_0]
+
+\begin{lstlisting}
+import re
+
+motif = r'(python)'
+if re.search(motif, "j'aime python est cool"):
+   print "match!"
+
+
+motif = r'^([0-9]|-)+$'
+if re.search(motif, "0041-342-42422-2"):
+   print "match!"
+\end{lstlisting}
+
+\end{solution}
+
+
+
+\begin{solution}[ex:regexp_1]
+
+\noindent\begin{tabularx}{\textwidth}{|c|X|X|}
+\hline
+\# & Motif & Regexp \\
+\hline
+1 & Un mot qui contient la suite de lettres ``uni'' &  \verb@^\w*uni\w*$@ \\
+\hline
+2 & Un mot qui contient la lettre ``o'' ou deux lettres ``n'' &  \verb@^\w*(o|nn)\w*$@ \\
+\hline
+3 & Un mot qui commence par les lettres ``uni'' & \verb@^uni\w*$@ \\
+\hline
+4 & Un mot qui commence par au moins un chiffre &  \verb@^\d\w*$@ \\
+\hline
+5 & Un mot qui commence par la lettre ``E'' majuscule &  \verb@^E\w*$@ \\
+\hline
+6 & Un mot qui commence ou finit par au moins deux voyelles &  \verb@^[aeyuio]{2}\w*$|^\w*[aeyuio]{2}$@ \\
+\hline
+7 & Un mot d'exactement 3 caractères &  \verb@^\w\w\w$@ \\
+\hline
+8 & Un acronyme d'au moins 3 caractères constitué de lettres majuscules &  \verb@^[A-Z]{3,}$@ \\
+\hline
+9 & Un numéro de téléphone lausannois sous sa forme locale \texttt{021-nnn-nn-nn} & \verb@^021-\d{3}(-\d{2}){2}$@ \\
+\hline
+10 & Un chiffre romain compris entre 10 et 15 inclusivement &  \verb@^X(I{0,3}|I?V)$@ \\
+\hline
+11 & Une phrase affirmative de 12 mots séparés par des espaces &  \verb@^[^\s]+(\s+[^\s]+){11}\.$@ \\
+\hline
+12 & Une phrase qui se termine par un point d'exclamation\newline où les mots sont séparés par des espaces ou des virgules &  \verb@^[^\s]+(\s+[^\s]+)+\!$@ \\
+\hline
+13 & Deux mots séparés par un trait d'union & \verb@^[^\d\s]+-[^\d\s]+$@ \\
+\hline
+14 & Un mot précédé par un article définit (i.e. le, la, les et l') &  \verb@^((l'|(le|la|les)\s)[\w]+)$@ \\
+\hline
+\end{tabularx}
+\
+
+\end{solution}
+
+
+
+\begin{solution}[ex:regexp_3]
+
+L'expression rationnelle demandée est : \verb&^[A-Z][A-Za-z]*(\ [A-Za-z]+)*\.$&
+
+Script d'exemple:
+\begin{lstlisting}
+import re
+while True:
+    s = raw_input("> ")
+    if re.match("^[A-Z][A-Za-z]*(\ [A-Za-z]+)*\.",s):
+        print "La phrase est correcte."
+    else:
+        print "La phrase n'est pas correcte."
+\end{lstlisting}
+\end{solution}
+
+
+
+\begin{solution}[ex:regexp_4]
+
+\begin{lstlisting}
+import re
+compteur = 0
+ligne = 1
+with open("charte_unil.txt") as fichier:
+    for texte in fichier.readlines():
+        n = len(re.findall("uni", texte, re.IGNORECASE))
+        if n > 0:
+            print "Le mot apparait dans la ligne", ligne
+            compteur += n
+        ligne += 1
+
+print "Le mot apparait", compteur, "fois dans le fichier."
+\end{lstlisting}
+
+\end{solution}
+
+

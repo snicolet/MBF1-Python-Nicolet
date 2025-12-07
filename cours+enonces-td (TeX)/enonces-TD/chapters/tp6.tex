@@ -1,0 +1,300 @@
+\clearpage
+\section*{TP6}
+
+\begin{exercice}[Tables de multiplication]\label{ex:tables_multiplic_1}
+Écrivez un script qui génère automatiquement un fichier texte contenant les tables de multiplication de 1 à 30 (chacune d'entre elles incluant 20 termes seulement).
+\end{exercice}
+
+
+
+\begin{exercice}[Arrondir les nombres]\label{ex:arrondir_1}
+Vous avez à votre disposition un fichier texte dont chaque ligne est la représentation d'une valeur numérique de type réel (mais sans exposants).
+
+Écrivez un script qui recopie ces valeurs dans un autre fichier en les arrondissant en nombres entiers (l'arrondi doit être correct).
+
+Prenez et enregistrez le fichier \verb$nombres.txt$ sur votre ordinateur dans le même répertoire du fichier python (.py).
+\end{exercice}
+
+
+
+
+\begin{exercice}[Comparer les fichiers]\label{ex:comparer_1}
+Écrivez un script qui compare les contenus de deux fichiers et signale la première différence rencontrée.
+
+Prenez et enregistrez les fichiers \verb$comparer_a.txt$ et \verb$comparer_b.txt$ sur votre ordinateur dans le même répertoire du fichier python (.py).
+\end{exercice}
+
+
+
+
+\begin{exercice}[Créer un fichier]\label{ex:creer_fichier_1}
+A partir de deux fichiers préexistants A et B, construisez un fichier C qui contienne alternativement un élément de A, un élément de B, un élément de A, ... et ainsi de suite jusqu'à atteindre la fin de l'un des deux fichiers originaux. Complétez ensuite C avec les éléments restant sur l'autre.
+
+Prenez et enregistrez les fichiers \verb$creer_a.txt$ et \verb$creer_b.txt$ sur votre ordinateur dans le même répertoire du fichier python (.py).
+\end{exercice}
+
+
+
+
+\begin{exercice}[Taxonomy]\label{ex:taxonomy_1}
+Consider the example about the Taxonomy data set seen in class. Make a script that reads the file \verb$names.dmp$ and extracts all the scientific names contained in that file.
+\begin{itemize}
+\item The script must create a new file with only the scientific names, one per line, in alphabetical order. If the scientific name is surrounded by single quotes (\verb$'$), remove them first.
+\item Create a function to search in the file you just created. Modify the script so that it asks the user for a string and then displays on the console all the scientific names in the file that contain that string.
+\end{itemize}
+\end{exercice}
+
+
+
+\begin{exercice}[Carrés et cubes]\label{ex:carres_cubes_1}
+Écrivez un script qui génère la liste des carrés et des cubes des nombres de 20 à 40.
+
+Écrivez un script qui génère un fichier texte contenant cette liste.
+\end{exercice}
+
+
+\begin{exercice}[Liste de nombres]\label{ex:liste_nombres_1}
+Vous disposez d'une liste de nombres entiers quelconques (utilisez le fichier que vous avez crée pour l'exercice \ref{ex:arrondir_1}), certains d'entre eux étant présent en plusieurs exemplaires.
+
+Écrivez un script qui crée la liste de ces nombres et qui recopie cette liste dans une autre, en omettant les doublons. La liste finale devra être triée.
+
+Écrivez un script qui génère un fichier texte contenant la dernière liste.
+\end{exercice}
+
+
+\clearpage
+
+\section*{TP6: Corrigé}
+
+
+\begin{solution}[ex:tables_multiplic_1]
+\begin{lstlisting}
+def tableMulti(n):
+    # Fonction générant la table de multiplication par n (20 termes)
+    # La table sera renvoyée sous forme d'une chaîne de caractères :
+    i, ch = 0, str(n) + " : \t"
+    while i < 20:        
+        i = i + 1
+        ch = ch + str(i * n) + "\t"
+    return ch
+
+NomF = input("Nom du fichier à créer : ")
+fichier = open(NomF, 'w')
+
+# Génération des tables de 1 à 30 :
+table = 1
+while table < 31:
+    fichier.write(tableMulti(table) + '\n')
+    table = table + 1
+fichier.close()
+\end{lstlisting}
+\end{solution}
+
+
+\begin{solution}[ex:arrondir_1]
+\begin{lstlisting}
+# Le fichier traité est un fichier texte dont chaque ligne contient un nombre
+# réel (sans exposants et encodé sous la forme d'une chaîne de caractères)    
+
+def valArrondie(ch):
+    "représentation arrondie du nombre présenté dans la chaîne ch"
+    f = float(ch)       # conversion de la chaîne en un nombre réel
+    e = int(f + .5)     # conversion en entier (On ajoute d'abord
+                        # 0.5 au réel pour l'arrondir correctement)
+    return str(e)       # reconversion en chaîne de caractères
+     
+fiSource = input("Nom du fichier à traiter : ")
+fiDest = input("Nom du fichier destinataire : ")
+fs = open(fiSource, 'r')
+fd = open(fiDest, 'w')
+
+while 1:
+    ligne = fs.readline()       # lecture d'une ligne du fichier
+    if ligne == "" or ligne == "\n":
+        break
+    ligne = valArrondie(ligne)
+    fd.write(ligne +"\n")
+    
+fd.close()
+fs.close()
+\end{lstlisting}
+\end{solution}
+
+
+\begin{solution}[ex:comparer_1]
+\begin{lstlisting}
+# Comparaison de deux fichiers, caractère par caractère :
+
+fich1 = input("Nom du premier fichier : ")
+fich2 = input("Nom du second fichier : ")
+fi1 = open(fich1, 'r')
+fi2 = open(fich2, 'r')
+
+c, f = 0, 0                 # compteur de caractères et "drapeau" 
+while 1:
+    c = c + 1
+    car1 = fi1.read(1)      # lecture d'un caractère dans chacun
+    car2 = fi2.read(1)      # des deux fichiers
+    if car1 =="" or car2 =="":
+        break
+    if car1 != car2 :
+        f = 1
+        break               # différence trouvée
+
+fi1.close()
+fi2.close()
+
+print("Ces 2 fichiers sont ", end="")
+if f ==1:
+    print("diffèrent à partir du caractère n ", c)
+else:
+    print("identiques.")
+\end{lstlisting}
+\end{solution}
+
+
+\begin{solution}[ex:creer_fichier_1]
+\begin{lstlisting}
+# Combinaison de deux fichiers texte pour en faire un nouveau
+
+fichA = input("Nom du premier fichier : ")
+fichB = input("Nom du second fichier : ")
+fichC = input("Nom du fichier destinataire : ")
+fiA = open(fichA, 'r')
+fiB = open(fichB, 'r')
+fiC = open(fichC, 'w')
+
+while 1:
+    ligneA = fiA.readline()    
+    ligneB = fiB.readline()
+    if ligneA =="" and ligneB =="":
+        break               # On est arrivé à la fin des 2 fichiers
+    if ligneA != "":
+        fiC.write(ligneA)
+    if ligneB != "":    
+        fiC.write(ligneB)
+
+fiA.close()
+fiB.close()
+fiC.close()
+\end{lstlisting}
+\end{solution}
+
+
+\begin{solution}[ex:taxonomy_1]
+\begin{lstlisting}
+# set the path to the file with the taxonomy names and to the destination file
+source_file = "names.dmp"
+destination_file = "sorted_list.txt"
+
+# open the source file in reading mode
+fh = open(source_file,"r")
+
+# counter for the lines in the file
+count = 0
+
+# initialise the list
+scinames = []
+
+for line in fh: # for each line
+    # this is to display what is going on
+    if count % 100000 == 0:
+        print("Processing line",count)
+    count += 1 # update the counter
+    
+    # take the line, ignore the ending, split it in a list
+    datalist = line[:-3].split("\t|\t")
+    
+    # extracts the list elements
+    name = datalist[1]
+    name_type = datalist[3]
+    
+    # if the name is a scientific name, then put it in the list
+    if name_type == "scientific name":
+        scinames.append(name.strip("'"))
+
+fh.close()
+
+# sort the list
+scinames.sort()
+
+# write the list in the destination file
+fh = open(destination_file,"w")
+
+for name in scinames:
+    fh.write(name + "\n")
+
+fh.close()
+
+def search_string(string, list_file = "sorted_list.txt"):
+    ''' Search a string in a file containing a list of names'''
+    print("Searching for the string '", string, "' in the file", list_file)
+    fh = open(list_file,"r")
+    for line in fh:
+        if string in line:
+            print("Found the string in the name:", line[:-1])
+
+
+string = input("What string to search? ")
+list_file = input("Name of the file containing the list? [press Return for default] ")
+
+if list_file == "":
+    search_string(string)
+else:
+    search_string(string, list_file)
+\end{lstlisting}
+\end{solution}
+
+
+\begin{solution}[ex:carres_cubes_1]
+\begin{lstlisting}
+nombres = "Nombres: "
+carres = "Carres: "
+cubes = "Cubes: "
+
+for i in range(20,41):
+    nombres+= str(i) + " "
+    carres+= str(i**2) + " "
+    cubes+= str(i**3) + " "
+
+nomF = input('Nom du fichier à créer : ')
+fichier = open(nomF, 'w')
+
+fichier.write(nombres + '\n')
+fichier.write(carres + '\n')
+fichier.write(cubes)
+fichier.close()
+\end{lstlisting}
+\end{solution}
+
+
+\begin{solution}[ex:liste_nombres_1]
+\begin{lstlisting}
+fiSource = input("Nom du fichier à traiter : ")
+fiDest = input("Nom du fichier destinataire : ")
+fs = open(fiSource, 'r')
+fd = open(fiDest, 'w')
+
+L1=[]
+
+while 1:
+    ligne = fs.readline()       # lecture d'une ligne du fichier
+    if ligne == "" or ligne == "\n":
+        break
+    L1.append(int(ligne))
+
+L2 = []
+for e in L1:
+    if e not in L2:
+        L2.append(e)
+L2.sort()
+
+for i in range(0,len(L2)):
+    fd.write(str(L2[i]) + '\n')
+
+fd.close()
+fs.close()
+\end{lstlisting}
+\end{solution}
+
+

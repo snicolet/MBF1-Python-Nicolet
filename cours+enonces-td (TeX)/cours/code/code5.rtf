@@ -1,0 +1,94 @@
+{\rtf1\ansi\uc0\deff0{\fonttbl{\f0\fmodern\fprq1\fcharset0;}}{\colortbl;\red125\green144\blue41;\red187\green102\blue136;\red64\green128\blue128;\red0\green128\blue0;\red102\green102\blue102;\red186\green33\blue33;\red176\green0\blue64;\red0\green0\blue128;\red0\green0\blue255;\red0\green68\blue221;\red160\green0\blue0;\red136\green136\blue136;\red187\green187\blue187;\red0\green160\blue0;\red160\green160\blue0;\red188\green122\blue0;\red25\green23\blue124;\red255\green0\blue0;\red153\green153\blue153;\red136\green0\blue0;\red187\green102\blue34;\red210\green65\blue58;\red170\green34\blue255;\red128\green0\blue128;}\f0 {\cf3\i # -*- coding: utf-8 -*-}\par
+\par
+a {\cf5 =} {\cf5 -}{\cf5 1}\par
+{\cf4\b if} a {\cf5 <} {\cf5 0}:\par
+	{\cf4 print}({\cf6 "}{\cf6 a est n{\u233}gatif}{\cf6 "})\par
+\par
+a {\cf5 =} {\cf5 1}\par
+{\cf4\b if} a {\cf5 <} {\cf5 0}:\par
+	{\cf4 print}({\cf6 "}{\cf6 a est n{\u233}gatif}{\cf6 "})\par
+\par
+a {\cf5 =} {\cf5 -}{\cf5 3}\par
+{\cf4\b if} a {\cf5 <} {\cf5 0}:\par
+	{\cf4 print}({\cf6 "}{\cf6 a est n{\u233}gatif}{\cf6 "})\par
+{\cf4\b else}:\par
+	{\cf4 print}({\cf6 "}{\cf6 a est positif ou nul}{\cf6 "})\par
+\par
+a {\cf5 =} {\cf5 2}\par
+{\cf4\b if} a {\cf5 <} {\cf5 0}:\par
+	{\cf4 print}({\cf6 "}{\cf6 a est n{\u233}gatif}{\cf6 "})\par
+{\cf4\b else}:\par
+	{\cf4 print}({\cf6 "}{\cf6 a est positif ou nul}{\cf6 "})\par
+\par
+a {\cf5 =} {\cf5 5}\par
+{\cf4\b if} a {\cf5 <} {\cf5 0}:\par
+	{\cf4 print}({\cf6 "}{\cf6 a est negatif}{\cf6 "})\par
+{\cf4\b elif} a {\cf5 ==} {\cf5 0}:\par
+	{\cf4 print}({\cf6 "}{\cf6 a est nul}{\cf6 "})\par
+{\cf4\b else}:\par
+	{\cf4 print}({\cf6 "}{\cf6 a est positif}{\cf6 "})\par
+\par
+\par
+a {\cf5 =} {\cf5 5}\par
+{\cf4\b if} a {\cf5 <} {\cf5 0}:\par
+	{\cf4 print}({\cf6 "}{\cf6 a est negatif}{\cf6 "})\par
+{\cf4\b elif} (a {\cf5 >}{\cf5 =} {\cf5 0}) {\cf23\b and} (a {\cf5 <}{\cf5 =}{\cf5 5}):\par
+	{\cf4 print}({\cf6 "}{\cf6 a est compris entre 0 et 5}{\cf6 "})\par
+{\cf4\b elif} (a {\cf5 >}{\cf5 =} {\cf5 6}) {\cf23\b and} (a {\cf5 <}{\cf5 =}{\cf5 10}):\par
+	{\cf4 print}({\cf6 "}{\cf6 a est compris entre 6 et 10}{\cf6 "})\par
+{\cf4\b else}:\par
+	{\cf4 print}({\cf6 "}{\cf6 a est sup{\u233}rieur {\u224} 10}{\cf6 "})\par
+	\par
+	\par
+{\cf3\i #for i in range(1000):}\par
+{\cf3\i #	print(i)}\par
+\par
+voyelles {\cf5 =} {\cf6 "}{\cf6 aeiouy}{\cf6 "}\par
+{\cf4\b for} x {\cf23\b in} {\cf6 "}{\cf6 il pleut}{\cf6 "}:\par
+	{\cf4\b if} x {\cf23\b in} voyelles:\par
+		{\cf4 print}(x {\cf5 +} {\cf6 "}{\cf6  est une voyelle}{\cf6 "})\par
+	{\cf4\b elif} x {\cf5 ==} {\cf6 "}{\cf6  }{\cf6 "}:\par
+		{\cf4\b pass} {\cf3\i #{\u160}ne rien faire}\par
+	{\cf4\b else}:\par
+		{\cf4 print}(x {\cf5 +} {\cf6 "}{\cf6  est une consonne}{\cf6 "})\par
+		\par
+{\cf4\b from} {\cf9\b random} {\cf4\b import} {\cf5 *}\par
+l {\cf5 =} []\par
+{\cf3\i # la fonction randint(a,b) g{\u233}n{\u232}re un entier}\par
+{\cf3\i # tir{\u233} al{\u233}atoirement entre a et b compris}\par
+{\cf4\b for} i {\cf23\b in} {\cf4 range}({\cf5 1000}):\par
+	l{\cf5 .}append(randint({\cf5 0},{\cf5 10}))\par
+somme {\cf5 =} {\cf5 0}\par
+{\cf4\b for} i {\cf23\b in} l:\par
+	somme {\cf5 +}{\cf5 =} i\par
+{\cf4 print}(somme)\par
+\par
+{\cf4\b for} word {\cf23\b in} ({\cf6 '}{\cf6 cool}{\cf6 '}, {\cf6 '}{\cf6 powerful}{\cf6 '}, {\cf6 '}{\cf6 readable}{\cf6 '}):\par
+	{\cf4 print}({\cf6 '}{\cf6 Python is }{\cf6 '} {\cf5 +} word)\par
+\par
+l {\cf5 =} []\par
+x {\cf5 =} {\cf5 0}\par
+{\cf4\b while} (x{\cf5 *}{\cf5 *}{\cf5 2} {\cf5 <}{\cf5 =} {\cf5 1000}):\par
+	l{\cf5 .}append(x{\cf5 *}{\cf5 *}{\cf5 2})\par
+	x {\cf5 +}{\cf5 =} {\cf5 1}\par
+{\cf4 print}(l)\par
+\par
+\par
+\par
+{\cf4\b from} {\cf9\b random} {\cf4\b import} {\cf5 *}\par
+d {\cf5 =} \{\}\par
+{\cf4\b for} i {\cf23\b in} {\cf4 range}({\cf5 1000}): {\cf3\i #{\u160}boucle for sur objet range}\par
+	d[i] {\cf5 =} randint({\cf5 0},{\cf5 10})\par
+\par
+{\cf3\i #{\u160}boucle for sur les cl{\u233}s du dico}\par
+{\cf4\b for} k {\cf23\b in} d{\cf5 .}keys():\par
+	{\cf4 print}(k)\par
+\par
+{\cf3\i #{\u160}boucle for sur les valeurs du dico}\par
+{\cf4\b for} k {\cf23\b in} d{\cf5 .}values():\par
+	{\cf4 print}(k)\par
+\par
+{\cf3\i #{\u160}boucle for sur les couples cl{\u233}-valeur du dico}\par
+{\cf4\b for} k {\cf23\b in} d{\cf5 .}items():\par
+	{\cf4 print}(k)\par
+}

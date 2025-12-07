@@ -1,0 +1,3 @@
+Comparison operations are supported by all objects.
+They all have the same priority.
+Comparisons can be chained arbitrarily.

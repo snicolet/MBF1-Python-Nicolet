@@ -1,0 +1,72 @@
+{\rtf1\ansi\uc0\deff0{\fonttbl{\f0\fmodern\fprq1\fcharset0;}}{\colortbl;\red0\green0\blue255;\red210\green65\blue58;\red0\green160\blue0;\red64\green128\blue128;\red187\green102\blue136;\red176\green0\blue64;\red25\green23\blue124;\red153\green153\blue153;\red187\green187\blue187;\red0\green128\blue0;\red186\green33\blue33;\red255\green0\blue0;\red170\green34\blue255;\red0\green68\blue221;\red136\green0\blue0;\red0\green0\blue128;\red160\green160\blue0;\red125\green144\blue41;\red102\green102\blue102;\red136\green136\blue136;\red187\green102\blue34;\red128\green0\blue128;\red188\green122\blue0;\red160\green0\blue0;}\f0 {\cf4\i # -*- coding: utf-8 -*-}\par
+\par
+\par
+{\cf4\i # >>> 5/0}\par
+{\cf4\i # Traceback (most recent call last):}\par
+{\cf4\i #   File "<stdin>", line 1, in <module>}\par
+{\cf4\i # ZeroDivisionError: integer division or modulo by zero}\par
+{\cf4\i # >>> 1 + "a"}\par
+{\cf4\i # Traceback (most recent call last):}\par
+{\cf4\i #   File "<stdin>", line 1, in <module>}\par
+{\cf4\i # TypeError: unsupported operand type(s) for +: 'int' and 'str'}\par
+{\cf4\i # >>> l = [1,2,3]}\par
+{\cf4\i # >>> l = ["a", "b", "c"]}\par
+{\cf4\i # >>> l[7]}\par
+{\cf4\i # Traceback (most recent call last):}\par
+{\cf4\i #   File "<stdin>", line 1, in <module>}\par
+{\cf4\i # IndexError: list index out of range}\par
+{\cf4\i # >>> l.ma_methode()}\par
+{\cf4\i # Traceback (most recent call last):}\par
+{\cf4\i #   File "<stdin>", line 1, in <module>}\par
+{\cf4\i # AttributeError: 'list' object has no attribute 'ma_methode'}\par
+{\cf4\i # >>> d = \{1 : "a", 2 : "b"\}}\par
+{\cf4\i # >>> d[3]}\par
+{\cf4\i # Traceback (most recent call last):}\par
+{\cf4\i #   File "<stdin>", line 1, in <module>}\par
+{\cf4\i # KeyError: 3}\par
+{\cf4\i # >>> }\par
+\par
+\par
+\par
+a {\cf19 =} {\cf10 input}({\cf11 "}{\cf11 Entrer un nombre: }{\cf11 "})\par
+b {\cf19 =} {\cf10 input}({\cf11 "}{\cf11 Entrer un nombre: }{\cf11 "})\par
+{\cf10\b try}:\par
+	{\cf10\b print} a {\cf19 /} {\cf10 float}(b)\par
+{\cf10\b except}:\par
+	{\cf10\b print} {\cf11 "}{\cf11 Division par 0 interdite...}{\cf11 "}\par
+	\par
+\par
+{\cf4\i # On peut specifier le type d'exception }\par
+{\cf4\i # On peut multiplier les blocs "except"}\par
+a {\cf19 =} {\cf10 input}({\cf11 "}{\cf11 Entrer un nombre: }{\cf11 "})\par
+b {\cf19 =} {\cf10 input}({\cf11 "}{\cf11 Entrer un nombre: }{\cf11 "})\par
+{\cf10\b try}:\par
+	{\cf10\b print} a {\cf19 /} {\cf10 float}(b)\par
+{\cf10\b except} {\cf2\b ZeroDivisionError}:\par
+	{\cf10\b print} {\cf11 "}{\cf11 Division par 0 interdite...}{\cf11 "}\par
+{\cf10\b except}:\par
+	{\cf10\b print} {\cf11 "}{\cf11 Autre type d}{\cf11 '}{\cf11 erreur...}{\cf11 "}\par
+\par
+\par
+\par
+{\cf10\b while} {\cf10 True}:\par
+	{\cf10\b try}:\par
+		x {\cf19 =} {\cf10 input}({\cf11 "}{\cf11 Entrer un nombre: }{\cf11 "})\par
+		{\cf10\b print} {\cf11 "}{\cf11 Ok, ceci est un nombre}{\cf11 "}\par
+		{\cf10\b break}\par
+	{\cf10\b except}:\par
+		{\cf10\b print} {\cf11 "}{\cf11 Ceci n}{\cf11 '}{\cf11 est pas un nombre, essayez encore...}{\cf11 "}\par
+\par
+\par
+\par
+{\cf10\b def} {\cf1 print_sorted}(collection):\par
+	{\cf10\b try}:\par
+		collection{\cf19 .}sort()\par
+	{\cf10\b except} {\cf2\b AttributeError}:\par
+		{\cf10\b pass}\par
+	{\cf10\b print} collection\par
+\par
+\par
+print_sorted([{\cf19 1}, {\cf19 3}, {\cf19 2}])\par
+print_sorted({\cf11 "}{\cf11 acb}{\cf11 "})\par
+}

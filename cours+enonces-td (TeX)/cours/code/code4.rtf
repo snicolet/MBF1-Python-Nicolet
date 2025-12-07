@@ -1,0 +1,207 @@
+{\rtf1\ansi\uc0\deff0{\fonttbl{\f0\fmodern\fprq1\fcharset0;}}{\colortbl;\red0\green160\blue0;\red187\green102\blue136;\red188\green122\blue0;\red64\green128\blue128;\red0\green0\blue128;\red0\green128\blue0;\red136\green0\blue0;\red136\green136\blue136;\red102\green102\blue102;\red187\green187\blue187;\red187\green102\blue34;\red210\green65\blue58;\red0\green0\blue255;\red186\green33\blue33;\red170\green34\blue255;\red125\green144\blue41;\red128\green0\blue128;\red255\green0\blue0;\red25\green23\blue124;\red160\green0\blue0;\red153\green153\blue153;\red160\green160\blue0;\red176\green0\blue64;\red0\green68\blue221;}\f0 {\cf4\i # -*- coding: utf-8 -*-}\par
+\par
+s {\cf9 =} {\cf14 "}{\cf14 Hello}{\cf14 "}\par
+{\cf6 print}({\cf6 type}(s))\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+a {\cf9 =} {\cf14 "}{\cf14 Bonnie}{\cf14 "}\par
+b {\cf9 =} {\cf14 "}{\cf14 Clyde}{\cf14 "}\par
+{\cf6 print}(a {\cf9 +} {\cf14 "}{\cf14  & }{\cf14 "} {\cf9 +} b)\par
+{\cf6 print}(a{\cf9 *}{\cf9 3})\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+a {\cf9 =} {\cf14 "}{\cf14 bonjour}{\cf14 "}\par
+{\cf6 print}(a[{\cf9 0}])\par
+{\cf6 print}(a[{\cf9 1}])\par
+{\cf6 print}(a[{\cf9 2}])\par
+{\cf6 print}(a[{\cf9 6}])\par
+{\cf6 print}(a[{\cf9 -}{\cf9 1}])\par
+{\cf6 print}(a[{\cf9 -}{\cf9 2}])\par
+{\cf6 print}(a[{\cf9 0}:{\cf9 2}])\par
+{\cf6 print}(a[{\cf9 2}:{\cf9 7}])\par
+{\cf6 print}(a[{\cf9 3}:{\cf9 4}])\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+s {\cf9 =} {\cf14 "}{\cf14 TIGRE}{\cf14 "}\par
+{\cf6 print}(s{\cf9 .}lower())\par
+{\cf6 print}(s) {\cf4\i # donc s n'est pas modifi{\u233}e!}\par
+t {\cf9 =} s{\cf9 .}lower()\par
+{\cf6 print}(t) {\cf4\i # t est une nouvelle liste cr{\u233}{\u233}e {\u224} partit de s}\par
+{\cf6 print}(s{\cf9 .}replace({\cf14 "}{\cf14 G}{\cf14 "},{\cf14 "}{\cf14 T}{\cf14 "}))\par
+{\cf6 print}(s) {\cf4\i # s n'est pas modifi{\u233}e!}\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+a {\cf9 =} {\cf14 "}{\cf14 bonjour}{\cf14 "}\par
+{\cf6 print}({\cf6 len}(a))\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+s {\cf9 =} {\cf14 "}{\cf14 TIGRE}{\cf14 "}\par
+{\cf6\b for} c {\cf15\b in} s:\par
+	{\cf6 print}(c)\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+{\cf4\i # phrase = input("Entrer une phrase: ")}\par
+{\cf4\i # # transforme les maj. en min.}\par
+{\cf4\i # phrase = phrase.lower()}\par
+{\cf4\i # # enleve les espaces}\par
+{\cf4\i # phrase = phrase.replace(" ", "")}\par
+{\cf4\i # }\par
+{\cf4\i # print(phrase)}\par
+{\cf4\i # }\par
+{\cf4\i # palindrome = True # la var bool palindrome donnera la r{\u233}ponse...}\par
+{\cf4\i # g = 0           	# indice 1er caractere de la liste}\par
+{\cf4\i # d = len(phrase) - 1 # indice dernier caractere de la liste}\par
+{\cf4\i # }\par
+{\cf4\i # while g < d:}\par
+{\cf4\i #     if phrase[g] != phrase[d]:}\par
+{\cf4\i #         palindrome = False}\par
+{\cf4\i #         break}\par
+{\cf4\i #     else:}\par
+{\cf4\i # 	    g = g + 1}\par
+{\cf4\i # 	    d = d - 1}\par
+{\cf4\i #     }\par
+{\cf4\i # if palindrome == True:}\par
+{\cf4\i # 	print("C'est un palindrome")}\par
+{\cf4\i # else:}\par
+{\cf4\i # 	print("Ce n'est pas un palindrome")}\par
+\par
+l {\cf9 =} [{\cf9 1},{\cf9 2},{\cf9 3.5},{\cf14 "}{\cf14 bonjour}{\cf14 "},{\cf6\b True}]\par
+{\cf6 print}(l)\par
+{\cf6 print}({\cf6 type}(l))\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+fruits {\cf9 =} [{\cf14 '}{\cf14 orange}{\cf14 '}, {\cf14 '}{\cf14 banane}{\cf14 '}, {\cf14 '}{\cf14 pomme}{\cf14 '}, {\cf14 '}{\cf14 cerise}{\cf14 '}]\par
+{\cf6 print}({\cf6 len}(fruits))\par
+{\cf6 print}(fruits[{\cf9 0}])\par
+{\cf6 print}(fruits[{\cf9 -}{\cf9 1}])\par
+{\cf6 print}(fruits[{\cf9 -}{\cf9 2}])\par
+{\cf6 print}(fruits[{\cf9 1}:{\cf9 3}])\par
+{\cf6 print}(fruits[{\cf6 len}(fruits){\cf9 -}{\cf9 1}])\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+l {\cf9 =} [{\cf14 "}{\cf14 jaune}{\cf14 "},{\cf14 "}{\cf14 orange}{\cf14 "},{\cf14 "}{\cf14 rouge}{\cf14 "},{\cf14 "}{\cf14 vert}{\cf14 "},{\cf14 "}{\cf14 bleu}{\cf14 "}]\par
+l[{\cf9 0}] {\cf9 =} {\cf14 "}{\cf14 jaune pale}{\cf14 "}\par
+{\cf6 print}(l)\par
+l[{\cf9 -}{\cf9 1}] {\cf9 =} {\cf14 "}{\cf14 bleu fonce}{\cf14 "}\par
+{\cf6 print}(l)\par
+l[{\cf9 2}:{\cf9 4}] {\cf9 =} [{\cf14 "}{\cf14 rouge vif}{\cf14 "},{\cf14 "}{\cf14 vert clair}{\cf14 "}]\par
+{\cf6 print}(l)\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+l {\cf9 =} [{\cf14 "}{\cf14 jaune}{\cf14 "},{\cf14 "}{\cf14 orange}{\cf14 "},{\cf14 "}{\cf14 rouge}{\cf14 "}]\par
+l{\cf9 .}append({\cf9 2.83})\par
+{\cf6 print}(l)\par
+{\cf6 print}(l{\cf9 .}count({\cf14 "}{\cf14 rouge}{\cf14 "}))\par
+l{\cf9 .}extend([{\cf9 1},{\cf9 2},{\cf9 3}])\par
+{\cf6 print}(l)\par
+{\cf6 print}(l{\cf9 .}index({\cf14 "}{\cf14 rouge}{\cf14 "}))\par
+l{\cf9 .}insert({\cf9 2},{\cf6\b True})\par
+{\cf6 print}(l)\par
+l{\cf9 .}pop({\cf9 3})\par
+{\cf6 print}(l)\par
+l{\cf9 .}remove({\cf14 "}{\cf14 jaune}{\cf14 "})\par
+{\cf6 print}(l)\par
+l{\cf9 .}reverse()\par
+{\cf6 print}(l)\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+l {\cf9 =} [{\cf9 1},{\cf9 2},{\cf14 "}{\cf14 monday}{\cf14 "},{\cf9 3},{\cf9 4},{\cf9 5},{\cf14 "}{\cf14 tuesday}{\cf14 "},{\cf9 6},{\cf9 7},{\cf9 8},{\cf9 9},{\cf9 10}]\par
+{\cf6\b for} x {\cf15\b in} l:\par
+	{\cf6\b if} {\cf6 isinstance}(x, {\cf6 str}):\par
+		{\cf6 print}(x)\par
+	{\cf6\b else}:\par
+		{\cf6\b pass}\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+l {\cf9 =} [{\cf9 1},{\cf9 2},{\cf9 3},[{\cf9 4},{\cf9 5},{\cf9 6}]]\par
+{\cf6 print}(l[{\cf9 3}])\par
+{\cf6 print}(l[{\cf9 3}][{\cf9 0}])\par
+{\cf6 print}(l[{\cf9 3}][{\cf9 1}])\par
+{\cf6 print}(l[{\cf9 3}][{\cf9 2}])\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+v1 {\cf9 =} [{\cf9 2.34}, {\cf9 4.35}, {\cf9 6.18}]\par
+v2 {\cf9 =} [{\cf9 -}{\cf9 3.74}, {\cf9 7.39}, {\cf9 18.96}]\par
+v3 {\cf9 =} [{\cf9 2.34}, {\cf9 12.83}, {\cf9 -}{\cf9 26.47}]\par
+m {\cf9 =} [v1, v2, v3]\par
+{\cf6 print}(m)\par
+{\cf6 print}(m[{\cf9 1}][{\cf9 2}])\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+{\cf6\b for} i {\cf15\b in} {\cf6 range}({\cf9 0},{\cf9 1000}):\par
+	{\cf6\b if} i{\cf9 %}{\cf9 27} {\cf9 ==} {\cf9 0}:\par
+		{\cf6 print}(i)\par
+		\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+t {\cf9 =} ({\cf9 1},{\cf9 2},{\cf9 3})\par
+{\cf6 print}({\cf6 type}(t))\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+t1 {\cf9 =} ({\cf9 1},{\cf9 2},{\cf9 3})\par
+t2 {\cf9 =} ({\cf9 4},{\cf9 5},{\cf9 6})\par
+{\cf6 print}(t1{\cf9 +}t2)\par
+{\cf4\i #t1[2] = "bonjour"}\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+identifiant {\cf9 =} [({\cf14 "}{\cf14 James}{\cf14 "},{\cf14 "}{\cf14 Dean}{\cf14 "}), {\cf14 "}{\cf14 Universit{\u233} P2}{\cf14 "}, {\cf14 "}{\cf14 M1}{\cf14 "}]\par
+identifiant[{\cf9 1}] {\cf9 =} {\cf14 "}{\cf14 Universit{\u233} Paris 6}{\cf14 "}\par
+identifiant[{\cf9 2}] {\cf9 =} {\cf14 "}{\cf14 M2}{\cf14 "}\par
+{\cf6 print}(identifiant)\par
+identifiant[{\cf9 0}] {\cf9 =} ({\cf14 "}{\cf14 James}{\cf14 "},{\cf14 "}{\cf14 Bond}{\cf14 "})\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+d {\cf9 =} \{{\cf14 "}{\cf14 Alice}{\cf14 "}: {\cf9 4328}, {\cf14 "}{\cf14 Bob}{\cf14 "}: {\cf9 4357}, {\cf14 "}{\cf14 Carmen}{\cf14 "}: {\cf9 4392}\}\par
+{\cf6 print}({\cf6 type}(d))\par
+{\cf6 print}(d)\par
+{\cf6 print}(d[{\cf14 "}{\cf14 Bob}{\cf14 "}])\par
+d[{\cf14 "}{\cf14 Dan}{\cf14 "}] {\cf9 =} {\cf9 4367}\par
+{\cf6 print}(d)\par
+{\cf6\b del} d[{\cf14 "}{\cf14 Dan}{\cf14 "}]\par
+{\cf6 print}(d)\par
+d[{\cf14 "}{\cf14 Alice}{\cf14 "}] {\cf9 =} {\cf9 1234}\par
+{\cf6 print}(d)\par
+{\cf6 print}({\cf14 "}{\cf14 Alice}{\cf14 "} {\cf15\b in} d)\par
+{\cf6 print}({\cf14 "}{\cf14 Anna}{\cf14 "} {\cf15\b in} d)\par
+{\cf6 print}({\cf14 "}{\cf14 Anna}{\cf14 "} {\cf15\b not} {\cf15\b in} d)\par
+\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+d {\cf9 =} \{{\cf14 "}{\cf14 Alice}{\cf14 "}: {\cf9 4328}, {\cf14 "}{\cf14 Bob}{\cf14 "}: {\cf9 4357}, {\cf14 "}{\cf14 Carmen}{\cf14 "}: {\cf9 4392}\}\par
+{\cf6 print}(d{\cf9 .}get({\cf14 "}{\cf14 Alice}{\cf14 "}))\par
+{\cf6 print}(d{\cf9 .}keys())\par
+{\cf6 print}(d{\cf9 .}values())\par
+d2 {\cf9 =} d{\cf9 .}copy()\par
+{\cf6 print}(d2)\par
+d{\cf9 .}clear()\par
+{\cf6 print}(d)\par
+\par
+my_dico {\cf9 =} \{{\cf14 "}{\cf14 Person1}{\cf14 "}: [{\cf14 "}{\cf14 Alice}{\cf14 "},{\cf9 2308},{\cf14 "}{\cf14 M1}{\cf14 "}], {\cf14 "}{\cf14 Person2}{\cf14 "}: [{\cf14 "}{\cf14 Bob}{\cf14 "},{\cf9 3407},{\cf14 "}{\cf14 L3}{\cf14 "}], {\cf14 "}{\cf14 Person3}{\cf14 "}: [{\cf14 "}{\cf14 Carmen}{\cf14 "}, {\cf9 3276},{\cf14 "}{\cf14 M2}{\cf14 "}]\}\par
+{\cf6\b for} k {\cf15\b in} my_dico{\cf9 .}keys():\par
+	{\cf6 print}(k,my_dico[k])\par
+\par
+{\cf6 print}({\cf14 "}{\cf14 "})\par
+\par
+{\cf6 print}({\cf6 int}({\cf14 "}{\cf14 2}{\cf14 "}))\par
+{\cf6 print}({\cf6 float}({\cf14 "}{\cf14 2.34}{\cf14 "}))\par
+{\cf6 print}({\cf6 str}({\cf9 18}))\par
+{\cf6 print}({\cf6 str}({\cf9 7.56}))\par
+{\cf6 print}({\cf6 str}([{\cf9 1},{\cf9 2},{\cf9 3}]))\par
+}

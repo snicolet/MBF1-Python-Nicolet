@@ -1,0 +1,37 @@
+{\rtf1\ansi\uc0\deff0{\fonttbl{\f0\fmodern\fprq1\fcharset0;}}{\colortbl;\red125\green144\blue41;\red102\green102\blue102;\red186\green33\blue33;\red187\green102\blue136;\red0\green128\blue0;\red210\green65\blue58;\red176\green0\blue64;\red160\green160\blue0;\red25\green23\blue124;\red64\green128\blue128;\red170\green34\blue255;\red0\green160\blue0;\red187\green187\blue187;\red0\green0\blue255;\red128\green0\blue128;\red0\green68\blue221;\red187\green102\blue34;\red160\green0\blue0;\red0\green0\blue128;\red255\green0\blue0;\red153\green153\blue153;\red136\green0\blue0;\red188\green122\blue0;\red136\green136\blue136;}\f0 {\cf10\i #!/opt/local/bin/python2.7}\par
+{\cf10\i # -*- coding: utf-8 -*}\par
+\par
+{\cf10\i # The first line is my shebang...}\par
+{\cf10\i # With this shebang, I use my version of python2.7}\par
+{\cf10\i #{\u160}It will not be the same for you, so remove or change it, accordingly.}\par
+\par
+{\cf10\i # The second line is the utf-8 encoding line}\par
+\par
+\par
+{\cf5\b from} {\cf14\b math} {\cf5\b import} {\cf2 *} {\cf10\i # importation de la librairie math}\par
+\par
+{\cf5\b print}({\cf3 "}{\cf3 Soit une {\u233}quation du second degr{\u233} a*x^2 + b*x + c:}{\cf3 "})\par
+\par
+a {\cf2 =} {\cf5 input}({\cf3 "}{\cf3 Entrer le coefficient a: }{\cf3 "})\par
+b {\cf2 =} {\cf5 input}({\cf3 "}{\cf3 Entrer le coefficient b: }{\cf3 "})\par
+c {\cf2 =} {\cf5 input}({\cf3 "}{\cf3 Entrer le coefficient c: }{\cf3 "})\par
+\par
+a {\cf2 =} {\cf5 float}(a)\par
+b {\cf2 =} {\cf5 float}(b)\par
+c {\cf2 =} {\cf5 float}(c)\par
+\par
+delta {\cf2 =} b{\cf2 *}{\cf2 *}{\cf2 2} {\cf2 -} {\cf2 4}{\cf2 *}a{\cf2 *}c\par
+\par
+{\cf5\b if} delta {\cf2 <} {\cf2 0}:\par
+	{\cf5\b print}({\cf3 "}{\cf3 Les solutions sont complexes:}{\cf3 "})\par
+	aux {\cf2 =} {\cf2 0} {\cf2 +} (sqrt({\cf2 -}delta)){\cf2 *}{\cf2 1j} {\cf10\i # cr{\u233}ation du nombre complexe sqrt(delta)}\par
+	{\cf5\b print}( ({\cf2 -}b {\cf2 +} aux) {\cf2 /} ({\cf2 2}{\cf2 *}a) )\par
+	{\cf5\b print}( ({\cf2 -}b {\cf2 -} aux) {\cf2 /} ({\cf2 2}{\cf2 *}a) )\par
+{\cf5\b elif} delta {\cf2 ==} {\cf2 0}:\par
+	{\cf5\b print}({\cf3 "}{\cf3 Une seule solution:}{\cf3 "})\par
+	{\cf5\b print}( {\cf2 -}b {\cf2 /} ({\cf2 2}{\cf2 *}a) )\par
+{\cf5\b else}:\par
+	{\cf5\b print}({\cf3 "}{\cf3 Deux solutions:}{\cf3 "})\par
+	{\cf5\b print}( ({\cf2 -}b {\cf2 +} sqrt(delta)) {\cf2 /} ({\cf2 2}{\cf2 *}a) )\par
+	{\cf5\b print}( ({\cf2 -}b {\cf2 -} sqrt(delta)) {\cf2 /} ({\cf2 2}{\cf2 *}a) )\par
+}

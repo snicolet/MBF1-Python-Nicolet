@@ -1,0 +1,440 @@
+\section{Chapitre 2: Types de donn\'ees}
+
+\setcounter{exercice}{0}
+
+\bigskip
+
+
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+
+
+% *** CHAINES *** %
+\begin{myboxi}[Rappel sur les cha\^ines de caract\`eres] 
+Les cha\^ines de caract\`eres sont donn\'ees entre guillemets. Par exemple: \inlinecode{s = "bonjour"}.
+
+\medskip
+
+Comme d\'ej\`a mentionn\'e, l'acc\`es aux \'el\'ements et aux sous-cha\^ines d'une cha\^ine \inlinecode{s} s'effectue via les instructions \inlinecode{s[n]}, \inlinecode{s[-n]}, \inlinecode{s[m:n]}, \inlinecode{s[m:]} et \inlinecode{s[:n]}.
+
+\medskip
+
+Les cha\^ines de caract\`eres sont des structures de donn\'ees non modifiables. Cela signifie que nous ne pouvons pas proc\'eder \`a des r\'eaffectation de leurs \'el\'ements:
+\begin{lstlisting}
+>>> s =  "abba"
+>>> s[2] = "z"
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object does not support item assignment
+\end{lstlisting}
+
+\medskip
+
+Le parcours d'une cha\^ine de caract\`eres s'effectue via les instructions:
+\begin{lstlisting}
+for variable in chaine:
+	instructions...
+\end{lstlisting}
+
+\medskip
+
+Il existe diverses m\'ethodes sur les cha\^ines de caract\`eres, nous en aborderons quelques unes.
+\end{myboxi}
+
+
+\medskip
+\begin{myboxi}[Rappel sur les tests conditionnels \inlinecode{if... else...}]
+En Python, un tel test conditionnel \inlinecode{if... else...} est obtenu via la syntaxe suivante (les blocs \inlinecode{elif} et \inlinecode{else} sont facultatifs):
+\begin{lstlisting}
+if condition:
+	instructions...
+elif:
+	instructions...
+...
+else:
+	instructions...
+\end{lstlisting}
+\end{myboxi}
+
+
+
+
+
+\medskip
+\begin{exercice}[cha\^ines de caract\`eres] \label{TD2ex1}
+\
+
+\vspace{-1.5ex}
+\begin{enumerate}
+\item Initialisez une variables \inlinecode{c} contenant la cha\^ine de caract\`eres contenant des chiffres et des lettres, du type \inlinecode{"X44bf38j23jdjgfjh737nei47"}.
+\item \'Ecrivez un programme qui construit deux cha\^ines de caract\`eres  \inlinecode{c_alpha} et \inlinecode{c_num} telles que \inlinecode{c_alpha} repr\'esente la suite des lettres de \inlinecode{c} et \inlinecode{c_num} repr\'esente la suite des chiffres de \inlinecode{c}. Effectuez un parcours de votre cha\^ine et utilisez un test conditionnel ainsi que les m\'ethodes \inlinecode{str.isalpha()} et \inlinecode{str.isdigit()} qui permettent de d\'eterminer si la cha\^ine \inlinecode{str} est compos\'ee de caract\`eres alphab\'etiques ou num\'eriques.
+\item \'Ecrivez un programme qui d\'etermine si la sous-cha\^ine \inlinecode{j23} appara\^it dans votre cha\^ine, et, si c'est le cas, qui la remplace par \inlinecode{j24}. La cha\^ine de d\'epart \inlinecode{c} devra donc \^etre modifi\'ee dans ce cas. Utilisez un test conditionnel ainsi que les m\'ethodes \inlinecode{str.find()} et \inlinecode{str.replace()} qui permettent de retrouver et remplacer des sous-cha\^ines dans la cha\^ine \inlinecode{str}.
+\item \'Ecrivez un programme qui d\'etermine si la sous-cha\^ine \inlinecode{f37} appara\^it dans votre cha\^ine, mais pas forc\'ement de mani\`ere cons\'ecutive. En utilisant la m\'ethode \inlinecode{str.find()}, recherchez le premier indice d'apparition du caract\`ere \inlinecode{f}, puis celui de \inlinecode{3}, puis celui de \inlinecode{7} et v\'erifiez que ces indices forment bien une suite croissante.
+\end{enumerate}
+\end{exercice}
+
+
+
+
+\medskip
+\begin{exercice}[cha\^ines de caract\`eres] \label{TD2ex2}
+\
+
+\vspace{-1.5ex}
+\begin{enumerate}
+\item Initialisez une variables \inlinecode{texte} contenant la cha\^ine de caract\`eres suivante:\\
+\inlinecode{"We introduce here the Python language"}
+\begin{enumerate}
+\item Cr\'eez un script qui compte le nombre de caract\`eres de cette cha\^ine. Vous initialiserez une variable ``compteur'' \`a $0$, puis, \`a chaque caract\`ere parcouru, incr\'ementerez cette variable. V\'erifiez que votre r\'esultat corresponde bien \`a celui de l'instruction \inlinecode{len(texte)}.
+\item Cr\'eez un autre script qui compte le nombre de caract\`eres de cette cha\^ine qui ne sont pas des espaces. Pensez \`a utiliser un test conditionnel dont la syntaxe est d\'ecrite ci-dessus.
+\item Sachant que dans cette cha\^ine de caract\`eres, les mots sont s\'epar\'es par des espaces, cr\'eez un script qui compte le nombre de mots de cette cha\^ine. Pensez encore une fois \`a utiliser un test conditionnel.
+\end{enumerate}
+\item Initialisez une variables \inlinecode{texte2} contenant le texte suivant:
+\begin{center}
+\inlinecode{"We introduce here the Python language. To learn more about the language, consider going through the excellent tutorial https://docs.python.org/tutorial. Dedicated books are also available, such as http://www.diveintopython.net/."}\\ 
+\end{center}
+Dans cette cha\^ine de caract\`eres, les mots ne sont plus uniquement s\'epar\'es par des espaces, mais \'egalement par des symboles de ponctuation. Testez votre script qui compte le nombre de mots sur cette cha\^ine de caract\`eres. Votre script est-il toujours valable? Si oui, pourquoi? Sinon, comment devez-vous le modifier? On aimerait que chaque adresse web ne soit compt\'ee que comme un seul mot.
+\end{enumerate}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[TD2ex2]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+\clearpage
+% *** LISTES *** %
+\begin{myboxi}[Rappel sur les listes] 
+Les listes sont donn\'ees entre crochets, les \'el\'ements \'etant s\'epar\'es par des virgules. Par exemple: \inlinecode{ma_liste = [1, 2, 3]}
+
+\medskip
+
+L'acc\`es aux \'el\'ements et aux sous-listes d'une liste \inlinecode{l} s'effectue par la m\^eme syntaxe que pour les cha\^ines: on utilise les instructions  \inlinecode{l[n]}, \inlinecode{l[-n]}, \inlinecode{l[m:n]}, \inlinecode{l[m:]} et \inlinecode{l[:n]}.
+
+\medskip
+
+Contrairement aux cha\^ines, les listes sont des structures de donn\'ees modifiables. Cela signifie que nous pouvons proc\'eder \`a des r\'eaffectation de leurs \'el\'ements:
+\begin{lstlisting}
+>>> l =  [2, "abba", 3.7, True]
+>>> l[2] = 101
+>>> print l
+[2, 'abba', 101, True]
+\end{lstlisting}
+
+\medskip
+
+Le parcours d'une liste s'effectue via les instructions:
+\begin{lstlisting}
+for variable in liste:
+	instructions...
+\end{lstlisting}
+
+\medskip
+
+Il existe diverses m\'ethodes sur les listes, nous en aborderons quelques unes.
+\end{myboxi}
+
+
+
+
+\medskip
+\begin{exercice}[Listes] \label{TD2ex3}
+\
+
+\begin{enumerate}
+\item Cr\'eez un programme qui demande \`a l'utilisateur d'entrer trois mots \`a la suite, puis renvoie les trois mots tri\'es par ordre alphab\'etique. Utilisez une liste pour stocker les trois mots. Construisez et triez la liste gr\^ace aux m\'ethodes \inlinecode{append()} et \inlinecode{sort()}, respectivement.
+\item Modifiez votre programme de mani\`ere \`a ce que l'utilisateur puisse entrer autant de mots qu'il le souhaite. Le processus de saisie s'arr\^ete lorsque l'utilisateur entre le mot ``FIN''. Utilisez une boucle \inlinecode{while}.
+\end{enumerate}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[TD2ex3]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+\medskip
+\begin{exercice}[Listes] \label{TD2ex4}
+\
+
+\noindent On consid\`ere les deux listes suivantes:
+\begin{flushleft}
+\inlinecode{couleurs = ["Pique", "Trefle", "Carreaux", "Coeur"]} \\
+\inlinecode{valeurs = [2, 3, 4, 5, 6, 7, 8, 9, 10, "valet", "dame", "roi", "as"]} 
+\end{flushleft}
+\begin{enumerate}
+\item \`A partir de ces deux listes, g\'en\'erer une liste \inlinecode{cartes} contenant toutes les 52 cartes sous forme de cha\^ines de caract\`eres. Utilisez un double parcours de ces listes, c'est-\`a-dire une double boucle for, ainsi que la m\'ethode \inlinecode{list.append()}.
+\item Importez la fonction \inlinecode{shuffle} de la librairie \inlinecode{random} gr\^ace \`a l'instructions \inlinecode{from random import shuffle}. Cette fonction \inlinecode{shuffle()} permet de m\'elanger une liste. M\'elangez alors la liste de vos cartes.
+\item Cr\'eez ensuite quatre listes \inlinecode{joueur1}, \inlinecode{joueur2}, \inlinecode{joueur3} et \inlinecode{joueur4} qui correspondent \`a la distribution votre jeu de cartes m\'elang\'e \`a quatre joueurs diff\'erents. Les cartes doivent \^etre distribu\'ees une par une et \`a tour de r\^ole. Utilisez un compteur qui compte modulo $4$ pour simuler la distribution aux joueurs \`a tour de r\^ole. Utilisez un test conditionnel avec des conditions ``elif''.
+\end{enumerate}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[TD2ex4]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+
+\medskip
+\begin{exercice}[Listes, fichiers et listes de listes] \label{TD2ex5}
+\
+
+\noindent Le fichier \inlinecode{diamonds.csv} contient des donn\'ees d'environ $54000$ diamants. Nous allons r\'ecolter ces donn\'ees sous forme de listes afin de pouvoir les manipuler. 
+\begin{enumerate}
+\item Copiez le fichier \inlinecode{diamonds.csv} dans le r\'epertoire dans lequel se trouve votre script actuel. En Python, il est possible de lire ce fichier et de cr\'eer une liste des lignes de ce fichier. Pour cela, utilisez instructions suivantes:
+\begin{lstlisting}
+with open("diamonds.csv", "r") as f:
+	diamants = f.readlines()
+\end{lstlisting}
+La liste cr\'e\'ee s'appelle \inlinecode{diamants}. Les \'el\'ements de cette liste sont des cha\^ines de caract\`eres qui correspondent aux lignes du fichier. Quelle est la longueur de cette liste? Afficher les premier, deuxi\`eme et troisi\`eme \'el\'ements de cette liste. Remarquer que le premier \'el\'ement de la liste correspond aux variables mesur\'ees sur les diamants. Les autres lignes correspondent aux donn\'ees proprement dites.
+\item On aimerait maintenant que chaque \'el\'ement de la liste soit une liste plut\^ot qu'une cha\^ine de caract\`eres. Pour cela, on utilise la m\'ethode \inlinecode{split()} qui permet de couper une cha\^ine en une liste d'\'el\'ements. Cette m\'ethode est illustr\'ee ci-dessous:
+\begin{lstlisting}[style=verbatim]
+>>> diamants[2]								# chaine de caracteres
+'0.21,"Premium","E",59.8,326,3.89,3.84,2.31\n'
+>>> diamants[2].split(",")		# chaine transformee en liste
+['0.21', '"Premium"', '"E"', '59.8', '326', '3.89', '3.84', '2.31\n']
+\end{lstlisting}
+Testez cette commande. \'Ecrivez un programme qui applique la m\'ethode \inlinecode{split()} \`a touts les \'el\'ements de votre liste \inlinecode{diamants}. Utilisez un parcours de la liste \inlinecode{diamants} et un compteur qui rerp\'esente le num\'ero de ligne courant.
+\item Cr\'eez une liste \inlinecode{diamants_100} qui contient les $100$ \'el\'ements de la liste \inlinecode{diamants} qui succ\`edent au tout premier \'el\'ement. Affichez les $20$ premiers \'el\'ements de \inlinecode{diamants_100}.
+\item Cr\'eez une liste \inlinecode{diamants_prix} qui contient les prix des $54000$ diamants convertis en nombres r\'eels (type \inlinecode{float}). Utilisez un parcours de la liste \inlinecode{diamants_prix}. Affichez les $20$ premiers \'el\'ements de \inlinecode{diamants_100}.
+\end{enumerate}.
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[TD2ex5]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+\clearpage
+% *** TUPLES *** %
+\begin{myboxi}[Rappel sur les tuples] 
+Les tuples sont donn\'ees entre parenth\`eses, les \'el\'ements \'etant s\'epar\'es par des virgules. Par exemple: \inlinecode{ma_tuple = (1, 2, 3)}
+
+\medskip
+
+L'acc\`es aux \'el\'ements et aux sous-tuples d'un tuple \inlinecode{t} s'effectue par la m\^eme syntaxe que pour les listes: on utilise les instructions  \inlinecode{t[n]}, \inlinecode{t[-n]}, \inlinecode{t[m:n]}, \inlinecode{t[m:]} et \inlinecode{t[:n]}.
+
+\medskip
+
+Contrairement aux listes, les tuples sont des structures de donn\'ees non modifiables. Cela signifie que nous ne pouvons pas proc\'eder \`a des r\'eaffectation de leurs \'el\'ements, ni modifiez leur logueur, etc.:
+\begin{lstlisting}
+>>> t = (1, 2, 3, "good", True)
+>>> t[3] = "bad"
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+>>> t.append(28.45)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'tuple' object has no attribute 'append'
+\end{lstlisting}
+
+\medskip
+
+Le parcours d'un tuple s'effectue via les instructions:
+\begin{lstlisting}
+for variable in tuple:
+	instructions...
+\end{lstlisting}
+\end{myboxi}
+
+
+
+\medskip
+\begin{exercice}[Listes de tuples] \label{TD2ex6}
+\
+
+\begin{enumerate}
+\item Cr\'eez un programme qui demande \`a l'utilisateur d'entrer le pr\'enom, le nom et le num\'ero de matricule d'un \'etudiant, puis stocke ces informations dans un tuple \`a trois \'el\'ements. Affichez ce tuple \`a l'\'ecran. L'int\'er\^et d'utiliser un tuple dans ce cas r\'eside dans le fait de ne pas pouvoir modifier les informations d'un \'etudiant, ce qui est plus s\'ecuris\'e.
+\item Modifiez votre programme de mani\`ere \`a ce que l'utilisateur puisse entrer autant de saisies qu'il le souhaite. Le processus de saisie s'arr\^ete lorsque l'utilisateur entre le mot ``FIN''. La liste des \'etudiants saisis sera stock\'ee dans une liste de tuples. Utilisez une boucle \inlinecode{while}.
+\item Affichez de mani\`ere conviviale tous les \'etudiants de votre liste construite au point pr\'ec\'edent. Utilisez un parcours de liste.
+\end{enumerate}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[TD2ex6]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+\clearpage
+% *** DICTIONNAIRES *** %
+\begin{myboxi}[Rappel sur les dictionnaires] 
+Les dictionnaires sont des couples d'\'el\'ements ``cl\'e-valeur'' donn\'es entre accolades; les cl\'es sont s\'epar\'ees de leurs valeurs correspondantes par des double points, et les couples ``cl\'e-valeur'' sont s\'epar\'es entre eux par des virgules. Par exemple:
+\begin{lstlisting}
+mon_dico = {"FR" : 643801, "DE" : 357168, "GB" : 229848}
+\end{lstlisting}
+
+\medskip
+
+L'acc\`es \`a la valeur correspondante \`a la cl\'e \inlinecode{key} d'un dictionnaire \inlinecode{d} s'effectue via l'instruction \inlinecode{d[key]}. L'affectation d'une valeur \inlinecode{value}  \`a une cl\'e \inlinecode{key} d'un dictionnaire \inlinecode{d} s'effectue via l'instruction \inlinecode{d[key] = value}.
+
+\medskip
+
+Tout comme les listes, les dictionnaires sont des structures de donn\'ees modifiables. Cela signifie que nous pouvons proc\'eder \`a des r\'eaffectation de leurs \'el\'ements:
+\begin{lstlisting}
+>>> mon_dico = {"FR" : 643801, "DE" : 357168, "GB" : 229848}
+>>> mon_dico["DE"] = 257200
+>>> mon_dico
+{'DE': 257200, 'GB': 229848, 'FR': 643801}
+>>> mon_dico["BE"] = 30528
+>>> mon_dico
+{'DE': 257200, 'GB': 229848, 'BE': 30528, 'FR': 643801}
+>>> del mon_dico["FR"]
+>>> mon_dico
+{'DE': 257200, 'GB': 229848, 'BE': 30528}
+\end{lstlisting}
+
+\medskip
+
+Le parcours des cl\'es, des valeurs, ou des couples ``cl\'e-valeur'' d'un dictionnaire s'effectue via les quatre types d'instructions suivantes:
+\begin{lstlisting}
+# par defaut, le parcours d'un dico correspond parcours de ses cles
+# dans le cas ci-dessous, "variable" prend les valeurs de cles du dico
+for variable in dico:
+	instructions...
+# la syntaxe suivante est plus precise mais equivalente
+for variable in dico.keys():
+	instructions...
+# pour le parcours des valeurs d'un dico
+for variable in dico.values():
+	instructions...
+# pour le parcours des couples "cle-valeur" d'un dico
+for variable_cle, variable_valeur in dico.items():
+	instructions...
+\end{lstlisting}
+
+\medskip
+
+Il existe diverses m\'ethodes sur les dictionnaires, nous en aborderons quelques unes.
+\end{myboxi}
+
+
+
+
+
+
+\medskip
+\begin{exercice}[Dictionnaires] \label{TD2ex7}
+\
+
+\noindent Cet exercice correspond \`a une g\'en\'eralisation de l'exercice $6$ dans le cas des dictionnaires.
+\begin{enumerate}
+\item Cr\'eez un dictionnaire qui contient comme cl\'es un certain nombres de mots en fran\c{c}ais et comme valeurs la traduction de ces mots en anglais. Ce dictionnaire fait donc office de traducteur fran\c{c}ais-anglais.
+\item Ajouter \`a votre dictionnaire le couple cl\'e-valeur \inlinecode{"cerveau" : "brain"}.
+\item Recherchez si votre dictionnaire contient la traduction du mot ``cerveau'', et si tel est, le cas, affichez sa traduction anglaise. Effectuez un parcours par cl\'es de votre dictionnaire.
+\item Cr\'eez un nouveau dictionnaire dont les cl\'es et valeurs correspondent aux valeurs et aux cl\'es de votre dictionnaire pr\'ec\'edent. Ainsi, votre nouveau dictionnaire fera office de traducteur anglais-fran\c{c}ais au lieu de fran\c{c}ais-anglais. Pour construire ce nouveau dictionnaire, utilisez un parcours cl\'e-valeur de votre dictionnaire initial.
+\item Recherchez si votre dictionnaire contient la traduction du mot ``brain''. 
+\item Recherchez si votre dictionnaire contient la valeur ``cerveau'' et si tel est le cas, afficher sa cl\'e correspondante. Effectuez un parcours cl\'es-valeurs de votre dictionnaire.
+\item Modifiez votre dictionnaire de d\'epart de sorte que les valeurs ne soient plus des simples mots anglais, mais des listes de mots correspondant \`a autant de traductions possibles de vos cl\'es.
+\item Ajouter \`a votre nouveaux dictionnaire le couple cl\'e-valeur \inlinecode{"chemin" : ["path", "way"]}.
+\item Recherchez la deuxi\`eme traduction du mot ``chemin''.
+\item Effacez la cl\'e ``chemin'' et sa valeur correspondante de votre dictionnaire (fonction \inlinecode{del}).
+\end{enumerate}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[TD2ex7]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+\medskip
+\begin{exercice}[Dictionnaire de tuples] \label{TD2ex7}
+\
+
+\noindent Cet exercice correspond \`a une g\'en\'eralisation de l'exercice $6$ dans le cas des dictionnaires.
+\begin{enumerate}
+\item Cr\'eez un programme qui demande \`a l'utilisateur d'entrer le pr\'enom, le nom et le num\'ro de matricule d'un \'etudiant, puis stocke ces informations dans un dictionnaire. Les cl\'es du dictionnaires correspondront aux noms des \'etudiants et ses valeurs seront des tuples \`a trois \'el\'ements (pr\'enom, nom, matricule). Affichez ce dictionnaire \`a l'\'ecran. L'int\'er\^et d'utiliser un dictionnaire dans ce cas r\'eside dans le fait de pouvoir acc\'eder aux informations des \'etudiants \`a leur noms.
+\item Modifiez votre programme de mani\`ere \`a ce que l'utilisateur puisse entrer autant de saisies qu'il le souhaite. Le processus de saisie s'arr\^ete lorsque l'utilisateur entre le mot ``FIN''. Le dictionnaire des \'etudiants saisis sera stock\'ee dans une liste de tuples. Utilisez une boucle \inlinecode{while}.
+\item Affichez de mani\`ere conviviale tous les \'etudiants de votre dictionnaire construit au point pr\'ec\'edent. Utilisez un parcours par cl\'es de votre dictionnaire.
+\item En utilisant la syntaxe \inlinecode{in} ou la m\'ethode \inlinecode{has_key}\footnote{Cette m\'ethode ne fonctionne plus en Python 3.}, d\'eterminer si un \'etudiant du nom de ``Obama'' appartient \`a votre dictionnaire, et, si tel est le cas, renvoyez les informations cet l\'etudiant.
+\item Cr\'eez un script qui d\'etermine si le num\'ero de matricule $12345678$ existe dans votre dictionnaire, et si tel est le cas, renvoyez les informations de l\'etudiant correspondant. Utilisez un parcours ``cl\'e-valeur'' de votre dictionnaire.
+\item Question subsidiaire. Dans l'\'etat actuel de votre programme, il est impossible d'enregistrer deux \'etudiants qui portent le m\^eme nom. Pourquoi cela? Modifier votre programme du point $2$ de mani\`ere \`a pouvoir enregistrer des \'etudiants portant le m\^eme nom. Pour cela, les cl\'es de votre dico ne devront plus correspondre uniquement au nom des \'etudiants: mais attention, les cl\'es ne peuvent pas \^etre des listes, tuples, etc.
+\end{enumerate}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[TD2ex7]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+%\begin{filecontents*}{temp.tex}
+%
+%\begin{solution}[ex:]
+%
+%\end{solution}
+%
+%
+%\end{filecontents*}
+%\appendsolution
+
+

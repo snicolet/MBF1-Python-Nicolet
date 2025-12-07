@@ -1,0 +1,15 @@
+Librairies à installer
+**********************
+
+
+pandas-datareader
+pip3 install pandas-datareader
+
+yfinance	
+pip3 install yfinance --upgrade --no-cache-dir
+
+fix_yahoo_finance
+pip3 install fix_yahoo_finance --upgrade --no-cache-dir
+
+quandl
+pip3 install quandl

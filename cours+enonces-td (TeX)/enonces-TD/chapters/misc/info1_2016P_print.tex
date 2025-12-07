@@ -1,0 +1,3783 @@
+
+\section{Introduction à Python et installation}
+
+Veuillez accéder dans un navigateur web au site \url{http://www.python.org}, cliquez sur ``Download'' dans le menu de la navigation à gauche de la page, puis
+\begin{description}
+\item[sur Mac OSX:]
+téléchargez le package d'installation Python 2.7.10 Mac OS X 32-bit i386/PPC Installer, lancez-le et suivez les instructions.
+\item[sur Windows:] téléchargez le package d'installation Python 2.7.10 Windows Installer, lancez-le, suivez les instructions.
+\end{description}
+
+
+Attention: pour cela, vous aurez besoin de droits d'administrateur.
+
+Dans les exemples suivants, les entrées (au clavier) et les sorties (à l'écran) se distinguent par la présence, ou respectivement l'absence, des invites ``\verb#>>>#'': afin de reproduire l'exemple, vous devez taper tout ce qui se trouve après l'invite et avant le caractère délimitant un commentaire (\verb$#$). Toutes les commandes se terminent par un retour de chariot (return). Les lignes qui ne commencent pas par une invite sont une réponse (sortie) de l'interpréteur Python.
+
+La plupart des exemples contiennent des commentaires. Les commentaires en Python commencent par le caractère dièse, ``\verb$#$'', et s'étendent à la fin de la ligne. Un commentaire peut commencer au début d'une ligne ou à la suite d'espaces ou de code, mais pas à l'intérieur d'une chaîne littérale (chaîne de caractères ou STRING) délimitée par des guillemets. Un dièse au sein de la chaîne littérale est juste un dièse.
+
+
+Un exemple:
+
+\begin{lstlisting}
+# Ceci est le premier commentaire
+spam = 1	   # et c'est le deuxième commentaire
+             # ... et maintenant un troisième
+string =    "# Ceci n'est pas un commentaire."
+\end{lstlisting}
+
+
+
+%
+%
+%\begin{wrapfigure}[5]{r}{0.2\textwidth}
+%    \includegraphics[width=0.18\textwidth]{graphics/tp1_idle_icon.png}
+%\end{wrapfigure} 
+%Le package d'installation contient les outils nécessaires pour commencer à apprendre Python. Il s'agit de l'interpréteur du langage et d'un éditeur de code qui forment un environnement de développement IDLE.
+%
+%\vspace{3em}
+%Pour lancer l'interpréteur, cliquez sur l'icône IDLE qui se trouve
+%
+%
+%
+%
+%\begin{description}
+%\item[sur Mac OSX] (y compris les ordinateurs de la salle du tapis vert):
+%dans le dossier Applications → IDLE2.7. 
+%\item[sur Windows Vista/7:]
+%dans le menu Démarrer → Tous les programmes → IDLE2.7. 
+%\end{description} 
+%
+%Une fois l'IDLE chargé, vous aurez l'invite ``\verb#>>>#''. Tous ce que vous taperez dès lors sera interprété par Python. Vous pouvez quitter l'interpréteur Python avec la commande "\inlinecode{exit()}" ou en appuyant Ctrl+D.
+%
+%Vous pouvez placer l'icône de l'IDLE sur le bureau ou dans le dock afin qu'il soit plus aisé de le trouver pour les semaines à venir.
+%
+
+
+
+\begin{figure}[h!]
+  \caption{L'interprète Python.}
+  \centering
+  \includegraphics[scale=0.8]{graphics/tp1_1.png} 
+\end{figure}
+
+
+
+\newpage
+\section{Environnement Python}
+
+
+\begin{exercice}[Nombres entiers et décimaux] \label{ex:nombres_1}
+L'interpréteur peut également agir comme une simple calculatrice: vous pouvez taper une expression et l'interpréteur vous retournera la valeur résultante. La syntaxe est simple: les opérateurs \verb#+#, \verb#-#, \verb#*# et \verb#/# fonctionnent comme dans la plupart des calculatrices, des parenthèses peuvent être utilisées pour le groupement. Rappelez-vous de ne taper que les lignes commençant par une invite et de les exécuter avec un retour de chariot. 
+
+Essayez les exemples suivants:
+\begin{lstlisting}[style=verbatim]
+>>> 2 + 2
+4
+>>> 2+2      # sans les espaces
+4
+>>> 2 +2     # et un commentaire sur la même ligne que le code
+4
+>>> (50 - 5 * 6) / 4
+5
+\end{lstlisting}
+Attention: La division de 2 entiers retourne un entier, arrondi à l'entier inférieur ;
+\begin{lstlisting}[style=verbatim]
+>>> 7 / 3 # la division entière retourne:
+2
+>>> 7 / -3
+-3
+\end{lstlisting}
+
+Le reste de la division entière est obtenu avec l'opérateur modulo ``\verb$%$'':
+\begin{lstlisting}[style=verbatim]
+>>> 7 % 3
+1
+\end{lstlisting}
+
+Si vous voulez faire une division décimale, au moins l'un des 2 membres de l'expression doit être décimal.
+\begin{lstlisting}[style=verbatim]
+>>> 1 / 4.0
+0.25
+>>> 3.0 / 10 	
+0.3
+>>> 10.0 / 3.0		# soyez attentif aux arrondis
+3.3333333333333335
+\end{lstlisting}
+Pour travailler avec des arrondis, vous pouvez utiliser la fonction round.
+\begin{lstlisting}[style=verbatim]
+>>> round(10.0 / 3)
+3.0
+>>> round(10.0 / 3, 2)
+3.33
+\end{lstlisting}
+
+Le signe égal ("=") est utilisé pour assigner une valeur (numérique ou chaîne de caractères) à une variable. Notez qu'aucun résultat n'est affiché avant la prochaine interaction:
+\begin{lstlisting}[style=verbatim]
+>>> largeur = 20
+>>> hauteur = 5 * 9
+>>> largeur * hauteur
+900
+\end{lstlisting}
+
+Une valeur peut être affectée à plusieurs variables simultanément. Vous pouvez afficher la valeur d'une variable simplement en tapant son nom suivit d'un return:
+\begin{lstlisting}[style=verbatim]
+>>> x = y = z = 0 	# zéro est affecté à x, y et z
+>>> x
+0
+>>> y
+0
+>>> z
+0
+\end{lstlisting}
+
+Notez que les noms de variables sont sensibles à la casse (majuscule):
+\begin{lstlisting}[style=verbatim]
+>>> Age = 18
+>>> age = 25
+>>> Age
+18
+>>> age
+25
+\end{lstlisting}
+
+Vous pouvez assigner le résultat d'une opération utilisant des variables à une autre variable (ou à une variable existante):
+\begin{lstlisting}[style=verbatim]
+>>> x = 1.25
+>>> y = 3 * 5 / 2.5
+>>> z = x * y
+>>> y
+6.0 
+>>> z
+7.5 
+>>> x = x * 2
+>>> x
+2.5
+\end{lstlisting}
+\end{exercice}
+
+
+
+\begin{exercice}[Chaînes de caractères (string)] \label{ex:chaines_1}
+
+En plus des nombres, Python peut aussi manipuler des chaînes de caractères, qui peuvent s'exprimer de plusieurs façons. Elles peuvent être délimitées par des apostrophes ou des guillemets:
+\begin{lstlisting}[style=verbatim]
+>>> 'spam eggs'			# des apostrophes
+'spam eggs'
+>>> 'doesn\'t'			# introduire une apostrophe dans la chaîne
+"doesn't"
+>>> "doesn't"			# ou comme ceci
+"doesn't"
+>>> '"Yes," he said.'		# introduire des guillemets dans une chaîne
+'"Yes," he said.'
+>>> "\"Yes,\" he said."	# ou comme ça
+'"Yes," he said.'
+>>> '"Isn\'t," she said.' # et mélanger le tout...
+'"Isn\'t," she said.'
+\end{lstlisting}
+
+Une chaîne de caractère littérale peut contenir des retours de chariots (pour être sur plusieurs lignes) sous la forme d'un \inlinecode{\n}. Ceux-ci ne seront interprétés qu'avec la fonction \inlinecode{print}.
+\begin{lstlisting}[style=verbatim]
+>>> hello = "bonjour \n tout le monde"
+>>> hello			# montre le contenu de hello
+'bonjour \n tout le monde'
+>>> print hello 		# affiche le contenu de hello
+bonjour 
+tout le monde
+\end{lstlisting}
+
+Les chaînes de caractères peuvent être concaténées (collées ensemble) avec l'opérateur ``+'' et répétées avec ``*'':
+\begin{lstlisting}[style=verbatim]
+>>> word = 'Help' + 'A'
+>>> word
+'HelpA'
+>>> '<' + word * 5 + '>'
+'<HelpAHelpAHelpAHelpAHelpA>'
+\end{lstlisting}
+
+Pour concaténer des éléments qui ne sont pas (tous) des chaînes de caractères, vous devez utiliser la fonction \inlinecode{str()} qui permet de convertir toutes sortes de types de données en chaînes de caractères. Ainsi:
+\begin{lstlisting}[style=verbatim]
+>>> word = "HelpA"
+>>> x = 2.5
+>>> word + " " + str(x)
+'HelpA 2.5'
+\end{lstlisting}
+\end{exercice}
+
+
+
+
+\begin{exercice}\label{ex:affectation_1}
+Décrivez le plus clairement et le plus complètement possible ce qui se passe à chacune des trois lignes de l'exemple ci-dessous :
+
+\begin{lstlisting}
+largeur = 20
+hauteur = 5 * 9.3
+print largeur * hauteur
+930.0
+\end{lstlisting}
+
+Qu'est-ce que passe-t-il si on écrit les lignes de code suivantes?
+
+\begin{lstlisting}
+largeur = 5
+hauteur = 10
+largeur = hauteur
+print largeur * hauteur 
+\end{lstlisting}
+
+et ensuite:
+
+\begin{lstlisting}
+largeur = 5
+hauteur = 10
+hauteur = largeur
+print largeur * hauteur 
+\end{lstlisting}
+
+Pourquoi les résultats sont différents ?
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:affectation_1]
+Le premier affiche \verb$100$ et le deuxième \verb$25$. 
+\begin{lstlisting}[style=verbatim]
+>>> largeur = 5
+>>> hauteur = 10
+>>> largeur = hauteur
+>>> print largeur, hauteur
+10 10
+>>> 
+>>> largeur = 5
+>>> hauteur = 10
+>>> hauteur = largeur
+>>> print largeur, hauteur
+5 5
+\end{lstlisting}
+
+L'affectation est toujours de droite à gauche.
+\end{solution}
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+\begin{exercice}\label{ex:affectation_2}
+Assignez les valeurs respectives 3, 5, 7 à trois variables \verb$a$, \verb$b$, \verb$c$.
+
+Effectuez les opérations:
+
+\begin{lstlisting}
+print a - b / c
+
+# l'opérateur // indique la division entière
+print a - float(b) // c
+
+print a - float(b) / c
+\end{lstlisting}
+
+Les résultats sont-ils mathématiquement corrects?
+Si ce n'est pas le cas, comment devez-vous procéder pour qu'il le soit?
+
+Suggestion: vous pouvez essayer d'assigner les trois variables sur la même ligne.
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:affectation_2]
+\begin{lstlisting}[style=verbatim]
+>>> a, b, c = 3, 5, 7
+>>> print a - b / c
+3
+>>> print a - float(b) // c
+3.0
+>>> print a - float(b) / c
+2.28571428571
+
+\end{lstlisting}
+L'opérateur \verb$/$ fait la division entière, si les deux nombres sont de type \texttt{int}.
+\end{solution}
+
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+
+
+\begin{exercice}\label{ex:types_1}
+Testez les lignes d'instructions suivantes. Décrivez ce qui se passe:
+
+\begin{lstlisting}
+r, pi = 12, 3.14159
+s = pi * r ** 2
+print s
+print type(r), type(pi), type(s) 
+\end{lstlisting}
+
+
+Soit les lignes de code suivantes:
+
+\begin{lstlisting}
+print type("Salut")
+print type([1,2,3])
+\end{lstlisting}
+
+Quels types des variables trouvez-vous?
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:types_1]
+\begin{lstlisting}[style=verbatim]
+>>> r, pi = 12, 3.14159
+>>> s = pi * r ** 2
+>>> print s
+452.38896
+>>> print type(r), type(pi), type(s)
+<type 'int'> <type 'float'> <type 'float'>
+>>> 
+>>> 
+>>> print type("Salut")
+<type 'str'>
+>>> 
+>>> print type([1,2,3])
+<type 'list'>
+\end{lstlisting}
+
+On verra les types \texttt{str} et \texttt{list} dans les prochains chapitres.
+
+\end{solution}
+
+
+\end{filecontents*}
+\appendsolution
+
+
+
+\newpage
+\section{Chaînes de caractères et input}
+
+
+
+\begin{exercice}[Chaînes de caractères] \label{ex:chaines_2}
+
+Les chaînes de caractères sont indexées, et le premier caractère de la chaîne a l'indice 0. Dans l'exemple ci-dessous, des ``sous-chaînes'' peuvent être spécifiées en donnant un intervalle de deux indices séparés par "\inlinecode{:}". Les indices négatifs commencent par la fin de la chaîne.
+\begin{lstlisting}[style=verbatim]
+>>> word = "Bonjour"
+>>> word[0]				# l'indexation commence par zéro
+'B'
+>>> word[4]				# cinquième caractère		
+'o'
+>>> word[0:3]			# une sous-chaine 
+'Bon'
+>>> word[3:4]
+'j'
+>>> word[-1]				# le dernier caractère
+'r'
+>>> word[-2]				# l'avant dernier caractère
+'u'
+\end{lstlisting}
+
+Indices par défaut: si omis, le premier indice est mis à zéro par défaut, le second indice omis par défaut est la taille de la chaîne. La taille de chaine peut être récupérée avec la fonction \inlinecode{len()}
+
+\begin{lstlisting}[style=verbatim]
+>>> word[:3] 	# Les trois premiers caractères
+"Bon"
+>>> word[3:] 	# Tout sauf les trois premiers caractères
+"jour"
+>>> len(word) 	# Taille de la chaine de caractères
+7
+\end{lstlisting}
+
+Exemple: indexation d'une chaine de caractères 
+
+\noindent\begin{tabularx}{\linewidth}{|X|c|c|c|c|c|c|c|}
+\hline
+caractères de la chaine \verb$word$	& B &o &n &j &o &u &r \\
+\hline
+index depuis le début			& 0 &1 &2 &3 &4 &5 &6 \\
+\hline
+index depuis la fin				&-7&-6&-5&-4&-3&-2&-1 \\
+\hline \hline
+\verb$word[0:3]$ indexes				&0 &1 & 2 &  &  &  &  \\
+\hline
+\verb$word[0:3]$ caractères			&B &o &n &  &  &  &  \\
+\hline \hline
+\verb$word[3:4]$ indexes				&  &  &  &3 &  &  &  \\
+\hline
+\verb$word[3:4]$ caractères			&  &  &  &j &  &  &  \\
+\hline
+\end{tabularx}
+\end{exercice}
+
+\begin{exercice}[Votre premier programme en Python] \label{ex:premier_programme_1}
+
+Soit une équation du second degré: $ax^2 + bx + c = 0$. Initialisez les $3$ variables $a$, $b$ et $c$ à des valeurs quelconques. Déterminez ensuite les valeurs de $x$ en faisant le moins d'efforts possibles. Vous pouvez afficher les valeurs de $x$ en utilisant la fonction \inlinecode{print}, mais attention pour afficher les valeurs numériques il faut d'abord les convertir en chaînes de caractères avec la fonction \inlinecode{str}.
+Attention: le discriminant de l'équation ($b^2 - 4ac$) doit être positive.
+\begin{myboxi}[Astuce]	En Python, $x$ puissance $y$ se calcule avec l'expression: \inlinecode{x**y} 
+		La racine carrée d'un nombre, c'est ce nombre à la puissance 1/2 (soit 0.5).
+\end{myboxi}
+		Sauvegardez votre programme dans un fichier pour le réutiliser plus tard.
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:premier_programme_1]
+
+\begin{lstlisting}[style=verbatim]
+>>> # Tout d'abord, on assigne des valeurs aux
+>>> # variables a, b et c
+>>> a = 2
+>>> b = 4
+>>> c = 1
+>>> # Comme on utilise deux fois le discriminant (delta),
+>>> # on va stocker sa valeur dans une variable :
+>>>
+>>> delta = b**2 - 4*a*c
+>>> delta # Ceci nous affiche ce qui est stocké
+8
+>>> # Si delta < 0, alors le polynôme n'a pas de solutions réelles.
+>>> # on calcule les solutions qu'on stocke dans deux variables x1 et x2
+>>> x1 = (-b + delta**0.5)/(2*a)
+>>> x2 = (-b - delta**0.5)/(2*a)
+>>> # pour composer une phrase, il faut concaténer les variables.
+>>> # pour pouvoir faire la concaténation, il faut que les variables
+>>> # soit de type chaîne de caractères (string)
+>>> print('les solutions sont : ' + str( x1 ) + ', ' + str (x2) )
+les solutions sont -0.29289321881345243, -1.7071067811865475
+\end{lstlisting}
+
+\end{solution}
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+\begin{exercice}[Noms et prénoms] \label{ex:second_programme_1}
+\
+\begin{enumerate}
+\item Initialisez une variable nom contenant votre nom et prénom séparés par un espace. Écrivez vos nom et prénom une centaine fois à l'écran séparés par ``\verb# * #'' (espace - étoile - espace). 
+
+\item En utilisant des sous-chaînes de la variable nom, faites de même avec seulement vos initiales.
+\end{enumerate}
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:second_programme_1]
+\begin{enumerate}
+\item 
+\begin{lstlisting}[style=verbatim]
+>>> nom = "Steve Jobs"
+>>> # On stocke la chaîne de caractère dans la variable nom
+>>> # On concatène ("colle") l'étoile à "Steve Jobs", puis on
+>>> # concatène 100 fois cette nouvelle chaîne.
+>>>
+>>> (nom + " * ") * 100
+Steve Jobs * Steve Jobs * Steve Jobs * Steve Jobs * Steve Jobs * Steve
+Jobs * Steve Jobs * . . . Steve Jobs * Steve Jobs *
+\end{lstlisting}
+
+\item 
+\begin{lstlisting}[style=verbatim]
+>>> initiales = nom[0] + nom[6] # On concatène la "S" avec "J"
+>>> (initiales + " * ") * 100
+SJ * SJ * SJ * SJ * SJ * SJ * SJ * SJ * SJ * SJ * SJ * SJ . . . .
+* SJ * SJ * SJ * SJ * SJ * SJ *
+\end{lstlisting}
+\end{enumerate}
+\end{solution}
+
+\end{filecontents*}
+\appendsolution
+
+\begin{exercice}[Interagir avec Python] \label{ex:interagir_1}
+
+Vous pouvez aisément interagir avec votre programme, par exemple, afin de ne pas avoir à mettre les valeurs de a, b et c dans le script qui résout les équations du second degré. En effet, il est gênant que vous deviez éditer et sauvegarder le script à chaque fois que vous désirez changer ces valeurs. Il serait nettement plus pratique que le programme vous demande les valeurs à chaque exécution.
+Pour ce faire, utilisez les fonction \inlinecode{input()} et \inlinecode{raw_input()} de la manière suivante:
+
+\begin{lstlisting}[style=verbatim]
+>>> nom = raw_input("Quel est votre nom? ") #pour les chaines
+Quel est votre nom? Homer
+>>> age = input("Quel est votre age? ")     #pour les valeurs numériques
+Quel est votre age? 38
+>>> print nom + " a " + str(age) + " ans"
+Homer a 38 ans
+\end{lstlisting}
+
+Cela affichera le message à l'écran et attendra que l'utilisateur entre une valeur puis presse return. La valeur sera alors assignée à la variable à gauche de l'opérateur d'affectation (dans l'exemple ci-dessus, la variable nom.). input est une fonction intelligente qui convertit la chaîne de caractères entrée par l'utilisateur en nombres (entiers ou décimaux) si cela est possible (i.e. la chaîne ne contient que des chiffres et au plus un point). Sinon, il se produira une erreur lors de l'exécution. 
+
+Il serait possible de calculer le "body mass index" (BMI) grâce à l'information reçue.
+\url{http://en.wikipedia.org/wiki/Body_mass_index}
+
+\begin{enumerate}
+\item Écrivez un nouveau script qui utilise les fonctions \inlinecode{input} et \inlinecode{raw_input} qui demandera à l'utilisateur son nom, son âge et sa taille en mètres et affichera ces informations de manière conviviale. Inspirez-vous de l'exemple ci-dessous.
+
+\begin{lstlisting}[style=verbatim]
+Quel est votre nom ? Jacques
+Quel est votre âge ? 25
+Quelle est votre taille en mètres ? 1.85
+Bonjour Jacques, vous êtes né en 1985 et faites 1.85 m ou 185 cm
+\end{lstlisting}
+
+\item Modifiez le script de l'exercice \ref{ex:premier_programme_1} afin qu'il demande à l'utilisateur les valeurs des variables \verb#a#, \verb#b# et \verb#c# au lieu qu'elles ne soient spécifiées dans le script.
+\end{enumerate}
+
+%\begin{myboxi}[Attention] N'oubliez pas de sauvegarder les fichiers de scripts que vous avez crée (\verb$.py$) sur une clé USB, si vous voulez être %certain de pouvoir les réutiliser ultérieurement.
+%\end{myboxi}
+
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:interagir_1]
+\begin{enumerate}
+\item 
+\begin{lstlisting}
+# on stocke le texte entré par l'utilisateur dans trois variables
+# pour une chaîne de caractères on utilise raw_input()
+nom = raw_input("Quel est votre nom? ")
+# pour un nombre on utilise input()
+age = input("Quel est votre age? ")
+taille = input("Quel est votre taille en mètres? ")
+# On calcule la taille en centimètres et on la convertit en
+# entier pour enlever la partie décimale
+taille_cm = int(taille*100)
+# De nouveau, on est obligé de convertir toutes
+# les variables en type chaîne de caractères pour composer une phrase
+print( "Bonjour " + nom + ", vous êtes né en " + str( 2015 - age ) + " et
+faites " + str(taille) + " m ou " + str(taille_cm) + " cm" )
+\end{lstlisting}
+
+\item 
+\begin{lstlisting}
+a = input("Quel est votre coefficient a? ")
+b = input("Quel est votre coefficient b? ")
+c = input("Quel est votre coefficient c? ")
+delta = b**2 - 4*a*c
+print( "delta vaut " + str(delta) )
+x1 = (-b + delta**0.5) / (2*a)
+x2 = (-b - delta**0.5) / (2*a)
+print( "x1 vaut " + str(x1) )
+print( "x2 vaut " + str(x2) )
+\end{lstlisting}
+\end{enumerate}
+\end{solution}
+
+\end{filecontents*}
+\appendsolution
+
+
+\begin{exercice}[Conversion des types de données en Python] \label{ex:conversion_1}
+
+En Python, bien que les variables ne soient pas fortement typées, il est parfois nécessaire de convertir des entiers/nombres décimaux en chaînes de caractères et vice-versa. Nous avons déjà vu la fonction \inlinecode{str()} qui convertit ce qui est donné en paramètre (quel que soit son type) en une chaîne de caractères. 
+
+Dans le sens inverse, lorsqu'on veut passer d'une chaîne de caractères à une valeur numérique, il est important de savoir si l'on parle d'entiers ou de nombres décimaux: ``\verb#123.45#'' ne peut pas être converti en un entier! Il existe donc 2 fonctions:
+\begin{itemize}
+\item \inlinecode{int()} pour passer d'une chaîne à un entier;
+\item \inlinecode{float()} pour passer d'une chaîne à un nombre décimal;
+\end{itemize}
+
+
+Ainsi, on peut faire:
+\begin{lstlisting}[style=verbatim]
+>>> s1 = "10"
+>>> print s1 + 2	 # erreur! on ne peut pas ajouter une chaine et un nombre 
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: cannot concatenate 'str' and 'int' objects
+>>> x = int(s1)
+>>> print 2 + x				# affiche 12
+12
+>>> s2 = "13.21"
+>>> print int(s1)+float(s2)	# affiche 23.21
+23.21
+\end{lstlisting}
+
+\begin{enumerate}
+\item Maintenant, écrivez un nouveau script nommé \inlinecode{conversions.py} qui demande à l'utilisateur l'heure actuelle sous la forme \verb#HH:MM:SS#. Aidez-vous de la fonction \inlinecode{raw_input()} et des sous-chaînes. Le script doit initialiser $3$ variables \inlinecode{hs}, \inlinecode{mins} et \inlinecode{secs} avec les paires de caractères correspondant aux heures, minutes et secondes et puis les convertir en entiers hint, minint et secint qui seront utilisés pour calculer le nombre des secondes après minuit.
+
+Par exemple: 
+\begin{lstlisting}[style=verbatim]
+Entrez l'heure a convertir: 10:16:35
+Il est 10:16:35.
+Il s'est écoulé 36995 secondes depuis minuit.
+\end{lstlisting}
+
+\item Modifiez le code afin que la conversion de secondes se fasse en nombres décimaux, i.e. pour qu'il comprenne le format: \verb#HH:MM:SS.SSS#
+
+\end{enumerate}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:conversion_1]
+\begin{enumerate}
+\item
+\begin{lstlisting}
+# on demande une chaine sous format HH:MM:SS
+heure = raw_input("Entrez l'heure a convertir: ")
+hs = heure[0:2] # heures -- deux premiers caractères
+mins = heure[3:5] # minutes
+secs = heure[6:8] # seconds
+# toutes les trois variables sont des chaines
+# on ne peut pas les utiliser dans les calculs
+# il faut d'abord les convertir en nombres
+hint = int(hs)
+minint = int(mins)
+secint = int(secs)
+# on calcule maintenant le nombre de secondes
+seconds = hint*3600 + minint*60 + secint
+# et on l'affiche à l'écran
+print "Il est " + heure + ". \n Il s'est écoulé " + str( seconds ) + \
+" secondes depuis minuit."
+\end{lstlisting}
+
+\item
+
+\begin{lstlisting}
+# on demande une chaine sous format HH:MM:SS.SSS
+heure = raw_input("Entrez l'heure a convertir: ")
+hs = heure[0:2] # heures -- deux premiers caractères
+mins = heure[3:5] # minutes
+secs = heure[6:] # secondes du 6ème indice jusqu'à la fin
+# toutes les trois variables sont des chaines
+# on ne peut pas les utiliser dans les calculs
+# il faut d'abord les convertir en nombres
+hint = int(hs)
+minint = int(mins)
+secint = float(secs) # cette fois-ci - un nombre réel
+# on calcule maintenant le nombre de seconds
+seconds = hint*3600 + minint*60 + secint
+# et on l'affiche à l'écran
+print "Il est " + heure + ". \n Il s'est écoulé " + str( seconds ) + \
+      " secondes depuis minuit."
+\end{lstlisting}
+
+\end{enumerate}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+
+\newpage
+\section{Diagrammes syntaxiques et expressions}
+
+
+
+\begin{myboxi}[Remarque]
+Afin de pouvoir utiliser les caractères accentués dans le code python, il faut mettre la
+ligne qui suit \emph{au début} de vos fichiers \verb$.py$ .
+\begin{lstlisting}
+# -*- coding: utf-8 -*-
+\end{lstlisting}
+\end{myboxi}
+
+\begin{exercice}[Diagrammes syntaxiques] \label{ex:diagrammes_1}
+\
+
+\begin{enumerate}
+\item Soit le diagramme syntaxique à droite. Lesquelles parmi ces "strings" (les chaînes de
+caractères), ne sont pas valides?
+
+\begin{tabular}{c c}
+\begin{minipage}{0.3\textwidth}
+\begin{enumerate}
+\item X
+\item XX
+\item XXXX
+\item XXXXX
+\item XXXXXXX
+\end{enumerate}
+
+\
+\end{minipage}
+&
+\begin{minipage}{0.69\textwidth}
+\includegraphics[width=0.8\textwidth]{graphics/tp3_ex1_1.png}
+\end{minipage}
+
+\end{tabular}
+
+\item Soit le diagramme syntaxique à droite. Quelles phrases, parmi ces chaînes de
+caractères, sont des ``dwits'' valides ?
+
+\begin{tabular}{c c}
+\begin{minipage}{0.3\textwidth}
+\begin{enumerate}
+\item XYZ
+\item 123
+\item X1
+\item 23Y
+\item XY12
+\item Y2Y
+\item ZY2
+\item XY23X1
+\end{enumerate}
+
+\
+\end{minipage}
+&
+\begin{minipage}{0.69\textwidth} 
+\includegraphics[width=0.8\textwidth]{graphics/tp3_ex1_2.png}
+\end{minipage}
+\end{tabular}
+
+
+\item Soit le diagramme syntaxique à droite. Marquez les chaînes de caractères valides et
+non valides.
+
+\begin{tabular}{c c}
+\begin{minipage}{0.3\textwidth}
+\begin{enumerate}
+\item 212
+\item 333
+\item 0330
+\item 273812
+\item 6135798
+\item 2736812
+\end{enumerate}
+
+\
+\end{minipage}
+&
+\begin{minipage}{0.69\textwidth} 
+\includegraphics[width=0.8\textwidth]{graphics/tp3_ex1_4.png}
+\end{minipage}
+
+\\
+\end{tabular}
+
+\end{enumerate}
+
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:diagrammes_1]
+\begin{enumerate}
+\item Seul (a) n'est pas valide.
+\item Les dwits valides sont: (c), (e), (g), (h).
+\item Les chaînes de caractères valides sont: (a), (e), (f).
+\end{enumerate}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+\newpage
+\section{Opérateurs}
+
+\begin{exercice}[Opérateurs] \label{ex:operateurs_1}
+
+Donnez la valeur de x après l'exécution de chacun des groupes d'instructions suivants
+Attention: les instructions sont séparées par des points-virgules, mais elles également
+peuvent être chacune sur une ligne.
+
+\noindent\begin{tabularx}{\linewidth}{|c|X|c|}
+\hline 
+\#	& Expression 									& La valeur de \texttt{x}		\\ 
+\hline 
+1	& \texttt{y = 5; x = y+1;}					& 		\\
+\hline 
+2	& \texttt{x = 0; x += 1 ; x += 1; x += x;}	& 		\\
+\hline 
+3	& \texttt{x = "Hello"; y = 'Toto'; x = x+y;}& 		\\
+\hline 
+4	& \texttt{x = 3.0; x = x/3;}				&		\\
+\hline 
+5	& \texttt{x = 10; x = x/3;}					&		\\
+\hline 
+6	& \texttt{x = 10; x = x\%3;}				&		\\
+\hline 
+7	& \texttt{x = 7; x /= 2;}					&		\\
+\hline 
+8	& \texttt{x = 5**2;}						&		\\	
+\hline 
+9	& \texttt{x = 3; x **=3;}					&		\\
+\hline 
+10	& \texttt{x = 2**1/2;}						&		\\
+\hline 
+\end{tabularx} 
+
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:operateurs_1]
+\
+
+\noindent\begin{tabularx}{\linewidth}{|c|X|c|}
+\hline 
+\#	& Expression 									& La valeur de \texttt{x}		\\ 
+\hline 
+1	& \texttt{y = 5; x = y+1;}					& 	6	\\
+\hline 
+2	& \texttt{x = 0; x += 1 ; x += 1; x += x;}	& 	4	\\
+\hline 
+3	& \texttt{x = "Hello"; y = 'Toto'; x = x+y;}& 	"HelloToto"	\\
+\hline 
+4	& \texttt{x = 3.0; x = x/3;}				&	1.0	\\
+\hline 
+5	& \texttt{x = 10; x = x/3;}					&	3	\\
+\hline 
+6	& \texttt{x = 10; x = x\%3;}				&	1	\\
+\hline 
+7	& \texttt{x = 7; x /= 2;}					&	3	\\
+\hline 
+8	& \texttt{x = 5**2;}						&	25	\\	
+\hline 
+9	& \texttt{x = 3; x **=3;}					&	27	\\
+\hline 
+10	& \texttt{x = 2**1/2;}						&	1	\\
+\hline 
+\end{tabularx} 
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+\begin{exercice}[Opérateurs unaires] \label{ex:operateurs_2}
+
+Récrivez, si possible, les expressions suivantes à l'aide d'opérateurs unaires afin de
+réduire la longueur de l'expression au maximum:
+
+\begin{myboxi}[Remarque]
+Rappel: x = x+1
+est équivalent à:
+x += 1
+\end{myboxi}
+
+\noindent\begin{tabularx}{\linewidth}{|c|X|X|}
+\hline 
+\#	& Expression 			& Expression Unaire		\\ 
+\hline 
+1	& \texttt{x = 1+x}				&  \\
+\hline 
+2	&\texttt{x = x*10}				& \\
+\hline 
+3	&\texttt{x = x-1}				& \\
+\hline 
+4	& \texttt{x = -2}				& \\
+\hline 
+5	& \texttt{x = 10 / x}				& \\
+\hline 
+6	& \texttt{x = x / 10}				& \\
+\hline 
+7	& \texttt{x = x + "titi"}				& \\
+\hline 
+8	& \texttt{x = "titi" + x}				& \\
+\hline 
+9	& \texttt{x = x + 15}				& \\
+\hline 
+10	& \texttt{x = 15 + x} 			& \\
+\hline
+\end{tabularx}
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:operateurs_2]
+\noindent\begin{tabularx}{\linewidth}{|c|X|X|}
+\hline 
+\#	& Expression 			& Expression Unaire		\\ 
+\hline 
+1	& \texttt{x = 1+x}				& \verb$x += 1$ \\
+\hline 
+2	&\texttt{x = x*10}				& \verb$x *= 10$ \\
+\hline 
+3	&\texttt{x = x-1}				& \verb$x -= 1$ \\
+\hline 
+4	& \texttt{x = -2}				& Pas possible \\
+\hline 
+5	& \texttt{x = 10 / x}				& Pas possible \\
+\hline 
+6	& \texttt{x = x / 10}				& \verb$x /= 10$ \\
+\hline 
+7	& \texttt{x = x + "titi"}				& \verb$x += "titi"$ \\
+\hline 
+8	& \texttt{x = "titi" + x}				& Pas possible \\
+\hline 
+9	& \texttt{x = x + 15}				& \verb$x += 15$ \\
+\hline 
+10	& \texttt{x = 15 + x} 			& \verb$x += 15$ \\
+\hline
+\end{tabularx}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+\begin{exercice}[Opérateurs] \label{ex:operateurs_3}
+
+Écrivez les expressions arithmétiques suivantes en Python. Considérez que toutes les
+fonctions mathématiques ont été importées à l'aide de: \inlinecode{from math import *}
+
+\noindent\begin{tabularx}{\linewidth}{|c|X|X|}
+\hline 
+\# & Formule	& Expression Python \\
+\hline 
+1 &	$x = 5x^3+4x^2+2x-9$			&				\\
+\hline 
+2 &	$\Delta=b^2-4ac$			&				\\
+\hline 
+3 &	$x = \sqrt{2+x}$				&				\\
+\hline 
+4 &	$x = \sqrt{|x| + 5x^3}$			&				\\
+\hline 
+5 &	$x=-\sqrt{-7}$				&				\\
+\hline 
+6 &	$x=\sqrt[3]{x^2}$				&				\\
+\hline 
+7 &	$\frac{\pi(a+b)}{4K\left(\frac{a-b}{a+b}\right)}$				&				\\
+\hline 
+\end{tabularx}
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:operateurs_3]
+\noindent\begin{tabularx}{\linewidth}{|c|l|X|}
+\hline 
+\# & Formule	& Expression Python \\
+\hline 
+1 &	$x = 5x^3+4x^2+2x-9$			&	\verb$x = 5*pow(x,3) + 4*pow(x,2) + 2*x -9$			\\
+\hline 
+2 &	$\Delta=b^2-4ac$			&	\verb$delta = pow(b,2) – 4*a*c$			\\
+\hline 
+3 &	$x = \sqrt{2+x}$				&	\verb$x = sqrt(2+x)$			\\
+\hline 
+4 &	$x = \sqrt{|x| + 5x^3}$			&	\verb$x = sqrt( abs(x)+ 5*pow(x,3) )$			\\
+\hline 
+5 &	$x=-\sqrt{-7}$				&	\verb$x = -sqrt(-7)$ (renvoie un message
+d'erreur selon les modules importés)			\\
+\hline 
+6 &	$x=\sqrt[3]{x^2}$				&		\verb$x = pow(x,(2/3.0))$		\\
+\hline 
+7 &	$\frac{\pi(a+b)}{4K\left(\frac{a-b}{a+b}\right)}$				&	\verb$pi*(a+b) / (4*K*( (a-b) / (a+b) ) )$			\\
+\hline 
+\end{tabularx}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+%
+%\begin{exercice}\label{ex:triangle_aire_1}
+%
+%Écrivez un programme qui calcule le périmètre et l'aire d'un triangle quelconque dont l'utilisateur fournit les 3 côtés.
+%
+%\textbf{Rappel:} l'aire d'un triangle quelconque se calcule à l'aide de la formule:
+%\[
+%S = \sqrt{p(p-a)(p-b)(p-c)},
+%\]
+%dans laquelle $p$ désigne la longueur du demi-périmètre, et $a$, $b$, $c$ celles des trois côtés.
+%
+%\end{exercice}
+%
+%\begin{filecontents*}{temp.tex}
+%
+%\begin{solution}[ex:triangle_aire_1]
+%\begin{lstlisting}
+%from math import sqrt  
+%# ou "from math import *"
+%
+%a = float(raw_input("Saisir la longueur du côté 1: "))
+%
+%b = float(raw_input("Saisir la longueur du côté 2: "))
+%
+%c = float(raw_input("Saisir la longueur du côté 3: "))
+%
+%d = (a + b + c)/2
+%
+%s = sqrt((d*(d-a)*(d-b)*(d-c)))
+%
+%print "Surface:", s 
+%\end{lstlisting}
+%\end{solution}
+%
+%\end{filecontents*}
+%\appendsolution
+%
+
+%
+%
+%\begin{exercice}[Racine carrée]\label{ex:racine_1}
+%Demander à l'utilisateur qu'il entre un nombre. Afficher ensuite: soit la racine carrée de ce nombre, soit un message indiquant que la racine carrée de ce nombre ne peut être calculée.
+%\end{exercice}
+%
+%\begin{filecontents*}{temp.tex}
+%
+%
+%\begin{solution}[ex:racine_1]
+%\begin{lstlisting}
+%from math import sqrt
+%
+%n = float(raw_input("Entrer un nombre: "))
+%
+%if n<0:
+%    print "Impossible" 
+%else:
+%    print "Racine carrée de", n, "=", sqrt(n) 
+%\end{lstlisting}
+%\end{solution}
+%
+%\end{filecontents*}
+%\appendsolution
+%
+%
+
+
+
+
+\begin{exercice}[Conversion de bases] \label{ex:conversion_2}
+\ 
+\begin{enumerate}
+\item En utilisant les doigts d'une seule main, jusqu'à combien pouvez-vous compter en
+base 2? Comment calculez-vous cela ?
+\item Et en utilisant les 2 mains ? Et vos orteils ?
+\end{enumerate}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:conversion_2]
+\begin{enumerate}
+\item Chaque doigt de la main peut représenter 2 états : levé (=1) ou baissé (=0). Il y a donc
+deux possibilités pour chaque doigt. Avec une main normale, il y aura donc 5 doigts, ce
+qui représente $2^5$ possibilités, ou un nombre binaire à 5 chiffres. Le plus grand nombre que
+l'on puisse obtenir avec une main sera donc : $[11111]_\text{base2}$ . En chiffres décimaux, cela
+correspondra à $[31]_\text{base10}$ ($1*2^4+1*2^3+1*2^2+1*2^1+1*2^0$). Notons que le plus grand chiffre
+obtenu ne sera pas $2^5$ mais $2^5-1$ puisque le chiffre 0 doit également être défini.
+\item En généralisant, on voit qu'un nombre binaire composé de $n$ chiffres aura pour valeur
+maximale une suite de $n$ fois le nombre $[11 \dots 11]_\text{base2}$. Cela correspondra à la valeur $2^n-1$
+en base décimale.
+En utilisant les $2$ mains, on aura donc : $n=10$, $2^{10} -1 = 1023$
+En utilisant les $2$ mains et les $2$ pieds : $n=20$, $2^{20} -1 = 1048575$.
+\end{enumerate}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+\begin{exercice}[Script de conversion] \label{ex:conversion_3}
+
+Créez un script Python permettant de convertir des températures de degrés Celsius en
+degrés Fahrenheit et vice-versa. Voici la formule servant à la conversion:
+\[
+F = \frac{9}{5} C + 32
+\]
+Votre application devra demander la température à utilisateur et donner les 2 conversions
+possibles comme suit:
+\begin{lstlisting}[style=verbatim]
+Quelle est la température? 20.2
+20.2 C = 68.36 F
+20.2 F = -6.555555555 C
+\end{lstlisting}
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:conversion_3]
+\begin{lstlisting}
+t = input('Quelle est la température ? ')
+F = t*9./5. + 32 
+C = (t-32)/(9./5.)
+# Attention à ne pas utiliser la variable F mais bien la
+# variable t dans la deuxième conversion : on travaille avec
+# la valeur entrée par l'utilisateur qu'on veut transformer et
+# non pas celle calculée précédemment.
+print str(t) + ' C = ' + str(F) + ' F'
+print str(t) + ' F = ' + str(C) + ' C'
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+\begin{exercice}[Calculs] \label{ex:calculs_2}
+
+Écrivez un programme qui convertisse un nombre entier de secondes fourni au départ, en
+un nombre de jours, d'heures, de minutes et de secondes. (Utilisez l'opérateur modulo \verb$%$).
+Ainsi par exemple, $486030$ secondes vaut $5$ jours $15$ heures $00$ minutes et $30$
+secondes.
+\end{exercice}
+
+
+
+\begin{exercice}[Opérateurs conditionnels] \label{ex:conditionnels_1}
+
+Écrivez un script qui demande 3 mots à l'utilisateur. Après la première question, le script
+affichera le mot que l'utilisateur vient d'entrer. Après toutes les autres questions,
+concaténez le nouveau mot entré à gauche s'il commence par une voyelle et à droite s'il
+commence par une consonne et affichez le résultat. 
+
+Exemple:
+\begin{lstlisting}[style=verbatim]
+Entrez le 1er mot: chat
+chat
+Entrez le 2eme mot: adieu
+adieu chat
+Entrez le 3eme mot: bonjour
+adieu chat bonjour
+\end{lstlisting}
+Vous avez le droit d'utiliser au plus 2 variables.
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:conditionnels_1]
+
+\begin{lstlisting}
+mot = raw_input('Entrez le 1er mot: ')
+phrase = mot
+print phrase
+mot = raw_input('Entrez le 2eme mot: ')
+# Utilisation de l'operateur conditionnel pour tester
+# si la première lettre du mot est une voyelle
+if (mot[0]=='a' or mot[0]=='e' or mot[0]=='i'
+	or mot[0]=='o' or mot[0]=='u' or mot[0]=='y'):
+	phrase = mot+' '+phrase
+else :
+	phrase = phrase+' '+mot
+print phrase
+mot = raw_input("Entrez le 3eme mot: ")
+if (mot[0]=='a' or mot[0]=='e' or mot[0]=='i'
+	or mot[0]=='o' or mot[0]=='u' or mot[0]=='y'):
+	phrase = mot+' '+phrase
+else :
+	phrase = phrase+' '+mot
+print phrase
+\end{lstlisting}
+
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+
+\begin{exercice}
+\label{ex:conversion_1b}
+
+Écrivez un programme qui convertit un nombre entier de secondes fourni au départ, en un nombre d'années, de mois, de jours, de minutes et de secondes.
+
+Suggestion: utilisez l'opérateur modulo (\verb$%$).
+\end{exercice}
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:conversion_1b]
+\begin{lstlisting}
+nsec = int(raw_input("Nombre de secondes? "))
+
+secPerAnn=60*60*24*365
+nann, rem = nsec/secPerAnn, nsec%secPerAnn
+
+secPerMoi=60*60*24*30
+nmoi, rem = rem/secPerMoi, rem%secPerMoi
+
+secPerJou=60*60*24
+njou, rem = rem/secPerJou, rem%secPerJou
+
+secPerHeu=60*60
+nheu, rem = rem/secPerHeu, rem%secPerHeu
+
+secPerMin=60
+nmin, rem = rem/secPerMin, rem%secPerMin
+
+print str(nann) + " annees, " + str(nmoi) + " mois, " + str(njou) + " jours, "
+    + str(nheu) + " heures, " + str(nmin) + " minutes, " + str(rem) + " secondes."
+\end{lstlisting}
+\end{solution}
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Arithmétique booléenne}
+
+\begin{exercice}[Tableaux de vérité] \label{ex:verite_1}
+Pour chaque combinaison possible des variables P, Q, et K écrivez dans le tableau ci-
+dessous les valeurs des expressions A, B, C et D. 
+
+
+\begin{verbatim}
+A = not P or Q and K
+B = not P or not Q and (P or K)
+C = (P or Q) and not K or P and Q 
+D = (P and Q or P and not Q) or P and 
+    Q and K or not P and not Q and K
+\end{verbatim}
+
+Aidez-vous en ajoutant des parenthèses aux expressions pour mettre en évidence l'ordre
+d'exécution des opérateurs et en les simplifiant si c'est possible.
+
+A = \dotfill
+
+B = \dotfill
+
+C = \dotfill
+
+D = \dotfill
+
+
+
+Tableau de vérité:
+
+
+\noindent\begin{tabularx}{\linewidth}{|c||c|c|c||X|X|X|X|}
+\hline
+\# & P &  Q  &K 		& A & B & C & D \\
+\hline
+1& False& False& False& & & & \\
+\hline
+2& False& False& True& & & & \\
+\hline
+3& False& True& False& & & & \\
+\hline
+4& False& True& True& & & & \\
+\hline
+5& True &False& False& & & & \\
+\hline
+6& True& False& True& & & & \\
+\hline
+7& True& True& False& & & & \\
+\hline
+8& True& True& True& & & & \\
+\hline
+\end{tabularx}
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:verite_1]
+\begin{lstlisting}[style=verbatim]
+A = (not P) or (Q and K)
+
+B = (not P) or ((not Q) and (P or K))
+
+C = ((P or Q) and (not K)) or (P and Q)
+
+D = ((P and Q) or (P and (not Q))) or ((P and Q) and K) or (((not P) and (not Q)) and K)
+\end{lstlisting}
+
+Tableau de vérité:
+
+
+\noindent\begin{tabularx}{\linewidth}{|c||c|c|c||X|X|X|X|}
+\hline
+\# & P &  Q  &K 		& A & B & C & D \\
+\hline
+1& False& False& False& True & True & False & False \\
+\hline
+2& False& False& True& True & True & False &True  \\
+\hline
+3& False& True& False&True  &True  &True  & False \\
+\hline
+4& False& True& True&True  &True  &  False&  False\\
+\hline
+5& True &False& False& False &True  & True & True \\
+\hline
+6& True& False& True& False &True  &  False&True  \\
+\hline
+7& True& True& False& False &  False&True  & True \\
+\hline
+8& True& True& True& True &  False& True & True \\
+\hline
+\end{tabularx}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+\begin{myboxi}[Rappel]
+Les opérateurs dans une expression sont évalués selon les priorités mentionnées
+dans le tableau ci-dessous (les opérateurs en haut sont exécutés avant ceux en bas). Les
+opérateurs avec la même priorité sont exécutés de gauche à droite (ici on parle de gauche
+à droite dans le code, pas des lignes du tableau ci-dessous). 
+
+\noindent\begin{tabularx}{\linewidth}{|c|X|X|}
+\hline
+\#	& Opérateurs								& Remarques							\\
+\hline
+1	& \verb$x[index]$, \newline \verb$x[index1:index2]$			& Suscription \\
+\hline
+2	& \verb$**$ 										& Puissance \\
+\hline
+3	& \verb$-x$ 										& Négation \\
+\hline
+4	& \texttt{*}, \texttt{/}, \texttt{\%}							& Multiplication, division, modulo \\
+\hline
+5	& \verb$+, -$ 										& Addition et soustraction \\
+\hline
+6	& \verb$<, <=, >, >=, !=, ==, in$ 					& Comparaisons et inclusion (*) \\
+\hline
+7	& \verb$not x$ 									& Booléen NOT \\
+\hline
+8	& \verb$and$ 										& Booléen AND \\
+\hline
+9	& \verb$or$ 										& Booléen OR \\
+\hline
+\end{tabularx}
+
+(*) L'opérateur \inlinecode{in} vérifie si une sous-chaine se trouve dans une autre, par exemple: 
+\begin{lstlisting}
+>>> "b" in "abc"
+True
+>>> "bc" in "abc"
+True
+>>> "ac" in "abc"
+False
+\end{lstlisting}
+\end{myboxi}
+
+
+\begin{exercice}[Priorités des opérateurs] \label{ex:priorite_1}
+
+Ajoutez des parenthèses dans les expressions suivantes et calculez la valeur de
+l'expression, en supposant que i, j, k et word sont initialisés de la manière suivante:
+
+\begin{lstlisting}
+i = 2; j = 4; k = 10; word = "bonjour"
+\end{lstlisting}
+
+\centerline{
+\noindent\begin{tabularx}{1.05\linewidth}{|c|X|c|}
+\hline
+\#	& Expression													& Résultat \\
+\hline
+1 & \verb$2 + 2 * 2 == 8 and True and i ** j / k * 2 ** 2$ & \\
+\hline
+2 & \verb$5 ** 2 / 3 == 5 ** 2 / 3.0$ & \\
+\hline
+3 & \verb$- 5 ** 2.0 / 3 == 5 ** 2 / 3.0$ & \\
+\hline
+4 & \verb$False or False and True or True$ & \\
+\hline
+5 & \verb$False != 1 or 10 / 2 < 10$ & \\
+\hline
+6 & \verb$k < j or i + 2 == k - 2$ & \\
+\hline
+7 & \verb$i != 2 and j / i ** 0 < k$ & \\
+\hline
+8 & \verb$j / (i - 2) < k and i != 0$ & \\
+\hline
+9 & \verb$k <= j or i+2 == k-1$ & \\
+\hline
+10 & \verb$2 + i == j + 2 or i < j != True and False == not True$ & \\
+\hline
+11 & \verb$2 + i == j + 2 or i < j != True and not False == True$ & \\
+\hline
+12 & \verb$k > j > i$ & \\
+\hline
+13 & \verb$j in word$ & \\
+\hline
+14 & \verb$"j" in word and "" in word$ & \\
+\hline
+15 & \verb$word [5:4] * 3 == "" and word [0] + word [1] in word$ & \\
+\hline
+16 & \verb$str(j) in word * k + str(j) and word [2] > word [1]$ & \\
+\hline
+\end{tabularx}
+}
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:priorite_1]
+\centerline{
+\noindent\begin{tabularx}{1.05\linewidth}{|c|X|c|}
+\hline
+\#	& Expression													& Résultat \\
+\hline
+1 & \verb$2 + 2 * 2 == 8 and True and i ** j / k * 2 ** 2$ & \verb$False$ \\
+\hline
+2 & \verb$5 ** 2 / 3 == 5 ** 2 / 3.0$ & \verb$False$ \\
+\hline
+3 & \verb$- 5 ** 2.0 / 3 == 5 ** 2 / 3.0$ & \verb$False$ \\
+\hline
+4 & \verb$False or False and True or True$ & \verb$True$ \\
+\hline
+5 & \verb$False != 1 or 10 / 2 < 10$ & \verb$True$ \\
+\hline
+6 & \verb$k < j or i + 2 == k - 2$ & \verb$False$ \\
+\hline
+7 & \verb$i != 2 and j / i ** 0 < k$ & \verb$False$ \\
+\hline
+8 & \verb$j / (i - 2) < k and i != 0$ & Erreur \\
+\hline
+9 & \verb$k <= j or i+2 == k-1$ & \verb$False$ \\
+\hline
+10 & \verb$2 + i == j + 2 or i < j != True and False == not True$ & Erreur \\
+\hline
+11 & \verb$2 + i == j + 2 or i < j != True and not False == True$ & \verb$True$ \\
+\hline
+12 & \verb$k > j > i$ & \verb$True$ \\
+\hline
+13 & \verb$j in word$ & Erreur \\
+\hline
+14 & \verb$"j" in word and "" in word$ & \verb$True$ \\
+\hline
+15 & \verb$word [5:4] * 3 == "" and word [0] + word [1] in word$ & \verb$True$ \\
+\hline
+16 & \verb$str(j) in word * k + str(j) and word [2] > word [1]$ & \verb$False$ \\
+\hline
+\end{tabularx}
+}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+\begin{exercice}[Opérateurs Booléens] \label{ex:booleens_1}
+
+Donnez la valeur du boolean \verb#b# après l'exécution de chacune des instructions suivantes:
+
+\noindent\begin{tabularx}{\linewidth}{|c|X|c|}
+\hline
+\#	& Expression													& La valeur de b \\
+\hline
+1	& \verb!b = False or True!										&				\\
+\hline
+2	& \verb!b = not False and True!									&				\\
+\hline
+3	& \verb!b = True or (10/1)<10!									&				\\
+\hline
+4	& \verb!a = False; b = not a!									&				\\
+\hline
+5	& \verb!i=1; j=2; k=3; b = (k<=j) or (i+1==k-1)!					&				\\
+\hline
+6	& \verb!i=1; j=2; k=3; b = (k<=j) and (i+1==k-1)!					&				\\
+\hline
+7	& \verb$i=0; j=4; k=9; b = (i!=0) and ((j/i)<k)$					&				\\
+\hline
+8	& \verb!i=1; j=2; b=i<j!											&				\\
+\hline
+9	& \verb!i=2; i+=1; b = (i>2.5)!									&				\\	
+\hline
+10	& \verb!i=1; j=2; a=False; c=True! 	\newline	 					
+	  \verb$b = (1+i==j+1) and ((a!=(i<j)) and (c==(not a)))$			&				\\
+\hline
+11	& \verb!b = True and not not True!								&				\\
+\hline
+12	& \verb!b = (not True == False);! \newline
+	  \verb$b = b and (not True != (not False))$						&				\\
+\hline
+13	& \verb!i=1; j=2; k=3; b = (k<=j) or (i+1==k-1)!					&				\\
+\hline
+14	& \verb!a = True; c = False; d = (a == (not c));! \newline 
+	  \verb!b = not(d and ((a and c) or ((not a)|(not c))))!			&				\\
+\hline
+\end{tabularx}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:booleens_1]
+\noindent\begin{tabularx}{\linewidth}{|c|X|c|}
+\hline
+\#	& Expression													& La valeur de b \\
+\hline
+1	& \verb!b = False or True!										&	\verb$True$			\\
+\hline
+2	& \verb!b = not False and True!									&	\verb$True$			\\
+\hline
+3	& \verb!b = True or (10/1)<10!									&	\verb$True$			\\
+\hline
+4	& \verb!a = False; b = not a!										&	\verb$True$			\\
+\hline
+5	& \verb!i=1; j=2; k=3; b = (k<=j) or (i+1==k-1)!					&	\verb$True$			\\
+\hline
+6	& \verb!i=1; j=2; k=3; b = (k<=j) and (i+1==k-1)!					&	\verb$False$			\\
+\hline
+7	& \verb$i=0; j=4; k=9; b = (i!=0) and ((j/i)<k)$					&	\verb$False$			\\
+\hline
+8	& \verb!i=1; j=2; b=i<j!											&	\verb$True$			\\
+\hline
+9	& \verb!i=2; i+=1; b = (i>2.5)!									&	\verb$True$			\\	
+\hline
+10	& \verb!i=1; j=2; a=False; c=True! 	\newline	 					
+	  \verb$b = (1+i==j+1) and ((a!=(i<j)) and (c==(not a)))$			&	\verb$False$				\\
+\hline
+11	& \verb!b = True and not not True!								&	\verb$True$			\\
+\hline
+12	& \verb!b = (not True == False);! \newline
+	  \verb$b = b and (not True != (not False))$						&	\verb$True$			\\
+\hline
+13	& \verb!i=1; j=2; k=3; b = (k<=j) and (i+1==k-1)!					&	\verb$False$			\\
+\hline
+14	& \verb!a = True; c = False; d = (a == (not c));! \newline 
+	  \verb!b = not(d and ((a and c) or ((not a)|(not c))))!			&	\verb$False$			\\
+\hline
+\end{tabularx}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+\begin{exercice}[Entrées/sorties des chaines] \label{ex:entrees_1}
+
+Écrivez un script qui demande 3 mots à l'utilisateur. Après la première question, le script
+affichera le mot que l'utilisateur vient d'entrer. Après toutes les autres questions,
+concaténez le nouveau mot entré à droite et affichez le résultat. Exemple:
+
+\begin{lstlisting}[style=verbatim]
+Entrez le 1er mot: chat
+chat
+Entrez le 2eme mot: adieu
+chat adieu
+Entrez le 3eme mot: zebre
+chat adieu zebre
+\end{lstlisting}
+
+Après, écrivez un script qui concatène les nouveaux mots à gauche comme dans
+l'exemple:
+
+\begin{lstlisting}[style=verbatim]
+Entrez le 1er mot: chat
+chat
+Entrez le 2eme mot: adieu
+adieu chat
+Entrez le 3eme mot: zebre
+zebre adieu chat
+\end{lstlisting}
+
+\end{exercice}
+
+\begin{exercice}[Entrées/sorties des nombres] \label{ex:entrees_2}
+
+Écrivez un script qui demandera à l'utilisateur deux nombres et pour qu'il affiche en suite
+la somme, le produit et la division entière et réelle, entre ces deux.
+Par exemple:
+
+\begin{lstlisting}[style=verbatim]
+Entrez un nombre: 12
+Entrez un autre nombre: 5
+Somme: 17
+Produit: 60
+Division entière: 2
+Division réelle: 2.4 
+\end{lstlisting}
+
+\end{exercice}
+
+\begin{exercice}[Entrées/sorties des nombres et chaines] \label{ex:entrees_3}
+
+Écrivez un script qui demandera à l'utilisateur un nombre n et une chaine des caractères
+et pour qu'il affiche en suite la chaine des caractères entrée répétée n fois.
+
+Par exemple:
+
+\begin{lstlisting}[style=verbatim]
+Entrez un nombre: 4
+Entrez un mot: ciao
+ciaociaociaociao 
+\end{lstlisting}
+
+\end{exercice}
+
+
+%
+%\begin{exercice}[Le plus grand nombre] \label{ex:plusgrand_1}
+%
+%Écrivez un script qui demandera à l'utilisateur deux nombres et pour qu'il affiche en suite
+%\verb%True% si le premier est plus grand ou égal au deuxième et qu'il affiche \verb%False% autrement.
+%
+%Par exemple:
+%\begin{lstlisting}[style=verbatim]
+%Entrez un nombre: 1203
+%Entrez un autre nombre: 3104
+%False
+%Entrez un nombre: 2010
+%Entrez un autre nombre: 1445
+%True
+%Entrez un nombre: 1815
+%Entrez un autre nombre: 1815
+%True
+%\end{lstlisting}
+%\end{exercice}
+%
+%
+%
+%\begin{filecontents*}{temp.tex}
+%
+%\begin{solution}[ex:plusgrand_1]
+%\begin{lstlisting}
+%n1 = int(raw_input("Entrez un nombre : ")
+%n2 = int(raw_input("Entrez un autre nombre : ")
+%
+%print n1 >= n2
+%
+%\end{lstlisting}
+%\end{solution}
+%
+%
+%\end{filecontents*}
+%\appendsolution
+%
+
+
+
+%
+%
+%\begin{exercice}\label{ex:if_1}
+%\
+%\begin{enumerate}
+%\item
+%Écrivez les lignes de code suivantes:
+%\begin{lstlisting}
+%a = 38
+%if a > 10:
+%	print "a dépasse la dizaine"
+%\end{lstlisting}
+%
+%Après, réécrivez la même chose mais cette fois changez-vous la valeur de \verb$a$ comme vous voulez.
+%
+%\item Écrivez les suivantes lignes de code:
+%
+%\begin{lstlisting}
+%a = 0
+%if a < 0:
+%	print "a est négatif"
+%elif a > 0:
+%	print "a est positif"
+%else:
+%	print "a est nul"
+%\end{lstlisting}
+%
+%Changez la valeur de \verb$a$ plusieurs fois et regardez les résultats.
+%\end{enumerate}
+%\end{exercice}
+%
+%
+%
+
+
+%
+%
+%\begin{exercice}\label{ex:modulo_1}
+%Écrivez des lignes de code qui décident si un nombre a est pair ou impaire.
+%Les lignes doivent avoir la forme de l'exercice \ref{ex:if_1}.
+%
+%Suggestion: utilisez l'opérateur modulo ( \verb$%$ ).
+%
+%Exemple du fonctionnement de l'opérateur modulo:
+%
+%\begin{lstlisting}[style=verbatim]
+%10 % 8 = 2
+%10 % 5 = 0
+%10 % 3 = 1
+%10 % 2 = 0
+%\end{lstlisting}
+%\end{exercice}
+%
+%\begin{filecontents*}{temp.tex}
+%
+%\begin{solution}[ex:modulo_1]
+%\begin{lstlisting}
+%a = int(raw_input("Valeur de la variable a? "))
+%
+%if a % 2 == 0:
+%        print "a =", a, "est pair."
+%else:
+%        print "a =", a, "est impair."
+%\end{lstlisting}
+%\end{solution}
+%
+%
+%\end{filecontents*}
+%\appendsolution
+%
+%
+%
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Opérateurs conditionnels}
+
+\begin{exercice}[Le plus grand nombre] \label{ex:plusgrand_2}
+
+Écrivez un script qui demandera à l'utilisateur deux nombres et pour qu'il affiche en suite
+le plus grand parmi ces deux. S'ils sont égaux affichez un message approprié.
+
+Par exemple:
+
+\begin{lstlisting}[style=verbatim]
+Entrez un nombre: 1203
+Entrez un autre nombre: 3104
+Le deuxième nombre (3104) est le plus grand parmi les deux.
+\end{lstlisting}
+\end{exercice}
+
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:plusgrand_2]
+\begin{lstlisting}
+n1 = int(raw_input("Entrez un nombre : "))
+n2 = int(raw_input("Entrez un autre nombre : "))
+
+if n1 >= n2:
+	print "Le premier nombre (" + str(n1) + ")",
+else:	
+	print "Le deuxième nombre (" + str(n2) + ")",
+
+print "est le plus grand parmi les deux."
+
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+\begin{exercice}[Nombres pairs] \label{ex:pairs_1}
+
+Écrivez un script qui devra générer un nombre entier aléatoire entre -100 et 100 bornes
+comprises, l'afficher et, à l'aide d'un bloc if-else , indiquer s'il s'agit d'un nombre pair ou
+impair.
+
+\begin{myboxi}[Rappel]
+Un nombre entier n est pair si \texttt{n \% 2 == 0}.
+\end{myboxi}
+
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:pairs_1]
+\begin{lstlisting}
+import random
+
+n = random.randint(-100, 100)
+
+print "Nombre =", n
+
+if n % 2 == 0:
+	print "Le nombre est pair."
+else:
+	print "Le nombre est impair."
+	
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+\begin{exercice}[Équation du deuxième degré] \label{ex:equation_1}
+
+Écrivez un script qui résout une équation du deuxième degré du type 
+\[
+ ax^ 2 + bx + c = 0.
+\]
+Demandez les coefficients $a$, $b$ et $c$ à l'utilisateur.
+Si le discriminant de l'équation:
+\begin{itemize}
+\item est plus grand que zéro affichez à l'écran deux racines de l'équation;
+\item est égal à zéro affichez qu'il y a une telle solution et elle est unique;
+\item est plus petit que zéro affichez à l'écran un message approprié.
+\end{itemize}
+\end{exercice}
+
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:pairs_1]
+\begin{lstlisting}
+# -*- coding: UTF-8 -*-
+
+# ex. 26
+# Solution d'une equation du second degré - version améliorée de l'exercice 4
+
+
+a = input("Coefficient a : ")
+b = input("Coefficient b : ")
+c = input("Coefficient c : ")
+
+print "Equation :", a, "x**2 +", b, "x +", c, " = 0"
+
+
+delta = b**2 - 4*a*c
+
+print "Le delta est", delta
+
+if delta > 0:
+    x1 = (-b - delta**0.5)/(2*a)
+    x2 = (-b + delta**0.5)/(2*a)
+    print "Les solutions sont :"
+    print "x1 =", x1
+    print "x2 =", x2
+elif delta == 0:
+    x = -b / (2.0*a)
+    print "Une seule solution :"
+    print "x =", x
+else:
+    print "Pas de solutions."
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+
+\begin{exercice}[Validation des dates] \label{ex:validation_1}
+\
+\begin{enumerate}
+\item
+Une date valide doit respecter les critères suivants:
+\begin{itemize}
+\item la valeur du mois est comprise entre 1 et 12
+\item la valeur de l'année est comprise entre 1 et 9999
+\item la valeur du jour est comprise entre 1 et la limite du mois choisi, p.ex. 30 pour le
+mois d'avril
+\item rappelez-vous que si l'année est divisible par quatre, elle est alors bissextile.
+Créez une application qui devra permettre à l'utilisateur d'entrer une date sous la forme:
+\verb#JJ.MM.AAAA#, et devra déterminer si oui ou non elle est valide.
+\end{itemize}
+
+Par exemple:
+
+\begin{lstlisting}[style=verbatim]
+Entrez la date: 12.03.1943
+La date: 12.03.1943 est valide
+Entrez la date: 31.04.1943
+La date: 31.04.1943 n'est pas valide
+\end{lstlisting}
+
+Inspirez-vous des acquis de la série 1 et 2 afin de découper la chaîne de caractères
+entrée par l'utilisateur en morceaux et convertir ceux-ci en entiers.
+
+\item Améliorez votre code.
+
+L'année bissextile a été introduite par Jules César en 45 av. J.-C. mais cet ajustement
+n'était pas tout à fait correct. Le calendrier a donc été amélioré au XVI siècle.
+Le calendrier actuel considère comme bissextiles les années qui satisfont l'une des deux
+conditions suivantes:
+\begin{itemize}
+\item l'année est divisible par 4, mais pas par 100
+\item l'année est divisible à la fois par 100 et par 400.
+\end{itemize}
+
+Modifiez votre code afin de tenir compte de ces nouvelles conditions.
+
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Aide pour les horaires] \label{ex:horaires_1}
+
+Pour vérifier ou refaire une carte d'étudiant, les usagers peuvent s'adresser à un des deux
+guichets du Service des Immatriculations et Inscriptions. Situés à l'Unicentre et à
+l'Amphimax, ils sont ouverts aux horaires suivants :
+
+\noindent\begin{tabularx}{\linewidth}{|X|X|X|X|X|X|}
+\hline
+Jour/Heure & Lundi (1) & Mardi (2) & Mercredi (3) & Jeudi (4) & Vendredi (5) \\
+\hline
+1) 10h-12h & Unicentre &		&				& Unicentre & Unicentre \\
+\hline
+2) 12h-13h &			& Amphimax & Amphimax &			& Amphimax \\
+\hline
+3) 13h-15h & 			& Unicentre & Unicentre &		&			\\
+\hline
+\end{tabularx}
+
+Écrire un programme qui détermine à quel guichet s'adresser pour refaire une carte. Il
+commencera par demander à l'utilisateur le jour (entre 1 et 5, du lundi au vendredi) et la
+période (entre 1 et 3, pour la période désirée), puis il affichera vers quel guichet se
+tourner. 
+
+Par exemple:
+
+\begin{lstlisting}[style=verbatim]
+Entrez le jour préféré (de 1 à 5): 2
+Entrez le temps préféré (de 1 à 3): 3
+Vous devez vous adresser au guichet de l'Unicentre entre 13h et 15h.
+\end{lstlisting}
+
+\begin{lstlisting}[style=verbatim]
+Entrez le jour préféré (de 1 à 5): 4
+Entrez le temps préféré (de 1 à 3): 3
+Aucun de deux guichets n'est disponible.
+\end{lstlisting}
+
+\begin{lstlisting}[style=verbatim]
+Entrez le jour préféré (de 1 à 5): 4
+Entrez le temps préféré (de 1 à 3): 1
+Vous devez vous adresser au guichet de l'Unicentre entre 10h et 12h.
+\end{lstlisting}
+
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:horaires_1]
+insert
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+\begin{exercice}[Mot-de-passe] \label{ex:motdepasse_1}
+
+Écrivez un script qui demandera à l'utilisateur un mot-de-passe. Si il introduit un mot-de-passe incorrect 3 fois de suite, interdire l'accès au programme. Autrement, le programme devrait afficher un message de confirmation.
+\end{exercice}
+
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:motdepasse_1]
+
+\begin{lstlisting}
+    # -*- coding: utf-8 -*-
+
+motdepass = "python"
+
+compteur = 0
+
+while compteur < 3:
+    test = raw_input("Entrer le mot de pass : ")
+    if test == motdepass:
+        print "Mot de pass correct !"
+        break
+    else:
+        print "Le mot de pass n'est pas correct."
+    if compteur == 2:
+        print "Accès interdit !"
+    compteur += 1
+
+    \end{lstlisting}    
+    
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+\begin{exercice}[Le nombre plus grand] \label{ex:plusgrand_3}
+
+Écrivez un script qui demandera à l'utilisateur trois nombres entiers séparés d'une virgule
+au même temps comme chaîne de caractères et qui retournera le plus grand.
+
+Exemple (utiliser la fonctionne \inlinecode{split()}):
+
+\begin{lstlisting}[style=verbatim]
+Entrez trois nombres entiers séparés d'une virgule (ex: 123,55,-456): 6,-76,4
+6 est le plus grand nombre.!
+\end{lstlisting}
+\end{exercice}
+
+\begin{exercice}[Instructions conditionnelles] \label{ex:conditionnelles_3}
+
+Écrivez un script qui demandera à l'utilisateur un nombre entier. Après, le programme
+devrait vérifier et exécuter les conditions suivantes.
+\begin{itemize}
+\item \textbf{Si le nombre est composé de plus un chiffre et il finit en 3 ou 7:}
+ le script devrait enlever la dernier chiffre et vérifier si le résultat est pair. Finalement afficher le nombre avec un message: \inlinecode{le nombre est (pair ou impair).}.
+\item \textbf{Si le nombre est composé de plus un chiffre, mais il ne finit pas en 3 ou 7:}
+ le script devrait rajouter un 3 au nombre et afficher le résultat.
+\item \textbf{Si le nombre n'est pas composé de plus un chiffre:}
+ le script devrait vérifier si le nombre est un multiple de 3 et afficher le résultat avec un message:  
+\inlinecode{le nombre est (multiple ou pas multiple) de 3.}.
+\end{itemize}
+\end{exercice}
+
+\begin{exercice}[Boucle conditionnelle while] \label{ex:while_1}
+
+Pour chacun des blocs d'instructions, indiquez exactement ce qui sera affiché à l'écran.
+
+\begin{enumerate}
+
+
+\item 
+\begin{lstlisting}
+a,b,s = 0, True, "" 
+while b:
+	s += " a = " + str(a)
+print(s)
+\end{lstlisting}
+
+\item
+\begin{lstlisting}
+a=0
+while a > 6:
+	a = a + 2
+print(a)
+\end{lstlisting}
+
+\item
+\begin{lstlisting}
+j, s = 5, ""
+while j < 10:
+	s += " j = " + str(j)	
+	j =  j + 1	
+print(s)
+\end{lstlisting}
+
+\item
+\begin{lstlisting}
+j, s = 5, ""
+while j < 10:
+	j =  j + 1
+	s += " j = " + str(j)
+print(s)
+\end{lstlisting}
+
+\item
+\begin{lstlisting}
+j, s = 5, ""
+while j < 10:
+	s += " j = " + str(j)	
+	j =  j + 1	
+	print(s)
+\end{lstlisting}
+\end{enumerate}
+\end{exercice}
+
+\section{Opérateurs de répétition}
+
+\begin{exercice}[Chaînes de caractères] \label{ex:chaines_4}
+
+Écrivez un script qui recopie une chaîne (dans une nouvelle variable) en l'inversant. Ainsi
+``\verb#zorglub#'' deviendra ``\verb#bulgroz#''.
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:chaines_4]
+\begin{lstlisting}
+maChaine, out = "zorglub", "" 
+for i in range(len(maChaine)):
+    out = maChaine[i] + out
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+\begin{exercice}[Sommes des multiples]\label{ex:somme_1}
+Écrire un programme qui, étant données deux bornes entières $a$ et $b$, additionne les nombres multiples de 3 et de 5 compris entres ces bornes. \newline
+Prendre par exemple $a = 0$, $b = 32$, le résultat devrait être alors $0 + 15 + 30 = 45$.
+
+
+Modifier légèrement ce programme pour qu'il additionne les nombres multiples de 3 ou de 5 compris entre les bornes $a$ et $b$. 
+Avec les bornes 0 et 32, le résultat devrait donc être:
+\[
+0 + 3 + 5 + 6 + 9 + 10 + 12 + 15 + 18 + 20 + 21 + 24 + 25 + 27 + 30 = 225.
+\]
+
+Maintenant, savez-vous la réponse à ce problème? ( \url{http://projecteuler.net/problem=1} )
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:somme_1]
+\begin{lstlisting}
+a = int(raw_input("Saisir la borne a (entier): "))
+
+b = int(raw_input("Saisir la borne b (entier): "))
+
+s = 0
+
+
+for i in range(a,b+1):
+    if i%3 == 0 or i%5 == 0:
+        print "Somme le nombre", i, "..."
+        s+=i
+
+
+print "La somme est :", s 
+\end{lstlisting}
+\end{solution}
+
+\end{filecontents*}
+\appendsolution
+
+
+\begin{exercice}
+\label{ex:etoiles_1}
+Écrivez un programme qui affiche la suite de symboles suivante:
+
+\begin{lstlisting}[style=verbatim]
+*
+**
+***
+****
+*****
+******
+*******
+\end{lstlisting}
+
+Le nombre de lignes n est fourni par l'utilisateur. (Example: n = 7)
+\end{exercice}
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:etoiles_1]
+\begin{lstlisting}
+nbr_lignes = int(raw_input("Nombre de lignes ? "))
+compteur = 0
+while compteur <= nbr_lignes:
+    compteur += 1
+    print compteur * "*" 
+    # n*string = string + string + ... + string
+\end{lstlisting}
+\end{solution}
+
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+
+\begin{exercice}[Étoiles] \label{ex:etoiles_2}
+
+Créez un script qui demandera à l'utilisateur d'entrer un nombre entier n. Assurez-vous que ce nombre n soit bien entier et supérieur ou égal à 1. A l'aide d'une boucle affichez à l'écran un triangle d'étoiles comme représenté ci-dessous (ici, n=7):
+
+%\vbox{
+\begin{center}
+\begin{enumerate}
+\begin{multicols}{3}
+\item[(a)]
+\begin{verbatim}
+*
+**
+***
+****
+*****
+******
+*******
+\end{verbatim}
+\columnbreak
+\item[(b)]
+\begin{verbatim}
+*******
+ ******
+  *****
+   ****
+    ***
+     **
+      *      
+\end{verbatim}
+\columnbreak
+\item[(c)]
+\begin{verbatim}
+*******
+*
+  *****
+***
+    ***
+*****
+      *
+\end{verbatim}
+\end{multicols}
+\end{enumerate}
+\end{center}
+%}
+\end{exercice}
+
+
+\begin{exercice}[Chaînes de caractères et boucles] \label{ex:chainesboucles_1}
+
+Écrivez un script qui recopie une chaîne (dans une nouvelle variable), en insérant des
+astérisques entre les caractères. Par exemple ``\verb#gaston#'' deviendra ``\verb#g*a*s*t*o*n#''.
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:chainesboucles_1]
+\begin{lstlisting}
+maChaine, out = "gaston", ""
+for i in range(len(maChaine)):		# pour chaque caractère
+    out = out + maChaine[i] + "*"	# on l'ajoute avec l'étoile
+out = out[:-1]						# on supprime dernière étoile
+print out
+\end{lstlisting}
+
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+
+\begin{exercice}[Boucles simples] \label{ex:boucles_3}
+
+Écrivez un programme qui affiche une suite de 12 nombres dont chaque terme soit égal
+au triple du terme précédent.
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:boucles_3]
+\begin{lstlisting}
+nombre = 1
+for i in range(12):					# 12 fois
+    print nombre						# on l'imprime
+    nombre *= 3						# et on le multiplie 
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+\begin{exercice}[Matrix reloaded] \label{ex:matrix_1}
+
+Écrivez un script qui créera une matrice comme ci-contre de taille
+spécifiée par l'utilisateur (la taille est $5$ dans l'exemple).
+\[
+\begin{matrix}
+1 & 2 & 3 & 4 & 5 \\
+0 & 1 & 2 & 3 & 4 \\
+0 & 0 & 1 & 2 & 3 \\
+0 & 0 & 0 & 1 & 2 \\
+0 & 0 & 0 & 0 & 1 \\
+\end{matrix}
+\]
+Veuillez noter que sur la diagonale le numéro de colonne est égale
+au numéro de ligne et que les chiffres au dessus de la diagonale
+correspondent à la différence entre le numéro de colonne et le
+numéro de ligne plus un.
+\end{exercice}
+
+\begin{exercice}[FizzBuzz] \label{ex:fizzbuzz}
+Écrivez un programme qui affiche les nombres de 1 à 100. Mais pour les multiples de trois affichez ``Fizz'' au lieu du nombre et pour les multiples de cinq affichez ``Buzz''. Pour les nombres qui sont des multiples de trois \emph{et} cinq affichez ``FizzBuzz''. Exemple:
+\begin{lstlisting}[style=verbatim]
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+...
+\end{lstlisting}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:fizzbuzz]
+\begin{lstlisting}
+for i in range(1,101):
+    if (i % 3 == 0):
+        if (i % 5 == 0):
+            print "FizzBuzz"
+        else:
+            print "Fizz"
+    else:
+        if (i % 5 == 0):
+            print "Buzz"
+        else:
+            print i
+\end{lstlisting}
+
+Solution alternative:
+\begin{lstlisting}
+for i in range(1,101):
+    s = ""
+    if i % 3 == 0: s += "Fizz"
+    if i % 5 == 0: s += "Buzz"
+    if s == "": s = str(i)
+    print s
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+\begin{exercice}
+\label{ex:boucles_1}
+Écrivez un programme qui affiche les 20 premiers termes de la table de multiplication par 7.
+
+\textbf{Suggestion:} utilisez l'instruction \verb$while$.
+\end{exercice}
+
+\begin{exercice}
+
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:boucles_1]
+
+\begin{lstlisting}
+nombre, compteur = 7, 0
+while compteur < 20:
+    print nombre
+    compteur += 1
+    nombre += 7
+\end{lstlisting}
+
+\end{solution}
+
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+
+
+\label{ex:boucles_2}
+Écrivez un programme qui affiche une table de conversion de sommes d'argent exprimées en euros, en dollars canadiens. 
+La progression des sommes de la table sera ``géométrique'', comme dans l'exemple ci-dessous:
+
+\begin{lstlisting}[style=verbatim]
+1 euro(s) = 1.65 dollar(s)
+2 euro(s) = 3.30 dollar(s)
+4 euro(s) = 6.60 dollar(s)
+8 euro(s) = 13.20 dollar(s)
+\end{lstlisting}
+etc. (S'arrêter à 16384 euros)
+\end{exercice}
+\begin{filecontents*}{temp.tex}
+
+
+
+\begin{solution}[ex:boucles_2]
+
+\begin{lstlisting}
+count = 1
+rate = 1.65
+while count <= 16384:
+    print str(count) + " euro(s) = " + str(count*rate) + " dollar(s)"
+    count=count*2
+\end{lstlisting}
+\end{solution}
+
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+
+
+\begin{exercice}
+\label{ex:boucles_3b}
+Écrivez un programme qui affiche une suite de 12 nombres dont chaque terme soit égal au triple du terme précédent.
+
+Employez 1 comme premier terme de la série. Le résultat doit être le suivant:
+
+\begin{lstlisting}[style=verbatim]
+1
+3
+9
+27
+81
+...
+\end{lstlisting}
+\end{exercice}
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:boucles_3b]
+\begin{lstlisting}
+n,count=1,1
+while count<=12 :
+    print n
+    n,count = n*3,count+1
+\end{lstlisting}
+\end{solution}
+
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+
+
+
+
+
+\begin{exercice}
+\label{ex:boucles_4b}
+Écrivez un programme qui affiche les 20 premiers termes de la table de multiplication par 7, en signalant au passage (à l'aide d'une astérisque) ceux qui sont des multiples de 3.
+
+
+Exemple de fonctionnement:
+
+\begin{lstlisting}[style=verbatim]
+7
+14
+21 *
+28
+35
+42 *
+49
+\end{lstlisting}
+
+Rappelez-vous d'utiliser l'opérateur modulo (\verb$%$).
+\end{exercice}
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:boucles_4b]
+\begin{lstlisting}
+compteur = 0
+while compteur < 20:
+    compteur += 1
+    if compteur % 3 == 0:
+        print 7*compteur, "*"
+    else:
+        print 7*compteur
+\end{lstlisting}
+\end{solution}
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+
+
+\begin{exercice}
+\label{ex:boucles_5b}
+Écrivez un programme qui calcule les 50 premiers termes de la table de multiplication par 13, mais n'affiche que ceux qui sont des multiples de 7.
+\end{exercice}
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:boucles_5b]
+\begin{lstlisting}
+count=1
+while count<=50:
+    if count%7==0:
+        print count*13
+    count=count+1
+\end{lstlisting}
+\end{solution}
+
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{exercice}
+\label{ex:riz_1}
+Une légende de l'Inde ancienne raconte que le jeu d'échecs a été inventé par un vieux sage, que son roi voulut remercier en lui affirmant qu'il lui accorderait n'importe quel cadeau en récompense. Le vieux sage demanda qu'on lui fournisse simplement un peu de riz pour ses vieux jours, et plus précisément un nombre de grains de riz suffisant pour que l'on puisse en déposer 1 seul sur la première case du jeu qu'il venait d'inventer, deux sur la suivante, quatre sur la troisième, et ainsi de suite jusqu'à la 64eme case.
+
+Écrivez un programme Python qui affiche le nombre de grains à déposer sur chacune des 64 cases du jeu. Calculez ce nombre de deux manières:
+\begin{itemize}
+\item le nombre exact de grains (nombre entier)
+\item le nombre de grains en notation scientifique (nombre réel)
+\end{itemize}
+\end{exercice}
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:riz_1]
+\begin{lstlisting}
+count,n = 0,1
+while count <= 64:
+    print str(count) + ":\t" + str(n) + "\t" + str(float(n))
+    n,count = n*2,count+1
+\end{lstlisting}
+\end{solution}
+
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Listes}
+
+\begin{myboxi}[Rappel: Listes]
+Une liste est une suite d'objets en mémoire, chaque élément d'une liste est accessible
+par un indice. N'importe quel objet peut être l'élément d'une liste: nombre, chaîne de
+caractères ou même une autre liste.
+
+La liste suivante :
+\begin{lstlisting}
+s = [10, 2.5, "bonne journée", ["bonne", "nuit"]]
+\end{lstlisting} 
+
+correspond au ``tableau'' suivant:
+
+\noindent\begin{tabularx}{\linewidth}{|X|l|l|l|l|}
+\hline
+Index & 0 & 1 & 2 & 3 \\
+\hline
+Valeur & 10 & 2.5 & "bonne journée" & ["bonne", "nuit"] \\
+\hline
+Type de l'élément & entier & réel & chaîne & liste \\
+\hline
+\end{tabularx}
+
+Vous accédez aux éléments individuels de la liste en utilisant leur indice et vous
+pouvez également accéder aux sous-listes d'une liste grâce à la syntaxe que vous
+avez déjà utilisée pour récupérer une sous-chaîne d'une autre chaîne de caractères:
+\begin{lstlisting}[style=verbatim]
+>>> print s[0] # affiche le premier élément de la liste s
+10
+>>> print s[2] # affichera l'élément d'indice 2
+'bonne journée'
+>>> print s[1:3] # une sous-liste qui contient
+[2.5, 'bonne journée'] # les éléments 1 et 2 de la liste s
+\end{lstlisting}
+Il est très facile de parcourir les éléments d'une liste à l'aide de la boucle \inlinecode{for}. Par
+exemple, le code ci-dessous affichera à l'écran tous les éléments de la liste.
+
+\begin{lstlisting}
+liste = [10, 2.5, "bonne journée"]
+for element in liste :
+	print element
+\end{lstlisting}
+\end{myboxi}
+
+\begin{exercice}[Listes simples] \label{ex:listes_1b}
+
+Pour chacune des commandes print dans le programme ci-dessous, indiquez dans la
+case spécialement prévue exactement ce qui sera affiché à l'écran.  
+
+\begin{enumerate}
+\item
+\begin{lstlisting}
+list1=[0, 2, 4, 6, 8, 10,11,12,13,14]
+print( list1 )
+\end{lstlisting}
+
+\item
+\begin{lstlisting}
+list2=[]
+for i in range(9):
+	list2.append(i*2)
+print( list2 )
+\end{lstlisting}
+
+\item
+\begin{lstlisting}
+list2b=[]
+for i in range(len(list1)/2):
+	list2b.append(list1[i*2]+1)
+print( list2b )
+\end{lstlisting}
+
+\item
+\begin{lstlisting}
+list3  =  [5, "hola", ["bonjour", "hello", "ciao"] ]
+print( str(list3[1]) +" "+ str(list1[3]) )
+\end{lstlisting}
+
+\item
+\begin{lstlisting}
+list3[1] += " Madame!"
+list1[3] = 100
+print( str(list3[1]) +" "+ str(list1[3]) )
+\end{lstlisting}
+
+\item
+\begin{lstlisting}
+list4 = list1[6:20]
+print( list4 )
+\end{lstlisting}
+
+\item
+\begin{lstlisting}
+somme=0
+for x in list1:
+	somme += x
+print( somme )
+\end{lstlisting}
+\end{enumerate}
+\end{exercice}
+
+
+
+
+
+\begin{exercice}[Moyenne de notes]\label{ex:notes_1}
+Écrire une boucle de programme qui demande à l'utilisateur d'entrer des notes d'élèves. La boucle se terminera seulement si l'utilisateur entre une valeur négative. 
+
+Avec les notes ainsi entrées, construire progressivement une liste. Après chaque entrée d'une nouvelle note (et donc à chaque itération de la boucle), afficher le nombre de notes entrées, la note la plus élevée, la note la plus basse, la moyenne de toutes les notes.
+
+\textbf{Suggestion:} vous pouvez commencer à partir du script d'exemple vu en classe.
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:notes_1]
+\begin{lstlisting}
+listeNotes = []
+
+while True:
+    a = float(raw_input("Saisir une note d'élève: "))
+    if a<0:
+        break
+    listeNotes.append(a)
+
+print "Nombre de notes entrées:", len(listeNotes)
+print "Note max:", max(listeNotes)
+print "Note min:", min(listeNotes)
+print "Moyenne:", sum(listeNotes)/len(listeNotes)
+\end{lstlisting}
+\end{solution}
+
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+\begin{exercice}[Listes] \label{ex:listes_1}
+\
+
+\begin{enumerate}
+\item Écrivez un programme qui crée une liste où chaque élément est égal à 0. Le programme doit demander la taille de la liste à l'utilisateur et, en fin, doit afficher la liste à l'écran de manière lisible.
+\item Modifiez le programme de l'exercice \ref{ex:listes_2}.1 pour qu'il remplisse une liste de taille spécifié avec une suite de nombres entiers en commençant par 10.
+\item Modifiez le programme de l'exercice \ref{ex:listes_2}.2 afin qu'il remplisse une liste avec les n premiers éléments de la suite de Fibonacci. Pour rappel, chaque élément de la suite est obtenu de la manière suivante:
+\[
+e_0 =0,\qquad e_1 =1,\qquad e_i =e_{i-2} +e_{i-1}
+\]
+Attention : Le programme doit donc vérifier que la taille entrée est plus grande que 2.  
+\end{enumerate}
+\end{exercice}
+\begin{filecontents*}{temp.tex}
+
+\begin{solution}[ex:listes_1]
+\begin{lstlisting}
+n = int(raw_input("n = ? "))
+
+liste = [0] * n
+print("Liste de zéros", liste)
+
+indice = 0
+while indice < n:
+    liste[indice] = 10 + indice
+    indice += 1
+print("Liste de nombres", liste)
+
+if n <= 2:
+    print("n doit être au moins 3")
+else:
+    indice = 2
+    liste[0] = 0
+    liste[1] = 1
+    while indice < n:
+        liste[indice] = liste[indice-2] + liste[indice-1]
+        indice += 1
+    print("Suite de Fibonacci", liste) 
+\end{lstlisting}
+\end{solution}
+
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+
+
+
+\begin{exercice} \label{ex:listes_2b}
+Écrivez un programme qui permette d'encoder des valeurs dans une liste.
+Ce programme devrait fonctionner en boucle, l'utilisateur étant invité à entrer sans cesse de nouvelles valeurs, jusqu'à ce qu'il décide de terminer en frappant <enter> en guise d'entrée.
+Le programme se terminerait alors par l'affichage de la liste.
+
+Exemple de fonctionnement:
+
+\begin{lstlisting}[style=verbatim]
+Veuillez entrer une valeur: 1
+Veuillez entrer une valeur: 2
+Veuillez entrer une valeur: 3
+Veuillez entrer une valeur: 
+[1,2,3]
+\end{lstlisting}
+
+\textbf{Astuce:} Vous pouvez utiliser la fonction \verb$append$.
+
+\end{exercice}
+\begin{filecontents*}{temp.tex}
+
+
+
+\begin{solution}[ex:listes_2b]
+\begin{lstlisting}
+serie=[]
+while True:
+    a = input("Veuillez entrer une valeur: ")
+    if a == "":
+        break
+    serie.append(float(a))
+print(serie)
+\end{lstlisting}
+\end{solution}
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+\begin{exercice}[Listes] \label{ex:listes_2}
+\
+
+\begin{enumerate}
+\item Écrivez un programme qui crée une liste où chaque élément est égal à 0. Le programme doit demander la taille de la liste à l'utilisateur et, en fin, doit afficher la liste à l'écran de manière lisible.
+\item Modifiez le programme de l'exercice \ref{ex:listes_2}.1 pour qu'il remplisse une liste de taille spécifié avec une suite de nombres entiers en commençant par 10.
+\item Modifiez le programme de l'exercice \ref{ex:listes_2}.2 afin qu'il remplisse une liste avec les n premiers éléments de la suite de Fibonacci. Pour rappel, chaque élément de la suite est obtenu de la manière suivante:
+\[
+e_0 =0,\qquad e_1 =1,\qquad e_i =e_{i-2} +e_{i-1}
+\]
+Attention : Le programme doit donc vérifier que la taille entrée est plus grande que 2.
+\item Ajoutez à votre votre programme de l'exercice \ref{ex:listes_2}.3 une partie qui dans une boucle demandera à l'utilisateur un nombre entier plus petit que 1000, et puis dira si le nombre se trouve parmi les nombres de la suite de Fibonacci ou pas.  
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Chaînes de caractères et listes] \label{ex:listes_4}
+
+Écrivez un programme qui demande a l'utilisateur une chaîne de caractères qui contient des nombres entiers séparés par des virgules « , ». En suite le programme affiche la liste en ordre inversé et également la somme et la moyenne des ses éléments.
+
+Par exemple :
+\begin{lstlisting}[style=verbatim]
+Entrez votre liste : 55, 34, 21, 13, 8, 5, 3
+La liste en ordre inversé est : [3, 5, 8, 13, 21, 34, 55]
+La somme est 139 et la moyenne est 19.857
+\end{lstlisting}
+\end{exercice}
+
+\begin{exercice}[Listes simples] \label{ex:listessimples_1}
+Pour chacune des commandes \inlinecode{print} dans le programme ci-dessous, indiquez dans
+la case spécialement prévue exactement ce qui sera affiché à l'écran.
+
+\begin{lstlisting}
+liste = [ 1, "2011", [11, "salut", 15] ]
+\end{lstlisting}
+
+\begin{enumerate}
+\item \inlinecode{print( len(liste) )}
+\item \inlinecode{print( len(liste[1]) )}
+\item \inlinecode{print( len(liste[2][1]) )}
+\item \inlinecode{print( len((liste*2 + liste[2])[4]) )}
+\end{enumerate}
+
+\end{exercice}
+
+\begin{exercice}[Listes] \label{ex:listes_6}
+\
+\begin{enumerate}
+\item  Créez et affichez une liste de 10 éléments allant de 0 à 9;
+\item  Créez et affichez une liste de 20 éléments allant de 0 à 19;
+\item  Créez et affichez une liste de 20 éléments avec les nombres pairs de 0 à 38;
+\item  Créez et affichez une liste de 10 éléments allant de 0.0 à 0.9;
+\begin{myboxi}[Astuce] Pour vous faciliter la tâche, vous pouvez réutiliser les listes des
+exercices précédents.\end{myboxi}
+\item  Demandez à l'utilisateur un nombre entier \inlinecode{x} puis créez et affichez à l'écran une
+liste de 10 éléments de \inlinecode{x.0} à \inlinecode{x.9}. C'est-à-dire que si l'utilisateur entre \inlinecode{2} en tant que \inlinecode{x},
+le programme affichera la liste: \inlinecode{[2.0, 2.1, 2.2, ..., 2.9]}
+\item  Créez et affichez une liste de 10 éléments où les \inlinecode{10-k} premiers éléments sont les
+nombres réels de \inlinecode{k/10} à 0.9 et les \inlinecode{k} derniers éléments sont des 0; le nombre \inlinecode{k} est à
+demander à l'utilisateur. Par exemple, pour \inlinecode{k=3} il doit afficher :
+\inlinecode{[0.3, 0.4, ... 0.9, 0.0, 0.0, 0.0]}
+\item  Créez et affichez à l'écran de manière lisible (voir ci-contre) une liste de 10
+éléments où chaque élément est une liste comme dans l'exercice \ref{ex:listes_6}.6 avec \inlinecode{k} allant de
+0 à 9.
+\begin{lstlisting}[style=verbatim]
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.0
+0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.0 0.0
+0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.0 0.0 0.0
+0.4 0.5 0.6 0.7 0.8 0.9 0.0 0.0 0.0 0.0
+0.5 0.6 0.7 0.8 0.9 0.0 0.0 0.0 0.0 0.0
+0.6 0.7 0.8 0.9 0.0 0.0 0.0 0.0 0.0 0.0
+0.7 0.8 0.9 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+0.8 0.9 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+0.9 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+\end{lstlisting}
+\item  Créez et affichez une liste de 10 éléments où les éléments sont les sommes des
+éléments appariés des listes de l'exercice \ref{ex:listes_6}.1 et \ref{ex:listes_6}.4 (i.e. on fait la somme du premier
+élément de la liste de 2.1 avec le premier élément de la liste 2.4, etc.);
+\item  Créez et affichez une liste de 20 éléments où les éléments sont les sommes des
+éléments appariés des listes de l'exercice \ref{ex:listes_6}.3 et \ref{ex:listes_6}.4 pour les indexes plus petits que
+10 et sont égaux aux éléments de la liste de l'exercice \ref{ex:listes_6}.3 pour le reste;
+\item  Créez et affichez \emph{une copie} de la liste de l'exercice \ref{ex:listes_6}.5 où l'ordre des éléments
+est inversé.
+\end{enumerate}
+
+\end{exercice}
+
+\begin{exercice}[Calculs sur les listes] \label{ex:calculslistes_1}
+\
+\begin{enumerate}
+\item Pour chacune des listes de l'exercice \ref{ex:listes_6}, affichez la somme de tous ses éléments;
+\item Pour chacune des listes de l'exercice \ref{ex:listes_6}, affichez la somme de tous les éléments
+de la liste avec une position qui est un multiple de 3 (i.e. avec les indexes 2, 5, 8, etc.);
+\item Écrivez un programme qui transforme la liste de l'exercice \ref{ex:listes_6}.3 en un tableau de 3
+colonnes (une liste de listes de 3 éléments chacun) et qui affiche ce tableau de
+manière lisible. Veuillez utiliser des zéros au lieu des éléments manquants.
+\begin{myboxi}[Astuce] Pensez à ajouter les zéros manquants avant la transformation.\end{myboxi}
+
+\item Ajoutez le code qui calcule et affiche les sommes des éléments des colonnes et
+des lignes. Par exemple :
+\begin{lstlisting}[style=verbatim]
+La liste d'entrée est : [0, 2, 4, 6, ..., 38]
+Le tableau avec les sommes de lignes est :
+0, 2, 4 somme 6
+6, 8, 10 somme 24
+...
+36, 38, 0 somme 74
+Les sommes par colonne sont :
+126, 140,114
+\end{lstlisting}
+
+La liste d'output est :
+\begin{lstlisting}
+[[0, 2, 4], [6, 8, 10], ..., [36, 38, 0]]
+\end{lstlisting}
+\end{enumerate} 
+\end{exercice}
+
+\begin{exercice}[Calculs sur listes de listes] \label{ex:listesdelistes_1}
+
+Pour votre matrice de l'exercice \ref{ex:listes_6}.7, affichez de manière lisible les sommes
+des éléments:
+\begin{itemize}
+\item des lignes, pour chaque ligne;
+\item des colonnes, pour chaque colonne;
+\item de la diagonale principale;
+\item de la diagonale complémentaire.
+\end{itemize}
+\end{exercice}
+
+
+\begin{myboxi}[Rappel] Dictionnaires
+Un dictionnaire est une collection non-ordonnée d'objets en mémoire, chaque
+élément d'un dictionnaire est accessible par sa clé. N'importe quel objet peut être
+l'élément d'une liste: nombre, chaîne de caractères ou même une autre liste, mais que
+les nombres (entiers et réels), chaînes de caractères et tuples peuvent être des clefs.
+Le dictionnaire suivant :
+\begin{lstlisting}
+d = {10:2.5, 5.5:"salut", "bonne journée":["bonne", "nuit"], "a":111}
+\end{lstlisting}
+Correspond au ``tableau'' suivant:
+
+\begin{tabularx}{\textwidth}{|X|c|X|c|}
+\hline
+Clef élément & Type clef & Valeur élément & Type élément \\
+\hline
+10 & int & 2.5 & float \\
+\hline
+5.5 & float & "salut" & str \\
+\hline
+"bonne journée" & str & ["bonne", "nuit"] & list \\
+\hline
+"a" & str & 111 & int \\
+\end{tabularx}
+
+Vous accédez aux éléments individuels du dictionnaire \inlinecode{d} en utilisant leur clé entre
+crochets: \inlinecode{d[cle]}. Vous pouvez créer une clé et lui affecter ou réaffecter une valeur
+quelconque de la manière suivante: \inlinecode{d[cle] = valeur}. Un exemple :
+
+\begin{lstlisting}
+>>> print d[10] # affiche l'élément associé avec la clé 10
+2.5
+>>> print d[10.0] # même chose
+2.5
+>>> print d["bonne journée"] # l'association de "bonne journée"
+["bonne", "nuit"]
+>>> print d["bonne journée"][1] # le 2e élément de la liste associée
+"nuit"
+>>> print d["bonne journée"][1][2:4] # les 3 et 4e lettres du 2e
+élément de la liste associée
+"it"
+>>> d["bonne journée"] = "c'est aujourd'hui" # on la change
+>>> print d["bonne journée"] # l'association de "bonne journée"
+"c'est aujourd'hui"
+>>> print d["salut"] # erreur car la clé "salut" n'existe pas
+>>> d["salut"] = "hello" # on peut la définir grâce à une affectation
+>>> print d["salut"] # maintenant, elle existe
+"hello"
+\end{lstlisting}
+
+Il est très facile de parcourir toutes les clefs d'un dictionnaire à l'aide de la boucle \inlinecode{for}.
+Par exemple, le code ci-dessous affichera à l'écran toutes les clefs et toutes les
+valeurs associées du dictionnaire.
+
+\begin{lstlisting}
+d = {10:2.5, 5.5:"salut", "bonne journée":["bonne", "nuit"], "a":111}
+\end{lstlisting}
+
+\begin{lstlisting}
+for cle in d.keys() :
+print "La cle " +str(cle)+ " est associée avec : " +str(d[cle])
+\end{lstlisting}
+
+Vous pouvez vérifier si le dictionnaire contient une clé et une valeur associée avec
+grâce à l'operateur \inlinecode{in}.
+
+\begin{lstlisting}
+	if "salut" in d.keys() :
+	print "Le dico contient la clé 'salut'"
+else :
+	print "Le dico ne contient pas la clé 'salut'"
+\end{lstlisting}	
+\end{myboxi}
+
+\begin{exercice}[Dictionnaires] \label{ex:dictionnaires_1}
+\
+\begin{enumerate}
+\item Écrivez un script qui compte combien de fois chaque mot apparaît dans une
+chaîne de caractères et affiche le résultat sur le terminal. La chaîne de caractères
+devra être demandée à l'utilisateur.
+Par exemple :
+
+\begin{lstlisting}
+Entrez votre phrase: Un et deux et trois et un
+Mot 'un' a été trouvé 2 fois
+Mot 'et' a été trouvé 3 fois
+Mot 'deux' a été trouvé 1 fois
+Mot 'trois' a été trouvé 1 fois
+\end{lstlisting}
+\item Modifiez votre script pour qu'il compte les voyelles d'une chaîne de caractères et
+pour qu'il affiche le résultat de la même manière que pour l'exercice \ref{ex:dictionnaires_1}.1.
+\item Modifiez votre script pour qu'il affiche le nombre total de voyelles trouvées.
+\end{enumerate}
+\end{exercice}
+
+
+\begin{exercice}[Conversion de listes] \label{ex:conversionlistes_1}
+
+Écrivez une fonction de conversion d'une liste dans une chaine de caractères.
+Cette fonction prend en paramètres la liste à convertir et le séparateur et
+retourne une chaîne de caractères avec la représentation de la liste où les
+éléments de la liste s'alternent par le séparateur. Puis, ré-affichez vos listes
+avec les séparateurs différents.
+Par exemple:
+\begin{lstlisting}[style=verbatim]
+>>> print liste2chaine(liste24, "; ")
+0.0; 0.1; 0.2; 0.3; 0.4; 0.5; 0.6; 0.7; 0.8; 0.9
+\end{lstlisting}
+\end{exercice}
+
+
+\newpage
+\section{Fonctions}
+
+\begin{exercice}[Définition] \label{ex:definition_1}
+
+Soit les fonctions suivantes, donnez la liste des paramètres indispensables
+ainsi que le type de retour après la flèche $\rightarrow$ (ce qui sera retourné):
+\begin{enumerate}
+\item Calcule la circonférence d'un cercle:
+
+def circonference( \dotfill ): $\rightarrow$ \dotfill
+\item Calcule l'aire d'un carré:
+
+def aire( \dotfill ): $\rightarrow$  \dotfill 
+\item Calcule le périmètre d'un rectangle:
+
+def perimetre( \dotfill ): $\rightarrow$  \dotfill 
+\item Convertit une somme de CHF en EURO selon un taux donné:
+
+def convertir( \dotfill ): $\rightarrow$  \dotfill 
+\item Calcule la n-ième racine d'un nombre:
+
+def racineN( \dotfill ): $\rightarrow$  \dotfill 
+\item Calcule la vitesse moyenne en fonction d'un laps de temps en secondes
+et d'une distance en km:
+
+def vitesseMoyenne( \dotfill ): $\rightarrow$  \dotfill 
+\end{enumerate}
+\end{exercice}
+
+
+
+
+
+\begin{exercice}[Implémentation] \label{ex:implementation_1}
+
+Choisissez 3 des fonctions ci-dessus et implémentez-les. Pour chacune
+d'entre elles, le script devra demander à l'utilisateur les paramètres
+indispensables, et rien d'autre. Affichez chaque fois sur le terminal ce que
+retourne la fonction.
+\end{exercice}
+
+\begin{exercice}[Réutilisation] \label{ex:reutilisation_1}
+\
+\begin{enumerate}
+\item Choisissez 1 de vos fonctions implémentées dans l'exercice \ref{ex:implementation_1} et modifiez
+le code du programme principal pour qu'il génère les paramètres pour la
+fonction de manière aléatoire (avec les fonctions \inlinecode{random.randint} ou
+\inlinecode{random.uniform}) au lieu de les demander à l'utilisateur.
+\begin{myboxi}[Rappel] Les fonctions \inlinecode{random.randint} et \inlinecode{random.uniform} sont fournies
+par le module \inlinecode{random} .
+\end{myboxi}
+\item Ajoutez une boucle dans votre code pour qu'il lance la fonction
+sélectionnée 10 fois de suite avec des paramètres différents.
+
+Par exemple, l'output pour le code avec la fonction de circonférence:
+\begin{lstlisting}[style=verbatim]
+1) Circonférence d'un cercle (rayon de 11.316) est de 71.102
+2) Circonférence d'un cercle (rayon de 24.328) est de 152.855
+...
+10) Circonférence d'un cercle (rayon de 9.085) est de 57.086
+\end{lstlisting}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Affichage de listes] \label{ex:affichage_1}
+\
+\begin{enumerate}
+\item Écrivez une fonction qui affichera une liste passée en paramètre de la
+manière suivante :
+\begin{lstlisting}[style=verbatim]
+La liste est formée des 10 éléments suivants:
+1er élément est: 0.0
+2e élément est: 0.1
+3e élément est: 0.2
+...
+10e élément est: 0.9
+\end{lstlisting}
+\item En utilisant la fonction de l'exercice \ref{ex:affichage_1}.1 affichez les listes d'exercice \ref{ex:listes_6}.
+
+\item Changez votre fonction pour qu'elle affiche les listes sous la forme de
+deux colonnes: index et valeur correspondante, c'est-à-dire pour la même
+liste on aura:
+\begin{lstlisting}[style=verbatim]
+0 0.0
+1 0.1
+2 0.2
+...
+9 0.9
+\end{lstlisting}
+Puis, ré-affichez vos listes d'exercice \ref{ex:listes_6}.
+\begin{myboxi}[Astuce]
+Utiliser la tabulation (se produit avec \inlinecode{\t}) pour aligner les colonnes.
+\end{myboxi}
+\end{enumerate}
+\end{exercice}
+
+
+
+\begin{exercice}[Fonctions] \label{ex:fonctions_1}
+Dans un nouveau programme, demandez à l'utilisateur d'entrer 2 nombres (entiers ou
+décimaux) et une chaîne de caractères représentant un opérateur binaire
+mathématique simple (\inlinecode{+,-,*,/,**}).
+Implémentez la fonction \inlinecode{calc} qui prend en paramètres ces 3 valeurs et qui est capable
+de reconnaître l'opérateur, d'effectuer l'opération correctement et de retourner (pas
+afficher) le résultat. Affichez de manière lisible le calcul ainsi que le résultat.
+Par exemple:
+\begin{lstlisting}[style=verbatim]
+Entrez le premier nombre: 3
+Entrez le second nombre: 4
+Entrez l'opérateur: *
+3 * 4 = 12
+\end{lstlisting}
+\end{exercice}
+
+\begin{exercice}[Fonctions aléatoires] \label{ex:fonctionsaleatoires_1}
+Écrivez une fonction qui remplit une liste de 20 entiers aléatoires entre -100 et +100.
+Passez ensuite cette liste en paramètre d'une autre fonction qui affichera le contenu de
+la liste, chaque élément sur une nouvelle ligne.
+\end{exercice}
+
+
+\begin{exercice}[Fonctions et listes] \label{ex:fonctionslistes_1}
+Écrivez une fonction qui recevra une liste et affichera tout d'abord tous les nombres
+négatifs de la liste sur une ligne puis tous les nombres positifs.
+Enfin, elle devra retourner (pas afficher) une liste où dans la première case se trouve le
+nombre d'entiers négatifs et dans la seconde le nombre d'entiers positifs.
+Affichez la liste initiale et les nombres d'éléments positifs et négatifs en dehors de la
+fonction. Veuillez utiliser la fonction de l'exercice \ref{ex:fonctionsaleatoires_1} pour générer la liste initiale.
+Par exemple:
+\begin{lstlisting}[style=verbatim]
+La liste à passer dans la fonction: [3, -2, 1, -4, 5]
+Les éléments négatifs de la liste: [-2, -4]
+Les éléments positifs de la liste: [3, 1, 5]
+Le résultat retourné est: 2 éléments négatifs et 3 positifs.
+\end{lstlisting}
+\end{exercice}
+
+
+\begin{exercice}[Fonctions récursives] \label{ex:recursives_1}
+Implémentez la fonction récursive factorielle(nombre) sans utiliser la librairie math
+qui calcule la factorielle de la valeur passée en paramètre et retourne (pas affiche) le
+résultat. La valeur par défaut du paramètre nombre doit être égale à 10. Ensuite,
+demandez une valeur à l'utilisateur, appelez la fonction avec la valeur ou si rien n'a été
+introduit, appelez-la sans paramètre. Enfin, affichez le résultat.
+\end{exercice}
+
+
+
+
+\begin{exercice}[Boucles, Expressions Booléennes et Fonctions] \label{ex:boucles_6}
+ 
+Pour chacun des blocs d'instructions suivants, indiquez exactement ce qui sera affiché à
+l'écran ou sinon, justifiez pourquoi ceci n'est pas possible. Chaque bloc est indépendant.
+\begin{enumerate}
+\item 
+\begin{lstlisting}
+b1, b2 = False, True
+if (not b1 and (b2 or b1)):
+  print "condition vraie"
+else:
+  print "condition fausse"
+\end{lstlisting}
+
+\item 
+\begin{lstlisting}
+d = {}
+for i in range(10):
+  d[i*i] = range(i)
+print d[4]
+\end{lstlisting}
+
+\item 
+\begin{lstlisting}
+s = 'hello!'
+for i in range(1,len(s)):
+  print s[-i-1],
+\end{lstlisting}
+
+\item 
+\begin{lstlisting}
+liste = ["Lorem", "ip-sum", "dolor"]
+s = " - ".join(liste)
+liste = s.split(" ")
+print liste
+\end{lstlisting}
+
+\item 
+\begin{lstlisting}
+a,b,c = 1,2,3
+def maFonction(a):
+	print str(a) + str(b) + 'c'
+a = 10
+maFonction(5)
+\end{lstlisting}
+\end{enumerate}
+\end{exercice}
+
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:boucles_6]
+
+\begin{lstlisting}[style=verbatim]
+condition vraie
+-----------------------
+[0, 1]
+-----------------------
+o l l e h
+-----------------------
+['Lorem', '-', 'ip-sum', '-', 'dolor']
+-----------------------
+52c
+\end{lstlisting}
+
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+
+\newpage
+\section{Manipulation de fichiers}
+
+
+\begin{exercice}[Opérations sur fichiers] \label{ex:fichiers_1}
+
+Soit un fichier physique qui s'appelle ``\verb#test.txt#''. Écrivez (ici, au stylo) une
+instruction qui permettra:
+\begin{itemize}
+\item d'ouvrir le fichier en lecture:
+
+\dotfill
+\item d'ouvrir le fichier en écriture (si le fichier existe déjà, on doit l'écraser):
+
+\dotfill
+\item d'ouvrir le fichier en écriture, pour ajouter des données à la fin:
+
+\dotfill
+\end{itemize}
+Soit un ficher logique f qui contient plusieurs lignes de texte et qui est déjà ouvert
+en lecture avec la commande \inlinecode{f = open("test.txt","r")}. Écrivez des
+instructions qui permettront:
+\begin{itemize}
+\item de récupérer toutes les lignes du ficher f sous la forme d'une chaîne:
+
+\dotfill
+
+\item de récupérer toutes les lignes du fichier f sous la forme d'une liste:
+
+\dotfill
+\item d'imprimer la deuxième ligne du fichier f:
+
+\dotfill
+\end{itemize}
+
+Soit un ficher logique f qui contient plusieurs lignes de texte et qui est ouvert en
+lecture et écriture avec la commande \inlinecode{f = open("test.txt", "a+")}. Écrivez des
+instructions qui permettront:
+\begin{itemize}
+\item d'écrire dans le fichier f deux lignes (p.ex. "ligne 1" et "ligne 2"):
+
+\dotfill
+\item d'écrire dans le fichier f deux nombres séparés par une virgule:
+
+\dotfill
+\item d'imprimer la deuxième ligne du fichier f:
+
+\dotfill
+\end{itemize}
+
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+
+\newpage
+\begin{solution}[ex:fichiers_1]
+
+
+
+Soit un fichier physique qui s'appelle ``\verb#test.txt#''. Écrivez une
+instruction qui permettra:
+\begin{itemize}
+\item d'ouvrir le fichier en lecture:
+\begin{lstlisting}
+f = open( "test.txt", "r" )
+\end{lstlisting}
+
+\item d'ouvrir le fichier en écriture (si le fichier existe déjà, on doit l'écraser):
+\begin{lstlisting}
+f = open( "test.txt", "w" )
+\end{lstlisting}
+
+\item d'ouvrir le fichier en écriture, pour ajouter des données à la fin:
+\begin{lstlisting}
+f = open( "test.txt", "a" )
+\end{lstlisting}
+
+\end{itemize}
+Soit un ficher logique f qui contient plusieurs lignes de texte et qui est déjà ouvert
+en lecture avec la commande \inlinecode{f = open("test.txt","r")}. Écrivez des
+instructions qui permettront:
+\begin{itemize}
+\item de récupérer toutes les lignes du ficher f sous la forme d'une chaîne:
+\begin{lstlisting}
+f.read()
+\end{lstlisting}
+
+\item de récupérer toutes les lignes du fichier f sous la forme d'une liste:
+\begin{lstlisting}
+f.readlines()
+\end{lstlisting}
+
+\item d'imprimer la deuxième ligne du fichier f:
+\begin{lstlisting}
+print f.readlines()[1]
+\end{lstlisting}
+
+\end{itemize}
+
+Soit un ficher logique f qui contient plusieurs lignes de texte et qui est ouvert en
+lecture et écriture avec la commande \inlinecode{f = open("test.txt", "a+")}. Écrivez des
+instructions qui permettront:
+\begin{itemize}
+\item d'écrire dans le fichier f deux lignes (p.ex. "ligne 1" et "ligne 2"):
+\begin{lstlisting}
+f.write("ligne 1\nligne2\n") 
+\end{lstlisting}
+
+\item d'écrire dans le fichier f deux nombres séparés par une virgule:
+\begin{lstlisting}
+a, b = 5, 10
+f.write(str(a) + "," + str(b) + "\n")
+\end{lstlisting}
+
+
+\item d'imprimer la deuxième ligne du fichier f:
+\begin{lstlisting}
+f.seek(0)
+lignes = f.read().split("\n")
+print lignes[1]
+\end{lstlisting}
+\end{itemize}
+\end{solution}
+\newpage
+
+\end{filecontents*}
+\appendsolution
+
+
+
+\begin{exercice}[Affichage d'un fichier texte] \label{ex:affichage_2}
+\
+
+\begin{enumerate}
+\item Écrivez un script qui demandera à l'utilisateur un nom de fichier et, ensuite,
+affichera toutes les lignes du fichier à l'écran.
+\item Ensuite, modifiez le script de l'exercice \ref{ex:fichiers_1} pour qu'il :
+\begin{enumerate}
+\item affiche le fichier du code-source du script, si l'utilisateur n'entre qu'une
+chaîne de caractères vide;
+\begin{myboxi}[Astuce] Importez le module \inlinecode{sys} et utilisez \inlinecode{argv[0]} qui donne le nom du
+script.\end{myboxi}
+\item précède chaque ligne par son numéro;
+\item compte le nombre total de caractères dans le fichier et affiche le résultat.
+Par exemple, un fichier qui contient les 3 lignes suivantes:
+\begin{lstlisting}[style=verbatim]
+Comparison operations are supported by all objects.
+They all have the same priority;
+Comparisons can be chained arbitrarily.
+\end{lstlisting}
+
+Doit être affiché par le programme de cette façon:
+\begin{lstlisting}[style=verbatim]
+Le contenu du fichier test.txt est:
+1 : Comparison operations are supported by all objects.
+2 : They all have the same priority.
+3 : Comparisons can be chained arbitrarily;
+Il y a 3 lignes et 125 caractères.
+\end{lstlisting}
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Listes et fichiers] \label{ex:listesfichiers_1}
+\
+
+\begin{enumerate}
+\item Écrivez un programme qui remplit une liste de N éléments par des nombres
+entiers aléatoires entre -100 et +100. La taille de la liste doit être demandée à
+l'utilisateur.
+\item Affichez la liste ainsi que la somme de ses éléments.
+\begin{myboxi}[Astuce] Vous pouvez réutiliser une de vos fonctions d'affichage de la série
+précédente.\end{myboxi}
+\item Ensuite, ajoutez une fonctionnalité qui va écrire la liste, élément par élément,
+chacun sur sa ligne, dans un fichier spécifié par l'utilisateur.
+\end{enumerate} 
+\end{exercice}
+
+\begin{exercice}[Fichiers et listes] \label{ex:fichierslistes_1}
+\
+
+\begin{enumerate}
+\item Écrivez un programme qui lit un fichier spécifié par l'utilisateur (veuillez utiliser
+le fichier de l'exercice \ref{ex:listesfichiers_1}) et remplit une liste par les nombres trouvés dans les
+lignes du fichier.
+\item Ensuite, affichez le contenu de la liste lue ainsi que la somme de ses
+éléments.
+\end{enumerate}
+\end{exercice}
+
+
+
+
+\begin{exercice}[Modes d'ouverture de fichiers] \label{ex:modes_1}
+Soit la commande suivante :
+
+\begin{lstlisting}
+with open( "fichier.txt", <mode> ) as fp:
+  <instructions>
+\end{lstlisting}
+
+Quels sont les modes d'ouverture de fichier valides en python :
+
+\begin{tabularx}{\textwidth}{XXX}
+"r"	& "w"		& "rw+" 		\\
+"w+b"			& "t"		& "a+"		\\
+"ouvrir svp"	& "R+" 	& "r+"		\\
+\end{tabularx}
+
+\end{exercice}
+
+
+
+
+\begin{filecontents*}{temp.tex}
+
+\newpage
+\begin{solution}[ex:modes_1]
+
+Les modes : \texttt{ouvrir svp}, \texttt{t}, \texttt{R+}, \texttt{rw+} ne sont pas valides.
+
+Le modes valides dans la liste de l'exercice sont les suivants :
+
+\begin{description}
+\item[\texttt{r}] lecture, accès séquentiel (pas écriture!).
+\item[\texttt{w+b}] écriture (et lecture) à accès direct binaire: le fichier sera créé. Un fichier existant avec le même nom est écrasé.
+\item[\texttt{w}] uniquement écriture, accès séquentiel. Le fichier sera créé. Un fichier existant avec le même nom est écrasé.
+\item[\texttt{a+}] lecture et écriture à accès direct. Le fichier sera créé si pas existante. La tête de lecture/écriture est positionnée à la fin du fichier (``append'').
+\item[\texttt{r+}] lecture et écriture à accès direct. Le fichier doit exister déjà. La tête de lecture/écriture est positionnée au début du fichier.
+\end{description}
+
+\end{solution}
+\newpage
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+\begin{exercice}[Lecture de donnée] \label{ex:lecture_1}
+
+Soit le fichier \inlinecode{fp} ouvert avec la commande suivante :
+\begin{lstlisting}
+fp = open( "fichier.txt", "r" )
+\end{lstlisting}
+Écrivez les instructions qui permettront :
+\begin{enumerate}
+\item De récupérer toutes les lignes sous forme de liste de chaines de caractères :
+\medskip
+\item D'imprimer à l'écran la deuxième ligne du fichier :
+\medskip
+\item D'imprimer à l'écran l'avant dernière ligne du fichier :
+\medskip
+\end{enumerate}
+\end{exercice}
+
+
+
+
+\begin{filecontents*}{temp.tex}
+
+\newpage
+\begin{solution}[ex:lecture_1]
+
+
+Écrivez les instructions qui permettront :
+\begin{enumerate}
+\item De récupérer toutes les lignes sous forme de liste de chaines de caractères :
+\begin{lstlisting}
+lignes = fp.readlines()
+\end{lstlisting}
+
+\item D'imprimer à l'écran la deuxième ligne du fichier :
+\begin{lstlisting}
+print fp.readlines()[1]
+\end{lstlisting}
+
+\item D'imprimer à l'écran l'avant dernière ligne du fichier :
+\begin{lstlisting}
+print fp.readlines()[-2]
+\end{lstlisting}
+\end{enumerate}
+
+
+
+\end{solution}
+\newpage
+
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+\begin{exercice}[Résultats d'un test] \label{ex:resultats_1}
+
+Imaginez que vous avez un fichier sous format CSV (comma separated values - valeurs
+séparé par virgule) qui contient des informations concernant les résultats d'un test
+intermédiaire, c'est-à-dire qu'il y a plusieurs lignes du type :
+\begin{verbatim}
+	prenom,nom,faculte,note,bonus
+\end{verbatim}
+p.ex.
+\begin{verbatim}
+Homer,Simpson,hec,5.5,1.0
+Bart,Simpson,esc,3.0,0.0
+\end{verbatim}
+Vous pouvez créez un fichier de données par vous-même dans un éditeur de texte.
+% ou vous le télécharger le fichier exam.cvs" sur le site du cours.
+
+\begin{enumerate}
+\item Écrivez une fonction qui prend en paramètres le nom du fichier et qui ouvre le fichier, le
+lit et renvoie un dictionnaire contenant les données du fichier. Les clés du dictionnaire
+devront correspondre au nom complet de la personne et la valeur de la clé devra
+correspondre aux données, p.ex les données de l'exemple précédent seront converties
+comme suit:
+
+\begin{lstlisting}
+donnees = {'Bart Simpson': ['Bart','Simpson','esc','3.0','0.0'],
+'Homer Simpson': ['Homer','Simpson','hec','5.5','1.0'] }
+\end{lstlisting}
+
+\begin{myboxi}[Rappel]
+Les accolades définissent les dictionnaires en Python. Vous pouvez assigner une
+valeur à la clé d’un dictionnaire grâce à la syntaxe :
+\begin{lstlisting}
+donnees[cle] = valeur
+\end{lstlisting}
+Vous pouvez également récupérer une valeur associée avec une clé par :
+\begin{lstlisting}
+valeur = donnees[cle] ou valeur = donnees.get(cle)
+\end{lstlisting}
+\end{myboxi}
+\item Écrivez une fonction qui prend en paramètres les données d'une personne et les affiche
+de manière lisible.
+\item Écrivez une troisième fonction qui va afficher les résultats du test pour les étudiants
+ayant obtenu une note au dessus de 3.5. Elle doit prendre deux paramètres: les données
+d'un fichier sous la forme d'un dictionnaire et la note au dessus de la quelle il faut afficher
+l'information, 3.5 par défaut.
+Tester vos fonctions en affichant des données d'un des fichiers exemples.
+\end{enumerate}
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:resultats_1]
+\begin{lstlisting}
+# -*- coding: utf-8 -*-
+
+
+def resultatsTest(nom_fichier):
+    donnees = {}
+    with open(nom_fichier, 'r') as f:
+        for ligne in f:
+            ligne = ligne.rstrip("\n")
+
+            donnees_etudiant = ligne.split(",")
+            prenom = donnees_etudiant[0]
+            nom = donnees_etudiant[1]
+            
+            donnees[prenom + " " + nom] = donnees_etudiant
+            
+    return donnees
+
+
+def affichageEtudiant(l):
+    prenom = l[0]
+    nom = l[1]
+    faculte = l[2]
+    note = l[3]
+    bonus = l[4]
+
+    print "L'étudiant", prenom, nom, "de la faculté", faculte, \
+          "a obtenu la note :", note, "avec un bonus de :", bonus, "."
+
+
+def affichageTest(donnees, note_min = 3.5):
+    for e in donnees.keys():
+        note = float(donnees[e][3])
+        if note > note_min:
+            affichageEtudiant(donnees[e])
+
+
+
+print "------- .1 -------"
+
+donnees_test = resultatsTest("etudiants.csv")
+
+print donnees_test
+
+print "------- .2 -------"
+
+print "Affichage des données du premier étudiant dans le fichier :"
+
+affichageEtudiant(donnees_test["Bart Simpson"])
+
+
+print "------- .3 -------"
+
+print "Avec note minimale = 2.5"
+affichageTest(donnees_test, 2.5)
+
+print "--------------------"
+
+print "Avec note minimale par défault (3.5)"
+affichageTest(donnees_test)
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+\begin{exercice}[Résultat d'un étudiant] \label{ex:resultats_2}
+Écrivez un script qui demandera à l'utilisateur le nom et le prénom d'une personne et,
+en suite, affichera le résultat du test à l'écran si la personne existe dans les données. Le
+script devra redemander le nom et le prénom jusqu'à ce qu'une chaine vide soit entrée par
+l'utilisateur. Pensez à réutiliser les fonctions déjà écrites.
+\end{exercice}
+
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:resultats_2]
+
+Code à ajouter après la solution de l'exercice \ref{ex:resultats_1}.
+
+\begin{lstlisting}
+donnees_test = resultatsTest("etudiants.csv")
+
+while True:
+    nom = raw_input("Entrez le nom et le prénom d'un étudiant séparés par espace : ")
+    if nom == "":
+        print "Fin."
+        break
+    if nom not in donnees_test.keys():
+        print "Etudiant non trouvé."
+        continue
+    affichageEtudiant(donnees_test[nom])
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+\begin{exercice}[Résultats du test et de l'examen] \label{ex:resultats_3}
+\
+\begin{enumerate}
+\item Écrivez une fonction qui prend les données sous forme d'un dictionnaire et les
+enregistre dans un fichier. Les données et le nom du fichier devront passer en paramètres
+de la fonction.
+Vous pouvez utiliser la fonction \inlinecode{join()} pour convertir une liste de chaines de caractères
+en une chaine.
+P.ex. le code suivant :
+\begin{lstlisting}
+info = ['Bart','Simpson','esc','3.0','0.0']
+chaine = ",".join( info )
+\end{lstlisting}
+vous donne la chaine \inlinecode{"Bart,Simpson,esc,3.0,0.0"}
+\item Écrivez un script qui enregistre les résultats des étudiants dans des fichiers, un fichier
+différent par faculté (par exemple \verb#test-esc.csv# pour ESC et \verb#test-hec.csv# pour HEC, etc.)
+Le format des fichiers enregistrés doit être le même que celui de \verb#test.csv#.
+\end{enumerate}
+
+\end{exercice}
+
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:resultats_3]
+\begin{lstlisting}
+
+def enregistreDonnees(donnees, fichier, faculte = ""):
+    with open(fichier, 'w') as fh:
+        compteur = 0
+        for e in donnees.keys():
+            if faculte != "": # si la faculté a été spécifiée
+                if donnees[e][2] != faculte:
+                    # si la faculté n'est pas celle spécifiée,
+                    # on passe à l'étudiant suivant.
+                    continue 
+            fh.write(",".join(donnees[e])+"\n")
+            compteur += 1
+    print compteur, "lignes ont été écrites dans le fichier", fichier
+                     
+
+enregistreDonnees(donnees_test, "test-all.csv")
+enregistreDonnees(donnees_test, "test-esc.csv", "ESC")
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+
+
+
+%\begin{filecontents*}{temp.tex}
+%
+%\begin{solution}[ex:]
+%
+%\end{solution}
+%
+%
+%\end{filecontents*}
+%\appendsolution
+
+

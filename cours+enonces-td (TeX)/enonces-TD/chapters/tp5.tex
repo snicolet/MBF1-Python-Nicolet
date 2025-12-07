@@ -1,0 +1,262 @@
+\clearpage
+\section*{TP5}
+
+\begin{exercice}[Surface d'un cercle]\label{ex:fonctions_1}
+Définissez une fonction \verb$surfCercle(r)$. Cette fonction doit renvoyer la surface (l'aire) d'un cercle dont on lui a fourni le rayon R en argument. 
+
+Par exemple, l'exécution de l'instruction: \verb$print surfCercle(2.5)$ doit donner le résultat \verb$19.635$.
+\end{exercice}
+
+
+\begin{exercice}[Volume d'une boîte]\label{ex:fonctions_2}
+Définissez une fonction \verb$volBoite(x1,x2,x3)$ qui renvoie le volume d'une boîte parallélipipédique dont on fournit les trois dimensions \verb$x1$, \verb$x2$, \verb$x3$ en arguments.
+
+Par exemple, l'exécution de l'instruction: \verb$print volBoite(5.2, 7.7, 3.3)$ doit donner le résultat: \verb$132.13$.
+\end{exercice}
+
+\begin{exercice}[Noms des mois]\label{ex:fonctions_3}
+Définissez une fonction \verb$nomMois( n )$ qui renvoie le nom du enième mois de l'année.
+
+Par exemple, l'exécution de l'instruction: \verb$print( nomMois(3) )$ doit donner le résultat: \verb$Mars$.
+\end{exercice}
+
+
+\begin{exercice}[Volume d'une boîte 2]\label{ex:fonctions_4}
+Modifiez la fonction \verb$volBoite(x1, x2, x3)$ que vous avez définie dans l'exercice \ref{ex:fonctions_2}, de manière à ce qu'elle puisse être appelée avec trois, deux, un seul, ou même aucun argument.
+Utilisez pour ceux ci des valeurs par défaut égales à 10.
+
+Par exemple:
+\verb$print ( volBoite() )$ doit donner le résultat: \verb$1000$ \newline
+\verb$print ( volBoite(2) )$ doit donner le résultat: \verb$200$ \newline
+\verb$print ( volBoite(2,3) )$ doit donner le résultat: \verb$60$ \newline
+\end{exercice}
+
+
+\begin{exercice}[Combien de mots]\label{ex:fonctions_5}
+Définissez une fonction \verb$compteMots(ph)$ qui renvoie le nombre de mots contenus dans la phrase \verb$ph$.
+On considère comme mots les ensemble de caractères inclus entre des espaces.
+\end{exercice}
+
+\begin{exercice}[Voyelles]\label{ex:voyelles_2}
+Écrivez une fonction \verb$voyelle(car)$, qui renvoie \verb$True$ si le caractère fourni en argument est une voyelle.
+\end{exercice}
+
+\begin{exercice}[Combien de voyelles]\label{ex:voyelles_3}
+Écrivez une fonction \verb$compteVoyelles(phrase)$, qui renvoie le nombre de voyelles contenues dans une phrase donnée.
+\end{exercice}
+
+\begin{exercice}[Nombres premiers]\label{ex:nombres_premiers_1}
+Un nombre premier est un nombre qui n'est divisible que par un et par lui-même.
+
+Écrivez un programme qui établisse la liste de tous les nombres premiers compris entre 1 et 1000, en utilisant la méthode du crible d'Eratosthène:
+\begin{itemize}
+\item Créez une liste de 1000 éléments, chacun initialisé à la valeur \verb$True$.
+\item Parcourez cette liste à partir de l'élément d'indice 2: si l'élément analysé possède la valeur \verb$True$, mettez à \verb$False$ tous les autres éléments de la liste, dont les indices sont des multiples entiers de l'indice auquel vous êtes arrivé.
+\end{itemize}
+
+Lorsque vous aurez parcouru ainsi toute la liste, les indices des éléments qui seront restés à \verb$True$ seront les nombres premiers recherchés.
+
+En effet: A partir de l'indice 2, vous annulez tous les éléments d'indices pairs : 4, 6, 8, 10, etc. Avec l'indice 3, vous annulez les éléments d'indices 6, 9, 12, 15, etc. et ainsi de suite.
+Seuls resteront à True les éléments dont les indices sont effectivement des nombres premiers.
+
+
+Maintenant, savez-vous la réponse à ce problème?  \url{http://projecteuler.net/problem=7} 
+\end{exercice}
+
+
+
+\begin{exercice}[Dictionnaire]\label{ex:dictionnaire_2}
+Écrivez une fonction qui échange les clés et les valeurs d'un dictionnaire (ce qui permettra par exemple de transformer un dictionnaire anglais/français en un dictionnaire français/anglais). On suppose que le dictionnaire ne contient pas plusieurs valeurs identiques.
+
+Ci-dessus un exemple d'un petit dictionnaire anglais/français:
+
+\begin{lstlisting}
+AF = {"apple" : "pomme", "airplane" : "avion", "office" : "bureau", "ball" : "balle", "card" : "carte"}
+\end{lstlisting}
+\end{exercice}
+
+
+\subsection*{Exercices supplémentaires}
+
+
+\begin{exercice}[Index du maximum]\label{ex:index_maximum_1}
+Définissez une fonction indexMax(liste) qui renvoie l'index de l'élément ayant la valeur la plus élevée dans la liste transmise en argument.
+
+Exemple d'utilisation:
+
+\begin{lstlisting}
+serie = [5, 8, 2, 1, 9, 3, 6, 7]
+print( indexMax(serie) )
+4
+\end{lstlisting}
+
+
+\end{exercice}
+
+\begin{exercice}[Codes ASCII]\label{ex:ascii_1}
+Le script suivant affiche tous les caractères en regard des codes correspondants.
+
+\begin{lstlisting}
+c = 32
+while (c< 128):
+    print("Code", c, ":", chr(c))
+    c+=1
+\end{lstlisting}
+
+Rappel: \verb$ord(chr(c)) = c$ \newline
+Exemple: \verb$chr(65) = "A"$ et \verb$ord("A") = 65$
+
+\begin{enumerate}
+\item À partir de cette table, écrivez une fonction \verb$estUnChiffre(car)$ qui renvoie \verb$True$, si l'argument transmis est un chiffre, et \verb$False$ sinon.
+\item Tester ainsi tous les caractères d'une chaîne de caractères en parcourant celle-ci à l'aide d'une boucle for.
+\item À partir de cette table, établissez la relation numérique simple reliant chaque caractère majuscule au caractère minuscule correspondant.
+\item À partir de cette relation, écrivez une fonction qui convertit tous les caractères minuscules en majuscules, et vice-versa (dans une phrase fournie en argument).
+
+
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Factorielle]\label{ex:factorielle_1}
+Définissez une fonction \verb$it_fact( n )$ qui renvoie le nombre $n!$ (\verb$n$ factorielle). Le calcul de la factorielle devra être fait avec un boucle \verb$while$.
+
+Rappel:
+\[
+n! = n  (n-1)  (n-2) \cdots 3 * 2 * 1
+\]
+\begin{align*}
+0! &= 1     &= 1 \\
+1! &= 1                     &=    1 \\
+2! &= 2 * 1                 &=    2 \\
+3! &= 3 * 2 * 1           &=     6 \\
+4! &= 4 * 3 * 2 * 1      &=   24 \\
+5! &= 5 * 4 * 3 * 2 * 1 &= 120 
+\end{align*}
+
+Définissez une fonction \verb$rec_fact( n )$ qui renvoie le nombre $n!$. Le calcul de la factorielle devra être fait avec une fonction récursive.
+
+Suggestion:
+
+\begin{align*}
+6! &= 6 * 5! = 720 \\
+7! &= 7 * 6! = 5040 \\
+n! &= n * (n-1)!
+\end{align*}
+\end{exercice}
+
+\clearpage
+
+\section*{TP5: Corrigé}
+
+
+\begin{solution}[ex:fonctions_1]
+\begin{lstlisting}
+import math
+def surfCercle(r):
+    return math.pi*r**2
+
+r = int(input("Saisir un nombre: "))
+print(surfCercle(r))
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:fonctions_2]
+\begin{lstlisting}
+def volBoite(x1,x2,x3):
+    return x1*x2*x3
+
+x1 = float(input("Saisir un nombre: "))
+x2 = float(input("Saisir un nombre: "))
+x3 = float(input("Saisir un nombre: "))
+print(volBoite(x1,x2,x3))
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:fonctions_3]
+\begin{lstlisting}
+def nomMois(n):
+    mois = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aôut','Septembre','Octobre','Novembre','Décembre']
+    return mois[n-1]
+    
+n = int(input("Num du mois: "))
+print(nomMois(n))
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:fonctions_4]
+\begin{lstlisting}
+def volBoite(x1=10,x2=10,x3=10):
+    return x1*x2*x3
+
+x1 = float(input("Saisir un nombre: "))
+x2 = float(input("Saisir un nombre: "))
+x3 = float(input("Saisir un nombre: "))
+print(volBoite(x1,x2,x3))
+print(volBoite(x1,x2))
+print(volBoite(x1))
+print(volBoite())
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:fonctions_5]
+\begin{lstlisting}
+def compteMots(ph):
+    if ph[0]==" ":
+        c=0
+    else:
+        c=1
+    for i in range(len(ph)-1):
+        if(ph[i]==" " and ph[i+1]!=" "):
+            c+=1
+    return c
+    
+print("\nEx.7.13\n")
+ph = input("Saisir une phrase: ")
+print(compteMots(ph))
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:voyelles_2]
+\texttt{def voyelle(car): }
+
+\texttt{ return car in "AaEeIiOoUuYyàáäèéëìíïòóöùúüÀÄÈÉËÌÏÒÖÙÜ"}
+\end{solution}
+
+\begin{solution}[ex:voyelles_3]
+\begin{lstlisting}
+def compteVoyelles(phrase):
+    t=0
+    for c in phrase:
+        if voyelle(c):
+            t+=1
+    return t
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:nombres_premiers_1]
+\begin{lstlisting}
+def premiers(n):
+    l=(n+1)*[True]
+    i=2
+    while i<=n:
+        if l[i]:
+            j=2*i
+            while j<=n:
+                l[j]=False
+                j+=i
+        i+=1
+    return l
+\end{lstlisting}
+\end{solution}
+
+\begin{solution}[ex:dictionnaire_2]
+\begin{lstlisting}
+AF = {"apple" : "pomme", "airplane" : "avion", "office" : "bureau", "ball" : "balle", "card" : "carte"}
+FA = {}
+
+for k in AF.keys():
+    FA[AF[k]]=k
+
+print("Dictionnaire Anglais/Français (AF):",AF)
+print("Dictionnaire Français/Anglais (FA):",FA)
+\end{lstlisting}
+\end{solution}

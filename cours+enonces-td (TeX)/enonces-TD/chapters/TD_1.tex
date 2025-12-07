@@ -1,0 +1,231 @@
+\section{Chapitre 1: Variables, types de base, fonctions d'entr\'ee et de sortie}
+
+\setcounter{exercice}{0}
+
+\bigskip
+
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+
+
+
+\begin{exercice}[les nombres: types int et float] \label{ex1a}
+\
+
+\noindent Initialisez trois variables \inlinecode{x}, \inlinecode{y} et \inlinecode{z} \`a des nombre entiers ou flottants, puis familiarisez-vous avec les op\'erateurs arithm\'etiques de base en les appliquant sur ces variables. On rappelle que:
+\begin{itemize}
+\item[$\bullet$] l'addition se note \inlinecode{+}
+\item[$\bullet$] la soustraction se note \inlinecode{-}
+\item[$\bullet$] la multiplication se note \inlinecode{*}
+\item[$\bullet$] l'exponentiation se note \inlinecode{**}
+\item[$\bullet$] le modulo se note \%
+\item[$\bullet$] la division se note \inlinecode{/}
+\end{itemize}
+En Python 2 (contrairement \`a Python 3), la division par d\'efaut est la division enti\`ere: cela signifie que si les deux nombres sont des entiers, c'est la division enti\`ere qui est appliqu\'ee. Si au moins un des deux nombres est r\'eel, c'est la division r\'eelle qui est appliqu\'ee.
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex1a]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+\medskip
+\begin{exercice}[les cha\^ines de caract\`eres: type string] \label{ex1b}
+\
+
+\noindent Initialisez deux variables \inlinecode{s} et \inlinecode{t} \`a des cha\^ines de caract\`eres, puis familiarisez-vous avec les op\'erateurs de base sur les cha\^ines en les appliquant sur ces variables. On rappelle que:
+\begin{itemize}
+\item[$\bullet$] la concat\'enation de cha\^ines de caract\`eres s'obtient par l'op\'erateur \inlinecode{+}
+\item[$\bullet$] la r\'ep\'etition de cha\^ines de caract\`eres s'obtient par l'op\'erateur \inlinecode{*}
+\item[$\bullet$] l'extraction de l'\'el\'ement d'indice \inlinecode{n} d'une cha\^ine \inlinecode{s} s'obtient par la syntaxe \inlinecode{s[n]} (les indices commencent \`a $0$)
+\item[$\bullet$] l'extraction de l'\'el\'ement d'indice \inlinecode{n}, mais en partant de la fin de la cha\^ine \inlinecode{s}, s'obtient par la syntaxe \inlinecode{s[-n]} (dans ce cas, les indices commencent \`a $-1$)
+\item[$\bullet$] l'extraction de la sous-cha\^ine de \inlinecode{s} d'indices \inlinecode{m} compris jusqu'\`a l'indice \inlinecode{n} non compris s'obtient par la syntaxe \inlinecode{s[m:n]}
+\item[$\bullet$] la longueur d'une cha\^ine \inlinecode{s} s'obtient par la syntaxe \inlinecode{len(s)}
+\end{itemize}
+Pour la syntaxe \inlinecode{s[m:n]}, si l'indice \inlinecode{m} n'est pas sp\'ecifi\'e, il vaut $0$ par d\'efaut; si l'indice \inlinecode{n} n'est pas sp\'ecifi\'e, il vaut \inlinecode{len(n)} par d\'efaut.
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex1b]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+
+\medskip
+\begin{exercice}[les Bool\'eens: type bool] \label{ex1c}
+\
+
+\noindent En Python, les valeurs bool\'eennes se disent \inlinecode{True} et \inlinecode{False}. Les op\'erateurs logiques sont les suivants:
+\begin{itemize}
+\item[$\bullet$] la n\'egation se note \inlinecode{not}
+\item[$\bullet$] le ``et'' logique, appel\'e aussi disjonction, se note \inlinecode{and}
+\item[$\bullet$] le ``ou'' logique, appel\'e aussi conjonction, se note \inlinecode{or}
+\end{itemize}
+Initialisez quelques variables aux valeurs Bool\'eennes \inlinecode{True} et \inlinecode{False} et testez les op\'erateurs logiques sur vos variables en tapant quelques expressions logiques de votre choix.
+
+\smallskip
+
+\noindent De plus, les diff\'erents op\'erateurs de comparaison entre nombres (ou autre types \'egalement) se note \inlinecode{<}, \inlinecode{<=}, \inlinecode{>}, \inlinecode{>=}, \inlinecode{==}, \inlinecode{!=}. Les r\'esultat des \'evaluations d'expressions contenant ces op\'erateurs sont des valeurs Bool\'eennes, \inlinecode{True} ou \inlinecode{False}. Par exemple, l'expression \inlinecode{2 < 3} est \'evalu\'ee en \inlinecode{True} et l'expression \inlinecode{2 == 3} est \'evalu\'ee en \inlinecode{False}. Tapez quelques expressions de votre choix contentant ces op\'erateurs de comparaison.
+
+\begin{myboxi}[Point important] Fa\^ites attention de ne pas confondre le symbole d'\'egalit\'e ``\inlinecode{=}'', qui sert \`a instancier une variable (par exemple \inlinecode{x = 2}), de celui de double \'egalit\'e ``\inlinecode{==}'', qui sert \`a tester l'\'egalit\'e entre deux op\'erands (par exemple \inlinecode{2 == 3}). \end{myboxi}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex1c]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+
+\medskip
+\begin{exercice}[Cha\^ines de caract\`eres] \label{ex2}
+\
+\begin{enumerate}
+\item Initialisez deux variables appel\'ees \inlinecode{prenom} et \inlinecode{nom} contenant votre pr\'enom et votre nom, respectivement.
+\item En utilisant l'op\'erateur de concat\'enation sur les cha\^ines de caract\`eres (\inlinecode{+}), initialisez une variable \inlinecode{nom_complet} contenant votre pr\'enom et votre nom s\'epar\'es par un espace.
+\item En utilisant l'op\'erateur de multiplication sur les cha\^ines de caract\`eres (\inlinecode{*}) et la fonction \inlinecode{print}, imprimez vos nom et pr\'enom une centaine fois \`a l'\'ecran s\'epar\'es par ``\verb# * #'' (espace - \'etoile - espace).
+\item En utilisant les op\'erateurs d'extraction de sous-cha\^ines, initialisez \`a partir de la variable \inlinecode{nom_complet} une autre variable \inlinecode{initiales} contenant vos initiales s\'epar\'ees par un espace.
+\item Imprimez vos initiales une centaine fois \`a l'\'ecran s\'epar\'es par ``\verb# * #'' (espace - \'etoile - espace).
+\end{enumerate}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex2]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+\medskip
+\begin{exercice}[Cha\^ines de caract\`eres] \label{ex3}
+\
+
+\noindent En utilisant la fonction \inlinecode{input()}, \'ecrivez un script qui demande \`a l'utilisateur d'entrer son pr\'enom, puis d'entrer son nom, puis affiche automatiquement le pr\'enom et le nom, les initiales et la premi\`ere lette du nom de famille, comme illustr\'e ci-dessous:
+\begin{lstlisting}[style=verbatim]
+>>> Quel est votre prenom? Astor
+>>> Quel est votre nom? Piazzolla
+Astor Piazzolla
+A. P.
+Premiere lettre du nom de famille: P
+\end{lstlisting}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex3]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+\medskip
+\begin{exercice}[int et float] \label{ex4}
+\
+
+\noindent Cr\'eez un script permettant de convertir des temp\'eratures de degr\'es Celsius en degr\'es Fahrenheit et vice-versa. La formule de conversion est la suivante:
+$$
+F = \frac{9}{5} \cdot C + 32
+$$
+Votre script devra demander \`a l'utilisateur la temp\'erature et afficher les deux conversions comme suit:
+\begin{lstlisting}[style=verbatim]
+Quelle est la temperature? 20.2
+20.2 C = 68.36 F
+20.2 F = -6.555555555 C
+\end{lstlisting}
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex4]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+
+\medskip
+\begin{exercice}[Bool\'eens] \label{ex5}
+\
+
+\noindent Cr\'eez un programme qui, premi\`erement, demande \`a l'utilisateur d'entrer des valeurs de v\'erit\'e (\inlinecode{True} ou \inlinecode{False}) pour trois variables propositionnelle $A$, $B$ et $C$, puis, deuxi\`emement, demande \`a l'utilisateur d'entrer ``en fran\c{c}ais'' une expression de logique Bool\'eenne sur ces trois variables propositionnelles, et enfin, affiche l'\'evaluation de cette expression en fonction des valeurs de v\'erit\'e de $A$, $B$ et $C$. Le d\'eroulement du programme devra ressembler \`a l'ex\'ecution ci-dessous.
+
+\begin{lstlisting}[style=verbatim]
+Entrer une valeur de verite pour A: True
+Entrer une valeur de verite pour B: False
+Entrer une valeur de verite pour C: True
+Entrer une expression Boolenne (exprimee avec des "non", "ou", "et" et des parentheses): 
+non (A et B) ou (C et non B)
+L'evaluation de votre expression Booleenne est: True
+\end{lstlisting}
+\end{exercice}
+
+\begin{myboxi}[Indication] Si \inlinecode{s} est une cha\^ine de caract\`eres, la fonction \inlinecode{s.replace(old, new)} retourne une autre cha\^ine de caract\`eres o\`u toutes les occurrences de la sous-cha\^ine \inlinecode{old} dans \inlinecode{s} sont remplac\'ees par la la sous-cha\^ine \inlinecode{new}. Ainsi, il vous faudra remplacer les sous-cha\^ines \inlinecode{"non"}, \inlinecode{"et"} et \inlinecode{"ou"} par \inlinecode{"not"}, \inlinecode{"and"} et \inlinecode{"or"}, puis \'evaluer votre expression Bool\'eenne \`a l'aide de la fonction \inlinecode{bool()} pour obtenir le r\'esultat d\'esir\'e.\end{myboxi}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex5]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+
+
+%\begin{filecontents*}{temp.tex}
+%
+%\begin{solution}[ex:]
+%
+%\end{solution}
+%
+%
+%\end{filecontents*}
+%\appendsolution
+
+
