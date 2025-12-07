@@ -1,4 +1,4 @@
-\section{Chapitre 6: Fonctions}
+\section{Chapitre 6: Programmation structurée}
 
 \setcounter{exercice}{0}
 
@@ -10,77 +10,14 @@
 %%%%%%%%
 
 
-\medskip
-\begin{myboxi}[Rappel sur les fonctions et les proc\'edures]
-La syntaxe pour d\'efinir une fonction avec des arguments qui poss\`edent des valeurs par d\'efaut est la suivante:
-\begin{lstlisting}
-def nom_fonction(arg_1 = val_1,...,arg_N = val_N):
-	instructions...
-	return valeur # dans le cas d'une procedure, simplement return
-\end{lstlisting}
-\end{myboxi}
-
 
 
 \medskip
-\begin{exercice}[fonctions]\label{TD4_ex1}
+\begin{exercice}[table de multiplication]\label{TD4_ex3}
 \
-
-\begin{enumerate}
-\item D\'efinissez une fonction \inlinecode{surf_cercle()} qui calcule la surface d'un cercle dont le rayon est donn\'e en argument. Pour avoir acc\`es \`a la valeur de $\pi$, ajouter l'instruction \inlinecode{from math import pi}.
-\item Modifiez votre fonction \inlinecode{surf_cercle} de sorte que votre argument poss\`ede une valeur par d\'efaut de $1$.
-\item D\'efinissez une fonction \inlinecode{vol_boite()} qui renvoie le volume d'une bo\^ite parall\'el\'epip\'edique dont on fournit les trois dimensions en arguments.
-\item Modifiez votre fonction de telle sorte que si un seul argument est fourni, la bo\^ite est consid\'er\'ee comme cubique (l'argument \'etant l'ar\^ete de ce cube); si deux arguments sont fournis, la bo\^ite est consid\'er\'ee comme un parall\'el\'epip\`ede \`a base carr\'ee (le premier argument est le c\^ot\'e du carr\'e, et le second la hauteur du parall\'el\'epip\`ede); si trois arguments sont fournis, la bo\^ite est consid\'er\'ee comme un parall\'el\'epip\`ede g\'en\'eral. Pour cela, donnez des valeurs par d\'efaut \`a vos arguments et utiliser un test conditionnel pour savoir si tel ou tel param\`etre poss\`ede telle ou telle valeur par d\'efaut...
-\item D\'efinissez une fonction \inlinecode{remplacement()} qui prend trois arguments \inlinecode{c1}, \inlinecode{c2} et \inlinecode{ch} et qui remplace tous les caract\`eres \inlinecode{c1} par des caract\`eres \inlinecode{c2} dans la cha\^ine caract\`eres \inlinecode{ch}.
-\item Modifiez votre fonction de telle sorte que si les arguments \inlinecode{c1}, \inlinecode{c2} et \inlinecode{ch} ne sont pas sp\'ecifi\'es, alors ils prendront les valeurs \inlinecode{" "}, \inlinecode{"*"} et \inlinecode{""}, respectivement.
-\end{enumerate}
-\end{exercice}
-
-\begin{filecontents*}{temp.tex}
-\newpage
-\begin{solution}[TD4_ex1]
-\begin{lstlisting}
-...
-\end{lstlisting}
-\end{solution}
-\newpage
-\end{filecontents*}
-\appendsolution
-
-
-
-
-
-
-\medskip
-\begin{exercice}[fonctions]\label{TD4_ex2}
-\
-
-\noindent En vous inspirant de l'exercice $2$ du TD $2$, cr\'eez deux fonctions \inlinecode{nb_car(chaine)} et \inlinecode{nb_mots(chaine)} qui comptent le nombre de caract\`eres et le nombre de mots d'une cha\^ine de caract\`eres \inlinecode{chaine} donn\'ee en argument.
-\end{exercice}
-
-\begin{filecontents*}{temp.tex}
-\newpage
-\begin{solution}[TD4_ex2]
-\begin{lstlisting}
-...
-\end{lstlisting}
-\end{solution}
-\newpage
-\end{filecontents*}
-\appendsolution
-
-
-
-
-
-\medskip
-\begin{exercice}[fonctions]\label{TD4_ex3}
-\
-
 \begin{enumerate}
 \item D\'efinissez une fonction \inlinecode{TableMult(n, debut = 1, fin = 10)} qui imprime la table de multiplication de \inlinecode{n} entre les multiplicateurs \inlinecode{debut} et \inlinecode{fin}.
-\item Am\'eliorez votre fonction de telle sorte que si l'argument\inlinecode{debut} et plus grand que \inlinecode{fin}, la table de multiplication soit affich\'ee correctement, dans l'ordre d\'ecroissant.
+\item Am\'eliorez votre fonction de telle sorte que si l'argument \inlinecode{debut} et plus grand que \inlinecode{fin}, la table de multiplication soit affich\'ee correctement, dans l'ordre d\'ecroissant.
 \item Cr\'eez une fonction similaire o\`u les param\`etres \inlinecode{n}\inlinecode{debut} et \inlinecode{fin} sont demand\'es \`a l'utilisateur plut\^ot que pass\'es en argument.
 \end{enumerate}
 \end{exercice}
@@ -98,9 +35,44 @@ def nom_fonction(arg_1 = val_1,...,arg_N = val_N):
 
 
 
+\medskip
+\begin{exercice}[tour de magie]\label{TD4_ex3}
+\
 
+\noindent Le but de cet exercice est d'implémenter un tour de magie sur un jeu de 52 cartes.
+\medskip
+\begin{enumerate}
+\item Parmi les structures de données : entier, flottant, couple, chaine de caractères, liste et dictionnaire,
+quelle est celle qui vous parait la plus adaptée pour représenter l'ensemble des couleurs d'un jeu de cartes 
+dans l'ordre Trèfle, Carreau, Coeur, Pique ? Même question pour les hauteurs des cartes de l'as au roi.
+\item Après avoir défini les ensembles de hauteurs et de couleurs en Python, définissez les deux fonctions 
+\inlinecode{hauteur(carte)} et \inlinecode{couleur(carte)} qui renvoient respectivement l'index de la hauteur et de la couleur d'une carte dans vos ensembles. Faites attention que les index commencent à zéro en Python. Par exemple, on a:
+\begin{lstlisting}[style = verbatim]
+hauteur("valet de carreau") = 10
+couleur("valet de carreau") = 1
+\end{lstlisting}
+\item Définissez la fonction \inlinecode{numero(carte)} qui renvoie le numéro d'une carte (un entier entre 0 et 51) dans l'ordre canonique : tous les Trèfles, tous les Carreaux, tous les Coeurs puis tous les Piques.
+\begin{lstlisting}[style = verbatim]
+numero("valet de carreau") = 23
+\end{lstlisting}
+\item Définir la bijection réciproque \inlinecode{carte(numero)} qui prend un numéro en argument et renvoie la carte correspondante. Testez votre implémentation en vérifiant que l'on a bien la relation de composition \inlinecode{n = numero(carte(n))} pour tout $n$.
+\begin{lstlisting}[style = verbatim]
+carte(23) = "le valet de carreau"
+\end{lstlisting}
+\item Programmez la fonction entree(prompt) qui demande dans la console une carte à l'utilisateur et renvoie la carte tapée par l'utilisateur, sous forme de chaîne de caractères. Votre fonction pourra être robuste et redemander la carte si l'ordinateur n'a pas compris.
+\item Implémentez le tour de magie "The Fitch Cheney Five-Card Trick"
+\begin{lstlisting}[style = verbatim]
+saisir la premiere carte : le 10 de pique
+saisir la deuxieme carte : le 4 de coeur
+saisir la troisieme carte : le 10 de carreau
+saisir la quatrieme carte : le roi de trefle
 
+... hmm, je pense que la cinquieme carte est le 3 de pique
+\end{lstlisting}
+\end{enumerate}
+\end{exercice}
 
+\newpage
 
 
 \medskip
