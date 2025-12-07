@@ -1,69 +1,69 @@
-\section{Chapitre 5: Fonctions}
+\section{Chapitre 5: Fonctions }
 
 \setcounter{exercice}{0}
 
 \bigskip
 
-
 %%%%%%%%
 %%%%%%%%
 %%%%%%%%
-
 
 \medskip
-\begin{myboxi}[Rappel sur les proc\'edures et fonctions]
-La syntaxe pour d\'efinir une fonction avec des arguments qui poss\`edent des valeurs par d\'efaut est la suivante:
+\begin{myboxi}[Rappel sur les fonctions et les proc\'edures]
+La syntaxe pour d\'efinir une fonction:
 \begin{lstlisting}
-def nom_fonction(arg_1 = val_1,...,arg_N = val_N):
+def nom_fonction(arg_1,...,arg_N):
 	instructions...
-	return valeur # dans le cas d'une procedure, pas d'instruction return
+	return valeur   # dans le cas d'une procedure, simplement return
 \end{lstlisting}
 \end{myboxi}
 
 
-
-
+\medskip
+\begin{exercice}[Calcul d'intégrale par la méthode des rectangles]\label{TD5_ex1}
+\
+\begin{enumerate}
+\item Montrez que l'équation $x^2 + y^2 = 1$ est l'équation du cercle de centre $(0,0)$ et de rayon 1.
+En déduire l'équation développée du cercle de centre $(1,0)$ et de rayon 1 en faisant le changement de variable $x'=x-1$.
+\item Soit $f$ la fonction $f(x) = \sqrt{2x - x^2}$. Quels sont l'ensemble de définition et le graphe de $f$ ? 
+Vérifiez vos résultats en utilisant la calculatrice graphique du site \url{http://desmos.com}
+\item Soit $g$ la fonction définie par $g(x) = f(|x|)$. Quel est l'ensemble de définition de $g$ ? Tracez son graphe
+sur \url{http://desmos.com}
+\item Expliquez pourquoi $$\int_{-2}^{2}g(x)dx = \pi$$
+\item Programmez en Python les deux fonctions $f(x)$ et $g(x)$
+\end{enumerate}
+\end{exercice}
 
 \medskip
-\begin{exercice}[fonctions]\label{TD4_ex1}
+\begin{exercice}[Boucles ``for'']\label{TD3_ex1}
 \
-
 \begin{enumerate}
-\item D\'efinissez une fonction \inlinecode{surf_cercle()} qui calcule la surface d'un cercle dont le rayon est donn\'e en argument. Pour avoir acc\`es \`a la valeur de $\pi$, ajouter l'instruction \inlinecode{from math import pi}.
-\item Modifiez votre fonction \inlinecode{surf_cercle} de sorte que votre argument poss\`ede une valeur par d\'efaut de $1$.
-\item D\'efinissez une fonction \inlinecode{vol_boite()} qui renvoie le volume d'une bo\^ite parall\'el\'epip\'edique dont on fournit les trois dimensions en arguments.
-\item Modifiez votre fonction de telle sorte que si un seul argument est fourni, la bo\^ite est consid\'er\'ee comme cubique (l'argument \'etant l'ar\^ete de ce cube); si deux arguments sont fournis, la bo\^ite est consid\'er\'ee comme un parall\'el\'epip\`ede \`a base carr\'ee (le premier argument est le c\^ot\'e du carr\'e, et le second la hauteur du parall\'el\'epip\`ede); si trois arguments sont fournis, la bo\^ite est consid\'er\'ee comme un parall\'el\'epip\`ede g\'en\'eral. Pour cela, donnez des valeurs par d\'efaut \`a vos arguments et utiliser un test conditionnel pour savoir si tel ou tel param\`etre poss\`ede telle ou telle valeur par d\'efaut...
-\item D\'efinissez une fonction \inlinecode{remplacement()} qui prend trois arguments \inlinecode{c1}, \inlinecode{c2} et \inlinecode{ch} et qui remplace tous les caract\`eres \inlinecode{c1} par des caract\`eres \inlinecode{c2} dans la cha\^ine caract\`eres \inlinecode{ch}.
-\item Modifiez votre fonction de telle sorte que si les arguments \inlinecode{c1}, \inlinecode{c2} et \inlinecode{ch} ne sont pas sp\'ecifi\'es, alors ils prendront les valeurs \inlinecode{" "}, \inlinecode{"*"} et \inlinecode{""}, respectivement.
+\item \'Ecrivez un script qui demande \`a l'utilisateur d'entrer un entier $N$ et affiche ensuite la table de multiplication de $N$.
+\item Modifiez votre script de sorte que la table de multiplication soit affich\'ee sur une seule ligne. Il suffit d'ajouter une virgule apr\`es votre instruction \inlinecode{print}.
+\item Modifiez votre script de telle mani\`ere qu'il affiche, line par ligne, les tables de multiplications de tous les entiers plus petit ou \'egaux \`a $N$. Utilisez une double boucle \inlinecode{for}.
+\item \'Ecrivez un script qui demande \`a l'utilisateur d'entrer un entier $N$ et affiche ensuite un petit dessin comme ci-dessous de hauteur $N$.
+\begin{lstlisting}[style = verbatim]
+# exemple pour N = 4
+*
+**
+***
+****
+\end{lstlisting}
+\item Essayez de modifier votre script de telle sorte que le dessin affich\'e soit comme ci-dessous. D\'eterminez r\`egle qui donne le nombre d'espaces et d'\'etoiles de chaque ligne.
+\begin{lstlisting}[style = verbatim]
+# exemple pour N = 5
+    *
+   * *
+  * * *
+ * * * *
+* * * * *
+\end{lstlisting}
 \end{enumerate}
 \end{exercice}
 
 \begin{filecontents*}{temp.tex}
 \newpage
-\begin{solution}[TD4_ex1]
-\begin{lstlisting}
-...
-\end{lstlisting}
-\end{solution}
-\newpage
-\end{filecontents*}
-\appendsolution
-
-
-
-
-
-
-\medskip
-\begin{exercice}[fonctions]\label{TD4_ex2}
-\
-
-\noindent En vous inspirant de l'exercice $2$ du TD $2$, cr\'eez deux fonctions \inlinecode{nb_car(chaine)} et \inlinecode{nb_mots(chaine)} qui comptent le nombre de caract\`eres et le nombre de mots d'une cha\^ine de caract\`eres \inlinecode{chaine} donn\'ee en argument.
-\end{exercice}
-
-\begin{filecontents*}{temp.tex}
-\newpage
-\begin{solution}[TD4_ex2]
+\begin{solution}[TD3_ex1]
 \begin{lstlisting}
 ...
 \end{lstlisting}
@@ -77,65 +77,42 @@ def nom_fonction(arg_1 = val_1,...,arg_N = val_N):
 
 
 \medskip
-\begin{exercice}[fonctions]\label{TD4_ex3}
+\begin{exercice}[Boucles ``for'']\label{TD3_ex2}
 \
 
-\begin{enumerate}
-\item D\'efinissez une fonction \inlinecode{TableMult(n, debut = 1, fin = 10)} qui imprime la table de multiplication de \inlinecode{n} entre les multiplicateurs \inlinecode{debut} et \inlinecode{fin}.
-\item Am\'eliorez votre fonction de telle sorte que si l'argument\inlinecode{debut} et plus grand que \inlinecode{fin}, la table de multiplication soit affich\'ee correctement, dans l'ordre d\'ecroissant.
-\item Cr\'eez une fonction similaire o\`u les param\`etres \inlinecode{n}\inlinecode{debut} et \inlinecode{fin} sont demand\'es \`a l'utilisateur plut\^ot que pass\'es en argument.
-\end{enumerate}
-\end{exercice}
-
-\begin{filecontents*}{temp.tex}
-\newpage
-\begin{solution}[TD4_ex3]
-\begin{lstlisting}
-...
-\end{lstlisting}
-\end{solution}
-\newpage
-\end{filecontents*}
-\appendsolution
-
-
-
-
-
-
-
-
-\medskip
-\begin{exercice}[le jeu ``Motus'']\label{TD4_ex4}
-\
-
-\noindent Soit la liste de mots de cinq lettres suivantes:
+\noindent On consid\`ere les deux listes suivantes:
 \begin{flushleft}
-\inlinecode{mots = ["arbre", "grave", "piece", "nuage", "crane", "sonne", "table", "herbe", "ecrou", "mulet"]} 
+\inlinecode{jours = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]} \\
+\inlinecode{mois = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]} 
 \end{flushleft}
-Cr\'ez un programme qui impl\'emente le jeu ``Motus'' avec cette liste de mots. Plus pr\'ecis\'ement, au d\'epart, l'ordinateur choisit un mot au hasard dans cette liste (utilisez la fonction \inlinecode{randint()} de la librairie \inlinecode{random}). Ensuite, l'utilisateur dispose de $10$ essais pour deviner le mot. Pour cela, il proposera des lettres tour \`a tour. \`A chaque fois, l'ordinateur l'informera de si cette lettre est pr\'esente ou non dans le mot, et, si tel est le cas, mettra \`a jour les lettres d\'ej\`a devin\'ees. L'ex\'ecution de votre programme devra ressembler \`a quelque chose comme ci-dessous:
-\begin{lstlisting}[style = verbatim]
-Essai 6
-Entrer une lettre: t
-
-...et
-
-Essai 7
-Entrer une lettre: m
-
-m..et
-\end{lstlisting}
 \begin{enumerate}
-\item Commencez par d\'efinir une fonction \inlinecode{remplace(i, c, ch)} qui renvoie une cha\^ine dans laquelle le \inlinecode{i}-\`eme caract\`ere de la cha\^ine \inlinecode{ch} est remplac\'e par \inlinecode{c}.
-\item Utilisez ensuite cette fonction dans votre programme. \`A chaque lettre propos\'ee par l'utilisateur, effectuez un parcours du mot \`a deviner, et, parall\`element, construisez un nouveau mot dans lequel les lettres non encore devin\'ees apparaissent comme des points alors que celles d\'ej\`a devin\'ees apparaissent clairement.
-\item Modifiez votre programme de telle sorte que votre jeu soit impl\'ement\'e dans une proc\'edure \inlinecode{motus()} \`a un argument; cet argument devra correspondre au nombre d'essais maximum auquel l'utilisateur a le droit et aura une valeur par d\'efaut de $10$.
+\item \'Ecrivez un script qui cr\'ee la liste de $12$ tuples suivante:
+\begin{flushleft}
+\inlinecode{mj = [("January", 31), ("February", 28), ("March", 31), ("April", 30), ("May", 31), ("June", 30), ("July", 31), ("August", 31), ("September", 30), ("October", 31), ("November", 30), ("December", 31)]} 
+\end{flushleft}
+\item \'Ecrivez un script qui cr\'ee une liste de $365$ cha\^ines de caract\`eres correspondant aux $365$ jours de l'ann\'ee, comme ci-dessous. Utilisez une double boucle \inlinecode{for} sur votre liste \inlinecode{mj}.
+\begin{flushleft}
+\inlinecode{annee = ["1 January", "2 January",..., "1 February", "2 February",...]} 
+\end{flushleft}
+\item Initialisez la liste suivante:
+\begin{flushleft}
+\inlinecode{jours_semaine = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]} \\
+\end{flushleft}
+Supposons que le premier janvier soit un lundi. \'Ecrivez un script qui cr\'ee une deuxi\`eme liste des $365$ jours de l'ann\'es comprenant les jours de la semaine en plus, comme ci-dessous. Effectuez une double boucle de taille $365$, utilisez les listes \inlinecode{annee} et \inlinecode{jours_semaine} et pensez \`a utiliser l'op\'erateur modulo sur les indices de la liste \inlinecode{jours_semaine}. 
+\begin{flushleft}
+\inlinecode{annee2 = ["Monday 1 January", "Tuesday 2 January",...]} 
+\end{flushleft}
+\item \`A partir de vos listes \inlinecode{annee} et \inlinecode{jours_semaine} , cr\'eez un dictionnaire dont les cl\'es sont les \'el\'ements de \inlinecode{annee} et les valeurs sont les jours de la semaine correspondants, comme ci dessous.
+\begin{flushleft}
+\inlinecode{dico_annee = ["1 January" : "Monday", "2 January" : "Tuesday",...]} 
+\end{flushleft}
+\item \`A quel jour de la semaine correspond au $28$ octobre?
 \end{enumerate}
 \end{exercice}
 
-
 \begin{filecontents*}{temp.tex}
 \newpage
-\begin{solution}[TD4_ex4]
+\begin{solution}[TD3_ex2]
 \begin{lstlisting}
 ...
 \end{lstlisting}
@@ -146,53 +123,46 @@ m..et
 
 
 
-
 \medskip
-\begin{exercice}[le jeu ``Puissance $4$'' (long et plus difficile; tr\`es bon exercice r\'ecapitulatif)]\label{TD4_ex5}
+\begin{exercice}[Boucles ``while''] \label{TD3ex3}
 \
 
-\noindent Programmez un jeu ``Puissance $4$'' sur une grille de taille $N$. Le jeu devra avoir l'apparence comme montr\'e ci-dessous:
-\begin{lstlisting}[style = verbatim]
-. 	. 	. 	. 	. 	. 	. 	. 	
-
-. 	. 	. 	. 	X 	. 	. 	. 	
-
-. 	. 	. 	O 	. 	. 	. 	. 	
-
-O 	. 	. 	. 	. 	. 	X 	. 	
-
-. 	. 	. 	. 	. 	. 	. 	. 	
-
-. 	. 	. 	O 	. 	. 	. 	. 	
-
-. 	. 	. 	. 	. 	X 	. 	. 	
-
-. 	. 	. 	. 	. 	. 	. 	. 	
-
-Joueur 1: quelle position (ligne, colonne)?
-\end{lstlisting}
+\noindent 
 \begin{enumerate}
-\item Programmez une fonction \inlinecode{generer_grille(N = 4)} qui g\'en\`ere une grille d'une certaine taille \inlinecode{N} valant $4$ par d\'efaut. Chaque ligne de la grille est une liste de taille \inlinecode{N} dont les \'el\'ements sont des cha\^ines \inlinecode{"."}. La grille est alors repr\'esent\'ee comme la liste de ses lignes, comme illustr\'e ci-dessous.
-\begin{lstlisting}[style = verbatim]
-# exemple d'une grille de taille 3 x 3
-# on a 3 listes de taille 3 remplies avec des "."
-[[".", ".", "."], [".", ".", "."], [".", ".", "."]]
-\end{lstlisting}
-\item Programmez une fonction \inlinecode{placer_pion(joueur, grille, position)} qui permet de placer le pion du joueur \inlinecode{joueur} \`a la position \inlinecode{position} dans la grille \inlinecode{grille}. L'argument \inlinecode{joueur} vaut \inlinecode{1} ou \inlinecode{2}. S'il vaut, \inlinecode{1}, le pion plac\'e sera un rond (O majuscule) \inlinecode{"O"}; s'il vaut, \inlinecode{2}, le pion plac\'e sera une croix (X majuscule) \inlinecode{"X"}. L'argument \inlinecode{grille} est une liste de listes. L'argument \inlinecode{position} est une liste ou un tuple de la forme \inlinecode{(i,j)}.
-\item Programmez une fonction \inlinecode{chercher_alignement(joueur, liste, n)} qui cherche si un alignement de \inlinecode{n} pions du joueur \inlinecode{joueur} existe dans la liste \inlinecode{liste} (cette liste repr\'esentera plus tard, une ligne, une colonne ou une diagonale). Suivant que l'argument \inlinecode{joueur} vaut \inlinecode{1} ou \inlinecode{2}, on cherchera un alignement de \inlinecode{n} \inlinecode{"O"} ou \inlinecode{n} \inlinecode{"X"}, respectivement.
-\item Programmez une fonction \inlinecode{generer_lignes(grille)} qui retourne la liste de toutes les lignes de la grille \inlinecode{grille}. Remarquez que dans ce cas, il suffit de retourner la grille elle m\^eme, puisque celle-ci est donn\'ee comme la liste de ces lignes.
-\item Programmez une fonction \inlinecode{generer_colonnes(grille)} qui retourne la liste de toutes les colonnes de la grille \inlinecode{grille}. L'id\'ee est de transposer la matrice \inlinecode{grille}...
-\item Programmez une fonction \inlinecode{generer_diagonales1(grille)} qui retourne la liste de toutes les diagonales ``montantes'' de la grille \inlinecode{grille}. Pour cela, remarquez que chaque diagonale de ce type est constitu\'ee des \'el\'ements de la grille dont les indices donnent une m\^eme somme. Par exemple, la diagonale \inlinecode{[(3,1), (2,2), (1,3)]} est form\'ee de tous les \'el\'ements dont les indices ont une somme de $4$.
-\item Programmez une fonction \inlinecode{generer_diagonales2(grille)} qui retourne la liste de toutes les diagonales ``descendantes'' de la grille \inlinecode{grille}. Pour cela, remarquez que chaque diagonale de ce type est constitu\'ee des \'el\'ements de la grille dont les indices donnent une m\^eme diff\'erence. Par exemple, la diagonale \inlinecode{[(1,3), (2,4), (3,5)]} d'une grille de taille $5$ est form\'ee de tous les \'el\'ements dont les indices ont une diff\'erence de $-2$.
-\item Programmez une fonction \inlinecode{imprimer_grille(grille)} qui imprime la grille \inlinecode{grille} dans votre terminal de mani\`ere conviviale, comme illustr\'e ci-dessus. On rappelle que les cha\^ines \inlinecode{"\t"}, \inlinecode{"\n"} codent un espace de tabulation et un retour de ligne, respectivement.
-\item En utilisant toutes les fonctions que vous avez programm\'ees jusque l\`a, d\'efinissez une fonction \inlinecode{jouer(n)} qui permet de jouer \`a Puissance $4$ sur une grille de taille \inlinecode{n}. Utilisez une grande boucle \inlinecode{while} qui demande \`a chaque joueur de placer un pion \`a tour de r\^ole, jusqu'\`a ce qu'un alignement de $4$ pions soit trouv\'e dans une ligne, une colonne ou une diagonale. Tout le programme peut se faire en $250$ lignes de code environ.
+\item \'Ecrivez un programme qui demande \`a l'utilisateur d'entrer $3$ notes entre $0$ et $20$. Le programme affichera ensuite le minimum, le maximum et la moyenne des notes entr\'ees. Utilisez une boucle \inlinecode{while}. Les notes entr\'ees seront stock\'ees progressivement dans une liste. Utilisez un parcours de votre liste de notes pour calculer la moyenne de celles-ci.
+\item Modifiez le programme de sorte que celui-ci commence par demander \`a l'utilisateur le nombre de notes $N$ qu'il d\'esire entrer, puis proc\`ede comme pr\'ec\'edemment.
+\item Modifiez le programme de sorte que l'utilisateur puisse entrer autant de notes qu'il le d\'esire et termine sa saisie par une certaine instruction, comme ``fin'' par exemple.
 \end{enumerate}
+
+
 \end{exercice}
 
+
 \begin{filecontents*}{temp.tex}
+\begin{solution}[TD3ex3]
+\begin{lstlisting}[style=verbatim]
+...
+\end{lstlisting}
+\end{solution}
 \newpage
-\begin{solution}[TD4_ex5]
-\begin{lstlisting}
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+\medskip
+\begin{exercice}[Boucles ``while''] \label{TD3ex4}
+\
+
+\noindent \'Ecrivez un programme qui choisit un nombre entier au hasard entre $1$ et $100$, puis demande \`a l'utilisateur de le deviner. Si l'utilisateur entre un nombre trop petit ou trop grand, le programme devra afficher ``plus haut'' ou ``plus bas'', respectivement. Le programme s'arr\^ete lorsque le nombre a \'et\'e trouv\'e. Pour g\'en\'erer un nombre entier au hasard, importez la librairie \inlinecode{random} et utilisez la fonction \inlinecode{randint()}.
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[TD3ex4]
+\begin{lstlisting}[style=verbatim]
 ...
 \end{lstlisting}
 \end{solution}
@@ -213,3 +183,5 @@ Joueur 1: quelle position (ligne, colonne)?
 %
 %\end{filecontents*}
 %\appendsolution
+
+

@@ -1,0 +1,67 @@
+\section{Chapitre 8: Librairie Pandas}
+
+\setcounter{exercice}{0}
+
+\bigskip
+
+
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+\medskip
+\begin{exercice}[Librairie Pandas: fichiers CSV et dataframe] 
+\
+\begin{enumerate}
+\item Ouvrez le fichier \verb#diamonds.csv# dans un \'editeur de code et analysez sa structure.
+Ecrivez une fonction Python qui ouvre le fichier \verb#diamonds.csv# et importe les donn\'ees
+sous forme d'une matrice (dataframe) de la librairie Pandas. Extrayez la colonne des prix, et calculez ses
+statistiques \'el\'ementaires (moyenne, \'ecart type, quantiles, etc.). Appliquez la fonction $f(x) = 1.3x + 5$
+\`a la colonne des prix. Tracez le nuage de points des prix par rapport au nombre de carats.
+
+\begin{myboxi}[Indications] Pour utiliser la librairie \inlinecode{pandas} il faut inclure la librairie en utilisant la commande \inlinecode{import pandas as pd}. Une documentation rapide de la librairie se trouve dans le r\'epertoire 
+\inlinecode{http://cassio.free.fr/assas/info/MBF2/doc/} .\end{myboxi}
+
+
+\item Triez les valeurs de la matrice par nombre de carats d\'ecroissants, puis modifiez votre script de
+mani\`ere \`a pouvoir enregistrer les diamants dans des fichiers diff\'erents pour chaque
+type de taille (par exemple \verb#ideal.csv# pour la taille "Ideal" et \verb#very-good.csv#
+pour la taille "Very Good", etc.). Le format des fichiers enregistr\'es doit \^etre le m\^eme que celui de \verb#diamonds.csv#.
+
+\end{enumerate}
+\end{exercice}
+
+
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+\medskip
+\begin{exercice}[Utilisation de données méteo] 
+\
+\begin{enumerate}
+\item Ouvrez le fichier \verb#AnomalieTempe_RCP2.6_mensuel.txt# dans un \'editeur de code et 
+analysez sa structure. Essayez de lire le fichier avec la fonction  \inlinecode{pandas.read_csv()} :
+quel(s) probl\`eme(s) rencontre-t-on ? 
+
+\item Nettoyez les donn\'ees, renommez le fichier en 
+\verb#anomalies.txt# et lisez les donn\'ees dans un dataframe correct.
+Vous pouvez chercher sur le Web et lire la documentation de la fonction
+ \inlinecode{pandas.read_csv()} pour connaitre ses options et l'adapter \`a vos donn\'ees.
+
+
+\end{enumerate}
+
+\end{exercice}
+
+
+
+%\begin{filecontents*}{temp.tex}
+%
+%\begin{solution}[ex:]
+%
+%\end{solution}
+%
+%
+%\end{filecontents*}
+%\appendsolution
+
+

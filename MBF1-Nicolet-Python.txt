@@ -1,0 +1,11 @@
+
+Le cours de Python est accessible en ligne dans le répertoire GitHub suivant :
+
+    https://github.com/snicolet/MBF1-Python-Nicolet
+
+Si vous n'êtes pas utilisateur de GitHub, vous pouvez télécharger une archive
+Zip contenant toute la dernière version ici :
+
+    https://github.com/snicolet/MBF1-Python-Nicolet/archive/refs/heads/master.zip
+    
+    

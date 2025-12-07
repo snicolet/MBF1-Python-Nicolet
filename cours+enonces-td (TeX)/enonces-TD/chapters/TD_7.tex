@@ -1,67 +1,260 @@
-\section{Chapitre 7: Librairie Pandas}
+\section{Chapitre 7: Manipulation de fichiers}
 
 \setcounter{exercice}{0}
 
 \bigskip
 
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+
+
+
+\begin{exercice}[Op\'erations de base sur fichiers] \label{ex:fichiers_1} \
+
+\begin{enumerate}
+\item \'Ecrivez un script qui cr\'ee un fichier nomm\'e ``\verb#test.txt#'' (utilisez le mode \'ecriture \inlinecode{"w"} et la syntaxe \inlinecode{with open(f_physique,"w") as f_logique}).
+\item \'Ecrivez maintenant plusieurs lignes de texte dans ce fichier (utilisez une nouvelle fois le mode \'ecriture \inlinecode{"w"}; on rappelle que le saut de ligne est cod\'e par \inlinecode{\n}).
+\item Ouvrez le ficher en mode lecture et d'imprimez son contenu \`a l'\'ecran (pour cela, utilisez le mode lecture \inlinecode{"r"}; vous r\'ecup\'ererez le contenu sous forme de cha\^ine avec la m\'ethode \inlinecode{f.read()}, puis imprimerez ce contenu).
+\item Rouvrez votre fichier en mode lecture et imprimer la deuxi\`eme ligne de celui ci (utilisez la m\'ethode \inlinecode{f.readlines()}).
+\item Ouvrez votre fichier en mode \'ecriture et ajouter-lui une ligne de texte (utilisez le mode append \inlinecode{"a"}).
+\item Rouvrez votre fichier en mode lecture et imprimer l'avant derni\`ere ligne de celui ci (utilisez une nouvelle fois la m\'ethode \inlinecode{f.readlines()}).
+\end{enumerate}
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\newpage
+\begin{solution}[ex:fichiers_1]
+\begin{lstlisting}
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+
 
 %%%%%%%%
 %%%%%%%%
 %%%%%%%%
 \medskip
-\begin{exercice}[Librairie Pandas: fichiers CSV et dataframe] 
+\begin{exercice}[Affichage d'un fichier texte] \label{ex:affichage_2}
 \
+
 \begin{enumerate}
-\item Ouvrez le fichier \verb#diamonds.csv# dans un \'editeur de code et analysez sa structure.
-Ecrivez une fonction Python qui ouvre le fichier \verb#diamonds.csv# et importe les donn\'ees
-sous forme d'une matrice (dataframe) de la librairie Pandas. Extrayez la colonne des prix, et calculez ses
-statistiques \'el\'ementaires (moyenne, \'ecart type, quantiles, etc.). Appliquez la fonction $f(x) = 1.3x + 5$
-\`a la colonne des prix. Tracez le nuage de points des prix par rapport au nombre de carats.
-
-\begin{myboxi}[Indications] Pour utiliser la librairie \inlinecode{pandas} il faut inclure la librairie en utilisant la commande \inlinecode{import pandas as pd}. Une documentation rapide de la librairie se trouve dans le r\'epertoire 
-\inlinecode{http://cassio.free.fr/assas/info/MBF2/doc/} .\end{myboxi}
-
-
-\item Triez les valeurs de la matrice par nombre de carats d\'ecroissants, puis modifiez votre script de
-mani\`ere \`a pouvoir enregistrer les diamants dans des fichiers diff\'erents pour chaque
-type de taille (par exemple \verb#ideal.csv# pour la taille "Ideal" et \verb#very-good.csv#
-pour la taille "Very Good", etc.). Le format des fichiers enregistr\'es doit \^etre le m\^eme que celui de \verb#diamonds.csv#.
-
+\item Ecrivez un script qui demandera \`a l'utilisateur un nom de fichier et, lorsque ce fichier existe, affiche le contenu de celui-ci \`a l'\'ecran.
+\begin{myboxi}[Indications] Si vous d\'esirez rechercher le fichier directement dans le r\'epertoire courant, vous pouvez importer la libraire \inlinecode{os} avec la commande \inlinecode{from os import *}, puis, utiliser la commande \inlinecode{cwd = os.getcwd()} pour enregistrer le ``path'' du r\'epertoire courant (sous forme de string) dans la variable cwd.\end{myboxi}
+\item Modifiez votre script de mani\`ere \`a ce que:
+\begin{enumerate}
+\item lors de l'affichage, chaque ligne soit pr\'ec\'ed\'ee par un num\'ero;
+\item apr\`es l'affichage du fichier, on informera du nombre total de lignes et de caract\`eres du fichier.
+\end{enumerate}
+Par exemple, un fichier qui contient les 3 lignes suivantes:
+\begin{lstlisting}[style=verbatim]
+Comparison operations are supported by all objects.
+They all have the same priority.
+Comparisons can be chained arbitrarily.
+\end{lstlisting}
+devra \^etre affich\'e par le programme de la fa\c{c}on suivante:
+\begin{lstlisting}[style=verbatim]
+Le contenu du fichier test.txt est:
+1 : Comparison operations are supported by all objects.
+2 : They all have the same priority.
+3 : Comparisons can be chained arbitrarily.
+Il y a 3 lignes et 124 caracteres.
+\end{lstlisting}
 \end{enumerate}
 \end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\newpage
+\begin{solution}[ex:affichage_2]
+\begin{lstlisting}
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
 
 
 %%%%%%%%
 %%%%%%%%
 %%%%%%%%
 \medskip
-\begin{exercice}[Utilisation de données méteo] 
+\begin{exercice}[Listes et fichiers] \label{ex:listesfichiers_1}
+\
+
+\begin{enumerate}
+\item \'Ecrivez un programme qui remplit une liste de $N$ \'el\'ements par des nombres
+entiers al\'eatoires entre $-100$ et $+100$. La taille de la liste doit \^etre demand\'ee \`a l'utilisateur.
+\begin{myboxi}[Indications] Pour g\'en\'erer un nombre entier al\'eatoire entre \inlinecode{a} et \inlinecode{b}, il vous faut importer la librairie \inlinecode{random} en utilisant la commande \inlinecode{from random import *}, puis, utiliser la fonction \inlinecode{randint(a,b)}.\end{myboxi}
+\item Affichez la liste ainsi que la somme de ses \'el\'ements.
+\item Ajoutez maintenant une fonctionnalit\'e qui permet d'\'ecrire la liste, \'el\'ement par \'el\'ement, chacun sur une seule ligne, dans un fichier sp\'ecifi\'e par l'utilisateur.
+\end{enumerate}
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\newpage
+\begin{solution}[ex:affichage_2]
+\begin{lstlisting}
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+
+
+
+
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+\medskip
+\begin{exercice}[Fichiers et listes] \label{ex:fichierslistes_1}
+\
+
+\begin{enumerate}
+\item \'Ecrivez un programme qui lit un fichier sp\'ecifi\'e par l'utilisateur (par exemple, le fichier de l'exercice \ref{ex:listesfichiers_1}) et remplit une liste par les nombres trouv\'es dans les lignes du fichier.
+\item Ensuite, affichez le contenu de la liste lue ainsi que la somme de ses
+\'el\'ements.
+\end{enumerate}
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\newpage
+\begin{solution}[ex:affichage_2]
+\begin{lstlisting}
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+
+
+
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+\medskip
+\begin{exercice}[Fichiers et dictionnaires] \label{ex:resultats_1}\
+
+\noindent Imaginez que vous avez un fichier sous format CSV (comma separated values -- valeurs s\'epar\'ees par des virgules) qui contient des informations concernant les r\'esultats d'un test
+interm\'ediaire, c'est-\`a-dire qu'il y a plusieurs lignes du type :
+\begin{verbatim}
+	prenom,nom,faculte,note,bonus
+\end{verbatim}
+Par exemple:
+\begin{verbatim}
+Eric,Clark,economie,13.5,1.0
+Lisa,Clark,droit,8.0,0.0
+\end{verbatim}
+Vous pouvez cr\'eer un tel fichier de donn\'ees par vous-m\^eme dans un \'editeur de texte.
+% ou vous le t\'el\'echarger le fichier exam.cvs" sur le site du cours.
+
+\begin{enumerate}
+\item \'Ecrivez une fonction qui prend en param\`etres le nom du fichier, ouvre le fichier, le lit et renvoie un dictionnaire contenant les donn\'ees du fichier. Les cl\'es du dictionnaire devront correspondre au pr\'enom et nom complet de la personne et leurs valeurs devront correspondre aux donn\'ees compl\`etes. Par exemple, les donn\'ees de l'exemple pr\'ec\'edent seront converties comme suit:
+
+\begin{lstlisting}
+donnees = {'Lisa Clark': ['Lisa','Clark','droit','8.0','0.0'],
+'Eric Clark': ['Eric','Clark','economie','13.5','1.0'] }
+\end{lstlisting}
+
+\item \'Ecrivez une deuxi\`eme fonction qui prend en param\`etres la liste des donn\'ees d'une personne et les affiche de mani\`ere lisible.
+\item \'Ecrivez une troisi\`eme fonction qui va afficher les r\'esultats du test pour les \'etudiants
+ayant obtenu une note au dessus de 9.5. Elle doit prendre deux param\`etres: les donn\'ees sous la forme d'un dictionnaire (cf. point 1) et la note au dessus de laquelle il faut afficher
+l'information, 9.5 par d\'efaut. Tester vos fonctions en affichant des donn\'ees d'un fichier cr\'e pour l'exemple.
+\end{enumerate}
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:resultats_1]
+\begin{lstlisting}
+...
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+
+
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+\medskip
+\begin{exercice}[Fichiers et dictionnaires (suite)] \label{ex:resultats_2}\
+
+\noindent \'Ecrivez un script qui demande \`a l'utilisateur le nom et le pr\'enom d'une personne et,
+ensuite, affiche \`a l'\'ecran le r\'esultat de cette personne au test, pour autant que celle-ci existe dans le fichier de donn\'ees. Le script devra redemander le nom et le pr\'enom jusqu'\`a ce qu'une chaine vide soit entr\'ee par l'utilisateur (i.e., l'utilisateur a tap\'e Enter). Pensez \`a r\'eutiliser les fonctions d\'ej\`a \'ecrites.
+\end{exercice}
+
+
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:resultats_2]
+Code \`a  ajouter apr\`es la solution de l'exercice \ref{ex:resultats_1}.
+\begin{lstlisting}
+...
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+
+
+
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+\medskip
+\begin{exercice}[Dictionnaires et fichiers] \label{ex:resultats_3}
 \
 \begin{enumerate}
-\item Ouvrez le fichier \verb#AnomalieTempe_RCP2.6_mensuel.txt# dans un \'editeur de code et 
-analysez sa structure. Essayez de lire le fichier avec la fonction  \inlinecode{pandas.read_csv()} :
-quel(s) probl\`eme(s) rencontre-t-on ? 
-
-\item Nettoyez les donn\'ees, renommez le fichier en 
-\verb#anomalies.txt# et lisez les donn\'ees dans un dataframe correct.
-Vous pouvez chercher sur le Web et lire la documentation de la fonction
- \inlinecode{pandas.read_csv()} pour connaitre ses options et l'adapter \`a vos donn\'ees.
-
-
+\item \'Ecrivez une fonction qui prend les donn\'ees sous forme d'un dictionnaire et les
+enregistre dans un fichier. Les donn\'ees et le nom du fichier devront passer en param\`etres
+de la fonction.
+Vous pouvez utiliser la fonction \inlinecode{join()} pour convertir une liste de chaines de caract\`eres
+en une chaine.
+Par exemple le code suivant :
+\begin{lstlisting}
+info = ['Lisa','Clark','droit','8.0','0.0']
+chaine = ",".join( info )
+\end{lstlisting}
+vous donne la chaine \inlinecode{"Lisa,Clark,droit,8.0,0.0"}
+\item Modifiez votre script de mani\`ere \`a pouvoir enregistrer les r\'esultats des \'etudiants dans des fichiers diff\'erent pour chaque facult\'e (par exemple \verb#test-droit.csv# pour la facult\'e de droit et \verb#test-economie.csv# pour la facult\'e d'\'economie, etc.). Le format des fichiers enregistr\'es doit \^etre le m\^eme que celui de \verb#etudiants.csv#.
 \end{enumerate}
 
 \end{exercice}
 
 
+\begin{filecontents*}{temp.tex}
+\begin{solution}[ex:resultats_3]
+\begin{lstlisting}
+...
+\end{lstlisting}
+\end{solution}
+\end{filecontents*}
+\appendsolution
 
-%\begin{filecontents*}{temp.tex}
-%
-%\begin{solution}[ex:]
-%
-%\end{solution}
-%
-%
-%\end{filecontents*}
-%\appendsolution
+
+
 
 

@@ -1,78 +1,44 @@
-\section{Chapitre 6: Manipulation de fichiers}
+\section{Chapitre 6: Fonctions}
 
 \setcounter{exercice}{0}
 
 \bigskip
 
+
 %%%%%%%%
 %%%%%%%%
 %%%%%%%%
 
 
-
-\begin{exercice}[Op\'erations de base sur fichiers] \label{ex:fichiers_1} \
-
-\begin{enumerate}
-\item \'Ecrivez un script qui cr\'ee un fichier nomm\'e ``\verb#test.txt#'' (utilisez le mode \'ecriture \inlinecode{"w"} et la syntaxe \inlinecode{with open(f_physique,"w") as f_logique}).
-\item \'Ecrivez maintenant plusieurs lignes de texte dans ce fichier (utilisez une nouvelle fois le mode \'ecriture \inlinecode{"w"}; on rappelle que le saut de ligne est cod\'e par \inlinecode{\n}).
-\item Ouvrez le ficher en mode lecture et d'imprimez son contenu \`a l'\'ecran (pour cela, utilisez le mode lecture \inlinecode{"r"}; vous r\'ecup\'ererez le contenu sous forme de cha\^ine avec la m\'ethode \inlinecode{f.read()}, puis imprimerez ce contenu).
-\item Rouvrez votre fichier en mode lecture et imprimer la deuxi\`eme ligne de celui ci (utilisez la m\'ethode \inlinecode{f.readlines()}).
-\item Ouvrez votre fichier en mode \'ecriture et ajouter-lui une ligne de texte (utilisez le mode append \inlinecode{"a"}).
-\item Rouvrez votre fichier en mode lecture et imprimer l'avant derni\`ere ligne de celui ci (utilisez une nouvelle fois la m\'ethode \inlinecode{f.readlines()}).
-\end{enumerate}
-\end{exercice}
-
-\begin{filecontents*}{temp.tex}
-\newpage
-\begin{solution}[ex:fichiers_1]
-\begin{lstlisting}
-...
-\end{lstlisting}
-\end{solution}
-\newpage
-\end{filecontents*}
-\appendsolution
-%%%%%%%%
-%%%%%%%%
-%%%%%%%%
-
-
-%%%%%%%%
-%%%%%%%%
-%%%%%%%%
 \medskip
-\begin{exercice}[Affichage d'un fichier texte] \label{ex:affichage_2}
+\begin{myboxi}[Rappel sur les fonctions et les proc\'edures]
+La syntaxe pour d\'efinir une fonction avec des arguments qui poss\`edent des valeurs par d\'efaut est la suivante:
+\begin{lstlisting}
+def nom_fonction(arg_1 = val_1,...,arg_N = val_N):
+	instructions...
+	return valeur # dans le cas d'une procedure, simplement return
+\end{lstlisting}
+\end{myboxi}
+
+
+
+\medskip
+\begin{exercice}[fonctions]\label{TD4_ex1}
 \
 
 \begin{enumerate}
-\item Ecrivez un script qui demandera \`a l'utilisateur un nom de fichier et, lorsque ce fichier existe, affiche le contenu de celui-ci \`a l'\'ecran.
-\begin{myboxi}[Indications] Si vous d\'esirez rechercher le fichier directement dans le r\'epertoire courant, vous pouvez importer la libraire \inlinecode{os} avec la commande \inlinecode{from os import *}, puis, utiliser la commande \inlinecode{cwd = os.getcwd()} pour enregistrer le ``path'' du r\'epertoire courant (sous forme de string) dans la variable cwd.\end{myboxi}
-\item Modifiez votre script de mani\`ere \`a ce que:
-\begin{enumerate}
-\item lors de l'affichage, chaque ligne soit pr\'ec\'ed\'ee par un num\'ero;
-\item apr\`es l'affichage du fichier, on informera du nombre total de lignes et de caract\`eres du fichier.
-\end{enumerate}
-Par exemple, un fichier qui contient les 3 lignes suivantes:
-\begin{lstlisting}[style=verbatim]
-Comparison operations are supported by all objects.
-They all have the same priority.
-Comparisons can be chained arbitrarily.
-\end{lstlisting}
-devra \^etre affich\'e par le programme de la fa\c{c}on suivante:
-\begin{lstlisting}[style=verbatim]
-Le contenu du fichier test.txt est:
-1 : Comparison operations are supported by all objects.
-2 : They all have the same priority.
-3 : Comparisons can be chained arbitrarily.
-Il y a 3 lignes et 124 caracteres.
-\end{lstlisting}
+\item D\'efinissez une fonction \inlinecode{surf_cercle()} qui calcule la surface d'un cercle dont le rayon est donn\'e en argument. Pour avoir acc\`es \`a la valeur de $\pi$, ajouter l'instruction \inlinecode{from math import pi}.
+\item Modifiez votre fonction \inlinecode{surf_cercle} de sorte que votre argument poss\`ede une valeur par d\'efaut de $1$.
+\item D\'efinissez une fonction \inlinecode{vol_boite()} qui renvoie le volume d'une bo\^ite parall\'el\'epip\'edique dont on fournit les trois dimensions en arguments.
+\item Modifiez votre fonction de telle sorte que si un seul argument est fourni, la bo\^ite est consid\'er\'ee comme cubique (l'argument \'etant l'ar\^ete de ce cube); si deux arguments sont fournis, la bo\^ite est consid\'er\'ee comme un parall\'el\'epip\`ede \`a base carr\'ee (le premier argument est le c\^ot\'e du carr\'e, et le second la hauteur du parall\'el\'epip\`ede); si trois arguments sont fournis, la bo\^ite est consid\'er\'ee comme un parall\'el\'epip\`ede g\'en\'eral. Pour cela, donnez des valeurs par d\'efaut \`a vos arguments et utiliser un test conditionnel pour savoir si tel ou tel param\`etre poss\`ede telle ou telle valeur par d\'efaut...
+\item D\'efinissez une fonction \inlinecode{remplacement()} qui prend trois arguments \inlinecode{c1}, \inlinecode{c2} et \inlinecode{ch} et qui remplace tous les caract\`eres \inlinecode{c1} par des caract\`eres \inlinecode{c2} dans la cha\^ine caract\`eres \inlinecode{ch}.
+\item Modifiez votre fonction de telle sorte que si les arguments \inlinecode{c1}, \inlinecode{c2} et \inlinecode{ch} ne sont pas sp\'ecifi\'es, alors ils prendront les valeurs \inlinecode{" "}, \inlinecode{"*"} et \inlinecode{""}, respectivement.
 \end{enumerate}
 \end{exercice}
 
-
 \begin{filecontents*}{temp.tex}
 \newpage
-\begin{solution}[ex:affichage_2]
+\begin{solution}[TD4_ex1]
 \begin{lstlisting}
 ...
 \end{lstlisting}
@@ -80,30 +46,48 @@ Il y a 3 lignes et 124 caracteres.
 \newpage
 \end{filecontents*}
 \appendsolution
-%%%%%%%%
-%%%%%%%%
-%%%%%%%%
 
 
-%%%%%%%%
-%%%%%%%%
-%%%%%%%%
+
+
+
+
 \medskip
-\begin{exercice}[Listes et fichiers] \label{ex:listesfichiers_1}
+\begin{exercice}[fonctions]\label{TD4_ex2}
+\
+
+\noindent En vous inspirant de l'exercice $2$ du TD $2$, cr\'eez deux fonctions \inlinecode{nb_car(chaine)} et \inlinecode{nb_mots(chaine)} qui comptent le nombre de caract\`eres et le nombre de mots d'une cha\^ine de caract\`eres \inlinecode{chaine} donn\'ee en argument.
+\end{exercice}
+
+\begin{filecontents*}{temp.tex}
+\newpage
+\begin{solution}[TD4_ex2]
+\begin{lstlisting}
+...
+\end{lstlisting}
+\end{solution}
+\newpage
+\end{filecontents*}
+\appendsolution
+
+
+
+
+
+\medskip
+\begin{exercice}[fonctions]\label{TD4_ex3}
 \
 
 \begin{enumerate}
-\item \'Ecrivez un programme qui remplit une liste de $N$ \'el\'ements par des nombres
-entiers al\'eatoires entre $-100$ et $+100$. La taille de la liste doit \^etre demand\'ee \`a l'utilisateur.
-\begin{myboxi}[Indications] Pour g\'en\'erer un nombre entier al\'eatoire entre \inlinecode{a} et \inlinecode{b}, il vous faut importer la librairie \inlinecode{random} en utilisant la commande \inlinecode{from random import *}, puis, utiliser la fonction \inlinecode{randint(a,b)}.\end{myboxi}
-\item Affichez la liste ainsi que la somme de ses \'el\'ements.
-\item Ajoutez maintenant une fonctionnalit\'e qui permet d'\'ecrire la liste, \'el\'ement par \'el\'ement, chacun sur une seule ligne, dans un fichier sp\'ecifi\'e par l'utilisateur.
+\item D\'efinissez une fonction \inlinecode{TableMult(n, debut = 1, fin = 10)} qui imprime la table de multiplication de \inlinecode{n} entre les multiplicateurs \inlinecode{debut} et \inlinecode{fin}.
+\item Am\'eliorez votre fonction de telle sorte que si l'argument\inlinecode{debut} et plus grand que \inlinecode{fin}, la table de multiplication soit affich\'ee correctement, dans l'ordre d\'ecroissant.
+\item Cr\'eez une fonction similaire o\`u les param\`etres \inlinecode{n}\inlinecode{debut} et \inlinecode{fin} sont demand\'es \`a l'utilisateur plut\^ot que pass\'es en argument.
 \end{enumerate}
 \end{exercice}
 
 \begin{filecontents*}{temp.tex}
 \newpage
-\begin{solution}[ex:affichage_2]
+\begin{solution}[TD4_ex3]
 \begin{lstlisting}
 ...
 \end{lstlisting}
@@ -111,30 +95,45 @@ entiers al\'eatoires entre $-100$ et $+100$. La taille de la liste doit \^etre d
 \newpage
 \end{filecontents*}
 \appendsolution
-%%%%%%%%
-%%%%%%%%
-%%%%%%%%
 
 
 
 
-%%%%%%%%
-%%%%%%%%
-%%%%%%%%
+
+
+
+
 \medskip
-\begin{exercice}[Fichiers et listes] \label{ex:fichierslistes_1}
+\begin{exercice}[le jeu ``Motus'']\label{TD4_ex4}
 \
 
+\noindent Soit la liste de mots de cinq lettres suivantes:
+\begin{flushleft}
+\inlinecode{mots = ["arbre", "grave", "piece", "nuage", "crane", "sonne", "table", "herbe", "ecrou", "mulet"]} 
+\end{flushleft}
+Cr\'ez un programme qui impl\'emente le jeu ``Motus'' avec cette liste de mots. Plus pr\'ecis\'ement, au d\'epart, l'ordinateur choisit un mot au hasard dans cette liste (utilisez la fonction \inlinecode{randint()} de la librairie \inlinecode{random}). Ensuite, l'utilisateur dispose de $10$ essais pour deviner le mot. Pour cela, il proposera des lettres tour \`a tour. \`A chaque fois, l'ordinateur l'informera de si cette lettre est pr\'esente ou non dans le mot, et, si tel est le cas, mettra \`a jour les lettres d\'ej\`a devin\'ees. L'ex\'ecution de votre programme devra ressembler \`a quelque chose comme ci-dessous:
+\begin{lstlisting}[style = verbatim]
+Essai 6
+Entrer une lettre: t
+
+...et
+
+Essai 7
+Entrer une lettre: m
+
+m..et
+\end{lstlisting}
 \begin{enumerate}
-\item \'Ecrivez un programme qui lit un fichier sp\'ecifi\'e par l'utilisateur (par exemple, le fichier de l'exercice \ref{ex:listesfichiers_1}) et remplit une liste par les nombres trouv\'es dans les lignes du fichier.
-\item Ensuite, affichez le contenu de la liste lue ainsi que la somme de ses
-\'el\'ements.
+\item Commencez par d\'efinir une fonction \inlinecode{remplace(i, c, ch)} qui renvoie une cha\^ine dans laquelle le \inlinecode{i}-\`eme caract\`ere de la cha\^ine \inlinecode{ch} est remplac\'e par \inlinecode{c}.
+\item Utilisez ensuite cette fonction dans votre programme. \`A chaque lettre propos\'ee par l'utilisateur, effectuez un parcours du mot \`a deviner, et, parall\`element, construisez un nouveau mot dans lequel les lettres non encore devin\'ees apparaissent comme des points alors que celles d\'ej\`a devin\'ees apparaissent clairement.
+\item Modifiez votre programme de telle sorte que votre jeu soit impl\'ement\'e dans une proc\'edure \inlinecode{motus()} \`a un argument; cet argument devra correspondre au nombre d'essais maximum auquel l'utilisateur a le droit et aura une valeur par d\'efaut de $10$.
 \end{enumerate}
 \end{exercice}
 
+
 \begin{filecontents*}{temp.tex}
 \newpage
-\begin{solution}[ex:affichage_2]
+\begin{solution}[TD4_ex4]
 \begin{lstlisting}
 ...
 \end{lstlisting}
@@ -142,115 +141,60 @@ entiers al\'eatoires entre $-100$ et $+100$. La taille de la liste doit \^etre d
 \newpage
 \end{filecontents*}
 \appendsolution
-%%%%%%%%
-%%%%%%%%
-%%%%%%%%
 
 
 
-%%%%%%%%
-%%%%%%%%
-%%%%%%%%
+
 \medskip
-\begin{exercice}[Fichiers et dictionnaires] \label{ex:resultats_1}\
-
-\noindent Imaginez que vous avez un fichier sous format CSV (comma separated values -- valeurs s\'epar\'ees par des virgules) qui contient des informations concernant les r\'esultats d'un test
-interm\'ediaire, c'est-\`a-dire qu'il y a plusieurs lignes du type :
-\begin{verbatim}
-	prenom,nom,faculte,note,bonus
-\end{verbatim}
-Par exemple:
-\begin{verbatim}
-Eric,Clark,economie,13.5,1.0
-Lisa,Clark,droit,8.0,0.0
-\end{verbatim}
-Vous pouvez cr\'eer un tel fichier de donn\'ees par vous-m\^eme dans un \'editeur de texte.
-% ou vous le t\'el\'echarger le fichier exam.cvs" sur le site du cours.
-
-\begin{enumerate}
-\item \'Ecrivez une fonction qui prend en param\`etres le nom du fichier, ouvre le fichier, le lit et renvoie un dictionnaire contenant les donn\'ees du fichier. Les cl\'es du dictionnaire devront correspondre au pr\'enom et nom complet de la personne et leurs valeurs devront correspondre aux donn\'ees compl\`etes. Par exemple, les donn\'ees de l'exemple pr\'ec\'edent seront converties comme suit:
-
-\begin{lstlisting}
-donnees = {'Lisa Clark': ['Lisa','Clark','droit','8.0','0.0'],
-'Eric Clark': ['Eric','Clark','economie','13.5','1.0'] }
-\end{lstlisting}
-
-\item \'Ecrivez une deuxi\`eme fonction qui prend en param\`etres la liste des donn\'ees d'une personne et les affiche de mani\`ere lisible.
-\item \'Ecrivez une troisi\`eme fonction qui va afficher les r\'esultats du test pour les \'etudiants
-ayant obtenu une note au dessus de 9.5. Elle doit prendre deux param\`etres: les donn\'ees sous la forme d'un dictionnaire (cf. point 1) et la note au dessus de laquelle il faut afficher
-l'information, 9.5 par d\'efaut. Tester vos fonctions en affichant des donn\'ees d'un fichier cr\'e pour l'exemple.
-\end{enumerate}
-\end{exercice}
-
-\begin{filecontents*}{temp.tex}
-\begin{solution}[ex:resultats_1]
-\begin{lstlisting}
-...
-\end{lstlisting}
-\end{solution}
-\end{filecontents*}
-\appendsolution
-%%%%%%%%
-%%%%%%%%
-%%%%%%%%
-
-
-%%%%%%%%
-%%%%%%%%
-%%%%%%%%
-\medskip
-\begin{exercice}[Fichiers et dictionnaires (suite)] \label{ex:resultats_2}\
-
-\noindent \'Ecrivez un script qui demande \`a l'utilisateur le nom et le pr\'enom d'une personne et,
-ensuite, affiche \`a l'\'ecran le r\'esultat de cette personne au test, pour autant que celle-ci existe dans le fichier de donn\'ees. Le script devra redemander le nom et le pr\'enom jusqu'\`a ce qu'une chaine vide soit entr\'ee par l'utilisateur (i.e., l'utilisateur a tap\'e Enter). Pensez \`a r\'eutiliser les fonctions d\'ej\`a \'ecrites.
-\end{exercice}
-
-
-\begin{filecontents*}{temp.tex}
-\begin{solution}[ex:resultats_2]
-Code \`a  ajouter apr\`es la solution de l'exercice \ref{ex:resultats_1}.
-\begin{lstlisting}
-...
-\end{lstlisting}
-\end{solution}
-\end{filecontents*}
-\appendsolution
-%%%%%%%%
-%%%%%%%%
-%%%%%%%%
-
-
-
-%%%%%%%%
-%%%%%%%%
-%%%%%%%%
-\medskip
-\begin{exercice}[Dictionnaires et fichiers] \label{ex:resultats_3}
+\begin{exercice}[le jeu ``Puissance $4$'' (long et plus difficile; tr\`es bon exercice r\'ecapitulatif)]\label{TD4_ex5}
 \
-\begin{enumerate}
-\item \'Ecrivez une fonction qui prend les donn\'ees sous forme d'un dictionnaire et les
-enregistre dans un fichier. Les donn\'ees et le nom du fichier devront passer en param\`etres
-de la fonction.
-Vous pouvez utiliser la fonction \inlinecode{join()} pour convertir une liste de chaines de caract\`eres
-en une chaine.
-Par exemple le code suivant :
-\begin{lstlisting}
-info = ['Lisa','Clark','droit','8.0','0.0']
-chaine = ",".join( info )
-\end{lstlisting}
-vous donne la chaine \inlinecode{"Lisa,Clark,droit,8.0,0.0"}
-\item Modifiez votre script de mani\`ere \`a pouvoir enregistrer les r\'esultats des \'etudiants dans des fichiers diff\'erent pour chaque facult\'e (par exemple \verb#test-droit.csv# pour la facult\'e de droit et \verb#test-economie.csv# pour la facult\'e d'\'economie, etc.). Le format des fichiers enregistr\'es doit \^etre le m\^eme que celui de \verb#etudiants.csv#.
-\end{enumerate}
 
+\noindent Programmez un jeu ``Puissance $4$'' sur une grille de taille $N$. Le jeu devra avoir l'apparence comme montr\'e ci-dessous:
+\begin{lstlisting}[style = verbatim]
+. 	. 	. 	. 	. 	. 	. 	. 	
+
+. 	. 	. 	. 	X 	. 	. 	. 	
+
+. 	. 	. 	O 	. 	. 	. 	. 	
+
+O 	. 	. 	. 	. 	. 	X 	. 	
+
+. 	. 	. 	. 	. 	. 	. 	. 	
+
+. 	. 	. 	O 	. 	. 	. 	. 	
+
+. 	. 	. 	. 	. 	X 	. 	. 	
+
+. 	. 	. 	. 	. 	. 	. 	. 	
+
+Joueur 1: quelle position (ligne, colonne)?
+\end{lstlisting}
+\begin{enumerate}
+\item Programmez une fonction \inlinecode{generer_grille(N = 4)} qui g\'en\`ere une grille d'une certaine taille \inlinecode{N} valant $4$ par d\'efaut. Chaque ligne de la grille est une liste de taille \inlinecode{N} dont les \'el\'ements sont des cha\^ines \inlinecode{"."}. La grille est alors repr\'esent\'ee comme la liste de ses lignes, comme illustr\'e ci-dessous.
+\begin{lstlisting}[style = verbatim]
+# exemple d'une grille de taille 3 x 3
+# on a 3 listes de taille 3 remplies avec des "."
+[[".", ".", "."], [".", ".", "."], [".", ".", "."]]
+\end{lstlisting}
+\item Programmez une fonction \inlinecode{placer_pion(joueur, grille, position)} qui permet de placer le pion du joueur \inlinecode{joueur} \`a la position \inlinecode{position} dans la grille \inlinecode{grille}. L'argument \inlinecode{joueur} vaut \inlinecode{1} ou \inlinecode{2}. S'il vaut, \inlinecode{1}, le pion plac\'e sera un rond (O majuscule) \inlinecode{"O"}; s'il vaut, \inlinecode{2}, le pion plac\'e sera une croix (X majuscule) \inlinecode{"X"}. L'argument \inlinecode{grille} est une liste de listes. L'argument \inlinecode{position} est une liste ou un tuple de la forme \inlinecode{(i,j)}.
+\item Programmez une fonction \inlinecode{chercher_alignement(joueur, liste, n)} qui cherche si un alignement de \inlinecode{n} pions du joueur \inlinecode{joueur} existe dans la liste \inlinecode{liste} (cette liste repr\'esentera plus tard, une ligne, une colonne ou une diagonale). Suivant que l'argument \inlinecode{joueur} vaut \inlinecode{1} ou \inlinecode{2}, on cherchera un alignement de \inlinecode{n} \inlinecode{"O"} ou \inlinecode{n} \inlinecode{"X"}, respectivement.
+\item Programmez une fonction \inlinecode{generer_lignes(grille)} qui retourne la liste de toutes les lignes de la grille \inlinecode{grille}. Remarquez que dans ce cas, il suffit de retourner la grille elle m\^eme, puisque celle-ci est donn\'ee comme la liste de ces lignes.
+\item Programmez une fonction \inlinecode{generer_colonnes(grille)} qui retourne la liste de toutes les colonnes de la grille \inlinecode{grille}. L'id\'ee est de transposer la matrice \inlinecode{grille}...
+\item Programmez une fonction \inlinecode{generer_diagonales1(grille)} qui retourne la liste de toutes les diagonales ``montantes'' de la grille \inlinecode{grille}. Pour cela, remarquez que chaque diagonale de ce type est constitu\'ee des \'el\'ements de la grille dont les indices donnent une m\^eme somme. Par exemple, la diagonale \inlinecode{[(3,1), (2,2), (1,3)]} est form\'ee de tous les \'el\'ements dont les indices ont une somme de $4$.
+\item Programmez une fonction \inlinecode{generer_diagonales2(grille)} qui retourne la liste de toutes les diagonales ``descendantes'' de la grille \inlinecode{grille}. Pour cela, remarquez que chaque diagonale de ce type est constitu\'ee des \'el\'ements de la grille dont les indices donnent une m\^eme diff\'erence. Par exemple, la diagonale \inlinecode{[(1,3), (2,4), (3,5)]} d'une grille de taille $5$ est form\'ee de tous les \'el\'ements dont les indices ont une diff\'erence de $-2$.
+\item Programmez une fonction \inlinecode{imprimer_grille(grille)} qui imprime la grille \inlinecode{grille} dans votre terminal de mani\`ere conviviale, comme illustr\'e ci-dessus. On rappelle que les cha\^ines \inlinecode{"\t"}, \inlinecode{"\n"} codent un espace de tabulation et un retour de ligne, respectivement.
+\item En utilisant toutes les fonctions que vous avez programm\'ees jusque l\`a, d\'efinissez une fonction \inlinecode{jouer(n)} qui permet de jouer \`a Puissance $4$ sur une grille de taille \inlinecode{n}. Utilisez une grande boucle \inlinecode{while} qui demande \`a chaque joueur de placer un pion \`a tour de r\^ole, jusqu'\`a ce qu'un alignement de $4$ pions soit trouv\'e dans une ligne, une colonne ou une diagonale. Tout le programme peut se faire en $250$ lignes de code environ.
+\end{enumerate}
 \end{exercice}
 
-
 \begin{filecontents*}{temp.tex}
-\begin{solution}[ex:resultats_3]
+\newpage
+\begin{solution}[TD4_ex5]
 \begin{lstlisting}
 ...
 \end{lstlisting}
 \end{solution}
+\newpage
 \end{filecontents*}
 \appendsolution
 
@@ -258,3 +202,12 @@ vous donne la chaine \inlinecode{"Lisa,Clark,droit,8.0,0.0"}
 
 
 
+%\begin{filecontents*}{temp.tex}
+%
+%\begin{solution}[ex:]
+%
+%\end{solution}
+%
+%
+%\end{filecontents*}
+%\appendsolution
