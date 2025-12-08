@@ -55,7 +55,7 @@ def montecarlo(liste_X, liste_Y, formule) :
 
 # programme principal
 
-x, y = generer(10050)
+x, y = generer_points(10001)
 print(x)
 
 formule = " x**2 + y**2 <= 1.0 "
